@@ -9,7 +9,6 @@ import org.scalajs.dom.Element
 import org.scalajs.dom.document
 import org.scalajs.dom.raw.HTMLElement
 import org.scalajs.dom.html.Div
-import org.scalajs.dom.html.Div
 import scala.scalajs.js
 import js.JSConverters._
 import scala.reflect.macros.blackbox
@@ -78,7 +77,30 @@ object html {
   }
   object NodeBindingSeq {
 
-    final class Constants[+A] private[html] (underlying: js.Array[A]) extends NodeBindingSeq[A] {
+    object Constants {
+      object Builder {
+        implicit def interpolated(builder: Builder): Interpolated.Builder = {
+          new Interpolated.Builder(new Interpolated(builder.childNodes))
+        }
+      }
+      final class Builder private[concentricsky] (
+          private[concentricsky] val childNodes: js.Array[Node] = new js.Array(0))
+          extends AnyVal {
+
+        def apply(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+          childBuilder.appendChildren()
+          childNodes += childBuilder.element
+          this
+        }
+
+        def build() = {
+          new Constants(childNodes)
+        }
+
+      }
+    }
+
+    final class Constants[+A] private[concentricsky] (underlying: js.Array[A]) extends NodeBindingSeq[A] {
 
       @inline
       def value: Seq[A] = underlying
@@ -90,20 +112,36 @@ object html {
       override protected def addPatchedListener(listener: PatchedListener[A]): Unit = {}
 
     }
-
-    final class Interpolated[+A] private[concentricsky] (
-        underlying: js.Array[A],
-        private[concentricsky] val mountPoints: js.Array[Binding[Unit]])
-        extends NodeBindingSeq[A] {
-      val value: Seq[A] = underlying
+    object Interpolated {
+      final class Builder private[concentricsky] (private[concentricsky] val underlying: Interpolated) extends AnyVal {
+        // TODO: comments, CDATA, ets
+        def apply(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
+          childBuilder.flush()
+          underlying.nodes += childBuilder.attributeBuilder.element
+          underlying.mountPoints.push(childBuilder.attributeBuilder.mountPoints: _*)
+          this
+        }
+        def apply(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+          childBuilder.appendChildren()
+          underlying.nodes += childBuilder.element
+          this
+        }
+        def build() = underlying
+      }
+    }
+    final class Interpolated private[concentricsky] (private[concentricsky] val nodes: js.Array[Node] = new js.Array(0),
+                                                     private[concentricsky] val mountPoints: js.Array[Binding[Unit]] =
+                                                       new js.Array(0))
+        extends NodeBindingSeq[Node] {
+      def value: Seq[Node] = nodes
       private var referenceCount = 0
-      protected def addPatchedListener(listener: PatchedListener[A]): Unit = {
+      protected def addPatchedListener(listener: PatchedListener[Node]): Unit = {
         if (referenceCount == 0) {
           mountPoints.foreach(_.watch())
         }
         referenceCount += 1
       }
-      protected def removePatchedListener(listener: PatchedListener[A]): Unit = {
+      protected def removePatchedListener(listener: PatchedListener[Node]): Unit = {
         referenceCount -= 1
         if (referenceCount == 0) {
           mountPoints.foreach(_.unwatch())
@@ -128,7 +166,8 @@ object html {
 
       object ChildBuilder {
         implicit def interpolated[A <: Element](builder: ChildBuilder[A]): Interpolated.ChildBuilder[A] = {
-          new Interpolated.ChildBuilder[A](new Interpolated.AttributeBuilder[A](builder.element), trailingNodes=builder.childNodes)
+          new Interpolated.ChildBuilder[A](new Interpolated.AttributeBuilder[A](builder.element),
+                                           trailingNodes = builder.childNodes)
         }
       }
 
@@ -199,7 +238,7 @@ object html {
           extends AnyVal
           with Dynamic {
         @inline final def selfClose() = new SelfCloseBuilder(element)
-        @inline final def childNodes = new ChildBuilder(element, new js.Array(0))
+        @inline final def nodeList = new ChildBuilder(element, new js.Array(0))
 
         @compileTimeOnly("This function call should be elimited by macros")
         def applyDynamic(name: String): AttributeValueBuilder[A] = ???
@@ -244,8 +283,8 @@ object html {
     }
 
     object Interpolated {
-      final class ChildBuilder[+A <: Element] private[html](
-          private val attributeBuilder: AttributeBuilder[A],
+      final class ChildBuilder[+A <: Element] private[concentricsky] (
+          private[concentricsky] val attributeBuilder: AttributeBuilder[A],
           private var bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
           private var trailingNodes: js.Array[Node] = new js.Array(0)) {
         // TODO: comments, CDATA, ets
@@ -270,10 +309,10 @@ object html {
           this
         }
         private def mergeTrailingNodes(): Unit = {
-            bindingSeqs += Binding.Constant(new NodeBindingSeq.Constants(trailingNodes))
-            trailingNodes = new js.Array(0)
+          bindingSeqs += Binding.Constant(new NodeBindingSeq.Constants(trailingNodes))
+          trailingNodes = new js.Array(0)
         }
-        private def flush(): Unit = {
+        private[concentricsky] def flush(): Unit = {
           mergeTrailingNodes()
           attributeBuilder.mountPoints += new NodeSeqMountPoint(attributeBuilder.element,
                                                                 Constants(bindingSeqs: _*).flatMapBinding(identity))
@@ -302,8 +341,8 @@ object html {
           private[concentricsky] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
           extends Dynamic {
 
-            @inline final def selfClose(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
-        @inline final def childNodes: ChildBuilder[A] = new ChildBuilder[A](this)
+        @inline final def selfClose(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
+        @inline final def nodeList: ChildBuilder[A] = new ChildBuilder[A](this)
         @compileTimeOnly("This function call should be elimited by macros")
         def applyDynamic(name: String): AttributeValueBuilder[A] = ???
 
@@ -329,6 +368,7 @@ object html {
     object `http://www.w3.org/1999/xhtml` {
       @inline def div() = new NodeBinding.Constant.AttributeBuilder(document.createElement("div").asInstanceOf[Div])
       @inline def text(value: String) = new NodeBinding.Constant.TextBuilder(value)
+      @inline def nodeList = new NodeBindingSeq.Constants.Builder
       @inline def interpolation = Binding
     }
 
@@ -404,7 +444,21 @@ object html {
   * myDiv2.value.lastChild should be(myDiv.value)
   * myDiv2.value.innerHTML should be("""<div>text</div><div tabindex="99"></div><div></div><div tabindex="42" class="my-class"></div>""")
   * }}}
+  * @example Element list of XHTML literals
+  *
+  * {{{
+  * @html
+  * val myDivs = <div></div><div title={"my title"}></div><div class="my-class"></div>
+  * myDivs.watch()
+  * import org.scalajs.dom.html.Div
+  * inside(myDivs.value) {
+  *   case Seq(div1, div2: Div, div3: Div) =>
+  *     div1.nodeName should be("DIV")
+  *     div2.title should be("my title")
+  *     div3.className should be("my-class")
+  * }
   * 
+  * }}}
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
 class html extends StaticAnnotation {

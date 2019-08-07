@@ -8,6 +8,9 @@ enablePlugins(ScalaJSPlugin)
 
 enablePlugins(Example)
 
+import scala.meta._
+exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
+
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "11.8.1"
 
 libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "1.1.0"
