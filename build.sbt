@@ -10,7 +10,7 @@ enablePlugins(Example)
 
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "11.8.1"
 
-libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.7.0"
+libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "1.1.0"
 
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
