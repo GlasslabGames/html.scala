@@ -16,7 +16,18 @@ import scala.language.experimental.macros
 import scala.language.implicitConversions
 import com.concentricsky.html.NodeBinding.Constant.TextBuilder
 import com.thoughtworks.binding.bindable.BindableSeq
+import com.thoughtworks.binding.bindable.Bindable
+import scalaz.Monad
 object html {
+
+  def mount(parent: Node, children: BindingSeq[Node]): Binding[Unit] = {
+    new NodeSeqMountPoint(parent, children)
+  }
+
+  def render[Children](parent: Node, children: Children)(implicit bindableSeq: BindableSeq.Lt[Children, Node]) = {
+    mount(parent, bindableSeq.toBindingSeq(children)).watch()
+  }
+
   @inline
   @tailrec
   private def removeAll(parent: Node): Unit = {
@@ -26,7 +37,7 @@ object html {
       removeAll(parent)
     }
   }
-  final class NodeSeqMountPoint(parent: Node, childrenBinding: BindingSeq[Node])
+  private final class NodeSeqMountPoint(parent: Node, childrenBinding: BindingSeq[Node])
       extends MultiMountPoint[Node](childrenBinding) {
 
     override protected def set(children: Seq[Node]): Unit = {
@@ -72,7 +83,7 @@ object html {
 
   }
 
-  sealed trait NodeBindingSeq[+A] extends BindingSeq[A] {
+  type NodeBindingSeq[+A] = BindingSeq[A] {
     def value: Seq[A]
   }
   object NodeBindingSeq {
@@ -87,41 +98,31 @@ object html {
           private[concentricsky] val childNodes: js.Array[Node] = new js.Array(0))
           extends AnyVal {
 
-        def apply(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+        def +=(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           childNodes += childBuilder.element
           this
         }
 
         def build() = {
-          new Constants(childNodes)
+          Binding.Constants(childNodes: _*)
         }
 
       }
     }
 
-    final class Constants[+A] private[concentricsky] (underlying: js.Array[A]) extends NodeBindingSeq[A] {
+    type Constants[+A] = Binding.Constants[A]
 
-      @inline
-      def value: Seq[A] = underlying
-
-      @inline
-      override protected def removePatchedListener(listener: PatchedListener[A]): Unit = {}
-
-      @inline
-      override protected def addPatchedListener(listener: PatchedListener[A]): Unit = {}
-
-    }
     object Interpolated {
       final class Builder private[concentricsky] (private[concentricsky] val underlying: Interpolated) extends AnyVal {
         // TODO: comments, CDATA, ets
-        def apply(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
+        def +=(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
           childBuilder.flush()
           underlying.nodes += childBuilder.attributeBuilder.element
           underlying.mountPoints.push(childBuilder.attributeBuilder.mountPoints: _*)
           this
         }
-        def apply(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+        def +=(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           underlying.nodes += childBuilder.element
           this
@@ -132,7 +133,7 @@ object html {
     final class Interpolated private[concentricsky] (private[concentricsky] val nodes: js.Array[Node] = new js.Array(0),
                                                      private[concentricsky] val mountPoints: js.Array[Binding[Unit]] =
                                                        new js.Array(0))
-        extends NodeBindingSeq[Node] {
+        extends BindingSeq[Node] {
       def value: Seq[Node] = nodes
       private var referenceCount = 0
       protected def addPatchedListener(listener: PatchedListener[Node]): Unit = {
@@ -151,7 +152,7 @@ object html {
 
   }
 
-  sealed trait NodeBinding[+A] extends Binding[A] {
+  type NodeBinding[+A] = Binding[A] {
     val value: A
   }
   object NodeBinding {
@@ -161,7 +162,7 @@ object html {
       final class TextBuilder private[concentricsky] (private[concentricsky] val value: String) extends AnyVal
 
       final class SelfCloseBuilder[A] private[concentricsky] (private[concentricsky] val element: A) extends AnyVal {
-        def build() = Constant(element)
+        def build() = Binding.Constant(element)
       }
 
       object ChildBuilder {
@@ -173,7 +174,7 @@ object html {
 
       /** The builder to a [[Constant]] from child nodes.
         * @example This [[Constant.ChildBuilder]] can be converted to a [[Interpolated.ChildBuilder]] automatically,
-        * when a [[com.thoughtworks.binding.Binding]] is appended.
+        * when a [[Binding]] is appended.
         * {{{
         * import org.scalajs.dom.document
         * import org.scalajs.dom.html.Div
@@ -181,10 +182,13 @@ object html {
         * import com.concentricsky.html.NodeBinding.Constant
         * import com.concentricsky.html.NodeBinding.Constant.TextBuilder
         *
-        * new Constant.ChildBuilder(document.createElement("div").asInstanceOf[Div])(
-        *   new TextBuilder("my-title"))(
-        *   com.thoughtworks.binding.Binding(document.createElement("span"))
-        * ) should be(an[Interpolated.ChildBuilder[_]])
+        * {
+        *   new Constant.ChildBuilder(document.createElement("div").asInstanceOf[Div]) += (
+        *     new TextBuilder("my-title")
+        *   ) += (
+        *     com.thoughtworks.binding.Binding(document.createElement("span"))
+        *   )
+        * } should be(an[Interpolated.ChildBuilder[_]])
         * }}}
         */
       final class ChildBuilder[+A <: Element] private[concentricsky] (
@@ -195,14 +199,14 @@ object html {
         }
         def build() = {
           appendChildren()
-          Constant(element)
+          Binding.Constant(element)
         }
-        def apply(childBuilder: ChildBuilder[Element]) = {
+        def +=(childBuilder: ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           childNodes += childBuilder.element
           this
         }
-        def apply(childBuilder: TextBuilder) = {
+        def +=(childBuilder: TextBuilder) = {
           childNodes += document.createTextNode(childBuilder.value)
           this
         }
@@ -221,7 +225,7 @@ object html {
 
       /** The builder to a [[Constant]] from attributes.
         * @example This [[Constant.AttributeBuilder]] can be converted to a [[Interpolated.AttributeBuilder]] automatically,
-        * when setting an attribute with a [[com.thoughtworks.binding.Binding]] value.
+        * when setting an attribute with a [[Binding]] value.
         * {{{
         * import org.scalajs.dom.document
         * import org.scalajs.dom.html.Div
@@ -251,22 +255,12 @@ object html {
       }
 
     }
-    final case class Constant[+A] private[concentricsky] (value: A) extends NodeBinding[A] {
-      @inline
-      protected def removeChangedListener(listener: ChangedListener[A]): Unit = {
-        // Do nothing because this Constant never changes
-      }
-
-      @inline
-      protected def addChangedListener(listener: ChangedListener[A]): Unit = {
-        // Do nothing because this Constant never changes
-      }
-    }
+    type Constant[+A] = Binding.Constant[A]
 
     final class Interpolated[+A] private[concentricsky] (
         val value: A,
         private[concentricsky] val mountPoints: js.Array[Binding[Unit]])
-        extends NodeBinding[A] {
+        extends Binding[A] {
       private var referenceCount = 0
       protected def addChangedListener(listener: ChangedListener[A]): Unit = {
         if (referenceCount == 0) {
@@ -283,33 +277,53 @@ object html {
     }
 
     object Interpolated {
+      private[Interpolated] trait LowPriorityChildBuilder[+A <: Element] { this: ChildBuilder[A] =>
+
+        def +=[Child, B](child: Binding[Child])(implicit bindableSeq: BindableSeq.Aux[Child, B],
+                                                bindable: Bindable.Lt[B, Node]) = {
+          mergeTrailingNodes()
+          bindingSeqs += Binding.BindingInstances.map(child) { a =>
+            bindableSeq.toBindingSeq(a).mapBinding(bindable.toBinding(_))
+          }
+          this
+        }
+      }
       final class ChildBuilder[+A <: Element] private[concentricsky] (
           private[concentricsky] val attributeBuilder: AttributeBuilder[A],
-          private var bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
-          private var trailingNodes: js.Array[Node] = new js.Array(0)) {
+          private[concentricsky] var bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
+          private[concentricsky] var trailingNodes: js.Array[Node] = new js.Array(0))
+          extends LowPriorityChildBuilder[A] {
         // TODO: comments, CDATA, ets
-        def apply(childBuilder: Constant.TextBuilder) = {
+        def +=(childBuilder: Constant.TextBuilder) = {
           trailingNodes += document.createTextNode(childBuilder.value)
           this
         }
-        def apply(childBuilder: Interpolated.ChildBuilder[Element]) = {
+        def +=(childBuilder: Interpolated.ChildBuilder[Element]) = {
           childBuilder.flush()
           trailingNodes += childBuilder.attributeBuilder.element
           attributeBuilder.mountPoints.push(childBuilder.attributeBuilder.mountPoints: _*)
           this
         }
-        def apply(childBuilder: Constant.ChildBuilder[Element]) = {
+        def +=(childBuilder: Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           trailingNodes += childBuilder.element
           this
         }
-        def apply[Child](child: Binding[Child])(implicit bindableSeq: BindableSeq.Lt[Child, Node]) = {
+        def +=(child: Binding[String]) = {
+          val textNode = document.createTextNode("")
+          trailingNodes += textNode
+          attributeBuilder.mountPoints += Binding.BindingInstances.map(child) {
+            textNode.data = _
+          }
+          this
+        }
+        def +=[Child](child: Binding[Child])(implicit bindableSeq: BindableSeq.Lt[Child, Node]) = {
           mergeTrailingNodes()
           bindingSeqs += Binding.BindingInstances.map(child)(bindableSeq.toBindingSeq(_))
           this
         }
-        private def mergeTrailingNodes(): Unit = {
-          bindingSeqs += Binding.Constant(new NodeBindingSeq.Constants(trailingNodes))
+        private[concentricsky] def mergeTrailingNodes(): Unit = {
+          bindingSeqs += Binding.Constant(Binding.Constants(trailingNodes: _*))
           trailingNodes = new js.Array(0)
         }
         private[concentricsky] def flush(): Unit = {
@@ -317,7 +331,7 @@ object html {
           attributeBuilder.mountPoints += new NodeSeqMountPoint(attributeBuilder.element,
                                                                 Constants(bindingSeqs: _*).flatMapBinding(identity))
         }
-        def build(): NodeBinding.Interpolated[A] = {
+        def build() = {
           flush()
           new NodeBinding.Interpolated(attributeBuilder.element, attributeBuilder.mountPoints)
         }
@@ -331,7 +345,7 @@ object html {
       final class SelfCloseBuilder[+A <: Element] private[concentricsky] (
           private val attributeBuilder: AttributeBuilder[A])
           extends AnyVal {
-        def build(): NodeBinding.Interpolated[A] = {
+        def build() = {
           new NodeBinding.Interpolated[A](attributeBuilder.element, attributeBuilder.mountPoints)
         }
       }
@@ -353,7 +367,7 @@ object html {
         }
 
         @inline
-        final def interplatedAttribute[B](mountPoint: A => Binding[Unit]): this.type = {
+        final def interpolatedAttribute[B](mountPoint: A => Binding[Unit]): this.type = {
           mountPoints += mountPoint(element)
           this
         }
@@ -363,10 +377,60 @@ object html {
 
   }
 
-  object autoImports {
+  private[html] trait LowPriorityAutoImports {
+    // TODO: move to https://github.com/ThoughtWorksInc/bindable.scala
+    implicit def bindableBindableSeq[From, BindableValue, Value0](
+        implicit
+        bindableSeq: BindableSeq.Aux[From, BindableValue],
+        bindable: Bindable.Aux[BindableValue, Value0]): BindableSeq.Aux[From, Value0] =
+      new BindableSeq[From] {
+        type Value = Value0
+        def toBindingSeq(from: From): BindingSeq[Value] = {
+          bindableSeq.toBindingSeq(from).mapBinding(bindable.toBinding(_))
+        }
+      }
+  }
+  object autoImports extends LowPriorityAutoImports {
 
-    object `http://www.w3.org/1999/xhtml` {
-      @inline def div() = new NodeBinding.Constant.AttributeBuilder(document.createElement("div").asInstanceOf[Div])
+    // TODO: move to https://github.com/ThoughtWorksInc/bindable.scala
+    implicit def bindingBindingSeqBindableSeq[BindableValue, Value0](
+        implicit bindable: Bindable.Aux[BindableValue, Value0]): BindableSeq.Aux[BindingSeq[BindableValue], Value0] =
+      new BindableSeq[BindingSeq[BindableValue]] {
+        type Value = Value0
+        def toBindingSeq(from: BindingSeq[BindableValue]): BindingSeq[Value] = {
+          from.mapBinding(bindable.toBinding(_))
+        }
+      }
+
+    object `http://www.w3.org/1999/xhtml` extends HtmlBuilders {
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLTimeElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLDataElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLPictureElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLOutputElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLMeterElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLDetailsElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLDialogElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLTemplateElement = HTMLElement
+
+      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+      protected type HTMLSlotElement = HTMLElement
+
       @inline def text(value: String) = new NodeBinding.Constant.TextBuilder(value)
       @inline def nodeList = new NodeBindingSeq.Constants.Builder
       @inline def interpolation = Binding
@@ -386,7 +450,7 @@ object html {
       val functionName = TermName(c.freshName("assignAttribute"))
       val assigneeName = TermName(c.freshName("assignee"))
       val newValueName = TermName(c.freshName("newValue"))
-      q"""$builder.interplatedAttribute{ $assigneeName: ${TypeTree()} =>
+      q"""$builder.interpolatedAttribute{ $assigneeName: ${TypeTree()} =>
         _root_.com.thoughtworks.binding.Binding.apply[_root_.scala.Unit]{
           $assigneeName.$termName = $value.bind
         }
@@ -425,7 +489,7 @@ object html {
   * @example XHTML literals with text attributes
   * {{{
   * @html
-  * val myDiv = <div class="my-class" tabIndex="42"/>
+  * val myDiv = <div class="my-class" tabIndex="42"></div>
   * myDiv.value.nodeName should be("DIV")
   * myDiv.value.className should be("my-class")
   * myDiv.value.tabIndex should be(42)
@@ -435,14 +499,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div title="xx" tabIndex={99999}><div>text</div><div tabIndex={99}></div><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div title="my title" tabIndex={99999}><div>text</div><span tabIndex={99}></span><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.nodeName should be("DIV")
-  * myDiv2.value.title should be("xx")
-  * myDiv2.value.tabIndex should be(99999)
-  * myDiv2.value.firstChild.nodeName should be("DIV")
-  * myDiv2.value.lastChild should be(myDiv.value)
-  * myDiv2.value.innerHTML should be("""<div>text</div><div tabindex="99"></div><div></div><div tabindex="42" class="my-class"></div>""")
+  * myDiv2.value.outerHTML should be("""<div tabindex="99999" title="my title"><div>text</div><span tabindex="99"></span><div></div><div tabindex="42" class="my-class"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *
@@ -457,7 +516,120 @@ object html {
   *     div2.title should be("my title")
   *     div3.className should be("my-class")
   * }
+  *
+  * }}}
+  *
+  * @example Text interpolation in an element
+  * {{{
+  * @html val monadicDiv = <div>{"text"}</div>
+  * monadicDiv.watch()
+  * assert(monadicDiv.value.outerHTML == "<div>text</div>")
+  * }}}
+  *
+  * @example Changing text
+  * {{{
+  * import com.thoughtworks.binding.Binding.Var
+  * val v0 = Var("original text")
+  * @html val monadicDiv = <div> <span> {v0.bind} </span> </div>
+  * monadicDiv.watch()
+  * assert(monadicDiv.value.outerHTML == "<div> <span> original text </span> </div>")
+  * v0.value = "changed"
+  * assert(monadicDiv.value.outerHTML == "<div> <span> changed </span> </div>")
+  * }}}
+  *
+  * @example `for` / `yield` expressions in XHTML interpolation
+  * {{{
+  * import com.thoughtworks.binding.Binding.Vars
+  * val v0 = Vars("original text 0","original text 1")
+  * @html val monadicDiv = <div> <span> { for (s <- v0) yield <b>{s}</b> } </span> </div>
+  * monadicDiv.watch()
+  * val div = monadicDiv.value
+  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>original text 0</b><b>original text 1</b> </span> </div>")
+  * v0.value.prepend("prepended")
+  * assert(div eq monadicDiv.value)
+  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>prepended</b><b>original text 0</b><b>original text 1</b> </span> </div>")
+  * v0.value.remove(1)
+  * assert(div eq monadicDiv.value)
+  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>prepended</b><b>original text 1</b> </span> </div>")
+  * }}}
+  *
+  * @example `for` / `yield` / `if` expressions in XHTML interpolation
+  * {{{
+  * import com.thoughtworks.binding.Binding
+  * import com.thoughtworks.binding.Binding.Var
+  * import com.thoughtworks.binding.Binding.Vars
+  * final case class User(firstName: Var[String], lastName: Var[String], age: Var[Int])
+  * val filterPattern = Var("")
+  * val users = Vars(
+  *   User(Var("Steve"), Var("Jobs"), Var(10)),
+  *   User(Var("Tim"), Var("Cook"), Var(12)),
+  *   User(Var("Jeff"), Var("Lauren"), Var(13))
+  * )
+  * def shouldShow(user: User): Binding[Boolean] = Binding {
+  *   val pattern = filterPattern.bind
+  *   if (pattern == "") {
+  *     true
+  *   } else if (user.firstName.bind.toLowerCase.contains(pattern)) {
+  *     true
+  *   } else if (user.lastName.bind.toLowerCase.contains(pattern)) {
+  *     true
+  *   } else {
+  *     false
+  *   }
+  * }
+  *
+  * @html
+  * def tbodyBinding = {
+  *   <tbody>{
+  *     for {
+  *       user <- users
+  *       if shouldShow(user).bind
+  *     } yield <tr><td>{user.firstName.bind}</td><td>{user.lastName.bind}</td><td>{user.age.bind.toString}</td></tr>
+  *   }</tbody>
+  * }
+  *
+  * @html
+  * val tableBinding = {
+  *   <table title="My Tooltip" class="my-table"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead>{tbodyBinding.bind}</table>
+  * }
+  * tableBinding.watch()
+  * assert(tableBinding.value.outerHTML == """<table class="my-table" title="My Tooltip"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead><tbody><tr><td>Steve</td><td>Jobs</td><td>10</td></tr><tr><td>Tim</td><td>Cook</td><td>12</td></tr><tr><td>Jeff</td><td>Lauren</td><td>13</td></tr></tbody></table>""")
+  * filterPattern.value = "o"
+  * assert(tableBinding.value.outerHTML == """<table class="my-table" title="My Tooltip"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead><tbody><tr><td>Steve</td><td>Jobs</td><td>10</td></tr><tr><td>Tim</td><td>Cook</td><td>12</td></tr></tbody></table>""")
+  * }}}
+  *
+  * @example Changing attribute values
+  * {{{
+  * import com.thoughtworks.binding.Binding.Var
+  * val id = Var("oldId")
+  * @html val hr = <hr id={id.bind}/>
+  * hr.watch()
+  * assert(hr.value.outerHTML == """<hr id="oldId">""")
+  * id.value = "newId"
+  * assert(hr.value.outerHTML == """<hr id="newId">""")
+  * }}}
+  *
+  * @example Double insertion
+  * {{{
+  * intercept[IllegalStateException] {
+  *   @html
+  *   val child = <hr/>
+  *   @html
+  *   val parent = <p><span>{child.bind}</span><span>{child.bind}</span></p>
+  *   parent.watch()
+  * }
+  * }}}
   * 
+  * 
+  * @example Seq in DOM
+  * {{{
+  * import org.scalajs.dom.document
+  * @html def myUl = {
+  *   <ul>{Seq(<li>data1</li>, <li>data2</li>)}</ul>
+  * }
+  * val div = document.createElement("div")
+  * html.render(div, myUl)
+  * div.firstChild.childNodes.length should be(2)
   * }}}
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
