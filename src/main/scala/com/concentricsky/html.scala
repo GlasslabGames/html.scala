@@ -115,7 +115,6 @@ object html {
 
     object Interpolated {
       final class Builder private[concentricsky] (private[concentricsky] val underlying: Interpolated) extends AnyVal {
-        // TODO: comments, CDATA, ets
         def +=(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
           childBuilder.flush()
           underlying.nodes += childBuilder.attributeBuilder.element
@@ -158,8 +157,11 @@ object html {
   object NodeBinding {
 
     object Constant {
+      final class Builder[+A] private[concentricsky] (private[concentricsky] val node: A) extends AnyVal {
+        def build() = Binding.Constant(node)
+      }
 
-      final class TextBuilder private[concentricsky] (private[concentricsky] val value: String) extends AnyVal
+      final class TextBuilder private[concentricsky] (private[concentricsky] val data: String) extends AnyVal
 
       final class SelfCloseBuilder[A] private[concentricsky] (private[concentricsky] val element: A) extends AnyVal {
         def build() = Binding.Constant(element)
@@ -207,16 +209,25 @@ object html {
           this
         }
         def +=(childBuilder: TextBuilder) = {
-          childNodes += document.createTextNode(childBuilder.value)
+          childNodes += document.createTextNode(childBuilder.data)
+          this
+        }
+        def +=(childBuilder: Builder[Node]) = {
+          childNodes += childBuilder.node
           this
         }
         // TODO: comment, CDATA, etc...
       }
 
-      sealed trait AttributeValueBuilder[A] {
-        def apply(value: TextBuilder): Constant.AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
-        def apply(value: Binding[Any]): Interpolated.AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
+      sealed trait AttributeNameBuilder[+A] extends Dynamic {
+        @compileTimeOnly("This function call should be elimited by macros")
+        def applyDynamic(name: String): AttributeValueBuilder = ???
+        sealed trait AttributeValueBuilder {
+          def apply(value: TextBuilder): Constant.AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
+          def apply(value: Binding[Any]): Interpolated.AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
+        }
       }
+
       object AttributeBuilder {
         implicit def interpolated[A <: Element](builder: AttributeBuilder[A]): Interpolated.AttributeBuilder[A] = {
           new Interpolated.AttributeBuilder(builder.element)
@@ -233,8 +244,8 @@ object html {
         * import com.concentricsky.html.NodeBinding.Constant
         * import com.concentricsky.html.NodeBinding.Constant.TextBuilder
         * new Constant.AttributeBuilder(document.createElement("div").asInstanceOf[Div])
-        *   .title(new TextBuilder("my-title"))
-        *   .className(com.thoughtworks.binding.Binding("my-title"))
+        *   .attributes.title(new TextBuilder("my-title"))
+        *   .attributes.className(com.thoughtworks.binding.Binding("my-title"))
         *   .should(be(an[Interpolated.AttributeBuilder[_]]))
         * }}}
         */
@@ -245,11 +256,11 @@ object html {
         @inline final def nodeList = new ChildBuilder(element, new js.Array(0))
 
         @compileTimeOnly("This function call should be elimited by macros")
-        def applyDynamic(name: String): AttributeValueBuilder[A] = ???
+        def attributes: AttributeNameBuilder[A] = ???
 
         @inline
         def textAttribute(name: String, value: TextBuilder) = {
-          element.setAttribute(name, value.value)
+          element.setAttribute(name, value.data)
           this
         }
       }
@@ -293,9 +304,12 @@ object html {
           private[concentricsky] var bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
           private[concentricsky] var trailingNodes: js.Array[Node] = new js.Array(0))
           extends LowPriorityChildBuilder[A] {
-        // TODO: comments, CDATA, ets
         def +=(childBuilder: Constant.TextBuilder) = {
-          trailingNodes += document.createTextNode(childBuilder.value)
+          trailingNodes += document.createTextNode(childBuilder.data)
+          this
+        }
+        def +=(childBuilder: Constant.Builder[Node]) = {
+          trailingNodes += childBuilder.node
           this
         }
         def +=(childBuilder: Interpolated.ChildBuilder[Element]) = {
@@ -336,10 +350,13 @@ object html {
           new NodeBinding.Interpolated(attributeBuilder.element, attributeBuilder.mountPoints)
         }
       }
-
-      sealed trait AttributeValueBuilder[+A] {
-        def apply(value: Constant.TextBuilder): AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
-        def apply(value: Binding[Any]): AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
+      sealed trait AttributeNameBuilder[+A] extends Dynamic {
+        @compileTimeOnly("This function call should be elimited by macros")
+        def applyDynamic(name: String): AttributeValueBuilder = ???
+        sealed trait AttributeValueBuilder {
+          def apply(value: Constant.TextBuilder): AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
+          def apply(value: Binding[Any]): AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
+        }
       }
 
       final class SelfCloseBuilder[+A <: Element] private[concentricsky] (
@@ -352,17 +369,17 @@ object html {
 
       final class AttributeBuilder[+A <: Element] private[concentricsky] (
           private[concentricsky] val element: A,
-          private[concentricsky] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
-          extends Dynamic {
+          private[concentricsky] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0)) {
 
         @inline final def selfClose(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
         @inline final def nodeList: ChildBuilder[A] = new ChildBuilder[A](this)
+
         @compileTimeOnly("This function call should be elimited by macros")
-        def applyDynamic(name: String): AttributeValueBuilder[A] = ???
+        def attributes: AttributeNameBuilder[A] = ???
 
         @inline
         def textAttribute[B](name: String, value: TextBuilder): Interpolated.AttributeBuilder[A] = {
-          element.setAttribute(name, value.value)
+          element.setAttribute(name, value.data)
           this
         }
 
@@ -390,6 +407,37 @@ object html {
         }
       }
   }
+
+  private[concentricsky] object elementTypes {
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLTimeElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLDataElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLPictureElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLOutputElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLMeterElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLDetailsElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLDialogElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLTemplateElement = HTMLElement
+
+    /** @todo Remove this type alias once scala-js-dom added the definition for this type */
+    type HTMLSlotElement = HTMLElement
+
+  }
   object autoImports extends LowPriorityAutoImports {
 
     // TODO: move to https://github.com/ThoughtWorksInc/bindable.scala
@@ -402,36 +450,11 @@ object html {
         }
       }
 
-    object `http://www.w3.org/1999/xhtml` extends HtmlBuilders {
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLTimeElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLDataElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLPictureElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLOutputElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLMeterElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLDetailsElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLDialogElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLTemplateElement = HTMLElement
-
-      /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-      protected type HTMLSlotElement = HTMLElement
-
-      @inline def text(value: String) = new NodeBinding.Constant.TextBuilder(value)
+    object `http://www.w3.org/1999/xhtml` {
+      @inline def elements = ElementBuilders
+      @inline def entities = EntityBuilder
+      @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
+      @inline def comment(data: String) = new NodeBinding.Constant.Builder(document.createComment(data))
       @inline def nodeList = new NodeBindingSeq.Constants.Builder
       @inline def interpolation = Binding
     }
@@ -441,11 +464,12 @@ object html {
     import c.universe._
 
     def textAttribute(value: Tree): Tree = {
-      val q"$builder.applyDynamic($attributeName).apply($_)" = c.macroApplication
+      val q"$builder.attributes.applyDynamic($attributeName).apply($_)" = c.macroApplication
       q"""$builder.textAttribute($attributeName, $value)"""
     }
     def interpolatedAttribute(value: Tree): Tree = {
-      val q"$builder.applyDynamic(${Literal(Constant(attributeName: String))}).apply($_)" = c.macroApplication
+      val q"$builder.attributes.applyDynamic(${Literal(Constant(attributeName: String))}).apply($_)" =
+        c.macroApplication
       val termName = TermName(attributeName)
       val functionName = TermName(c.freshName("assignAttribute"))
       val assigneeName = TermName(c.freshName("assignee"))
@@ -619,8 +643,8 @@ object html {
   *   parent.watch()
   * }
   * }}}
-  * 
-  * 
+  *
+  *
   * @example Seq in DOM
   * {{{
   * import org.scalajs.dom.document
@@ -630,6 +654,32 @@ object html {
   * val div = document.createElement("div")
   * html.render(div, myUl)
   * div.firstChild.childNodes.length should be(2)
+  * }}}
+  *
+  * @example XHTML comments
+  * {{{
+  * import org.scalajs.dom.document
+  * @html def comment = <div><!--my comment--></div>
+  * val div = document.createElement("div")
+  * html.render(div, comment)
+  * assert(div.innerHTML == "<div><!--my comment--></div>")
+  * }}}
+  *
+  * @example Escape
+  * {{{
+  * import org.scalajs.dom.document
+  * @html def escaped = <div>&#32;</div>
+  * val div = document.createElement("div")
+  * html.render(div, escaped)
+  * assert(div.innerHTML == "<div> </div>")
+  * }}}
+  * @example Entity references
+  * {{{
+  * import org.scalajs.dom.document
+  * @html def entity = <div>&amp;&lt;&copy;&lambda;</div>
+  * val div = document.createElement("div")
+  * html.render(div, entity)
+  * assert(div.innerHTML == "<div>&amp;&lt;©λ</div>")
   * }}}
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
