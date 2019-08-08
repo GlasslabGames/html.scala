@@ -452,7 +452,7 @@ object html {
 
     object `http://www.w3.org/1999/xhtml` {
       @inline def elements = ElementBuilders
-      @inline def entities = EntityBuilder
+      @inline def entities = EntityBuilders
       @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
       @inline def comment(data: String) = new NodeBinding.Constant.Builder(document.createComment(data))
       @inline def nodeList = new NodeBindingSeq.Constants.Builder

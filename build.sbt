@@ -49,7 +49,7 @@ generateEntityBuilders := {
   val geneatedAst = q"""
   package com.concentricsky {
     import com.concentricsky.html.NodeBinding.Constant.TextBuilder
-    private[concentricsky] object EntityBuilder {
+    private[concentricsky] object EntityBuilders {
       ..${entityDefs.toList}
     }
   }
