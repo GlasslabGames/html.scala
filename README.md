@@ -1,6 +1,6 @@
 # html.scala
 
-This **html.scala** library provides the `@html` for creating reactive HTML templates. It is a reimplementation of `@dom` annotation in [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala), delicately optimized for minimize the generated code size.
+This **html.scala** library provides the `@html` for creating reactive HTML templates. It is a reimplementation of `@dom` annotation in [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala), delicately optimized for minimize the generated code size. The typing rules are also improved, preventing red marks in IDEs.
 
 ## Getting started
 
@@ -119,6 +119,10 @@ However, an attribute with an interpolation expression are still type checked as
 ```
 
 `@html` does not support `data:` prefix by default.
+
+### `id` and `local-id` attribute
+
+There are special treatments to `id` and `local-id` attribute in `@dom`. Those treatments are removed in `@html`, as they cause red marks in IntelliJ IDEA or other IDEs.
 
 ## Custom tags
 
