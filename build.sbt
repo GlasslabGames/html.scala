@@ -40,7 +40,7 @@ generateEntityBuilders := {
   final case class Entity(codepoints: Seq[Int], characters: String)
   val entityMap = sttp
       .get(uri"https://html.spec.whatwg.org/entities.json")
-      .response(asJson[Map[String, Entity]])
+      .response(asJson[collection.immutable.SortedMap[String, Entity]])
       .send()
       .unsafeBody
       .left.map(_.error)
