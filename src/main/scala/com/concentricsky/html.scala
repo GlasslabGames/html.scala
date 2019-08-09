@@ -98,7 +98,12 @@ object html {
           private[concentricsky] val childNodes: js.Array[Node] = new js.Array(0))
           extends AnyVal {
 
-        def +=(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+        def withChild(childBuilder: NodeBinding.Constant.AttributeBuilder[Element]) = {
+          childNodes += childBuilder.element
+          this
+        }
+
+        def withChild(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           childNodes += childBuilder.element
           this
@@ -115,14 +120,24 @@ object html {
 
     object Interpolated {
       final class Builder private[concentricsky] (private[concentricsky] val underlying: Interpolated) extends AnyVal {
-        def +=(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
+        def withChild(childBuilder: NodeBinding.Interpolated.ChildBuilder[Element]) = {
           childBuilder.flush()
           underlying.nodes += childBuilder.attributeBuilder.element
           underlying.mountPoints.push(childBuilder.attributeBuilder.mountPoints: _*)
           this
         }
-        def +=(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
+        def withChild(childBuilder: NodeBinding.Interpolated.AttributeBuilder[Element]) = {
+          underlying.nodes += childBuilder.element
+          underlying.mountPoints.push(childBuilder.mountPoints: _*)
+          this
+        }
+        def withChild(childBuilder: NodeBinding.Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
+          underlying.nodes += childBuilder.element
+          this
+        }
+        @inline
+        def withChild(childBuilder: NodeBinding.Constant.AttributeBuilder[Element]) = {
           underlying.nodes += childBuilder.element
           this
         }
@@ -163,7 +178,7 @@ object html {
 
       final class TextBuilder private[concentricsky] (private[concentricsky] val data: String) extends AnyVal
 
-      final class SelfCloseBuilder[A] private[concentricsky] (private[concentricsky] val element: A) extends AnyVal {
+      final class SelfCloseBuilder[+A] private[concentricsky] (private[concentricsky] val element: A) extends AnyVal {
         def build() = Binding.Constant(element)
       }
 
@@ -180,16 +195,15 @@ object html {
         * {{{
         * import org.scalajs.dom.document
         * import org.scalajs.dom.html.Div
+        * import com.thoughtworks.binding.Binding
         * import com.concentricsky.html.NodeBinding.Interpolated
         * import com.concentricsky.html.NodeBinding.Constant
         * import com.concentricsky.html.NodeBinding.Constant.TextBuilder
         *
         * {
-        *   new Constant.ChildBuilder(document.createElement("div").asInstanceOf[Div]) += (
-        *     new TextBuilder("my-title")
-        *   ) += (
-        *     com.thoughtworks.binding.Binding(document.createElement("span"))
-        *   )
+        *   new Constant.ChildBuilder(document.createElement("div").asInstanceOf[Div])
+        *    .withChild(new TextBuilder("my-title"))
+        *    .withChild(Binding(document.createElement("span")))
         * } should be(an[Interpolated.ChildBuilder[_]])
         * }}}
         */
@@ -203,20 +217,23 @@ object html {
           appendChildren()
           Binding.Constant(element)
         }
-        def +=(childBuilder: ChildBuilder[Element]) = {
+        def withChild(childBuilder: ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           childNodes += childBuilder.element
           this
         }
-        def +=(childBuilder: TextBuilder) = {
+        def withChild(childBuilder: AttributeBuilder[Element]) = {
+          childNodes += childBuilder.element
+          this
+        }
+        def withChild(childBuilder: TextBuilder) = {
           childNodes += document.createTextNode(childBuilder.data)
           this
         }
-        def +=(childBuilder: Builder[Node]) = {
+        def withChild(childBuilder: Builder[Node]) = {
           childNodes += childBuilder.node
           this
         }
-        // TODO: comment, CDATA, etc...
       }
 
       sealed trait AttributeNameBuilder[+A] extends Dynamic {
@@ -228,7 +245,8 @@ object html {
         }
       }
 
-      object AttributeBuilder {
+      object AttributeBuilder  {
+        @inline
         implicit def interpolated[A <: Element](builder: AttributeBuilder[A]): Interpolated.AttributeBuilder[A] = {
           new Interpolated.AttributeBuilder(builder.element)
         }
@@ -244,19 +262,19 @@ object html {
         * import com.concentricsky.html.NodeBinding.Constant
         * import com.concentricsky.html.NodeBinding.Constant.TextBuilder
         * new Constant.AttributeBuilder(document.createElement("div").asInstanceOf[Div])
-        *   .attributes.title(new TextBuilder("my-title"))
-        *   .attributes.className(com.thoughtworks.binding.Binding("my-title"))
+        *   .withAttribute.title(new TextBuilder("my-title"))
+        *   .withAttribute.className(com.thoughtworks.binding.Binding("my-title"))
         *   .should(be(an[Interpolated.AttributeBuilder[_]]))
         * }}}
         */
-      final class AttributeBuilder[A <: Element] private[concentricsky] (private[concentricsky] val element: A)
+      final class AttributeBuilder[+A <: Element] private[concentricsky] (private[concentricsky] val element: A)
           extends AnyVal
           with Dynamic {
-        @inline final def selfClose() = new SelfCloseBuilder(element)
-        @inline final def nodeList = new ChildBuilder(element, new js.Array(0))
+        @inline final def withoutNodeList() = new SelfCloseBuilder(element)
+        @inline final def withNodeList = new ChildBuilder(element, new js.Array(0))
 
         @compileTimeOnly("This function call should be elimited by macros")
-        def attributes: AttributeNameBuilder[A] = ???
+        def withAttribute: AttributeNameBuilder[A] = ???
 
         @inline
         def textAttribute(name: String, value: TextBuilder) = {
@@ -290,8 +308,8 @@ object html {
     object Interpolated {
       private[Interpolated] trait LowPriorityChildBuilder[+A <: Element] { this: ChildBuilder[A] =>
 
-        def +=[Child, B](child: Binding[Child])(implicit bindableSeq: BindableSeq.Aux[Child, B],
-                                                bindable: Bindable.Lt[B, Node]) = {
+        def withChild[Child, B](child: Binding[Child])(implicit bindableSeq: BindableSeq.Aux[Child, B],
+                                                      bindable: Bindable.Lt[B, Node]) = {
           mergeTrailingNodes()
           bindingSeqs += Binding.BindingInstances.map(child) { a =>
             bindableSeq.toBindingSeq(a).mapBinding(bindable.toBinding(_))
@@ -304,26 +322,35 @@ object html {
           private[concentricsky] var bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
           private[concentricsky] var trailingNodes: js.Array[Node] = new js.Array(0))
           extends LowPriorityChildBuilder[A] {
-        def +=(childBuilder: Constant.TextBuilder) = {
+        def withChild(childBuilder: Constant.TextBuilder) = {
           trailingNodes += document.createTextNode(childBuilder.data)
           this
         }
-        def +=(childBuilder: Constant.Builder[Node]) = {
+        def withChild(childBuilder: Constant.AttributeBuilder[Element]) = {
+          trailingNodes += childBuilder.element
+          this
+        }
+        def withChild(childBuilder: Constant.Builder[Node]) = {
           trailingNodes += childBuilder.node
           this
         }
-        def +=(childBuilder: Interpolated.ChildBuilder[Element]) = {
+        def withChild(childBuilder: Interpolated.AttributeBuilder[Element]) = {
+          trailingNodes += childBuilder.element
+          attributeBuilder.mountPoints.push(childBuilder.mountPoints: _*)
+          this
+        }
+        def withChild(childBuilder: Interpolated.ChildBuilder[Element]) = {
           childBuilder.flush()
           trailingNodes += childBuilder.attributeBuilder.element
           attributeBuilder.mountPoints.push(childBuilder.attributeBuilder.mountPoints: _*)
           this
         }
-        def +=(childBuilder: Constant.ChildBuilder[Element]) = {
+        def withChild(childBuilder: Constant.ChildBuilder[Element]) = {
           childBuilder.appendChildren()
           trailingNodes += childBuilder.element
           this
         }
-        def +=(child: Binding[String]) = {
+        def withChild(child: Binding[String]) = {
           val textNode = document.createTextNode("")
           trailingNodes += textNode
           attributeBuilder.mountPoints += Binding.BindingInstances.map(child) {
@@ -331,7 +358,7 @@ object html {
           }
           this
         }
-        def +=[Child](child: Binding[Child])(implicit bindableSeq: BindableSeq.Lt[Child, Node]) = {
+        def withChild[Child](child: Binding[Child])(implicit bindableSeq: BindableSeq.Lt[Child, Node]) = {
           mergeTrailingNodes()
           bindingSeqs += Binding.BindingInstances.map(child)(bindableSeq.toBindingSeq(_))
           this
@@ -371,11 +398,11 @@ object html {
           private[concentricsky] val element: A,
           private[concentricsky] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0)) {
 
-        @inline final def selfClose(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
-        @inline final def nodeList: ChildBuilder[A] = new ChildBuilder[A](this)
+        @inline final def withoutNodeList(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
+        @inline final def withNodeList: ChildBuilder[A] = new ChildBuilder[A](this)
 
         @compileTimeOnly("This function call should be elimited by macros")
-        def attributes: AttributeNameBuilder[A] = ???
+        def withAttribute: AttributeNameBuilder[A] = ???
 
         @inline
         def textAttribute[B](name: String, value: TextBuilder): Interpolated.AttributeBuilder[A] = {
@@ -455,7 +482,7 @@ object html {
       @inline def entities = EntityBuilders
       @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
       @inline def comment(data: String) = new NodeBinding.Constant.Builder(document.createComment(data))
-      @inline def nodeList = new NodeBindingSeq.Constants.Builder
+      @inline def withNodeList = new NodeBindingSeq.Constants.Builder
       @inline def interpolation = Binding
     }
 
@@ -464,11 +491,11 @@ object html {
     import c.universe._
 
     def textAttribute(value: Tree): Tree = {
-      val q"$builder.attributes.applyDynamic($attributeName).apply($_)" = c.macroApplication
+      val q"$builder.withAttribute.applyDynamic($attributeName).apply($_)" = c.macroApplication
       q"""$builder.textAttribute($attributeName, $value)"""
     }
     def interpolatedAttribute(value: Tree): Tree = {
-      val q"$builder.attributes.applyDynamic(${Literal(Constant(attributeName: String))}).apply($_)" =
+      val q"$builder.withAttribute.applyDynamic(${Literal(Constant(attributeName: String))}).apply($_)" =
         c.macroApplication
       val termName = TermName(attributeName)
       val functionName = TermName(c.freshName("assignAttribute"))
