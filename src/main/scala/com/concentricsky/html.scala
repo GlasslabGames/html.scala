@@ -245,7 +245,7 @@ object html {
         }
       }
 
-      object AttributeBuilder  {
+      object AttributeBuilder {
         @inline
         implicit def interpolated[A <: Element](builder: AttributeBuilder[A]): Interpolated.AttributeBuilder[A] = {
           new Interpolated.AttributeBuilder(builder.element)
@@ -309,7 +309,7 @@ object html {
       private[Interpolated] trait LowPriorityChildBuilder[+A <: Element] { this: ChildBuilder[A] =>
 
         def withChild[Child, B](child: Binding[Child])(implicit bindableSeq: BindableSeq.Aux[Child, B],
-                                                      bindable: Bindable.Lt[B, Node]) = {
+                                                       bindable: Bindable.Lt[B, Node]) = {
           mergeTrailingNodes()
           bindingSeqs += Binding.BindingInstances.map(child) { a =>
             bindableSeq.toBindingSeq(a).mapBinding(bindable.toBinding(_))
@@ -482,6 +482,11 @@ object html {
       @inline def entities = EntityBuilders
       @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
       @inline def comment(data: String) = new NodeBinding.Constant.Builder(document.createComment(data))
+      object processInstructions extends Dynamic {
+        @inline
+        def applyDynamic(target: String)(data: String) =
+          new NodeBinding.Constant.Builder(document.createProcessingInstruction(target, data))
+      }
       @inline def withNodeList = new NodeBindingSeq.Constants.Builder
       @inline def interpolation = Binding
     }
@@ -710,6 +715,13 @@ object html {
   * val div = document.createElement("div")
   * html.render(div, entity)
   * assert(div.innerHTML == "<div>&amp;&lt;©λ</div>")
+  * }}}
+  * @example Process instructions
+  * {{{
+  * import org.scalajs.dom.document
+  * @html val myXmlStylesheet = <?my-instruction my data?>
+  * myXmlStylesheet.value.target should be("my-instruction")
+  * myXmlStylesheet.value.data should be("my data")
   * }}}
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
