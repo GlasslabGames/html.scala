@@ -24,7 +24,11 @@ libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
 
 dependsOn(RootProject(file("nameBasedXml.scala")))
 
+scalacOptions in Test += "-Xxml:-coalescing"
+
 requireJsDomEnv in Test := true
+
+installJsdom / version  := "15.1.1"
 
 val generateEntityBuilders = taskKey[File]("Generate EntityBuilders.scala file from HTML Living Standard")
 

@@ -480,6 +480,7 @@ object html {
     object `http://www.w3.org/1999/xhtml` {
       @inline def elements = ElementBuilders
       @inline def entities = EntityBuilders
+      @inline def cdata(data: String) = new NodeBinding.Constant.Builder(document.createCDATASection(data))
       @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
       @inline def comment(data: String) = new NodeBinding.Constant.Builder(document.createComment(data))
       object processInstructions extends Dynamic {
@@ -668,9 +669,9 @@ object html {
   * assert(hr.value.outerHTML == """<hr id="newId">""")
   * }}}
   *
-  * @example Double insertion
+  * @example A child node must not be inserted more than once
   * {{{
-  * intercept[IllegalStateException] {
+  * an[IllegalStateException] should be thrownBy {
   *   @html
   *   val child = <hr/>
   *   @html
@@ -718,10 +719,18 @@ object html {
   * }}}
   * @example Process instructions
   * {{{
-  * import org.scalajs.dom.document
   * @html val myXmlStylesheet = <?my-instruction my data?>
+  * myXmlStylesheet.watch()
   * myXmlStylesheet.value.target should be("my-instruction")
   * myXmlStylesheet.value.data should be("my data")
+  * }}}
+  * @example CDATA sections are not supported in HTML documents
+  * {{{
+  * import scala.scalajs.js
+  * a[js.JavaScriptException] should be thrownBy {
+  *   @html val myCData = <![CDATA[my data]]>
+  *   myCData.watch()
+  * }
   * }}}
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
