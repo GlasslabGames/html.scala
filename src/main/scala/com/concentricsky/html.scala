@@ -240,7 +240,7 @@ object html {
         @compileTimeOnly("This function call should be elimited by macros")
         def applyDynamic(name: String): AttributeValueBuilder = ???
         sealed trait AttributeValueBuilder {
-          def apply(value: TextBuilder): Constant.AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
+          def apply(value: String): Constant.AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
           def apply(value: Binding[Any]): Interpolated.AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
         }
       }
@@ -262,7 +262,7 @@ object html {
         * import com.concentricsky.html.NodeBinding.Constant
         * import com.concentricsky.html.NodeBinding.Constant.TextBuilder
         * new Constant.AttributeBuilder(document.createElement("div").asInstanceOf[Div])
-        *   .withAttribute.title(new TextBuilder("my-title"))
+        *   .withAttribute.title("my-title")
         *   .withAttribute.className(com.thoughtworks.binding.Binding("my-title"))
         *   .should(be(an[Interpolated.AttributeBuilder[_]]))
         * }}}
@@ -277,8 +277,8 @@ object html {
         def withAttribute: AttributeNameBuilder[A] = ???
 
         @inline
-        def textAttribute(name: String, value: TextBuilder) = {
-          element.setAttribute(name, value.data)
+        def textAttribute(name: String, value: String) = {
+          element.setAttribute(name, value)
           this
         }
       }
@@ -381,7 +381,7 @@ object html {
         @compileTimeOnly("This function call should be elimited by macros")
         def applyDynamic(name: String): AttributeValueBuilder = ???
         sealed trait AttributeValueBuilder {
-          def apply(value: Constant.TextBuilder): AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
+          def apply(value: String): AttributeBuilder[A] = macro BlackBoxMacros.textAttribute
           def apply(value: Binding[Any]): AttributeBuilder[A] = macro BlackBoxMacros.interpolatedAttribute
         }
       }
@@ -405,8 +405,8 @@ object html {
         def withAttribute: AttributeNameBuilder[A] = ???
 
         @inline
-        def textAttribute[B](name: String, value: TextBuilder): Interpolated.AttributeBuilder[A] = {
-          element.setAttribute(name, value.data)
+        def textAttribute[B](name: String, value: String): Interpolated.AttributeBuilder[A] = {
+          element.setAttribute(name, value)
           this
         }
 
@@ -558,16 +558,19 @@ object html {
   *
   * {{{
   * @html
-  * val myDivs = <div></div><div title={"my title"}></div><div class="my-class"></div>
+  * val myDivs = <div></div><div title={"my title"} class=""></div><div class="my-class"></div>
   * myDivs.watch()
   * import org.scalajs.dom.html.Div
   * inside(myDivs.value) {
-  *   case Seq(div1, div2: Div, div3: Div) =>
+  *   case Seq(div1: Div, div2: Div, div3: Div) =>
   *     div1.nodeName should be("DIV")
+  *     div1.hasAttribute("class") should be(false)
+  *     div1.className should be("")
   *     div2.title should be("my title")
+  *     div2.hasAttribute("class") should be(true)
+  *     div2.className should be("")
   *     div3.className should be("my-class")
   * }
-  *
   * }}}
   *
   * @example Text interpolation in an element
