@@ -88,7 +88,15 @@ generateElementBuilders := {
         } match {
           case Seq(code) =>
             code.asText
-        }
+          case _ =>
+            throw new MessageOnlyException(
+              s"No IDL interfaces found.\n${elementDl.asXml}" 
+            )
+          }
+      case _ =>
+        throw new MessageOnlyException(
+          s"Multiple IDL interfaces found.\n${elementDl.asXml}" 
+        )
     }
     val Some(heading) = Iterator.iterate(elementDl)(_.getPreviousElementSibling).find { element =>
       HeadingTag.unapplySeq(element.getLocalName).isDefined
