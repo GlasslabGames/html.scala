@@ -48,7 +48,7 @@ generateEntityBuilders := {
       .get
   val EntityRefRegex = "&(.*);".r
   val entityDefs = for ((EntityRefRegex(entityName), Entity(_, text)) <- entityMap.view) yield {
-      q"@inline def ${Term.Name(entityName)}() = new TextBuilder($text)"
+      q"@inline def ${Term.Name(entityName)} = new TextBuilder($text)"
   }
   val geneatedAst = q"""
   package com.concentricsky {
@@ -104,7 +104,7 @@ generateElementBuilders := {
     heading.querySelectorAll("dfn").asScala.view.map { elementDfn =>
       val tagName = elementDfn.asText
       q"""
-        @inline def ${Term.Name(tagName)}() = 
+        @inline def ${Term.Name(tagName)} = 
           new AttributeBuilder(document.createElement($tagName).asInstanceOf[${Type.Name(domInterface)}])
       """
     }
