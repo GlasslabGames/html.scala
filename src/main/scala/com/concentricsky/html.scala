@@ -270,7 +270,7 @@ object html {
       final class AttributeBuilder[+A <: Element] private[concentricsky] (private[concentricsky] val element: A)
           extends AnyVal
           with Dynamic {
-        @inline final def withoutNodeList() = new SelfCloseBuilder(element)
+        @inline final def withoutNodeList = new SelfCloseBuilder(element)
         @inline final def withNodeList = new ChildBuilder(element, new js.Array(0))
 
         @compileTimeOnly("This function call should be elimited by macros")
@@ -398,7 +398,7 @@ object html {
           private[concentricsky] val element: A,
           private[concentricsky] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0)) {
 
-        @inline final def withoutNodeList(): SelfCloseBuilder[A] = new SelfCloseBuilder(this)
+        @inline final def withoutNodeList: SelfCloseBuilder[A] = new SelfCloseBuilder(this)
         @inline final def withNodeList: ChildBuilder[A] = new ChildBuilder[A](this)
 
         @compileTimeOnly("This function call should be elimited by macros")
