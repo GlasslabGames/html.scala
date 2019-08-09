@@ -126,7 +126,7 @@ There are special treatments to `id` and `local-id` attribute in `@dom`. Those t
 
 ## Custom tags
 
-The `@html` annotation is a variety of [name based XML literals](https://github.com/Atry/nameBasedXml.scala), where the default prefix is <code>com.concentricsky.html.autoImports.&#96;http://www.w3.org/1999/xhtml&#96;</code> instead of `xml`. You can create custom tags by provide builders for other prefix according to [the guideline for XML library vendors](https://github.com/Atry/nameBasedXml.scala#xml-library-vendors).
+The `@html` annotation is a variety of [name based XML literals](https://github.com/Atry/nameBasedXml.scala), where the default prefix is ``com.concentricsky.html.autoImports.`http://www.w3.org/1999/xhtml` `` instead of `xml`. You can create custom tags by provide builders for other prefix according to [the guideline for XML library vendors](https://github.com/Atry/nameBasedXml.scala#xml-library-vendors).
 
 ## Links
 
