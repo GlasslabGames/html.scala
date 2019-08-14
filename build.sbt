@@ -152,16 +152,13 @@ generateAttributeFunctions := {
 
   val geneatedAst = q"""
   package com.concentricsky {
-    import scala.language.dynamics
     import scala.scalajs.js
     import org.scalajs.dom.raw._
     import com.concentricsky.html.NodeBinding.Interpolated.MountPointBuilder
     import com.concentricsky.html.NodeBinding.Interpolated.PropertyFunction
-    import com.concentricsky.html.NodeBinding.Constant.AttributeFunction
     import com.concentricsky.html.elementTypes._
     import com.thoughtworks.binding.Binding
-    private[concentricsky] object AttributeFunctions extends Dynamic {
-      @inline def applyDynamic(attributeName: String) = new AttributeFunction(attributeName)
+    private[concentricsky] object AttributeFunctions {
       ..$defs
     }
   }

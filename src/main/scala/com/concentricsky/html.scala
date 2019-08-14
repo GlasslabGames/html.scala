@@ -165,9 +165,15 @@ object html {
         @inline def applyBegin = new ElementBuilder(document.createElement(tagName).asInstanceOf[E])
       }
 
-      final class AttributeFunction(@inline protected val attributeName: String) extends AnyVal with AttributeOrProperty
-
     }
+
+    final class AttributeFunction(@inline protected val attributeName: String) extends AnyVal with AttributeOrProperty {
+      @inline
+      def apply(binding: Binding[String]) = new Interpolated.AttributeBuilder({ element =>
+        Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
+      })
+    }
+
     type Constant[+A] = Binding.Constant[A]
 
     private[concentricsky] trait AttributeOrProperty extends Any with Curried {
@@ -207,10 +213,12 @@ object html {
     object Interpolated {
 
       trait PropertyFunction extends AttributeOrProperty {
-        @inline def apply[A <: Binding[Any]](value: A) = new Interpolated.AttributeBuilder[this.type, A](value)
+        @inline def apply[A <: Binding[Any]](value: A) = new Interpolated.PropertyBuilder[this.type, A](value)
       }
 
-      final class AttributeBuilder[PropertyType, Value](val value: Value) extends AnyVal
+      final class AttributeBuilder(val mountPoint: Element => Binding[Unit]) extends AnyVal
+
+      final class PropertyBuilder[PropertyType, Value](val value: Value) extends AnyVal
 
       @implicitNotFound("Property ${P} of type ${V} is not found for ${E}")
       trait MountPointBuilder[-E <: Element, P, -V] {
@@ -253,8 +261,14 @@ object html {
         }
 
         @inline
+        def applyNext(attributeBuilder: NodeBinding.Interpolated.AttributeBuilder)(implicit dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit) = {
+          mountPoints += attributeBuilder.mountPoint(element)
+          this
+        }
+
+        @inline
         def applyNext[Property, Actual, Expected](
-            attributeBuilder: NodeBinding.Interpolated.AttributeBuilder[Property, Actual])(
+            attributeBuilder: NodeBinding.Interpolated.PropertyBuilder[Property, Actual])(
             implicit mountPointBuilder: MountPointBuilder[E, Property, Expected],
             bindable: Bindable.Lt[Actual, Expected]
         ) = {
@@ -345,6 +359,12 @@ object html {
 
   }
   object autoImports extends LowPriorityAutoImports {
+    object data {
+      object attributes extends Dynamic {
+        @inline def applyDynamic(attributeName: String) = new NodeBinding.AttributeFunction(attributeName)
+      }
+    }
+
     // TODO: move to https://github.com/ThoughtWorksInc/bindable.scala
     implicit def jsFunctionBindable[A, R]: Bindable.Aux[Binding[A => R], js.Function1[A, R]] =
       new Bindable[Binding[A => R]] {
@@ -543,11 +563,11 @@ object html {
   * {{{
   * import com.thoughtworks.binding.Binding.Var
   * val id = Var("oldId")
-  * @html val myInput = <input name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
+  * @html val myInput = <input data:custom={id.bind} name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
   * myInput.watch()
-  * assert(myInput.value.outerHTML == """<input name="oldId" id="oldId">""")
+  * assert(myInput.value.outerHTML == """<input custom="oldId" name="oldId" id="oldId">""")
   * myInput.value.onclick(null)
-  * assert(myInput.value.outerHTML == """<input name="newId" id="newId">""")
+  * assert(myInput.value.outerHTML == """<input custom="newId" name="newId" id="newId">""")
   * }}}
   *
   * @example A child node must not be inserted more than once
