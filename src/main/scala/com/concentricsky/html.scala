@@ -437,9 +437,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div title="my title" tabIndex={99999}><div>text</div><span tabIndex={99}></span><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span tabIndex={99}></span><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div title="my title" tabindex="99999"><div>text</div><span tabindex="99"></span><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span tabindex="99"></span><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *

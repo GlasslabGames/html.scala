@@ -75,11 +75,11 @@ val generateAttributeFunctions = taskKey[File]("Generate AttributeFunctions.scal
 generateAttributeFunctions := {
   object JsNativeSetter {
     private val SetterRegex = """(\w+)_=""".r
-    private def pf: PartialFunction[Stat, (String, Type)] = {
-      case q"var ${Pat.Var.Term(varName)}: ${Some(tpe)} = js.native" =>
-        (varName.value, tpe)
-      case q"def ${Term.Name(SetterRegex(defPrefix))}(value: ${Type.Arg.ByName(tpe)}): $unit = js.native" =>
-        (defPrefix, tpe)
+    private def pf: PartialFunction[Stat, (String, Seq[Mod], Type)] = {
+      case q"..$mods var ${Pat.Var.Term(varName)}: ${Some(tpe)} = js.native" =>
+        (varName.value, mods, tpe)
+      case q"..$mods def ${Term.Name(SetterRegex(defPrefix))}($value: ${Some(tpe: Type)}): $unit = js.native" =>
+        (defPrefix, mods, tpe)
     }
     def unapply(stat: Stat) = pf.lift(stat)
   }
@@ -112,32 +112,39 @@ generateAttributeFunctions := {
       Defn.Class(mods, className, _, _, template) <- packageStats
       if className.value.endsWith("Element")
       stats <- template.stats.toSeq
-      JsNativeSetter(setterName, tpe) <- stats
-    } yield (className, setterName, tpe, mods.collect {
-      case deprecatedAnnotation @ mod"@deprecated(..$_)" =>
-        deprecatedAnnotation
-    })
+      JsNativeSetter(setterName, methodMods, tpe) <- stats
+    } yield
+      (className, setterName, tpe, (mods ++ methodMods).collect {
+        case deprecatedAnnotation @ mod"@deprecated(..$_)" =>
+          deprecatedAnnotation
+      })
   }.groupBy(_._2)
     .toIndexedSeq
     .sortBy(_._1)
     .map {
       case (setterNameString, setters) =>
+        val attributeName = setterNameString match {
+          case "className" => "class"
+          case "htmlFor"   => "for"
+          case _           => setterNameString
+        }
+        val attributeObjectName = Term.Name(attributeName)
         val setterName = Term.Name(setterNameString)
-        val propertyConstructors = setters
-          .view
-          .map {
-            case (className, _, tpe, mods) =>
-              q"""..$mods implicit object ${Term.Name(className.value)} extends MountPointBuilder[$className, $setterName.type, $tpe] {
+        val propertyConstructors = setters.view.map {
+          case (className, _, tpe, mods) =>
+            val mountPointBuilder = s"mountPointBuilder_${tpe.syntax.replace('.', '_')}_${className.tpe}"
+            q"""
+              ..$mods implicit object ${Term.Name(mountPointBuilder)} extends MountPointBuilder[$className, $attributeObjectName.type, $tpe] {
                 ..$mods def toMountPoint(element: $className, binding: Binding[$tpe]) = {
                   Binding.BindingInstances.map(binding)(element.$setterName = _)
                 }
-              }"""
-          }
-          .toList
+              }
+            """
+        }.toList
         q"""
-          object $setterName extends PropertyFunction {
+          object $attributeObjectName extends PropertyFunction {
             @inline
-            protected def attributeName = $setterNameString
+            protected def attributeName = $attributeName
             ..$propertyConstructors
           }
         """

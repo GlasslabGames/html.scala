@@ -12,20 +12,28 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   @inline def applyDynamic(attributeName: String) = new AttributeFunction(attributeName)
   object BaseHref extends PropertyFunction {
     @inline protected def attributeName = "BaseHref"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, BaseHref.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, BaseHref.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.BaseHref = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, BaseHref.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, BaseHref.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.BaseHref = _)
       }
     }
   }
+  object aLink extends PropertyFunction {
+    @inline protected def attributeName = "aLink"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, aLink.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.aLink = _)
+      }
+    }
+  }
   object accept extends PropertyFunction {
     @inline protected def attributeName = "accept"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, accept.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, accept.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.accept = _)
       }
@@ -33,7 +41,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object acceptCharset extends PropertyFunction {
     @inline protected def attributeName = "acceptCharset"
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, acceptCharset.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, acceptCharset.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.acceptCharset = _)
       }
@@ -41,7 +49,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object accessKey extends PropertyFunction {
     @inline protected def attributeName = "accessKey"
-    implicit object Element extends MountPointBuilder[Element, accessKey.type, String] {
+    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, accessKey.type, String] {
       def toMountPoint(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.accessKey = _)
       }
@@ -49,12 +57,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object action extends PropertyFunction {
     @inline protected def attributeName = "action"
-    @deprecated("Obsolete.", "HTML 4.01") implicit object HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, action.type, String] {
+    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, action.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def toMountPoint(element: HTMLIsIndexElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.action = _)
       }
     }
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, action.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, action.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.action = _)
       }
@@ -62,35 +70,95 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object align extends PropertyFunction {
     @inline protected def attributeName = "align"
-    implicit object HTMLLegendElement extends MountPointBuilder[HTMLLegendElement, align.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParagraphElement extends MountPointBuilder[HTMLParagraphElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLParagraphElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCaptionElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableRowElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLLegendElement extends MountPointBuilder[HTMLLegendElement, align.type, String] {
       def toMountPoint(element: HTMLLegendElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableSectionElement extends MountPointBuilder[HTMLTableSectionElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableSectionElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCellElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableColElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLDivElement extends MountPointBuilder[HTMLDivElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLDivElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFieldSetElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHRElement extends MountPointBuilder[HTMLHRElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLHRElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.align = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadingElement extends MountPointBuilder[HTMLHeadingElement, align.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLHeadingElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.align = _)
       }
     }
   }
   object alt extends PropertyFunction {
     @inline protected def attributeName = "alt"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, alt.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, alt.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
     }
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, alt.type, String] {
+    implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, alt.type, String] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
     }
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, alt.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, alt.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, alt.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, alt.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, alt.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, alt.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
@@ -98,12 +166,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object altHtml extends PropertyFunction {
     @inline protected def attributeName = "altHtml"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, altHtml.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, altHtml.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.altHtml = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, altHtml.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, altHtml.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.altHtml = _)
       }
@@ -111,15 +179,20 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object archive extends PropertyFunction {
     @inline protected def attributeName = "archive"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, archive.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, archive.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.archive = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, archive.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.archive = _)
       }
     }
   }
   object async extends PropertyFunction {
     @inline protected def attributeName = "async"
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, async.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, async.type, Boolean] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.async = _)
       }
@@ -127,12 +200,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object autocomplete extends PropertyFunction {
     @inline protected def attributeName = "autocomplete"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, autocomplete.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, autocomplete.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.autocomplete = _)
       }
     }
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, autocomplete.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, autocomplete.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.autocomplete = _)
       }
@@ -140,22 +213,22 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object autofocus extends PropertyFunction {
     @inline protected def attributeName = "autofocus"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, autofocus.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, autofocus.type, Boolean] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
       }
     }
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, autofocus.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, autofocus.type, Boolean] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, autofocus.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, autofocus.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, autofocus.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, autofocus.type, Boolean] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
       }
@@ -163,15 +236,23 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object autoplay extends PropertyFunction {
     @inline protected def attributeName = "autoplay"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, autoplay.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, autoplay.type, Boolean] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autoplay = _)
       }
     }
   }
+  object axis extends PropertyFunction {
+    @inline protected def attributeName = "axis"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, axis.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCellElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.axis = _)
+      }
+    }
+  }
   object balance extends PropertyFunction {
     @inline protected def attributeName = "balance"
-    @deprecated("Non standard.", "forever") implicit object HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, balance.type, js.Any] {
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, balance.type, js.Any] {
       @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.balance = _)
       }
@@ -179,7 +260,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object behavior extends PropertyFunction {
     @inline protected def attributeName = "behavior"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, behavior.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, behavior.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.behavior = _)
       }
@@ -187,17 +268,27 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object border extends PropertyFunction {
     @inline protected def attributeName = "border"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, border.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, border.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.border = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, border.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.border = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, border.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.border = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, border.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, border.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.border = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, border.type, String] {
+    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, border.type, String] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.border = _)
       }
@@ -205,17 +296,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object borderColor extends PropertyFunction {
     @inline protected def attributeName = "borderColor"
-    implicit object HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColor.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColor.type, js.Any] {
       def toMountPoint(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColor = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, borderColor.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, borderColor.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColor = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, borderColor.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, borderColor.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColor = _)
       }
@@ -223,7 +314,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object borderColorDark extends PropertyFunction {
     @inline protected def attributeName = "borderColorDark"
-    implicit object HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorDark.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorDark.type, js.Any] {
       def toMountPoint(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColorDark = _)
       }
@@ -231,7 +322,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object borderColorLight extends PropertyFunction {
     @inline protected def attributeName = "borderColorLight"
-    implicit object HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorLight.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorLight.type, js.Any] {
       def toMountPoint(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColorLight = _)
       }
@@ -239,25 +330,46 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object caption extends PropertyFunction {
     @inline protected def attributeName = "caption"
-    implicit object HTMLTableElement extends MountPointBuilder[HTMLTableElement, caption.type, HTMLTableCaptionElement] {
+    implicit object mountPointBuilder_HTMLTableCaptionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, caption.type, HTMLTableCaptionElement] {
       def toMountPoint(element: HTMLTableElement, binding: Binding[HTMLTableCaptionElement]) = {
         Binding.BindingInstances.map(binding)(element.caption = _)
       }
     }
   }
+  object cellPadding extends PropertyFunction {
+    @inline protected def attributeName = "cellPadding"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellPadding.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.cellPadding = _)
+      }
+    }
+  }
+  object cellSpacing extends PropertyFunction {
+    @inline protected def attributeName = "cellSpacing"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellSpacing.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.cellSpacing = _)
+      }
+    }
+  }
   object charset extends PropertyFunction {
     @inline protected def attributeName = "charset"
-    implicit object HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, charset.type, String] {
+    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, charset.type, String] {
       def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.charset = _)
       }
     }
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, charset.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, charset.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.charset = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, charset.type, String] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.charset = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, charset.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, charset.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.charset = _)
       }
@@ -265,7 +377,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object checked extends PropertyFunction {
     @inline protected def attributeName = "checked"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, checked.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, checked.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.checked = _)
       }
@@ -273,12 +385,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object cite extends PropertyFunction {
     @inline protected def attributeName = "cite"
-    implicit object HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, cite.type, String] {
+    implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, cite.type, String] {
       def toMountPoint(element: HTMLQuoteElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cite = _)
       }
     }
-    implicit object HTMLModElement extends MountPointBuilder[HTMLModElement, cite.type, String] {
+    implicit object mountPointBuilder_String_HTMLModElement extends MountPointBuilder[HTMLModElement, cite.type, String] {
       def toMountPoint(element: HTMLModElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cite = _)
       }
@@ -286,15 +398,15 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object classList extends PropertyFunction {
     @inline protected def attributeName = "classList"
-    implicit object Element extends MountPointBuilder[Element, classList.type, DOMTokenList] {
+    implicit object mountPointBuilder_DOMTokenList_Element extends MountPointBuilder[Element, classList.type, DOMTokenList] {
       def toMountPoint(element: Element, binding: Binding[DOMTokenList]) = {
         Binding.BindingInstances.map(binding)(element.classList = _)
       }
     }
   }
-  object className extends PropertyFunction {
-    @inline protected def attributeName = "className"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, className.type, String] {
+  object `class` extends PropertyFunction {
+    @inline protected def attributeName = "class"
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, `class`.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.className = _)
       }
@@ -302,44 +414,67 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object classid extends PropertyFunction {
     @inline protected def attributeName = "classid"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, classid.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, classid.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.classid = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, classid.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, classid.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.classid = _)
       }
     }
   }
+  object clear extends PropertyFunction {
+    @inline protected def attributeName = "clear"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLBRElement extends MountPointBuilder[HTMLBRElement, clear.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLBRElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.clear = _)
+      }
+    }
+  }
   object code extends PropertyFunction {
     @inline protected def attributeName = "code"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, code.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, code.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.code = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, code.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.code = _)
       }
     }
   }
   object codeBase extends PropertyFunction {
     @inline protected def attributeName = "codeBase"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeBase.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeBase.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.codeBase = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeBase.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.codeBase = _)
       }
     }
   }
   object codeType extends PropertyFunction {
     @inline protected def attributeName = "codeType"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeType.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeType.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.codeType = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeType.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.codeType = _)
       }
     }
   }
   object colSpan extends PropertyFunction {
     @inline protected def attributeName = "colSpan"
-    implicit object HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, colSpan.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, colSpan.type, Int] {
       def toMountPoint(element: HTMLTableCellElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.colSpan = _)
       }
@@ -347,12 +482,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object cols extends PropertyFunction {
     @inline protected def attributeName = "cols"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, cols.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, cols.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cols = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, cols.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, cols.type, Int] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.cols = _)
       }
@@ -360,7 +495,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object content extends PropertyFunction {
     @inline protected def attributeName = "content"
-    implicit object HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, content.type, String] {
+    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, content.type, String] {
       def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.content = _)
       }
@@ -368,12 +503,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object contentDocument extends PropertyFunction {
     @inline protected def attributeName = "contentDocument"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, contentDocument.type, Document] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, contentDocument.type, Document] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[Document]) = {
         Binding.BindingInstances.map(binding)(element.contentDocument = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentDocument.type, Document] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentDocument.type, Document] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[Document]) = {
         Binding.BindingInstances.map(binding)(element.contentDocument = _)
       }
@@ -381,7 +516,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object contentEditable extends PropertyFunction {
     @inline protected def attributeName = "contentEditable"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, contentEditable.type, String] {
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, contentEditable.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.contentEditable = _)
       }
@@ -389,7 +524,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object contentWindow extends PropertyFunction {
     @inline protected def attributeName = "contentWindow"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentWindow.type, Window] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Window_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentWindow.type, Window] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[Window]) = {
         Binding.BindingInstances.map(binding)(element.contentWindow = _)
       }
@@ -397,7 +532,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object controls extends PropertyFunction {
     @inline protected def attributeName = "controls"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, controls.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, controls.type, Boolean] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.controls = _)
       }
@@ -405,15 +540,20 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object coords extends PropertyFunction {
     @inline protected def attributeName = "coords"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, coords.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, coords.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.coords = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, coords.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.coords = _)
       }
     }
   }
   object currentTime extends PropertyFunction {
     @inline protected def attributeName = "currentTime"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, currentTime.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, currentTime.type, Double] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.currentTime = _)
       }
@@ -421,12 +561,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object data extends PropertyFunction {
     @inline protected def attributeName = "data"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, data.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, data.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.data = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, data.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, data.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.data = _)
       }
@@ -434,17 +574,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object dateTime extends PropertyFunction {
     @inline protected def attributeName = "dateTime"
-    implicit object HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, dateTime.type, String] {
+    implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, dateTime.type, String] {
       def toMountPoint(element: HTMLQuoteElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dateTime = _)
       }
     }
-    implicit object HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime.type, String] {
+    implicit object mountPointBuilder_String_HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime.type, String] {
       def toMountPoint(element: HTMLPhraseElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dateTime = _)
       }
     }
-    implicit object HTMLModElement extends MountPointBuilder[HTMLModElement, dateTime.type, String] {
+    implicit object mountPointBuilder_String_HTMLModElement extends MountPointBuilder[HTMLModElement, dateTime.type, String] {
       def toMountPoint(element: HTMLModElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dateTime = _)
       }
@@ -452,15 +592,20 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object declare extends PropertyFunction {
     @inline protected def attributeName = "declare"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, declare.type, Boolean] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, declare.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.declare = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, declare.type, Boolean] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.declare = _)
       }
     }
   }
   object defaultChecked extends PropertyFunction {
     @inline protected def attributeName = "defaultChecked"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defaultChecked = _)
       }
@@ -468,7 +613,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object defaultPlaybackRate extends PropertyFunction {
     @inline protected def attributeName = "defaultPlaybackRate"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, defaultPlaybackRate.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, defaultPlaybackRate.type, Double] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.defaultPlaybackRate = _)
       }
@@ -476,7 +621,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object defaultSelected extends PropertyFunction {
     @inline protected def attributeName = "defaultSelected"
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected.type, Boolean] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defaultSelected = _)
       }
@@ -484,12 +629,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object defaultValue extends PropertyFunction {
     @inline protected def attributeName = "defaultValue"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.defaultValue = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, defaultValue.type, String] {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, defaultValue.type, String] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.defaultValue = _)
       }
@@ -497,7 +642,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object defer extends PropertyFunction {
     @inline protected def attributeName = "defer"
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, defer.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, defer.type, Boolean] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defer = _)
       }
@@ -505,7 +650,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object dir extends PropertyFunction {
     @inline protected def attributeName = "dir"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, dir.type, String] {
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, dir.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dir = _)
       }
@@ -513,7 +658,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object direction extends PropertyFunction {
     @inline protected def attributeName = "direction"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, direction.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, direction.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.direction = _)
       }
@@ -521,37 +666,37 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object disabled extends PropertyFunction {
     @inline protected def attributeName = "disabled"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLFieldSetElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    implicit object HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, disabled.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, disabled.type, Boolean] {
       def toMountPoint(element: HTMLOptGroupElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
@@ -559,7 +704,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object draggable extends PropertyFunction {
     @inline protected def attributeName = "draggable"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, draggable.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLElement extends MountPointBuilder[HTMLElement, draggable.type, Boolean] {
       def toMountPoint(element: HTMLElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.draggable = _)
       }
@@ -567,7 +712,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object encoding extends PropertyFunction {
     @inline protected def attributeName = "encoding"
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, encoding.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, encoding.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.encoding = _)
       }
@@ -575,7 +720,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object enctype extends PropertyFunction {
     @inline protected def attributeName = "enctype"
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, enctype.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, enctype.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.enctype = _)
       }
@@ -583,7 +728,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object event extends PropertyFunction {
     @inline protected def attributeName = "event"
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, event.type, String] {
+    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, event.type, String] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.event = _)
       }
@@ -591,12 +736,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object face extends PropertyFunction {
     @inline protected def attributeName = "face"
-    @deprecated("Obsolete.", "HTML 4.01") implicit object HTMLFontElement extends MountPointBuilder[HTMLFontElement, face.type, String] {
+    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLFontElement extends MountPointBuilder[HTMLFontElement, face.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def toMountPoint(element: HTMLFontElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.face = _)
       }
     }
-    @deprecated("Obsolete.", "DOM Level 2") implicit object HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, face.type, String] {
+    @deprecated("Obsolete.", "DOM Level 2") implicit object mountPointBuilder_String_HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, face.type, String] {
       @deprecated("Obsolete.", "DOM Level 2") def toMountPoint(element: HTMLBaseFontElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.face = _)
       }
@@ -604,7 +749,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object files extends PropertyFunction {
     @inline protected def attributeName = "files"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, files.type, FileList] {
+    implicit object mountPointBuilder_FileList_HTMLInputElement extends MountPointBuilder[HTMLInputElement, files.type, FileList] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[FileList]) = {
         Binding.BindingInstances.map(binding)(element.files = _)
       }
@@ -612,7 +757,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object filters extends PropertyFunction {
     @inline protected def attributeName = "filters"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, filters.type, Object] {
+    implicit object mountPointBuilder_Object_HTMLElement extends MountPointBuilder[HTMLElement, filters.type, Object] {
       def toMountPoint(element: HTMLElement, binding: Binding[Object]) = {
         Binding.BindingInstances.map(binding)(element.filters = _)
       }
@@ -620,17 +765,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object form extends PropertyFunction {
     @inline protected def attributeName = "form"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, form.type, HTMLFormElement] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_HTMLFormElement_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, form.type, HTMLFormElement] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[HTMLFormElement]) = {
         Binding.BindingInstances.map(binding)(element.form = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 4.01") implicit object HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, form.type, HTMLFormElement] {
+    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_HTMLFormElement_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, form.type, HTMLFormElement] {
       @deprecated("Obsolete.", "HTML 4.01") def toMountPoint(element: HTMLIsIndexElement, binding: Binding[HTMLFormElement]) = {
         Binding.BindingInstances.map(binding)(element.form = _)
       }
     }
-    implicit object HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, form.type, HTMLFormElement] {
+    implicit object mountPointBuilder_HTMLFormElement_HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, form.type, HTMLFormElement] {
       def toMountPoint(element: HTMLProgressElement, binding: Binding[HTMLFormElement]) = {
         Binding.BindingInstances.map(binding)(element.form = _)
       }
@@ -638,12 +783,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object formAction extends PropertyFunction {
     @inline protected def attributeName = "formAction"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formAction = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, formAction.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formAction.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formAction = _)
       }
@@ -651,12 +796,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object formEnctype extends PropertyFunction {
     @inline protected def attributeName = "formEnctype"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formEnctype = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, formEnctype.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formEnctype.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formEnctype = _)
       }
@@ -664,12 +809,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object formMethod extends PropertyFunction {
     @inline protected def attributeName = "formMethod"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formMethod = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, formMethod.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formMethod.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formMethod = _)
       }
@@ -677,12 +822,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object formNoValidate extends PropertyFunction {
     @inline protected def attributeName = "formNoValidate"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formNoValidate = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, formNoValidate.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formNoValidate.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formNoValidate = _)
       }
@@ -690,25 +835,33 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object formTarget extends PropertyFunction {
     @inline protected def attributeName = "formTarget"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formTarget = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, formTarget.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formTarget.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formTarget = _)
       }
     }
   }
+  object frame extends PropertyFunction {
+    @inline protected def attributeName = "frame"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, frame.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.frame = _)
+      }
+    }
+  }
   object frameBorder extends PropertyFunction {
     @inline protected def attributeName = "frameBorder"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameBorder.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameBorder.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.frameBorder = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameBorder.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameBorder.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.frameBorder = _)
       }
@@ -716,12 +869,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object frameSpacing extends PropertyFunction {
     @inline protected def attributeName = "frameSpacing"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameSpacing.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameSpacing.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.frameSpacing = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameSpacing.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameSpacing.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.frameSpacing = _)
       }
@@ -729,7 +882,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object gotpointercapture extends PropertyFunction {
     @inline protected def attributeName = "gotpointercapture"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, gotpointercapture.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, gotpointercapture.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.gotpointercapture = _)
       }
@@ -737,12 +890,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object hash extends PropertyFunction {
     @inline protected def attributeName = "hash"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hash.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hash.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hash = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hash.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hash.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hash = _)
       }
@@ -750,57 +903,62 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object height extends PropertyFunction {
     @inline protected def attributeName = "height"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, height.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, height.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, height.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, height.type, Int] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, height.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, height.type, js.Any] {
       def toMountPoint(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, height.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, height.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, height.type, String] {
+    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, height.type, String] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, height.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, height.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLCanvasElement extends MountPointBuilder[HTMLCanvasElement, height.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLCanvasElement extends MountPointBuilder[HTMLCanvasElement, height.type, Int] {
       def toMountPoint(element: HTMLCanvasElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, height.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, height.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCellElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.height = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, height.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, height.type, String] {
+    implicit object mountPointBuilder_String_HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, height.type, String] {
       def toMountPoint(element: HTMLEmbedElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    implicit object HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, height.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, height.type, Int] {
       def toMountPoint(element: HTMLVideoElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, height.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, height.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
@@ -808,12 +966,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object host extends PropertyFunction {
     @inline protected def attributeName = "host"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, host.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, host.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.host = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, host.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, host.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.host = _)
       }
@@ -821,12 +979,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object hostname extends PropertyFunction {
     @inline protected def attributeName = "hostname"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hostname.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hostname.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hostname = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hostname.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hostname.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hostname = _)
       }
@@ -834,27 +992,27 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object href extends PropertyFunction {
     @inline protected def attributeName = "href"
-    implicit object HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, href.type, String] {
+    implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, href.type, String] {
       def toMountPoint(element: HTMLBaseElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
     }
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, href.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, href.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
     }
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, href.type, String] {
+    implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, href.type, String] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
     }
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, href.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, href.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, href.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, href.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
@@ -862,12 +1020,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object hreflang extends PropertyFunction {
     @inline protected def attributeName = "hreflang"
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, hreflang.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, hreflang.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hreflang = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hreflang.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hreflang.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hreflang = _)
       }
@@ -875,15 +1033,25 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object hspace extends PropertyFunction {
     @inline protected def attributeName = "hspace"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, hspace.type, Int] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, hspace.type, Int] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.hspace = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, hspace.type, Int] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.hspace = _)
       }
     }
   }
-  object htmlFor extends PropertyFunction {
-    @inline protected def attributeName = "htmlFor"
-    implicit object HTMLLabelElement extends MountPointBuilder[HTMLLabelElement, htmlFor.type, String] {
+  object `for` extends PropertyFunction {
+    @inline protected def attributeName = "for"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, `for`.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.htmlFor = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLLabelElement extends MountPointBuilder[HTMLLabelElement, `for`.type, String] {
       def toMountPoint(element: HTMLLabelElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.htmlFor = _)
       }
@@ -891,7 +1059,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object httpEquiv extends PropertyFunction {
     @inline protected def attributeName = "httpEquiv"
-    implicit object HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, httpEquiv.type, String] {
+    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, httpEquiv.type, String] {
       def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.httpEquiv = _)
       }
@@ -899,7 +1067,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object id extends PropertyFunction {
     @inline protected def attributeName = "id"
-    implicit object Element extends MountPointBuilder[Element, id.type, String] {
+    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, id.type, String] {
       def toMountPoint(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.id = _)
       }
@@ -907,7 +1075,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object indeterminate extends PropertyFunction {
     @inline protected def attributeName = "indeterminate"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.indeterminate = _)
       }
@@ -915,7 +1083,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object innerHTML extends PropertyFunction {
     @inline protected def attributeName = "innerHTML"
-    implicit object Element extends MountPointBuilder[Element, innerHTML.type, String] {
+    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, innerHTML.type, String] {
       def toMountPoint(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.innerHTML = _)
       }
@@ -923,7 +1091,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object isMap extends PropertyFunction {
     @inline protected def attributeName = "isMap"
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, isMap.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLImageElement extends MountPointBuilder[HTMLImageElement, isMap.type, Boolean] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.isMap = _)
       }
@@ -931,7 +1099,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object kind extends PropertyFunction {
     @inline protected def attributeName = "kind"
-    implicit object HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, kind.type, String] {
+    implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, kind.type, String] {
       def toMountPoint(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.kind = _)
       }
@@ -939,17 +1107,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object label extends PropertyFunction {
     @inline protected def attributeName = "label"
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, label.type, String] {
+    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, label.type, String] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.label = _)
       }
     }
-    implicit object HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, label.type, String] {
+    implicit object mountPointBuilder_String_HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, label.type, String] {
       def toMountPoint(element: HTMLOptGroupElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.label = _)
       }
     }
-    implicit object HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, label.type, String] {
+    implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, label.type, String] {
       def toMountPoint(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.label = _)
       }
@@ -957,23 +1125,39 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object lang extends PropertyFunction {
     @inline protected def attributeName = "lang"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, lang.type, String] {
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, lang.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.lang = _)
       }
     }
   }
+  object leftMargin extends PropertyFunction {
+    @inline protected def attributeName = "leftMargin"
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, leftMargin.type, js.Any] {
+      @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.leftMargin = _)
+      }
+    }
+  }
   object length extends PropertyFunction {
     @inline protected def attributeName = "length"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length.type, Int] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.length = _)
       }
     }
   }
+  object link extends PropertyFunction {
+    @inline protected def attributeName = "link"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, link.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.link = _)
+      }
+    }
+  }
   object list extends PropertyFunction {
     @inline protected def attributeName = "list"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, list.type, HTMLElement] {
+    implicit object mountPointBuilder_HTMLElement_HTMLInputElement extends MountPointBuilder[HTMLInputElement, list.type, HTMLElement] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[HTMLElement]) = {
         Binding.BindingInstances.map(binding)(element.list = _)
       }
@@ -981,25 +1165,35 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object longDesc extends PropertyFunction {
     @inline protected def attributeName = "longDesc"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, longDesc.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, longDesc.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.longDesc = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, longDesc.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.longDesc = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, longDesc.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.longDesc = _)
       }
     }
   }
   object loop extends PropertyFunction {
     @inline protected def attributeName = "loop"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, loop.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, loop.type, Boolean] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.loop = _)
       }
     }
-    @deprecated("Non standard.", "forever") implicit object HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, loop.type, Double] {
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_Double_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, loop.type, Double] {
       @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBGSoundElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.loop = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, loop.type, Int] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, loop.type, Int] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.loop = _)
       }
@@ -1007,7 +1201,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object lostpointercapture extends PropertyFunction {
     @inline protected def attributeName = "lostpointercapture"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, lostpointercapture.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, lostpointercapture.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.lostpointercapture = _)
       }
@@ -1015,7 +1209,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object marginHeight extends PropertyFunction {
     @inline protected def attributeName = "marginHeight"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginHeight.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginHeight.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.marginHeight = _)
       }
@@ -1023,7 +1217,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object marginWidth extends PropertyFunction {
     @inline protected def attributeName = "marginWidth"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginWidth.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginWidth.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.marginWidth = _)
       }
@@ -1031,12 +1225,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object max extends PropertyFunction {
     @inline protected def attributeName = "max"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, max.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, max.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.max = _)
       }
     }
-    implicit object HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, max.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, max.type, Double] {
       def toMountPoint(element: HTMLProgressElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.max = _)
       }
@@ -1044,12 +1238,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object maxLength extends PropertyFunction {
     @inline protected def attributeName = "maxLength"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength.type, Int] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.maxLength = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, maxLength.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, maxLength.type, Int] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.maxLength = _)
       }
@@ -1057,17 +1251,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object media extends PropertyFunction {
     @inline protected def attributeName = "media"
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, media.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, media.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.media = _)
       }
     }
-    implicit object HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, media.type, String] {
+    implicit object mountPointBuilder_String_HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, media.type, String] {
       def toMountPoint(element: HTMLSourceElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.media = _)
       }
     }
-    implicit object HTMLStyleElement extends MountPointBuilder[HTMLStyleElement, media.type, String] {
+    implicit object mountPointBuilder_String_HTMLStyleElement extends MountPointBuilder[HTMLStyleElement, media.type, String] {
       def toMountPoint(element: HTMLStyleElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.media = _)
       }
@@ -1075,7 +1269,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object method extends PropertyFunction {
     @inline protected def attributeName = "method"
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, method.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, method.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.method = _)
       }
@@ -1083,7 +1277,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object mimeType extends PropertyFunction {
     @inline protected def attributeName = "mimeType"
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, mimeType.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, mimeType.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.mimeType = _)
       }
@@ -1091,7 +1285,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object min extends PropertyFunction {
     @inline protected def attributeName = "min"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, min.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, min.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.min = _)
       }
@@ -1099,12 +1293,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object multiple extends PropertyFunction {
     @inline protected def attributeName = "multiple"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, multiple.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, multiple.type, Boolean] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.multiple = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, multiple.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, multiple.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.multiple = _)
       }
@@ -1112,7 +1306,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object muted extends PropertyFunction {
     @inline protected def attributeName = "muted"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, muted.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, muted.type, Boolean] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.muted = _)
       }
@@ -1120,67 +1314,77 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object name extends PropertyFunction {
     @inline protected def attributeName = "name"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, name.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, name.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, name.type, String] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, name.type, String] {
       def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLMapElement extends MountPointBuilder[HTMLMapElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLMapElement extends MountPointBuilder[HTMLMapElement, name.type, String] {
       def toMountPoint(element: HTMLMapElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, name.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, name.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, name.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, name.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, name.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, name.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, name.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, name.type, String] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, name.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLParamElement extends MountPointBuilder[HTMLParamElement, name.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, name.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, name.type, String] {
       def toMountPoint(element: HTMLParamElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, name.type, String] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, name.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, name.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, name.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
@@ -1188,7 +1392,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object naturalHeight extends PropertyFunction {
     @inline protected def attributeName = "naturalHeight"
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalHeight.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalHeight.type, Int] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.naturalHeight = _)
       }
@@ -1196,15 +1400,23 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object naturalWidth extends PropertyFunction {
     @inline protected def attributeName = "naturalWidth"
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalWidth.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalWidth.type, Int] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.naturalWidth = _)
       }
     }
   }
+  object noHref extends PropertyFunction {
+    @inline protected def attributeName = "noHref"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, noHref.type, Boolean] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAreaElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.noHref = _)
+      }
+    }
+  }
   object noResize extends PropertyFunction {
     @inline protected def attributeName = "noResize"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, noResize.type, Boolean] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, noResize.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noResize = _)
       }
@@ -1212,7 +1424,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object noValidate extends PropertyFunction {
     @inline protected def attributeName = "noValidate"
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, noValidate.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLFormElement extends MountPointBuilder[HTMLFormElement, noValidate.type, Boolean] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noValidate = _)
       }
@@ -1220,12 +1432,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object noWrap extends PropertyFunction {
     @inline protected def attributeName = "noWrap"
-    implicit object HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap.type, Boolean] {
       def toMountPoint(element: HTMLDDElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noWrap = _)
       }
     }
-    implicit object HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap.type, Boolean] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, noWrap.type, Boolean] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCellElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.noWrap = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap.type, Boolean] {
       def toMountPoint(element: HTMLDTElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noWrap = _)
       }
@@ -1233,12 +1450,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object `object` extends PropertyFunction {
     @inline protected def attributeName = "object"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `object`.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `object`.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`object` = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, `object`.type, Object] {
+    implicit object mountPointBuilder_Object_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, `object`.type, Object] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[Object]) = {
         Binding.BindingInstances.map(binding)(element.`object` = _)
       }
@@ -1246,7 +1463,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onabort extends PropertyFunction {
     @inline protected def attributeName = "onabort"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onabort = _)
       }
@@ -1254,7 +1471,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onactivate extends PropertyFunction {
     @inline protected def attributeName = "onactivate"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onactivate.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onactivate.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onactivate = _)
       }
@@ -1262,12 +1479,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onafterprint extends PropertyFunction {
     @inline protected def attributeName = "onafterprint"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onafterprint.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onafterprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onafterprint = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onafterprint.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onafterprint.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onafterprint = _)
       }
@@ -1275,7 +1492,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforeactivate extends PropertyFunction {
     @inline protected def attributeName = "onbeforeactivate"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onbeforeactivate.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforeactivate.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeactivate = _)
       }
@@ -1283,7 +1500,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforecopy extends PropertyFunction {
     @inline protected def attributeName = "onbeforecopy"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onbeforecopy.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecopy.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforecopy = _)
       }
@@ -1291,7 +1508,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforecut extends PropertyFunction {
     @inline protected def attributeName = "onbeforecut"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onbeforecut.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecut.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforecut = _)
       }
@@ -1299,7 +1516,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforedeactivate extends PropertyFunction {
     @inline protected def attributeName = "onbeforedeactivate"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onbeforedeactivate.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforedeactivate.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforedeactivate = _)
       }
@@ -1307,7 +1524,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforepaste extends PropertyFunction {
     @inline protected def attributeName = "onbeforepaste"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onbeforepaste.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforepaste.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforepaste = _)
       }
@@ -1315,12 +1532,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforeprint extends PropertyFunction {
     @inline protected def attributeName = "onbeforeprint"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onbeforeprint.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onbeforeprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeprint = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onbeforeprint.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onbeforeprint.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeprint = _)
       }
@@ -1328,12 +1545,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbeforeunload extends PropertyFunction {
     @inline protected def attributeName = "onbeforeunload"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onbeforeunload.type, js.Function1[BeforeUnloadEvent, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[BeforeUnloadEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onbeforeunload.type, js.Function1[BeforeUnloadEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[BeforeUnloadEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeunload = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onbeforeunload.type, js.Function1[BeforeUnloadEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[BeforeUnloadEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onbeforeunload.type, js.Function1[BeforeUnloadEvent, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[BeforeUnloadEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeunload = _)
       }
@@ -1341,7 +1558,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onblur extends PropertyFunction {
     @inline protected def attributeName = "onblur"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onblur.type, js.Function1[FocusEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onblur.type, js.Function1[FocusEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onblur = _)
       }
@@ -1349,7 +1566,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onbounce extends PropertyFunction {
     @inline protected def attributeName = "onbounce"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, onbounce.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onbounce.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbounce = _)
       }
@@ -1357,7 +1574,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncanplay extends PropertyFunction {
     @inline protected def attributeName = "oncanplay"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, oncanplay.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncanplay.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncanplay = _)
       }
@@ -1365,7 +1582,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncanplaythrough extends PropertyFunction {
     @inline protected def attributeName = "oncanplaythrough"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, oncanplaythrough.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncanplaythrough.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncanplaythrough = _)
       }
@@ -1373,7 +1590,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onchange extends PropertyFunction {
     @inline protected def attributeName = "onchange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onchange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onchange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onchange = _)
       }
@@ -1381,7 +1598,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onclick extends PropertyFunction {
     @inline protected def attributeName = "onclick"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onclick.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onclick.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onclick = _)
       }
@@ -1389,7 +1606,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncontextmenu extends PropertyFunction {
     @inline protected def attributeName = "oncontextmenu"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, oncontextmenu.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncontextmenu.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncontextmenu = _)
       }
@@ -1397,7 +1614,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncopy extends PropertyFunction {
     @inline protected def attributeName = "oncopy"
-    implicit object Element extends MountPointBuilder[Element, oncopy.type, js.Function1[ClipboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, oncopy.type, js.Function1[ClipboardEvent, _]] {
       def toMountPoint(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncopy = _)
       }
@@ -1405,7 +1622,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncuechange extends PropertyFunction {
     @inline protected def attributeName = "oncuechange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, oncuechange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncuechange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncuechange = _)
       }
@@ -1413,7 +1630,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oncut extends PropertyFunction {
     @inline protected def attributeName = "oncut"
-    implicit object Element extends MountPointBuilder[Element, oncut.type, js.Function1[ClipboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, oncut.type, js.Function1[ClipboardEvent, _]] {
       def toMountPoint(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncut = _)
       }
@@ -1421,7 +1638,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondblclick extends PropertyFunction {
     @inline protected def attributeName = "ondblclick"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondblclick.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondblclick.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondblclick = _)
       }
@@ -1429,7 +1646,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondeactivate extends PropertyFunction {
     @inline protected def attributeName = "ondeactivate"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondeactivate.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondeactivate.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondeactivate = _)
       }
@@ -1437,7 +1654,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondrag extends PropertyFunction {
     @inline protected def attributeName = "ondrag"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondrag.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondrag.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondrag = _)
       }
@@ -1445,7 +1662,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondragend extends PropertyFunction {
     @inline protected def attributeName = "ondragend"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondragend.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragend.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragend = _)
       }
@@ -1453,7 +1670,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondragenter extends PropertyFunction {
     @inline protected def attributeName = "ondragenter"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondragenter.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragenter.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragenter = _)
       }
@@ -1461,7 +1678,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondragleave extends PropertyFunction {
     @inline protected def attributeName = "ondragleave"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondragleave.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragleave.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragleave = _)
       }
@@ -1469,7 +1686,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondragover extends PropertyFunction {
     @inline protected def attributeName = "ondragover"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondragover.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragover.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragover = _)
       }
@@ -1477,7 +1694,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondragstart extends PropertyFunction {
     @inline protected def attributeName = "ondragstart"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondragstart.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragstart.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragstart = _)
       }
@@ -1485,7 +1702,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondrop extends PropertyFunction {
     @inline protected def attributeName = "ondrop"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondrop.type, js.Function1[DragEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondrop.type, js.Function1[DragEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondrop = _)
       }
@@ -1493,7 +1710,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ondurationchange extends PropertyFunction {
     @inline protected def attributeName = "ondurationchange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ondurationchange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondurationchange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondurationchange = _)
       }
@@ -1501,7 +1718,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onemptied extends PropertyFunction {
     @inline protected def attributeName = "onemptied"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onemptied.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onemptied.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onemptied = _)
       }
@@ -1509,7 +1726,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onended extends PropertyFunction {
     @inline protected def attributeName = "onended"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onended.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onended.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onended = _)
       }
@@ -1517,12 +1734,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onerror extends PropertyFunction {
     @inline protected def attributeName = "onerror"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onerror.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onerror.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onerror = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onerror.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onerror.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onerror = _)
       }
@@ -1530,7 +1747,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onfinish extends PropertyFunction {
     @inline protected def attributeName = "onfinish"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, onfinish.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onfinish.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfinish = _)
       }
@@ -1538,7 +1755,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onfocus extends PropertyFunction {
     @inline protected def attributeName = "onfocus"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onfocus.type, js.Function1[FocusEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocus.type, js.Function1[FocusEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocus = _)
       }
@@ -1546,7 +1763,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onfocusin extends PropertyFunction {
     @inline protected def attributeName = "onfocusin"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onfocusin.type, js.Function1[FocusEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusin.type, js.Function1[FocusEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocusin = _)
       }
@@ -1554,7 +1771,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onfocusout extends PropertyFunction {
     @inline protected def attributeName = "onfocusout"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onfocusout.type, js.Function1[FocusEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusout.type, js.Function1[FocusEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocusout = _)
       }
@@ -1562,12 +1779,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onhashchange extends PropertyFunction {
     @inline protected def attributeName = "onhashchange"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onhashchange.type, js.Function1[HashChangeEvent, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[HashChangeEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onhashchange.type, js.Function1[HashChangeEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[HashChangeEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onhashchange = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onhashchange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onhashchange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onhashchange = _)
       }
@@ -1575,7 +1792,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onhelp extends PropertyFunction {
     @inline protected def attributeName = "onhelp"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onhelp.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onhelp.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onhelp = _)
       }
@@ -1583,7 +1800,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object oninput extends PropertyFunction {
     @inline protected def attributeName = "oninput"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, oninput.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oninput.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oninput = _)
       }
@@ -1591,7 +1808,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onkeydown extends PropertyFunction {
     @inline protected def attributeName = "onkeydown"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onkeydown.type, js.Function1[KeyboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeydown.type, js.Function1[KeyboardEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeydown = _)
       }
@@ -1599,7 +1816,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onkeypress extends PropertyFunction {
     @inline protected def attributeName = "onkeypress"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onkeypress.type, js.Function1[KeyboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeypress.type, js.Function1[KeyboardEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeypress = _)
       }
@@ -1607,7 +1824,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onkeyup extends PropertyFunction {
     @inline protected def attributeName = "onkeyup"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onkeyup.type, js.Function1[KeyboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeyup.type, js.Function1[KeyboardEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeyup = _)
       }
@@ -1615,32 +1832,32 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onload extends PropertyFunction {
     @inline protected def attributeName = "onload"
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, onload.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLImageElement` extends MountPointBuilder[HTMLImageElement, onload.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, onload.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLScriptElement` extends MountPointBuilder[HTMLScriptElement, onload.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, onload.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameElement` extends MountPointBuilder[HTMLFrameElement, onload.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onload.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onload.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, onload.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLIFrameElement` extends MountPointBuilder[HTMLIFrameElement, onload.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onload.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onload.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
@@ -1648,7 +1865,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onloadeddata extends PropertyFunction {
     @inline protected def attributeName = "onloadeddata"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onloadeddata.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadeddata.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadeddata = _)
       }
@@ -1656,7 +1873,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onloadedmetadata extends PropertyFunction {
     @inline protected def attributeName = "onloadedmetadata"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onloadedmetadata.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadedmetadata.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadedmetadata = _)
       }
@@ -1664,7 +1881,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onloadstart extends PropertyFunction {
     @inline protected def attributeName = "onloadstart"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onloadstart.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadstart.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadstart = _)
       }
@@ -1672,12 +1889,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmessage extends PropertyFunction {
     @inline protected def attributeName = "onmessage"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onmessage.type, js.Function1[MessageEvent, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[MessageEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onmessage.type, js.Function1[MessageEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[MessageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmessage = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onmessage.type, js.Function1[MessageEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MessageEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onmessage.type, js.Function1[MessageEvent, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[MessageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmessage = _)
       }
@@ -1685,7 +1902,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmousedown extends PropertyFunction {
     @inline protected def attributeName = "onmousedown"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmousedown.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousedown.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousedown = _)
       }
@@ -1693,7 +1910,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmouseenter extends PropertyFunction {
     @inline protected def attributeName = "onmouseenter"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmouseenter.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseenter.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseenter = _)
       }
@@ -1701,7 +1918,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmouseleave extends PropertyFunction {
     @inline protected def attributeName = "onmouseleave"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmouseleave.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseleave.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseleave = _)
       }
@@ -1709,7 +1926,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmousemove extends PropertyFunction {
     @inline protected def attributeName = "onmousemove"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmousemove.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousemove.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousemove = _)
       }
@@ -1717,7 +1934,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmouseout extends PropertyFunction {
     @inline protected def attributeName = "onmouseout"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmouseout.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseout.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseout = _)
       }
@@ -1725,7 +1942,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmouseover extends PropertyFunction {
     @inline protected def attributeName = "onmouseover"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmouseover.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseover.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseover = _)
       }
@@ -1733,7 +1950,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmouseup extends PropertyFunction {
     @inline protected def attributeName = "onmouseup"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmouseup.type, js.Function1[MouseEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseup.type, js.Function1[MouseEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseup = _)
       }
@@ -1741,7 +1958,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onmousewheel extends PropertyFunction {
     @inline protected def attributeName = "onmousewheel"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onmousewheel.type, js.Function1[WheelEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[WheelEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousewheel.type, js.Function1[WheelEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[WheelEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousewheel = _)
       }
@@ -1749,12 +1966,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onoffline extends PropertyFunction {
     @inline protected def attributeName = "onoffline"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onoffline.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onoffline.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onoffline = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onoffline.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onoffline.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onoffline = _)
       }
@@ -1762,12 +1979,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ononline extends PropertyFunction {
     @inline protected def attributeName = "ononline"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, ononline.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, ononline.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ononline = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, ononline.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, ononline.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ononline = _)
       }
@@ -1775,7 +1992,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpaste extends PropertyFunction {
     @inline protected def attributeName = "onpaste"
-    implicit object Element extends MountPointBuilder[Element, onpaste.type, js.Function1[ClipboardEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, onpaste.type, js.Function1[ClipboardEvent, _]] {
       def toMountPoint(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpaste = _)
       }
@@ -1783,7 +2000,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpause extends PropertyFunction {
     @inline protected def attributeName = "onpause"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpause.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpause.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpause = _)
       }
@@ -1791,7 +2008,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onplay extends PropertyFunction {
     @inline protected def attributeName = "onplay"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onplay.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onplay.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onplay = _)
       }
@@ -1799,7 +2016,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onplaying extends PropertyFunction {
     @inline protected def attributeName = "onplaying"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onplaying.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onplaying.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onplaying = _)
       }
@@ -1807,7 +2024,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointercancel extends PropertyFunction {
     @inline protected def attributeName = "onpointercancel"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointercancel.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointercancel.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointercancel = _)
       }
@@ -1815,7 +2032,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerdown extends PropertyFunction {
     @inline protected def attributeName = "onpointerdown"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerdown.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerdown.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerdown = _)
       }
@@ -1823,7 +2040,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerenter extends PropertyFunction {
     @inline protected def attributeName = "onpointerenter"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerenter.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerenter.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerenter = _)
       }
@@ -1831,7 +2048,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerleave extends PropertyFunction {
     @inline protected def attributeName = "onpointerleave"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerleave.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerleave.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerleave = _)
       }
@@ -1839,7 +2056,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointermove extends PropertyFunction {
     @inline protected def attributeName = "onpointermove"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointermove.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointermove.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointermove = _)
       }
@@ -1847,7 +2064,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerout extends PropertyFunction {
     @inline protected def attributeName = "onpointerout"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerout.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerout.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerout = _)
       }
@@ -1855,7 +2072,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerover extends PropertyFunction {
     @inline protected def attributeName = "onpointerover"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerover.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerover.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerover = _)
       }
@@ -1863,7 +2080,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpointerup extends PropertyFunction {
     @inline protected def attributeName = "onpointerup"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onpointerup.type, js.Function1[PointerEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerup.type, js.Function1[PointerEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerup = _)
       }
@@ -1871,7 +2088,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onpopstate extends PropertyFunction {
     @inline protected def attributeName = "onpopstate"
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onpopstate.type, js.Function1[PopStateEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[PopStateEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onpopstate.type, js.Function1[PopStateEvent, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[PopStateEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpopstate = _)
       }
@@ -1879,7 +2096,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onprogress extends PropertyFunction {
     @inline protected def attributeName = "onprogress"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onprogress.type, js.Function1[js.Any, _]] {
+    implicit object `mountPointBuilder_js_Function1[js_Any, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onprogress.type, js.Function1[js.Any, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[js.Any, _]]) = {
         Binding.BindingInstances.map(binding)(element.onprogress = _)
       }
@@ -1887,7 +2104,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onratechange extends PropertyFunction {
     @inline protected def attributeName = "onratechange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onratechange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onratechange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onratechange = _)
       }
@@ -1895,7 +2112,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onreadystatechange extends PropertyFunction {
     @inline protected def attributeName = "onreadystatechange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onreadystatechange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreadystatechange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onreadystatechange = _)
       }
@@ -1903,7 +2120,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onreset extends PropertyFunction {
     @inline protected def attributeName = "onreset"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onreset.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreset.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onreset = _)
       }
@@ -1911,12 +2128,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onresize extends PropertyFunction {
     @inline protected def attributeName = "onresize"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onresize.type, js.Function1[UIEvent, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onresize.type, js.Function1[UIEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onresize = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onresize.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onresize.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onresize = _)
       }
@@ -1924,7 +2141,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onscroll extends PropertyFunction {
     @inline protected def attributeName = "onscroll"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onscroll.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onscroll.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onscroll = _)
       }
@@ -1932,7 +2149,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onseeked extends PropertyFunction {
     @inline protected def attributeName = "onseeked"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onseeked.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onseeked.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onseeked = _)
       }
@@ -1940,7 +2157,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onseeking extends PropertyFunction {
     @inline protected def attributeName = "onseeking"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onseeking.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onseeking.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onseeking = _)
       }
@@ -1948,7 +2165,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onselect extends PropertyFunction {
     @inline protected def attributeName = "onselect"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onselect.type, js.Function1[UIEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselect.type, js.Function1[UIEvent, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onselect = _)
       }
@@ -1956,7 +2173,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onselectstart extends PropertyFunction {
     @inline protected def attributeName = "onselectstart"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onselectstart.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselectstart.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onselectstart = _)
       }
@@ -1964,7 +2181,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onstalled extends PropertyFunction {
     @inline protected def attributeName = "onstalled"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstalled = _)
       }
@@ -1972,7 +2189,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onstart extends PropertyFunction {
     @inline protected def attributeName = "onstart"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, onstart.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onstart.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstart = _)
       }
@@ -1980,12 +2197,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onstorage extends PropertyFunction {
     @inline protected def attributeName = "onstorage"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onstorage.type, js.Function1[StorageEvent, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[StorageEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onstorage.type, js.Function1[StorageEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[StorageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstorage = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onstorage.type, js.Function1[StorageEvent, _]] {
+    implicit object `mountPointBuilder_js_Function1[StorageEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onstorage.type, js.Function1[StorageEvent, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[StorageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstorage = _)
       }
@@ -1993,7 +2210,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onsubmit extends PropertyFunction {
     @inline protected def attributeName = "onsubmit"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onsubmit.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onsubmit.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onsubmit = _)
       }
@@ -2001,7 +2218,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onsuspend extends PropertyFunction {
     @inline protected def attributeName = "onsuspend"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onsuspend.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onsuspend.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onsuspend = _)
       }
@@ -2009,7 +2226,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object ontimeupdate extends PropertyFunction {
     @inline protected def attributeName = "ontimeupdate"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, ontimeupdate.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ontimeupdate.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ontimeupdate = _)
       }
@@ -2017,12 +2234,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onunload extends PropertyFunction {
     @inline protected def attributeName = "onunload"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, onunload.type, js.Function1[Event, _]] {
+    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onunload.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onunload = _)
       }
     }
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, onunload.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onunload.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onunload = _)
       }
@@ -2030,7 +2247,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onvolumechange extends PropertyFunction {
     @inline protected def attributeName = "onvolumechange"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onvolumechange.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onvolumechange.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onvolumechange = _)
       }
@@ -2038,7 +2255,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object onwaiting extends PropertyFunction {
     @inline protected def attributeName = "onwaiting"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, onwaiting.type, js.Function1[Event, _]] {
+    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onwaiting.type, js.Function1[Event, _]] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onwaiting = _)
       }
@@ -2046,7 +2263,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object outerHTML extends PropertyFunction {
     @inline protected def attributeName = "outerHTML"
-    implicit object Element extends MountPointBuilder[Element, outerHTML.type, String] {
+    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, outerHTML.type, String] {
       def toMountPoint(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.outerHTML = _)
       }
@@ -2054,7 +2271,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object parentElement extends PropertyFunction {
     @inline protected def attributeName = "parentElement"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, parentElement.type, HTMLElement] {
+    implicit object mountPointBuilder_HTMLElement_HTMLElement extends MountPointBuilder[HTMLElement, parentElement.type, HTMLElement] {
       def toMountPoint(element: HTMLElement, binding: Binding[HTMLElement]) = {
         Binding.BindingInstances.map(binding)(element.parentElement = _)
       }
@@ -2062,12 +2279,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object pathname extends PropertyFunction {
     @inline protected def attributeName = "pathname"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, pathname.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, pathname.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.pathname = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, pathname.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, pathname.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.pathname = _)
       }
@@ -2075,7 +2292,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object pattern extends PropertyFunction {
     @inline protected def attributeName = "pattern"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, pattern.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, pattern.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.pattern = _)
       }
@@ -2083,12 +2300,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object placeholder extends PropertyFunction {
     @inline protected def attributeName = "placeholder"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, placeholder.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, placeholder.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.placeholder = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, placeholder.type, String] {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, placeholder.type, String] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.placeholder = _)
       }
@@ -2096,7 +2313,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object playbackRate extends PropertyFunction {
     @inline protected def attributeName = "playbackRate"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, playbackRate.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, playbackRate.type, Double] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.playbackRate = _)
       }
@@ -2104,12 +2321,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object port extends PropertyFunction {
     @inline protected def attributeName = "port"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, port.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, port.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.port = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, port.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, port.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.port = _)
       }
@@ -2117,7 +2334,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object poster extends PropertyFunction {
     @inline protected def attributeName = "poster"
-    implicit object HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, poster.type, String] {
+    implicit object mountPointBuilder_String_HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, poster.type, String] {
       def toMountPoint(element: HTMLVideoElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.poster = _)
       }
@@ -2125,15 +2342,23 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object preload extends PropertyFunction {
     @inline protected def attributeName = "preload"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, preload.type, String] {
+    implicit object mountPointBuilder_String_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, preload.type, String] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.preload = _)
       }
     }
   }
+  object profile extends PropertyFunction {
+    @inline protected def attributeName = "profile"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadElement extends MountPointBuilder[HTMLHeadElement, profile.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLHeadElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.profile = _)
+      }
+    }
+  }
   object prompt extends PropertyFunction {
     @inline protected def attributeName = "prompt"
-    @deprecated("Obsolete.", "HTML 4.01") implicit object HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, prompt.type, String] {
+    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, prompt.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def toMountPoint(element: HTMLIsIndexElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.prompt = _)
       }
@@ -2141,12 +2366,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object protocol extends PropertyFunction {
     @inline protected def attributeName = "protocol"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, protocol.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, protocol.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.protocol = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, protocol.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, protocol.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.protocol = _)
       }
@@ -2154,12 +2379,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object readOnly extends PropertyFunction {
     @inline protected def attributeName = "readOnly"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.readOnly = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, readOnly.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, readOnly.type, Boolean] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.readOnly = _)
       }
@@ -2167,7 +2392,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object readyState extends PropertyFunction {
     @inline protected def attributeName = "readyState"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, readyState.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, readyState.type, js.Any] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.readyState = _)
       }
@@ -2175,7 +2400,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object recordNumber extends PropertyFunction {
     @inline protected def attributeName = "recordNumber"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, recordNumber.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, recordNumber.type, js.Any] {
       def toMountPoint(element: HTMLElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.recordNumber = _)
       }
@@ -2183,12 +2408,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object rel extends PropertyFunction {
     @inline protected def attributeName = "rel"
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rel.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rel.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rel = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, rel.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, rel.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rel = _)
       }
@@ -2196,17 +2421,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object required extends PropertyFunction {
     @inline protected def attributeName = "required"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, required.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, required.type, Boolean] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.required = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, required.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, required.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.required = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, required.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, required.type, Boolean] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.required = _)
       }
@@ -2214,15 +2439,28 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object rev extends PropertyFunction {
     @inline protected def attributeName = "rev"
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rev = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, rev.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.rev = _)
+      }
+    }
+  }
+  object rightMargin extends PropertyFunction {
+    @inline protected def attributeName = "rightMargin"
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, rightMargin.type, js.Any] {
+      @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.rightMargin = _)
       }
     }
   }
   object rowSpan extends PropertyFunction {
     @inline protected def attributeName = "rowSpan"
-    implicit object HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, rowSpan.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, rowSpan.type, Int] {
       def toMountPoint(element: HTMLTableCellElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.rowSpan = _)
       }
@@ -2230,28 +2468,44 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object rows extends PropertyFunction {
     @inline protected def attributeName = "rows"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, rows.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, rows.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rows = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, rows.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, rows.type, Int] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.rows = _)
       }
     }
   }
+  object rules extends PropertyFunction {
+    @inline protected def attributeName = "rules"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, rules.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.rules = _)
+      }
+    }
+  }
   object sandbox extends PropertyFunction {
     @inline protected def attributeName = "sandbox"
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, sandbox.type, DOMSettableTokenList] {
+    implicit object mountPointBuilder_DOMSettableTokenList_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, sandbox.type, DOMSettableTokenList] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[DOMSettableTokenList]) = {
         Binding.BindingInstances.map(binding)(element.sandbox = _)
       }
     }
   }
+  object scheme extends PropertyFunction {
+    @inline protected def attributeName = "scheme"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, scheme.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.scheme = _)
+      }
+    }
+  }
   object scroll extends PropertyFunction {
     @inline protected def attributeName = "scroll"
-    implicit object HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, scroll.type, String] {
+    implicit object mountPointBuilder_String_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, scroll.type, String] {
       def toMountPoint(element: HTMLBodyElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.scroll = _)
       }
@@ -2259,7 +2513,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object scrollAmount extends PropertyFunction {
     @inline protected def attributeName = "scrollAmount"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollAmount.type, Double] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollAmount.type, Double] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollAmount = _)
       }
@@ -2267,7 +2521,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object scrollDelay extends PropertyFunction {
     @inline protected def attributeName = "scrollDelay"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollDelay.type, Double] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollDelay.type, Double] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollDelay = _)
       }
@@ -2275,7 +2529,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object scrollLeft extends PropertyFunction {
     @inline protected def attributeName = "scrollLeft"
-    implicit object Element extends MountPointBuilder[Element, scrollLeft.type, Double] {
+    implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollLeft.type, Double] {
       def toMountPoint(element: Element, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollLeft = _)
       }
@@ -2283,7 +2537,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object scrollTop extends PropertyFunction {
     @inline protected def attributeName = "scrollTop"
-    implicit object Element extends MountPointBuilder[Element, scrollTop.type, Double] {
+    implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollTop.type, Double] {
       def toMountPoint(element: Element, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollTop = _)
       }
@@ -2291,7 +2545,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object scrolling extends PropertyFunction {
     @inline protected def attributeName = "scrolling"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, scrolling.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, scrolling.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.scrolling = _)
       }
@@ -2299,12 +2553,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object search extends PropertyFunction {
     @inline protected def attributeName = "search"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, search.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, search.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.search = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, search.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, search.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.search = _)
       }
@@ -2312,12 +2566,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object security extends PropertyFunction {
     @inline protected def attributeName = "security"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, security.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, security.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.security = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, security.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, security.type, js.Any] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.security = _)
       }
@@ -2325,7 +2579,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object selected extends PropertyFunction {
     @inline protected def attributeName = "selected"
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, selected.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, selected.type, Boolean] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.selected = _)
       }
@@ -2333,7 +2587,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object selectedIndex extends PropertyFunction {
     @inline protected def attributeName = "selectedIndex"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex.type, Int] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectedIndex = _)
       }
@@ -2341,12 +2595,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object selectionEnd extends PropertyFunction {
     @inline protected def attributeName = "selectionEnd"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd.type, Int] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionEnd = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionEnd.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionEnd.type, Int] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionEnd = _)
       }
@@ -2354,12 +2608,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object selectionStart extends PropertyFunction {
     @inline protected def attributeName = "selectionStart"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart.type, Int] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionStart = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionStart.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionStart.type, Int] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionStart = _)
       }
@@ -2367,25 +2621,30 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object shape extends PropertyFunction {
     @inline protected def attributeName = "shape"
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, shape.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, shape.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.shape = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, shape.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.shape = _)
       }
     }
   }
   object size extends PropertyFunction {
     @inline protected def attributeName = "size"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, size.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, size.type, Int] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.size = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, size.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, size.type, Int] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.size = _)
       }
     }
-    @deprecated("Obsolete.", "DOM Level 2") implicit object HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, size.type, Int] {
+    @deprecated("Obsolete.", "DOM Level 2") implicit object mountPointBuilder_Int_HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, size.type, Int] {
       @deprecated("Obsolete.", "DOM Level 2") def toMountPoint(element: HTMLBaseFontElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.size = _)
       }
@@ -2393,7 +2652,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object span extends PropertyFunction {
     @inline protected def attributeName = "span"
-    implicit object HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, span.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, span.type, Int] {
       def toMountPoint(element: HTMLTableColElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.span = _)
       }
@@ -2401,7 +2660,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object spellcheck extends PropertyFunction {
     @inline protected def attributeName = "spellcheck"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, spellcheck.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLElement extends MountPointBuilder[HTMLElement, spellcheck.type, Boolean] {
       def toMountPoint(element: HTMLElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.spellcheck = _)
       }
@@ -2409,52 +2668,52 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object src extends PropertyFunction {
     @inline protected def attributeName = "src"
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, src.type, String] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, src.type, String] {
       def toMountPoint(element: HTMLSourceElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, src.type, String] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, src.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, src.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, src.type, String] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, src.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, src.type, String] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    @deprecated("Non standard.", "forever") implicit object HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, src.type, String] {
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_String_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, src.type, String] {
       @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBGSoundElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, src.type, String] {
       def toMountPoint(element: HTMLEmbedElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    implicit object HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, src.type, String] {
+    implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, src.type, String] {
       def toMountPoint(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
@@ -2462,7 +2721,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object srclang extends PropertyFunction {
     @inline protected def attributeName = "srclang"
-    implicit object HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, srclang.type, String] {
+    implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, srclang.type, String] {
       def toMountPoint(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.srclang = _)
       }
@@ -2470,15 +2729,20 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object standby extends PropertyFunction {
     @inline protected def attributeName = "standby"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, standby.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, standby.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.standby = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, standby.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.standby = _)
       }
     }
   }
   object start extends PropertyFunction {
     @inline protected def attributeName = "start"
-    implicit object HTMLOListElement extends MountPointBuilder[HTMLOListElement, start.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLOListElement extends MountPointBuilder[HTMLOListElement, start.type, Int] {
       def toMountPoint(element: HTMLOListElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.start = _)
       }
@@ -2486,17 +2750,17 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object status extends PropertyFunction {
     @inline protected def attributeName = "status"
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status.type, js.Any] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.status = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, status.type, Boolean] {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, status.type, Boolean] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.status = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, status.type, js.Any] {
+    implicit object mountPointBuilder_js_Any_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, status.type, js.Any] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.status = _)
       }
@@ -2504,15 +2768,36 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object step extends PropertyFunction {
     @inline protected def attributeName = "step"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, step.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, step.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.step = _)
       }
     }
   }
+  object style extends PropertyFunction {
+    @inline protected def attributeName = "style"
+    implicit object mountPointBuilder_CSSStyleDeclaration_HTMLElement extends MountPointBuilder[HTMLElement, style.type, CSSStyleDeclaration] {
+      def toMountPoint(element: HTMLElement, binding: Binding[CSSStyleDeclaration]) = {
+        Binding.BindingInstances.map(binding)(element.style = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, style.type, String] {
+      def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.style = _)
+      }
+    }
+  }
+  object summary extends PropertyFunction {
+    @inline protected def attributeName = "summary"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, summary.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.summary = _)
+      }
+    }
+  }
   object tFoot extends PropertyFunction {
     @inline protected def attributeName = "tFoot"
-    implicit object HTMLTableElement extends MountPointBuilder[HTMLTableElement, tFoot.type, HTMLTableSectionElement] {
+    implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tFoot.type, HTMLTableSectionElement] {
       def toMountPoint(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
         Binding.BindingInstances.map(binding)(element.tFoot = _)
       }
@@ -2520,7 +2805,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object tHead extends PropertyFunction {
     @inline protected def attributeName = "tHead"
-    implicit object HTMLTableElement extends MountPointBuilder[HTMLTableElement, tHead.type, HTMLTableSectionElement] {
+    implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tHead.type, HTMLTableSectionElement] {
       def toMountPoint(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
         Binding.BindingInstances.map(binding)(element.tHead = _)
       }
@@ -2528,7 +2813,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object tabIndex extends PropertyFunction {
     @inline protected def attributeName = "tabIndex"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, tabIndex.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLElement extends MountPointBuilder[HTMLElement, tabIndex.type, Int] {
       def toMountPoint(element: HTMLElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.tabIndex = _)
       }
@@ -2536,27 +2821,27 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object target extends PropertyFunction {
     @inline protected def attributeName = "target"
-    implicit object HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, target.type, String] {
+    implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, target.type, String] {
       def toMountPoint(element: HTMLBaseElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
     }
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, target.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, target.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
     }
-    implicit object HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, target.type, String] {
+    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, target.type, String] {
       def toMountPoint(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, target.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, target.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
     }
-    implicit object HTMLFormElement extends MountPointBuilder[HTMLFormElement, target.type, String] {
+    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, target.type, String] {
       def toMountPoint(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
@@ -2564,22 +2849,27 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object text extends PropertyFunction {
     @inline protected def attributeName = "text"
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text.type, String] {
+    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text.type, String] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.text = _)
       }
     }
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, text.type, String] {
+    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, text.type, String] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.text = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, text.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, text.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.text = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, text.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.text = _)
       }
     }
-    implicit object HTMLTitleElement extends MountPointBuilder[HTMLTitleElement, text.type, String] {
+    implicit object mountPointBuilder_String_HTMLTitleElement extends MountPointBuilder[HTMLTitleElement, text.type, String] {
       def toMountPoint(element: HTMLTitleElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.text = _)
       }
@@ -2587,7 +2877,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object title extends PropertyFunction {
     @inline protected def attributeName = "title"
-    implicit object HTMLElement extends MountPointBuilder[HTMLElement, title.type, String] {
+    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, title.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.title = _)
       }
@@ -2595,7 +2885,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object trueSpeed extends PropertyFunction {
     @inline protected def attributeName = "trueSpeed"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, trueSpeed.type, Boolean] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, trueSpeed.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.trueSpeed = _)
       }
@@ -2603,52 +2893,57 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object `type` extends PropertyFunction {
     @inline protected def attributeName = "type"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `type`.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `type`.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, `type`.type, String] {
       def toMountPoint(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLMenuElement extends MountPointBuilder[HTMLMenuElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLMenuElement extends MountPointBuilder[HTMLMenuElement, `type`.type, String] {
       def toMountPoint(element: HTMLMenuElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, `type`.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLSourceElement extends MountPointBuilder[HTMLSourceElement, `type`.type, String] {
       def toMountPoint(element: HTMLSourceElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, `type`.type, String] {
       def toMountPoint(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, `type`.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, `type`.type, String] {
       def toMountPoint(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLStyleElement extends MountPointBuilder[HTMLStyleElement, `type`.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, `type`.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLParamElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.`type` = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLStyleElement extends MountPointBuilder[HTMLStyleElement, `type`.type, String] {
       def toMountPoint(element: HTMLStyleElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, `type`.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, `type`.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
@@ -2656,7 +2951,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object url extends PropertyFunction {
     @inline protected def attributeName = "url"
-    implicit object HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, url.type, String] {
+    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, url.type, String] {
       def toMountPoint(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.url = _)
       }
@@ -2664,60 +2959,76 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object useMap extends PropertyFunction {
     @inline protected def attributeName = "useMap"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, useMap.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, useMap.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.useMap = _)
       }
     }
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, useMap.type, String] {
+    implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, useMap.type, String] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.useMap = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, useMap.type, String] {
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, useMap.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.useMap = _)
       }
     }
   }
+  object vAlign extends PropertyFunction {
+    @inline protected def attributeName = "vAlign"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, vAlign.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCaptionElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.vAlign = _)
+      }
+    }
+  }
+  object vLink extends PropertyFunction {
+    @inline protected def attributeName = "vLink"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, vLink.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.vLink = _)
+      }
+    }
+  }
   object value extends PropertyFunction {
     @inline protected def attributeName = "value"
-    implicit object HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, value.type, String] {
       def toMountPoint(element: HTMLSelectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, value.type, String] {
       def toMountPoint(element: HTMLOptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, value.type, String] {
       def toMountPoint(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLLIElement extends MountPointBuilder[HTMLLIElement, value.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLLIElement extends MountPointBuilder[HTMLLIElement, value.type, Int] {
       def toMountPoint(element: HTMLLIElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, value.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLParamElement extends MountPointBuilder[HTMLParamElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, value.type, String] {
       def toMountPoint(element: HTMLParamElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, value.type, String] {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, value.type, String] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    implicit object HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, value.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLProgressElement extends MountPointBuilder[HTMLProgressElement, value.type, Double] {
       def toMountPoint(element: HTMLProgressElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
@@ -2725,20 +3036,36 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object valueAsNumber extends PropertyFunction {
     @inline protected def attributeName = "valueAsNumber"
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber.type, Double] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.valueAsNumber = _)
       }
     }
   }
+  object valueType extends PropertyFunction {
+    @inline protected def attributeName = "valueType"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, valueType.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLParamElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.valueType = _)
+      }
+    }
+  }
+  object version extends PropertyFunction {
+    @inline protected def attributeName = "version"
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHtmlElement extends MountPointBuilder[HTMLHtmlElement, version.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLHtmlElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.version = _)
+      }
+    }
+  }
   object volume extends PropertyFunction {
     @inline protected def attributeName = "volume"
-    implicit object HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, volume.type, Double] {
+    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, volume.type, Double] {
       def toMountPoint(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.volume = _)
       }
     }
-    @deprecated("Non standard.", "forever") implicit object HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, volume.type, js.Any] {
+    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, volume.type, js.Any] {
       @deprecated("Non standard.", "forever") def toMountPoint(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.volume = _)
       }
@@ -2746,7 +3073,12 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object vspace extends PropertyFunction {
     @inline protected def attributeName = "vspace"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, vspace.type, Int] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, vspace.type, Int] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.vspace = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, vspace.type, Int] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.vspace = _)
       }
@@ -2754,52 +3086,77 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object width extends PropertyFunction {
     @inline protected def attributeName = "width"
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, width.type, Double] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, width.type, String] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, width.type, Double] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLAppletElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLImageElement extends MountPointBuilder[HTMLImageElement, width.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, width.type, Int] {
       def toMountPoint(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, width.type, js.Any] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, width.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, width.type, String] {
+    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, width.type, String] {
       def toMountPoint(element: HTMLIFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLInputElement extends MountPointBuilder[HTMLInputElement, width.type, String] {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, width.type, String] {
       def toMountPoint(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLCanvasElement extends MountPointBuilder[HTMLCanvasElement, width.type, Int] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLPreElement extends MountPointBuilder[HTMLPreElement, width.type, Int] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLPreElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
+    implicit object mountPointBuilder_Int_HTMLCanvasElement extends MountPointBuilder[HTMLCanvasElement, width.type, Int] {
       def toMountPoint(element: HTMLCanvasElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, width.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, width.type, Int] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableCellElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, width.type, js.Any] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLTableColElement, binding: Binding[js.Any]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLHRElement extends MountPointBuilder[HTMLHRElement, width.type, Double] {
+      @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLHRElement, binding: Binding[Double]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, width.type, String] {
       def toMountPoint(element: HTMLObjectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, width.type, String] {
+    implicit object mountPointBuilder_String_HTMLEmbedElement extends MountPointBuilder[HTMLEmbedElement, width.type, String] {
       def toMountPoint(element: HTMLEmbedElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    implicit object HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, width.type, Int] {
+    implicit object mountPointBuilder_Int_HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, width.type, Int] {
       def toMountPoint(element: HTMLVideoElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    @deprecated("Obsolete.", "HTML 5") implicit object HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, width.type, String] {
+    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, width.type, String] {
       @deprecated("Obsolete.", "HTML 5") def toMountPoint(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
@@ -2807,7 +3164,7 @@ private[concentricsky] object AttributeFunctions extends Dynamic {
   }
   object wrap extends PropertyFunction {
     @inline protected def attributeName = "wrap"
-    implicit object HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, wrap.type, String] {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, wrap.type, String] {
       def toMountPoint(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.wrap = _)
       }
