@@ -20,15 +20,15 @@ libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
 
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
-
 dependsOn(RootProject(file("nameBasedXml.scala")))
 
 scalacOptions in Test += "-Xxml:-coalescing"
 
 requireJsDomEnv in Test := true
 
-installJsdom / version  := "15.1.1"
+installJsdom / version := "15.1.1"
+
+libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.0"
 
 val generateEntityBuilders = taskKey[File]("Generate EntityBuilders.scala file from HTML Living Standard")
 
@@ -39,16 +39,17 @@ generateEntityBuilders := {
   implicit val backend = HttpURLConnectionBackend()
   final case class Entity(codepoints: Seq[Int], characters: String)
   val entityMap = sttp
-      .get(uri"https://html.spec.whatwg.org/entities.json")
-      .response(asJson[collection.immutable.SortedMap[String, Entity]])
-      .send()
-      .unsafeBody
-      .left.map(_.error)
-      .toTry
-      .get
+    .get(uri"https://html.spec.whatwg.org/entities.json")
+    .response(asJson[collection.immutable.SortedMap[String, Entity]])
+    .send()
+    .unsafeBody
+    .left
+    .map(_.error)
+    .toTry
+    .get
   val EntityRefRegex = "&(.*);".r
   val entityDefs = for ((EntityRefRegex(entityName), Entity(_, text)) <- entityMap.view) yield {
-      q"@inline def ${Term.Name(entityName)} = new TextBuilder($text)"
+    q"@inline def ${Term.Name(entityName)} = new TextBuilder($text)"
   }
   val geneatedAst = q"""
   package com.concentricsky {
@@ -67,21 +68,130 @@ generateEntityBuilders := {
   file
 }
 
-val generateElementBuilders = taskKey[File]("Generate ElementBuilders.scala file from HTML Living Standard")
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
 
-generateElementBuilders := {
+val generateAttributeFunctions = taskKey[File]("Generate AttributeFunctions.scala file from scala-js-dom")
+
+generateAttributeFunctions := {
+  object JsNativeSetter {
+    private val SetterRegex = """(\w+)_=""".r
+    private def pf: PartialFunction[Stat, (String, Seq[Mod], Type)] = {
+      case q"..$mods var ${Pat.Var.Term(varName)}: ${Some(tpe)} = js.native" =>
+        (varName.value, mods, tpe)
+      case q"..$mods def ${Term.Name(SetterRegex(defPrefix))}($value: ${Some(tpe: Type)}): $unit = js.native" =>
+        (defPrefix, mods, tpe)
+    }
+    def unapply(stat: Stat) = pf.lift(stat)
+  }
+  val Some(compileReport) = updateClassifiers.value.configuration(Compile)
+  val Seq(domModuleReport) = compileReport.modules.filter { moduleReport =>
+    moduleReport.module.organization == "org.scala-js" && moduleReport.module.name.startsWith("scalajs-dom")
+  }
+  val Seq((_, sourceJar)) = domModuleReport.artifacts.filter {
+    case (domArtifact, _) => domArtifact.classifier.contains("sources")
+  }
+  import java.util.jar.JarFile
+  val jarFile = new JarFile(sourceJar)
+  val parsedSource = try {
+    def parseFromJar(fileName: String) = {
+      val stream = jarFile.getInputStream(jarFile.getJarEntry(fileName))
+      try {
+        stream.parse[Source].get
+      } finally {
+        stream.close()
+      }
+    }
+    Seq(parseFromJar("org/scalajs/dom/raw/Html.scala"), parseFromJar("org/scalajs/dom/raw/lib.scala"))
+  } finally {
+    jarFile.close()
+  }
+  val defs = {
+    for {
+      Source(rootStats) <- parsedSource
+      q"package $_ { ..$packageStats }" <- rootStats
+      Defn.Class(mods, className, _, _, template) <- packageStats
+      if className.value.endsWith("Element")
+      stats <- template.stats.toSeq
+      JsNativeSetter(setterName, methodMods, tpe) <- stats
+    } yield
+      (className, setterName, tpe, (mods ++ methodMods).collect {
+        case deprecatedAnnotation @ mod"@deprecated(..$_)" =>
+          deprecatedAnnotation
+      })
+  }.groupBy(_._2)
+    .toIndexedSeq
+    .sortBy(_._1)
+    .map {
+      case (setterNameString, setters) =>
+        val attributeName = setterNameString match {
+          case "className" => "class"
+          case "htmlFor"   => "for"
+          case _           => setterNameString
+        }
+        val attributeObjectName = Term.Name(attributeName)
+        val setterName = Term.Name(setterNameString)
+        val propertyConstructors = setters.view.map {
+          case (className, _, tpe, mods) =>
+            val property = if (setterNameString == "style" && tpe.syntax == "String") {
+              q"element.$setterName.cssText" // Workaround for IE
+            } else {
+              q"element.$setterName"
+            }
+            val mountPointBuilder = s"mountPointBuilder_${tpe.syntax.replace('.', '_')}_${className.tpe}"
+            q"""
+              ..$mods implicit object ${Term.Name(mountPointBuilder)} extends MountPointBuilder[$className, $attributeObjectName.type, $tpe] {
+                ..$mods def toMountPoint(element: $className, binding: Binding[$tpe]) = {
+                  Binding.BindingInstances.map(binding)($property = _)
+                }
+              }
+            """
+        }.toList
+        q"""
+          object $attributeObjectName extends PropertyFunction {
+            @inline
+            protected def attributeName = $attributeName
+            ..$propertyConstructors
+          }
+        """
+    }
+
+  val geneatedAst = q"""
+  package com.concentricsky {
+    import scala.scalajs.js
+    import org.scalajs.dom.raw._
+    import com.concentricsky.html.NodeBinding.Interpolated.MountPointBuilder
+    import com.concentricsky.html.NodeBinding.Interpolated.PropertyFunction
+    import com.concentricsky.html.elementTypes._
+    import com.thoughtworks.binding.Binding
+    private[concentricsky] object AttributeFunctions {
+      ..$defs
+    }
+  }
+  """
+  val file = (Compile / scalaSource).value / "com" / "concentricsky" / "AttributeFunctions.scala"
+  val fileContent = Seq(
+    "// Don't edit this file, because it is generated by `sbt generateAttributeFunctions`",
+    geneatedAst.syntax
+  )
+  IO.writeLines(file, fileContent)
+  file
+}
+
+val generateElementFunctions = taskKey[File]("Generate ElementFunctions.scala file from HTML Living Standard")
+
+generateElementFunctions := {
   import com.gargoylesoftware.htmlunit.WebClient
   import com.gargoylesoftware.htmlunit.html._
   import scala.collection.JavaConverters._
   val webClient = new WebClient()
-  webClient.getOptions().setJavaScriptEnabled(false)
-  webClient.getOptions().setCssEnabled(false)
+  webClient.getOptions.setJavaScriptEnabled(false)
+  webClient.getOptions.setCssEnabled(false)
   val HeadingTag = """h\d""".r
   val document = webClient.getPage[HtmlPage]("https://html.spec.whatwg.org/")
   val tagDefs = document.querySelectorAll("dl.element").asScala.view.flatMap { elementDl =>
     val domInterface = elementDl.querySelectorAll(".idl dfn[id$=element]").asScala match {
       case Seq(domInterfaceDfn) =>
-          domInterfaceDfn.asText
+        domInterfaceDfn.asText
       case Seq() =>
         elementDl.querySelectorAll("dd:last-child code").asScala.filter { code =>
           Set("Uses", "Use", "Supplied by the element's author (inherits from").contains(code.getPreviousSibling.asText)
@@ -90,12 +200,12 @@ generateElementBuilders := {
             code.asText
           case _ =>
             throw new MessageOnlyException(
-              s"No IDL interfaces found.\n${elementDl.asXml}" 
+              s"No IDL interfaces found.\n${elementDl.asXml}"
             )
-          }
+        }
       case _ =>
         throw new MessageOnlyException(
-          s"Multiple IDL interfaces found.\n${elementDl.asXml}" 
+          s"Multiple IDL interfaces found.\n${elementDl.asXml}"
         )
     }
     val Some(heading) = Iterator.iterate(elementDl)(_.getPreviousElementSibling).find { element =>
@@ -104,8 +214,9 @@ generateElementBuilders := {
     heading.querySelectorAll("dfn").asScala.view.map { elementDfn =>
       val tagName = elementDfn.asText
       q"""
-        @inline def ${Term.Name(tagName)} = 
-          new AttributeBuilder(document.createElement($tagName).asInstanceOf[${Type.Name(domInterface)}])
+        object ${Term.Name(tagName)} extends ElementFunction[${Type.Name(domInterface)}] {
+          @inline protected def tagName = $tagName
+        }
       """
     }
   }
@@ -113,16 +224,16 @@ generateElementBuilders := {
   package com.concentricsky {
     import org.scalajs.dom.document
     import org.scalajs.dom.raw._
-    import com.concentricsky.html.NodeBinding.Constant.AttributeBuilder
+    import com.concentricsky.html.NodeBinding.Constant.ElementFunction
     import com.concentricsky.html.elementTypes._
-    private[concentricsky] object ElementBuilders {
+    private[concentricsky] object ElementFunctions {
       ..${tagDefs.toList}
     }
   }
   """
-  val file = (Compile / scalaSource).value / "com" / "concentricsky" / "ElementBuilders.scala"
+  val file = (Compile / scalaSource).value / "com" / "concentricsky" / "ElementFunctions.scala"
   val fileContent = Seq(
-    "// Don't edit this file, because it is generated by `sbt generateElementBuilders`",
+    "// Don't edit this file, because it is generated by `sbt generateElementFunctions`",
     geneatedAst.syntax
   )
   IO.writeLines(file, fileContent)

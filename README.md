@@ -95,30 +95,73 @@ In contrast, the type of XHTML literals in a `@dom` annotated function is a subt
 
 Note that `NodeBinding` is a subtype of `Binding`, and `NodeBindingSeq` is a subtype of `BindingSeq`.
 
+Since the `@html` annotation does not change the return type any more, `.bind` is not available in an `@html` method body, unless `.bind` is in a XHTML interpolation expression. To use `.bind` in an `@html` method, explicit wrap the function to `Binding` is required.
+
+For example, given the following code written in `@dom` method:
+
+``` scala
+@dom render(toggle: Binding[Boolean]): Binding[Node] = {
+  if (toggle.bind) {
+    <label>On</label>
+  } else {
+    <label>Off</label>
+  }
+}
+```
+
+To migrate it to `@html`, a `Binding` block is required, or `toggle.bind` will not compile:
+
+``` scala
+@html render(toggle: Binding[Boolean]): Binding[Node] = Binding {
+  if (toggle.bind) {
+    <label>On</label>.bind
+  } else {
+    <label>Off</label>.bind
+  }
+}
+```
+
+Note that XHTML literals are now `NodeBinding`s instead of raw HTML nodes. A `.bind` is required to extract the raw nodes, or the return type will become a nested type like `Binding[NodeBinding[Node]]`.
+
 ### Attributes and properties
 
-In `@dom` annotated functions, XHTML attributes are translated to property assignments. If the property does not exist, an compiler error will be reported.
+In `@dom` annotated functions, XHTML attributes are translated to property assignments. If the property does not exist, an compiler error will be reported. `@html` handles attributes as same as `@dom`, except `htmlFor` and `className` attributes are not supported any more.
 
 ``` scala
-// Compile error!
-@dom def myDiv = <div non-exists-attribute="1"></div>
+// compiles
+@dom def render = <div className="my-div"></div>
 ```
-
-In `@html` annotated functions, an attribute without an interpolation expression will be translated to HTML attribute instead of a property. No compiler error will be reported for any attribute name.
-
 ``` scala
-// OK
-@html def myDiv = <div non-exists-attribute="1"></div>
+// compiles
+@dom def render = <div class="my-div"></div>
 ```
-
-However, an attribute with an interpolation expression are still type checked as `@dom`.
-
 ``` scala
-// Compile error!
-@html def myDiv = <div non-exists-attribute={1}></div>
+// compiles
+@dom def render = <label htmlFor="my-radio"></label>
+```
+``` scala
+// compiles
+@dom def render = <label for="my-radio"></label>
+```
+``` scala
+// does not compile
+@html def render = <div className="my-div"></div>
+```
+``` scala
+// compiles
+@html def render = <div class="my-div"></div>
+```
+``` scala
+// does not compile
+@html def render = <label htmlFor="my-radio"></label>
+```
+``` scala
+// compiles
+@html def render = <label for="my-radio"></label>
 ```
 
-`@html` does not support `data:` prefix by default.
+
+`@html` supports `data:` prefix for dynamic named attributes as `@dom` did.
 
 ### `id` and `local-id` attribute
 
