@@ -2780,7 +2780,7 @@ private[concentricsky] object AttributeFunctions {
     }
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, style.type, String] {
       def toMountPoint(element: HTMLElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.style = _)
+        Binding.BindingInstances.map(binding)(element.style.cssText = _)
       }
     }
   }

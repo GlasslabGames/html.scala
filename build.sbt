@@ -132,11 +132,16 @@ generateAttributeFunctions := {
         val setterName = Term.Name(setterNameString)
         val propertyConstructors = setters.view.map {
           case (className, _, tpe, mods) =>
+            val property = if (setterNameString == "style" && tpe.syntax == "String") {
+              q"element.$setterName.cssText" // Workaround for IE
+            } else {
+              q"element.$setterName"
+            }
             val mountPointBuilder = s"mountPointBuilder_${tpe.syntax.replace('.', '_')}_${className.tpe}"
             q"""
               ..$mods implicit object ${Term.Name(mountPointBuilder)} extends MountPointBuilder[$className, $attributeObjectName.type, $tpe] {
                 ..$mods def toMountPoint(element: $className, binding: Binding[$tpe]) = {
-                  Binding.BindingInstances.map(binding)(element.$setterName = _)
+                  Binding.BindingInstances.map(binding)($property = _)
                 }
               }
             """
