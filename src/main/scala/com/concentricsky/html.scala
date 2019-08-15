@@ -242,12 +242,16 @@ object html {
           extends ChildBuilder {
 
         private[concentricsky] def mergeTrailingNodes(): Unit = {
-          bindingSeqs += Binding.Constant(Binding.Constants(childNodes: _*))
-          childNodes = new js.Array(0)
+          if (childNodes.nonEmpty) {
+            bindingSeqs += Binding.Constant(Binding.Constants(childNodes: _*))
+            childNodes = new js.Array(0)
+          }
         }
         private[concentricsky] def flush(): Unit = {
           mergeTrailingNodes()
-          mountPoints += mount(element, Constants(bindingSeqs: _*).flatMapBinding(identity))
+          if (bindingSeqs.nonEmpty) {
+            mountPoints += mount(element, Constants(bindingSeqs: _*).flatMapBinding(identity))
+          }
         }
         @inline
         def applyEnd = this
@@ -467,9 +471,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span style="color: blue;" tabindex="99"></span><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *
