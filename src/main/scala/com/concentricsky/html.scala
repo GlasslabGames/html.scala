@@ -169,9 +169,10 @@ object html {
 
     final class AttributeFunction(@inline protected val attributeName: String) extends AnyVal with AttributeOrProperty {
       @inline
-      def apply(binding: Binding[String]) = new Interpolated.AttributeBuilder({ element =>
-        Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
-      })
+      def apply(binding: Binding[String]) =
+        new Interpolated.AttributeBuilder({ element =>
+          Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
+        })
     }
 
     type Constant[+A] = Binding.Constant[A]
@@ -224,6 +225,15 @@ object html {
       trait MountPointBuilder[-E <: Element, P, -V] {
         def toMountPoint(e: E, binding: Binding[V]): Binding[Unit]
       }
+      object MountPointBuilder {
+        implicit def convertedMountPointBuilder[E <: Element, P, V0, V1](
+            implicit mountPointBuilder: MountPointBuilder[E, P, V1],
+            bindable: Bindable.Lt[Binding[V0], V1]): MountPointBuilder[E, P, V0] = new MountPointBuilder[E, P, V0] {
+          def toMountPoint(e: E, binding: Binding[V0]): Binding[Unit] = {
+            mountPointBuilder.toMountPoint(e, bindable.toBinding(binding))
+          }
+        }
+      }
 
       final class ElementBuilder[+E <: Element](val element: E,
                                                 val bindingSeqs: js.Array[Binding[BindingSeq[Node]]] = new js.Array(0),
@@ -261,18 +271,18 @@ object html {
         }
 
         @inline
-        def applyNext(attributeBuilder: NodeBinding.Interpolated.AttributeBuilder)(implicit dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit) = {
+        def applyNext(attributeBuilder: NodeBinding.Interpolated.AttributeBuilder)(
+            implicit dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit) = {
           mountPoints += attributeBuilder.mountPoint(element)
           this
         }
 
         @inline
-        def applyNext[Property, Actual, Expected](
-            attributeBuilder: NodeBinding.Interpolated.PropertyBuilder[Property, Actual])(
-            implicit mountPointBuilder: MountPointBuilder[E, Property, Expected],
-            bindable: Bindable.Lt[Actual, Expected]
+        def applyNext[Property, Expected](
+            attributeBuilder: NodeBinding.Interpolated.PropertyBuilder[Property, Binding[Expected]])(
+            implicit mountPointBuilder: MountPointBuilder[E, Property, Expected]
         ) = {
-          mountPoints += mountPointBuilder.toMountPoint(element, bindable.toBinding(attributeBuilder.value))
+          mountPoints += mountPointBuilder.toMountPoint(element, attributeBuilder.value)
           this
         }
 
@@ -457,9 +467,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span tabIndex={99}></span><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span tabindex="99"></span><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span style="color: blue;" tabindex="99"></span><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *
