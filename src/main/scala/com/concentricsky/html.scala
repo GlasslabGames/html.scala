@@ -27,6 +27,50 @@ object html {
     mount(parent, bindableSeq.toBindingSeq(children)).watch()
   }
 
+  /** The factory class to create [[ElementBuilder]] */
+  trait ElementFactory[E <: Element] extends Curried {
+    protected def tagName: String
+    @inline def applyBegin = new NodeBinding.Constant.ElementBuilder(document.createElement(tagName).asInstanceOf[E])
+  }
+
+  object AttributeFactory {
+
+    trait Typed extends AttributeFactory {
+      protected type Self = this.type
+      @inline def apply[A <: Binding[Any]](value: A) = new NodeBinding.Interpolated.PropertyBuilder[this.type, A](value)
+    }
+
+    final class Untyped(private val attributeName: String) extends AnyVal with AttributeFactory {
+      @inline
+      protected def setAttribute(element: Element, value: String) = {
+        element.setAttribute(attributeName, value)
+      }
+      protected type Self = Untyped
+      def apply(binding: Binding[String]) =
+        new NodeBinding.Interpolated.AttributeBuilder({ element =>
+          Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
+        })
+    }
+
+  }
+  trait AttributeFactory extends Any with Curried {
+
+    protected type Self <: AttributeFactory
+
+    protected def setAttribute(element: Element, value: String)
+
+    @inline
+    def applyBegin = new NodeBinding.Constant.MultipleAttributeBuilder[Self](this)
+
+    @inline
+    def apply() = new NodeBinding.Constant.AttributeBuilder[Self](setAttribute(_, ""))
+
+    @inline
+    def apply(textBuilder: NodeBinding.Constant.TextBuilder) =
+      new NodeBinding.Constant.AttributeBuilder[Self](setAttribute(_, textBuilder.data))
+
+  }
+
   type NodeBindingSeq[+A] = BindingSeq[A] {
     def value: Seq[A]
   }
@@ -86,8 +130,8 @@ object html {
       }
 
     }
-    final class NodeListBuilder(val childNodes: js.Array[Node] = new js.Array(0),
-                                val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
+    final class Builder(val childNodes: js.Array[Node] = new js.Array(0),
+                        val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
         extends ChildBuilder {
       def applyEnd: NodeBindingSeq[Node] = {
         if (childNodes.isEmpty) {
@@ -127,71 +171,86 @@ object html {
   }
   object NodeBinding {
     object Constant {
-      object ElementBuilder {
-        implicit def toInterpolated[E <: Element](elementBuilder: ElementBuilder[E]) =
-          new Interpolated.ElementBuilder[E](elementBuilder.element)
-      }
+
+      @implicitNotFound("${AttributeObject} is not an attribute of ${E}")
+      final class AttributeEvidence[-E <: Element, AttributeObject](private val dummy: Unit = ()) extends AnyVal
+
       final class ElementBuilder[+E <: Element] private[concentricsky] (private[concentricsky] val element: E)
           extends AnyVal {
 
         @inline
-        def applyNext(attribute: AttributeBuilder[E]) = {
-          attribute.set(element)
+        def applyNext[AttributeObject](child: AttributeBuilder[AttributeObject])(
+            implicit attributeEvidence: AttributeEvidence[E, AttributeObject]) = {
+          child.set(element)
           this
+        }
+
+        def applyNext(child: Binding[String]) = {
+          toInterpolated.applyNext(child)
+        }
+
+        def applyNext[Child](child: Binding[Child])(implicit bindableSeq: BindableSeq.Lt[Child, Node]) = {
+          toInterpolated.applyNext(child)
+        }
+
+        @inline
+        def applyNext(child: NodeBinding.Interpolated.AttributeBuilder)(implicit dummyImplicit: DummyImplicit =
+                                                                          DummyImplicit.dummyImplicit) = {
+          toInterpolated.applyNext(child)
+        }
+
+        @inline
+        def applyNext[Property, Expected](child: NodeBinding.Interpolated.PropertyBuilder[Property, Binding[Expected]])(
+            implicit mountPointBuilder: Interpolated.MountPointBuilder[E, Property, Expected]
+        ) = {
+          toInterpolated.applyNext(child)
+        }
+
+        @inline
+        def applyNext(child: NodeBinding.Constant.ElementBuilder[Element]) = {
+          toInterpolated.applyNext(child)
+        }
+
+        def applyNext(child: NodeBinding.Interpolated.ElementBuilder[Element]) = {
+          toInterpolated.applyNext(child)
+        }
+
+        @inline
+        def applyNext(child: NodeBinding.Constant.NodeBuilder[Node]) = {
+          toInterpolated.applyNext(child)
+        }
+
+        @inline
+        def applyNext(child: NodeBinding.Constant.TextBuilder) = {
+          toInterpolated.applyNext(child)
         }
 
         @inline
         def applyEnd = this
+        private def toInterpolated = new NodeBinding.Interpolated.ElementBuilder[E](element)
+
       }
       final class NodeBuilder[+Node] private[concentricsky] (private[concentricsky] val node: Node) extends AnyVal
       final class TextBuilder private[concentricsky] (private[concentricsky] val data: String) extends AnyVal
 
-      final class AttributeBuilder[-E <: Element](private[concentricsky] val set: E => Unit) extends AnyVal
+      final class AttributeBuilder[PropertyType](private[concentricsky] val set: Element => Unit) extends AnyVal
 
-      final class MultipleAttributeBuilder[-E <: Element](attributeName: String,
-                                                          stringBuilder: StringBuilder = new StringBuilder) {
+      final class MultipleAttributeBuilder[A <: AttributeFactory](attributeFactory: AttributeFactory {
+        type Self = A
+      }, stringBuilder: StringBuilder = new StringBuilder) {
         def applyNext(textBuilder: TextBuilder) = {
           stringBuilder ++= textBuilder.data
           this
         }
-        def applyEnd = {
-          val value = stringBuilder.toString()
-          new AttributeBuilder[E](_.setAttribute(attributeName, value))
+        def applyEnd: AttributeBuilder[A] = {
+          attributeFactory(new TextBuilder(stringBuilder.toString()))
         }
       }
 
-      trait ElementFunction[E <: Element] extends Curried {
-        protected def tagName: String
-        @inline def applyBegin = new ElementBuilder(document.createElement(tagName).asInstanceOf[E])
-      }
-
-    }
-
-    final class AttributeFunction(@inline protected val attributeName: String) extends AnyVal with AttributeOrProperty {
-      @inline
-      def apply(binding: Binding[String]) =
-        new Interpolated.AttributeBuilder({ element =>
-          Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
-        })
     }
 
     type Constant[+A] = Binding.Constant[A]
 
-    private[concentricsky] trait AttributeOrProperty extends Any with Curried {
-
-      protected def attributeName: String
-
-      @inline
-      def applyBegin = new Constant.MultipleAttributeBuilder[Element](attributeName)
-
-      @inline
-      def apply() = new Constant.AttributeBuilder[Element](_.setAttribute(attributeName, ""))
-
-      @inline
-      def apply(textBuilder: Constant.TextBuilder) =
-        new Constant.AttributeBuilder[Element](_.setAttribute(attributeName, textBuilder.data))
-
-    }
     final class Interpolated[+A] private[concentricsky] (
         val value: A,
         private[concentricsky] val mountPoints: js.Array[Binding[Unit]])
@@ -213,24 +272,21 @@ object html {
 
     object Interpolated {
 
-      trait PropertyFunction extends AttributeOrProperty {
-        @inline def apply[A <: Binding[Any]](value: A) = new Interpolated.PropertyBuilder[this.type, A](value)
-      }
-
       final class AttributeBuilder(val mountPoint: Element => Binding[Unit]) extends AnyVal
 
       final class PropertyBuilder[PropertyType, Value](val value: Value) extends AnyVal
 
-      @implicitNotFound("Property ${P} of type ${V} is not found for ${E}")
-      trait MountPointBuilder[-E <: Element, P, -V] {
-        def toMountPoint(e: E, binding: Binding[V]): Binding[Unit]
+      @implicitNotFound("${AttributeObject} of type ${V} is not a property of ${E}")
+      trait MountPointBuilder[-E <: Element, AttributeObject, -V] {
+        def mountProperty(e: E, binding: Binding[V]): Binding[Unit]
       }
+
       object MountPointBuilder {
         implicit def convertedMountPointBuilder[E <: Element, P, V0, V1](
             implicit mountPointBuilder: MountPointBuilder[E, P, V1],
             bindable: Bindable.Lt[Binding[V0], V1]): MountPointBuilder[E, P, V0] = new MountPointBuilder[E, P, V0] {
-          def toMountPoint(e: E, binding: Binding[V0]): Binding[Unit] = {
-            mountPointBuilder.toMountPoint(e, bindable.toBinding(binding))
+          def mountProperty(e: E, binding: Binding[V0]): Binding[Unit] = {
+            mountPointBuilder.mountProperty(e, bindable.toBinding(binding))
           }
         }
       }
@@ -269,7 +325,8 @@ object html {
         }
 
         @inline
-        def applyNext(attributeBuilder: NodeBinding.Constant.AttributeBuilder[E]) = {
+        def applyNext[AttributeObject](attributeBuilder: NodeBinding.Constant.AttributeBuilder[AttributeObject])(
+            implicit attributeEvidence: Constant.AttributeEvidence[E, AttributeObject]) = {
           attributeBuilder.set(element)
           this
         }
@@ -286,7 +343,7 @@ object html {
             attributeBuilder: NodeBinding.Interpolated.PropertyBuilder[Property, Binding[Expected]])(
             implicit mountPointBuilder: MountPointBuilder[E, Property, Expected]
         ) = {
-          mountPoints += mountPointBuilder.toMountPoint(element, attributeBuilder.value)
+          mountPoints += mountPointBuilder.mountProperty(element, attributeBuilder.value)
           this
         }
 
@@ -373,9 +430,10 @@ object html {
 
   }
   object autoImports extends LowPriorityAutoImports {
+
     object data {
       object attributes extends Dynamic {
-        @inline def applyDynamic(attributeName: String) = new NodeBinding.AttributeFunction(attributeName)
+        @inline def applyDynamic(attributeName: String) = new AttributeFactory.Untyped(attributeName)
       }
     }
 
@@ -399,8 +457,8 @@ object html {
       }
 
     object `http://www.w3.org/1999/xhtml` {
-      @inline def elements = ElementFunctions
-      @inline def attributes = AttributeFunctions
+      @inline def elements = ElementFactories
+      @inline def attributes = AttributeFactories
       @inline def entities = EntityBuilders
       @inline def cdata(data: String) = new NodeBinding.Constant.NodeBuilder(document.createCDATASection(data))
       @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
@@ -412,8 +470,8 @@ object html {
       }
       @inline def interpolation = Binding
       object literal extends Curried {
-        def apply[Node](nodeBuilder: NodeBinding.Constant.NodeBuilder[Node]) = Constant(nodeBuilder.node)
-        def apply[E <: Element](elementBuilder: NodeBinding.Constant.ElementBuilder[E]) =
+        @inline def apply[Node](nodeBuilder: NodeBinding.Constant.NodeBuilder[Node]) = Constant(nodeBuilder.node)
+        @inline def apply[E <: Element](elementBuilder: NodeBinding.Constant.ElementBuilder[E]) =
           Constant(elementBuilder.element)
         def apply[E <: Element](elementBuilder: NodeBinding.Interpolated.ElementBuilder[E]): NodeBinding[E] = {
           if (elementBuilder.mountPoints.isEmpty && elementBuilder.bindingSeqs.isEmpty) {
@@ -425,7 +483,7 @@ object html {
             new NodeBinding.Interpolated(elementBuilder.element, elementBuilder.mountPoints)
           }
         }
-        def applyBegin = new NodeBindingSeq.NodeListBuilder
+        @inline def applyBegin = new NodeBindingSeq.Builder
       }
     }
 
@@ -461,7 +519,7 @@ object html {
   * @example XHTML literals with text attributes
   * {{{
   * @html
-  * val myDiv = <div class="my-class" tabIndex="42"></div>
+  * val myDiv = <div class="my-class" tabindex="42"></div>
   * myDiv.value.nodeName should be("DIV")
   * myDiv.value.className should be("my-class")
   * myDiv.value.tabIndex should be(42)
@@ -471,9 +529,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div style="color:red" title="my title" tabIndex={99999}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div style="color: red;" tabIndex={99999} title="my title"><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div style="color:red" title="my title" tabindex="99999"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * myDiv2.value.outerHTML should be("""<div style="color: red;" tabindex="99999" title="my title"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *
