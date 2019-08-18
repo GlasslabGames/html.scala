@@ -125,43 +125,49 @@ Note that XHTML literals are now `NodeBinding`s instead of raw HTML nodes. A `.b
 
 ### Attributes and properties
 
-In `@dom` annotated functions, XHTML attributes are translated to property assignments. If the property does not exist, an compiler error will be reported. `@html` handles attributes as same as `@dom`, except `htmlFor` and `className` attributes are not supported any more.
+In `@dom` annotated functions, XHTML attributes are translated to property assignments. The property name is case sensitive. If the property does not exist, an compiler error will be reported.
 
 ``` scala
-// compiles
-@dom def render = <div className="my-div"></div>
-```
-``` scala
-// compiles
-@dom def render = <div class="my-div"></div>
-```
-``` scala
-// compiles
-@dom def render = <label htmlFor="my-radio"></label>
-```
-``` scala
-// compiles
-@dom def render = <label for="my-radio"></label>
-```
-``` scala
-// does not compile
-@html def render = <div className="my-div"></div>
-```
-``` scala
-// compiles
-@html def render = <div class="my-div"></div>
-```
-``` scala
-// does not compile
-@html def render = <label htmlFor="my-radio"></label>
-```
-``` scala
-// compiles
-@html def render = <label for="my-radio"></label>
+// Compiles, because both `rowSpan` and `className` are valid properties
+@dom def myDiv = <td rowSpan={3} className="my-class"></td>
 ```
 
+``` scala
+// Does not compile because the property name is rowSpan, not rowspan.
+@dom def myDiv = <td rowspan={3}></td>
+```
 
-`@html` supports `data:` prefix for dynamic named attributes as `@dom` did.
+In an `@html` annotated function, an attribute without an interpolation expression will be translated to an HTML attribute instead of a DOM property. Only case sensitive [attribute names defined in HTML Standard](https://html.spec.whatwg.org/multipage/indices.html#attributes-3) are supported.
+
+``` scala
+// Does not compile, because neither `rowSpan` nor `className` is the exact attribute name defined in the HTML Standard.
+@html def myDiv = <td rowSpan="3" className="my-class"></td>
+```
+
+``` scala
+// Compiles, because both `rowspan` and `class` are defined in the HTML Standard.
+@dom def myDiv = <td rowspan="3" class="my-class"></td>
+```
+
+However, in an `@html` annotated function, an attribute with an interpolation expression will be translated to a DOM property instead of an HTML attribute. Only case sensitive [property names defined in scala-js-dom](https://www.scala-js.org/api/scalajs-dom/0.9.5/) are supported.
+
+
+``` scala
+// Compiles, because both `rowSpan` and `className` are defined in scala-js-dom.
+@html def myDiv = <td rowSpan={3} className={"my-class"}></td>
+```
+
+``` scala
+// Does not compile, because neither `rowspan` nor `class` is the exact property name defined in scala-js-dom.
+@dom def myDiv = <td rowspan={3} class={"my-class"}></td>
+```
+
+To setting abitrary attribute, with or without an interpolation expression, prepend a `data:` prefix to the attribute.
+
+``` scala
+// All the following attriubtes compile
+@html def myDiv = <td data:rowSpan={3.toString} data:class={"my-class"} data:custom-attribute-1="constant-value" data:custom-attribute-2={math.random.toString}></td>
+```
 
 ### `id` and `local-id` attribute
 
