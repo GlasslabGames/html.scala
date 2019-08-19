@@ -186,15 +186,22 @@ object Generators extends AutoPlugin {
               Term.Name(reflect.NameTransformer.encode(attributeName))
             }
           }
-          val attributeEvidences = for {
+          val attributeSetters = for {
             interfaceNames <- interfacesByAttribute.get(attributeName).view
             interfaceName <- interfaceNames.view
           } yield {
-            val evidenceName = s"attributeEvidence_$interfaceName"
+            val evidenceName = s"attributeSetter_$interfaceName"
             q"""
               @inline implicit def ${Term.Name(evidenceName)}:
-                AttributeEvidence[${Type.Name(interfaceName)}, $attributeObjectName.type] =
-                new AttributeEvidence
+                AttributeSetter[${Type.Name(interfaceName)}, $attributeObjectName.type] =
+                new AttributeSetter(${
+                  if (attributeName == "style") {
+                    // Workaround for IE
+                    q"_.style.cssText = _"
+                  } else {
+                    q"_.setAttribute($attributeName, _)"
+                  }
+                })
             """
           }
           val propertyConstructors = for {
@@ -221,23 +228,8 @@ object Generators extends AutoPlugin {
           }
           val objectDefinition = q"""
             ..${if (propertyOnly) List(mod"private[AttributeFactories]") else Nil} object $attributeObjectName extends AttributeFactory.Typed {
-              @inline protected[concentricsky] def setAttribute(element: Element, value: String) = ${
-                if (attributeName == "style") {
-                  // Workaround for IE
-                  q"""
-                    element match {
-                      case htmlElement: HTMLElement =>
-                        htmlElement.style.cssText = value
-                      case _ =>
-                        element.setAttribute($attributeName, value)
-                    }
-                  """
-                } else {
-                  q"element.setAttribute($attributeName, value)"
-                }
-              }
               ..${propertyConstructors.toList}
-              ..${attributeEvidences.toList}
+              ..${attributeSetters.toList}
             }
           """
           objectDefinition :: {
@@ -255,7 +247,7 @@ object Generators extends AutoPlugin {
           import com.concentricsky.html.NodeBinding.Interpolated.MountPointBuilder
           import com.concentricsky.html.ElementFactory
           import com.concentricsky.html.AttributeFactory
-          import com.concentricsky.html.NodeBinding.Constant.AttributeEvidence
+          import com.concentricsky.html.NodeBinding.Constant.AttributeSetter
           import com.concentricsky.html.elementTypes._
           import com.thoughtworks.binding.Binding
           private[concentricsky] object AttributeFactories {

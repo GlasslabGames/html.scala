@@ -35,39 +35,58 @@ object html {
 
   object AttributeFactory {
 
-    trait Typed extends AttributeFactory {
-      protected type Self = this.type
+    private object Typed {
+      final class AttributeMountPointBuilder[E <: Element, A <: Typed](
+          implicit attributeSetter: NodeBinding.Constant.AttributeSetter[E, A])
+          extends NodeBinding.Interpolated.MountPointBuilder[E, A, String] {
+        def mountProperty(e: E, binding: Binding[String]): Binding[Unit] = {
+          Binding.BindingInstances.map(binding)(attributeSetter.setAttribute(e, _))
+        }
+      }
+    }
+
+    trait Typed extends Curried {
+
+      @inline
+      implicit def attributeMountPointBuilder[E <: Element](
+          implicit attributeSetter: NodeBinding.Constant.AttributeSetter[E, this.type])
+        : NodeBinding.Interpolated.MountPointBuilder[E, this.type, String] =
+        new Typed.AttributeMountPointBuilder[E, this.type]
+
+      @inline
+      def applyBegin = new NodeBinding.Constant.MultipleAttributeBuilder.Typed[this.type](this)
+
+      @inline
+      def apply() = new NodeBinding.Constant.AttributeBuilder.Typed[this.type]("")
+
+      @inline
+      def apply(textBuilder: NodeBinding.Constant.TextBuilder) =
+        new NodeBinding.Constant.AttributeBuilder.Typed[this.type](textBuilder.data)
+
       @inline def apply[A <: Binding[Any]](value: A) = new NodeBinding.Interpolated.PropertyBuilder[this.type, A](value)
     }
 
-    final class Untyped(private val attributeName: String) extends AnyVal with AttributeFactory {
+    final class Untyped(private val attributeName: String) extends AnyVal with Curried {
       @inline
       protected def setAttribute(element: Element, value: String) = {
         element.setAttribute(attributeName, value)
       }
+      @inline
+      def applyBegin = new NodeBinding.Constant.MultipleAttributeBuilder.Untyped(this)
+
+      @inline
+      def apply() = new NodeBinding.Constant.AttributeBuilder.Untyped(setAttribute(_, ""))
+
+      @inline
+      def apply(textBuilder: NodeBinding.Constant.TextBuilder) =
+        new NodeBinding.Constant.AttributeBuilder.Untyped(setAttribute(_, textBuilder.data))
+
       protected type Self = Untyped
       def apply(binding: Binding[String]) =
         new NodeBinding.Interpolated.AttributeBuilder({ element =>
           Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
         })
     }
-
-  }
-  trait AttributeFactory extends Any with Curried {
-
-    protected type Self <: AttributeFactory
-
-    protected def setAttribute(element: Element, value: String)
-
-    @inline
-    def applyBegin = new NodeBinding.Constant.MultipleAttributeBuilder[Self](this)
-
-    @inline
-    def apply() = new NodeBinding.Constant.AttributeBuilder[Self](setAttribute(_, ""))
-
-    @inline
-    def apply(textBuilder: NodeBinding.Constant.TextBuilder) =
-      new NodeBinding.Constant.AttributeBuilder[Self](setAttribute(_, textBuilder.data))
 
   }
 
@@ -173,15 +192,20 @@ object html {
     object Constant {
 
       @implicitNotFound("${AttributeObject} is not an attribute of ${E}")
-      final class AttributeEvidence[-E <: Element, AttributeObject](private val dummy: Unit = ()) extends AnyVal
+      final class AttributeSetter[-E <: Element, AttributeObject](val setAttribute: (E, String) => Unit) extends AnyVal
 
       final class ElementBuilder[+E <: Element] private[concentricsky] (private[concentricsky] val element: E)
           extends AnyVal {
 
         @inline
-        def applyNext[AttributeObject](child: AttributeBuilder[AttributeObject])(
-            implicit attributeEvidence: AttributeEvidence[E, AttributeObject]) = {
+        def applyNext[AttributeObject](child: AttributeBuilder.Untyped) = {
           child.set(element)
+          this
+        }
+        @inline
+        def applyNext[AttributeObject](child: AttributeBuilder.Typed[AttributeObject])(
+            implicit attributeSetter: AttributeSetter[E, AttributeObject]) = {
+          attributeSetter.setAttribute(element, child.value)
           this
         }
 
@@ -232,18 +256,32 @@ object html {
       }
       final class NodeBuilder[+Node] private[concentricsky] (private[concentricsky] val node: Node) extends AnyVal
       final class TextBuilder private[concentricsky] (private[concentricsky] val data: String) extends AnyVal
+      object AttributeBuilder {
+        final class Untyped(private[concentricsky] val set: Element => Unit) extends AnyVal
+        final class Typed[A](private[concentricsky] val value: String) extends AnyVal
 
-      final class AttributeBuilder[PropertyType](private[concentricsky] val set: Element => Unit) extends AnyVal
+      }
+      object MultipleAttributeBuilder {
 
-      final class MultipleAttributeBuilder[A <: AttributeFactory](attributeFactory: AttributeFactory {
-        type Self = A
-      }, stringBuilder: StringBuilder = new StringBuilder) {
-        def applyNext(textBuilder: TextBuilder) = {
-          stringBuilder ++= textBuilder.data
-          this
+        final class Typed[A <: AttributeFactory.Typed](private[html] val attributeFactory: A,
+                                                       stringBuilder: StringBuilder = new StringBuilder) {
+          def applyNext(textBuilder: TextBuilder) = {
+            stringBuilder ++= textBuilder.data
+            this
+          }
+          def applyEnd = {
+            new AttributeBuilder.Typed[A](stringBuilder.toString())
+          }
         }
-        def applyEnd: AttributeBuilder[A] = {
-          attributeFactory(new TextBuilder(stringBuilder.toString()))
+        final class Untyped(attributeFactory: AttributeFactory.Untyped,
+                            stringBuilder: StringBuilder = new StringBuilder) {
+          def applyNext(textBuilder: TextBuilder) = {
+            stringBuilder ++= textBuilder.data
+            this
+          }
+          def applyEnd: AttributeBuilder.Untyped = {
+            attributeFactory(new TextBuilder(stringBuilder.toString()))
+          }
         }
       }
 
@@ -282,9 +320,9 @@ object html {
       }
 
       object MountPointBuilder {
-        implicit def convertedMountPointBuilder[E <: Element, P, V0, V1](
-            implicit mountPointBuilder: MountPointBuilder[E, P, V1],
-            bindable: Bindable.Lt[Binding[V0], V1]): MountPointBuilder[E, P, V0] = new MountPointBuilder[E, P, V0] {
+        implicit def convertedMountPointBuilder[E <: Element, A, V0, V1](
+            implicit mountPointBuilder: MountPointBuilder[E, A, V1],
+            bindable: Bindable.Lt[Binding[V0], V1]): MountPointBuilder[E, A, V0] = new MountPointBuilder[E, A, V0] {
           def mountProperty(e: E, binding: Binding[V0]): Binding[Unit] = {
             mountPointBuilder.mountProperty(e, bindable.toBinding(binding))
           }
@@ -325,9 +363,15 @@ object html {
         }
 
         @inline
-        def applyNext[AttributeObject](attributeBuilder: NodeBinding.Constant.AttributeBuilder[AttributeObject])(
-            implicit attributeEvidence: Constant.AttributeEvidence[E, AttributeObject]) = {
+        def applyNext[AttributeObject](attributeBuilder: NodeBinding.Constant.AttributeBuilder.Untyped) = {
           attributeBuilder.set(element)
+          this
+        }
+
+        @inline
+        def applyNext[AttributeObject](attributeBuilder: NodeBinding.Constant.AttributeBuilder.Typed[AttributeObject])(
+            implicit attributeSetter: Constant.AttributeSetter[E, AttributeObject]) = {
+          attributeSetter.setAttribute(element, attributeBuilder.value)
           this
         }
 
@@ -529,9 +573,9 @@ object html {
   *
   * {{{
   * @html
-  * val myDiv2 = <div style="color: red;" tabIndex={99999} title="my title"><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
+  * val myDiv2 = <div style="color: red;" tabIndex={99999} title="my title" class={"my-class"}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
   * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div style="color: red;" tabindex="99999" title="my title"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * myDiv2.value.outerHTML should be("""<div style="color: red;" tabindex="99999" title="my title" class="my-class"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
   * @example Element list of XHTML literals
   *
