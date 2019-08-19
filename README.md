@@ -137,7 +137,7 @@ In `@dom` annotated functions, XHTML attributes are translated to property assig
 @dom def myDiv = <td rowspan={3}></td>
 ```
 
-In an `@html` annotated function, an attribute without an interpolation expression will be translated to an HTML attribute instead of a DOM property. Only case sensitive [attribute names defined in HTML Standard](https://html.spec.whatwg.org/multipage/indices.html#attributes-3) are supported.
+In an `@html` annotated function, an attribute will be translated to an HTML attribute instead of a DOM property if it matches the case sensitive [attribute names defined in HTML Standard](https://html.spec.whatwg.org/multipage/indices.html#attributes-3) are supported.
 
 ``` scala
 // Does not compile, because neither `rowSpan` nor `className` is the exact attribute name defined in the HTML Standard.
@@ -146,20 +146,15 @@ In an `@html` annotated function, an attribute without an interpolation expressi
 
 ``` scala
 // Compiles, because both `rowspan` and `class` are defined in the HTML Standard.
-@dom def myDiv = <td rowspan="3" class="my-class"></td>
+@dom def myDiv = <td rowspan={"3"} class="my-class"></td>
 ```
 
-However, in an `@html` annotated function, an attribute with an interpolation expression will be translated to a DOM property instead of an HTML attribute. Only case sensitive [property names defined in scala-js-dom](https://www.scala-js.org/api/scalajs-dom/0.9.5/) are supported.
+In addition, an attribute with an interpolation expression will be translated to a DOM property instead of an HTML attribute. Only case sensitive [property names defined in scala-js-dom](https://www.scala-js.org/api/scalajs-dom/0.9.5/) are supported.
 
 
 ``` scala
 // Compiles, because both `rowSpan` and `className` are defined in scala-js-dom.
 @html def myDiv = <td rowSpan={3} className={"my-class"}></td>
-```
-
-``` scala
-// Does not compile, because neither `rowspan` nor `class` is the exact property name defined in scala-js-dom.
-@dom def myDiv = <td rowspan={3} class={"my-class"}></td>
 ```
 
 To setting abitrary attribute, with or without an interpolation expression, prepend a `data:` prefix to the attribute.

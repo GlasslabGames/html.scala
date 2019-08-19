@@ -5,12 +5,11 @@ import org.scalajs.dom.raw._
 import com.concentricsky.html.NodeBinding.Interpolated.MountPointBuilder
 import com.concentricsky.html.ElementFactory
 import com.concentricsky.html.AttributeFactory
-import com.concentricsky.html.NodeBinding.Constant.AttributeEvidence
+import com.concentricsky.html.NodeBinding.Constant.AttributeSetter
 import com.concentricsky.html.elementTypes._
 import com.thoughtworks.binding.Binding
 private[concentricsky] object AttributeFactories {
   private[AttributeFactories] object BaseHref_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("BaseHref", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, BaseHref_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.BaseHref = _)
@@ -24,7 +23,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def BaseHref: BaseHref_property.type = BaseHref_property
   private[AttributeFactories] object aLink_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("aLink", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, aLink_property.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.aLink = _)
@@ -32,25 +30,17 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def aLink: aLink_property.type = aLink_property
-  object abbr extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("abbr", value)
-    @inline implicit def attributeEvidence_HTMLTableCellElement: AttributeEvidence[HTMLTableCellElement, abbr.type] = new AttributeEvidence
-  }
+  object abbr extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, abbr.type] = new AttributeSetter(_.setAttribute("abbr", _)) }
   object accept extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("accept", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, accept.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.accept = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, accept.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, accept.type] = new AttributeSetter(_.setAttribute("accept", _))
   }
-  object accept$minuscharset extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("accept-charset", value)
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, accept$minuscharset.type] = new AttributeEvidence
-  }
+  object accept$minuscharset extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, accept$minuscharset.type] = new AttributeSetter(_.setAttribute("accept-charset", _)) }
   private[AttributeFactories] object acceptCharset_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("acceptCharset", value)
     implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, acceptCharset_property.type, String] {
       def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.acceptCharset = _)
@@ -59,7 +49,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def acceptCharset: acceptCharset_property.type = acceptCharset_property
   private[AttributeFactories] object accessKey_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("accessKey", value)
     implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, accessKey_property.type, String] {
       def mountProperty(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.accessKey = _)
@@ -67,12 +56,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def accessKey: accessKey_property.type = accessKey_property
-  object accesskey extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("accesskey", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, accesskey.type] = new AttributeEvidence
-  }
+  object accesskey extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, accesskey.type] = new AttributeSetter(_.setAttribute("accesskey", _)) }
   object action extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("action", value)
     @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, action.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLIsIndexElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.action = _)
@@ -83,10 +68,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.action = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, action.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, action.type] = new AttributeSetter(_.setAttribute("action", _))
   }
   private[AttributeFactories] object align_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("align", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, align_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.align = _)
@@ -154,20 +138,10 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def align: align_property.type = align_property
-  object allow extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("allow", value)
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, allow.type] = new AttributeEvidence
-  }
-  object allowfullscreen extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("allowfullscreen", value)
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, allowfullscreen.type] = new AttributeEvidence
-  }
-  object allowpaymentrequest extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("allowpaymentrequest", value)
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, allowpaymentrequest.type] = new AttributeEvidence
-  }
+  object allow extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allow.type] = new AttributeSetter(_.setAttribute("allow", _)) }
+  object allowfullscreen extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowfullscreen.type] = new AttributeSetter(_.setAttribute("allowfullscreen", _)) }
+  object allowpaymentrequest extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowpaymentrequest.type] = new AttributeSetter(_.setAttribute("allowpaymentrequest", _)) }
   object alt extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("alt", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, alt.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.alt = _)
@@ -193,12 +167,11 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.alt = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, alt.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, alt.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, alt.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
   }
   private[AttributeFactories] object altHtml_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("altHtml", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, altHtml_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.altHtml = _)
@@ -212,7 +185,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def altHtml: altHtml_property.type = altHtml_property
   private[AttributeFactories] object archive_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("archive", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, archive_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.archive = _)
@@ -225,25 +197,17 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def archive: archive_property.type = archive_property
-  object as extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("as", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, as.type] = new AttributeEvidence
-  }
+  object as extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, as.type] = new AttributeSetter(_.setAttribute("as", _)) }
   object async extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("async", value)
     implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, async.type, Boolean] {
       def mountProperty(element: HTMLScriptElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.async = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, async.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, async.type] = new AttributeSetter(_.setAttribute("async", _))
   }
-  object autocapitalize extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("autocapitalize", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, autocapitalize.type] = new AttributeEvidence
-  }
+  object autocapitalize extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, autocapitalize.type] = new AttributeSetter(_.setAttribute("autocapitalize", _)) }
   object autocomplete extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("autocomplete", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, autocomplete.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.autocomplete = _)
@@ -254,13 +218,12 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.autocomplete = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, autocomplete.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, autocomplete.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, autocomplete.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, autocomplete.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
   }
   object autofocus extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("autofocus", value)
     implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, autofocus.type, Boolean] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
@@ -281,23 +244,21 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.autofocus = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, autofocus.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, autofocus.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, autofocus.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, autofocus.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, autofocus.type] = new AttributeSetter(_.setAttribute("autofocus", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, autofocus.type] = new AttributeSetter(_.setAttribute("autofocus", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, autofocus.type] = new AttributeSetter(_.setAttribute("autofocus", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, autofocus.type] = new AttributeSetter(_.setAttribute("autofocus", _))
   }
   object autoplay extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("autoplay", value)
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, autoplay.type, Boolean] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.autoplay = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, autoplay.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, autoplay.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, autoplay.type] = new AttributeSetter(_.setAttribute("autoplay", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, autoplay.type] = new AttributeSetter(_.setAttribute("autoplay", _))
   }
   private[AttributeFactories] object axis_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("axis", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, axis_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.axis = _)
@@ -306,7 +267,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def axis: axis_property.type = axis_property
   private[AttributeFactories] object balance_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("balance", value)
     @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, balance_property.type, js.Any] {
       @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.balance = _)
@@ -315,7 +275,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def balance: balance_property.type = balance_property
   private[AttributeFactories] object behavior_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("behavior", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, behavior_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.behavior = _)
@@ -324,7 +283,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def behavior: behavior_property.type = behavior_property
   private[AttributeFactories] object border_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("border", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, border_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.border = _)
@@ -353,7 +311,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def border: border_property.type = border_property
   private[AttributeFactories] object borderColor_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("borderColor", value)
     implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColor_property.type, js.Any] {
       def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColor = _)
@@ -372,7 +329,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def borderColor: borderColor_property.type = borderColor_property
   private[AttributeFactories] object borderColorDark_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("borderColorDark", value)
     implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorDark_property.type, js.Any] {
       def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColorDark = _)
@@ -381,7 +337,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def borderColorDark: borderColorDark_property.type = borderColorDark_property
   private[AttributeFactories] object borderColorLight_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("borderColorLight", value)
     implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorLight_property.type, js.Any] {
       def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.borderColorLight = _)
@@ -390,7 +345,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def borderColorLight: borderColorLight_property.type = borderColorLight_property
   private[AttributeFactories] object caption_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("caption", value)
     implicit object mountPointBuilder_HTMLTableCaptionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, caption_property.type, HTMLTableCaptionElement] {
       def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableCaptionElement]) = {
         Binding.BindingInstances.map(binding)(element.caption = _)
@@ -399,7 +353,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def caption: caption_property.type = caption_property
   private[AttributeFactories] object cellPadding_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("cellPadding", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellPadding_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cellPadding = _)
@@ -408,7 +361,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def cellPadding: cellPadding_property.type = cellPadding_property
   private[AttributeFactories] object cellSpacing_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("cellSpacing", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellSpacing_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cellSpacing = _)
@@ -417,7 +369,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def cellSpacing: cellSpacing_property.type = cellSpacing_property
   object charset extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("charset", value)
     implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, charset.type, String] {
       def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.charset = _)
@@ -438,19 +389,17 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.charset = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLMetaElement: AttributeEvidence[HTMLMetaElement, charset.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, charset.type] = new AttributeSetter(_.setAttribute("charset", _))
   }
   object checked extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("checked", value)
     implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, checked.type, Boolean] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.checked = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, checked.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, checked.type] = new AttributeSetter(_.setAttribute("checked", _))
   }
   object cite extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("cite", value)
     implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, cite.type, String] {
       def mountProperty(element: HTMLQuoteElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cite = _)
@@ -461,15 +410,11 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.cite = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLQuoteElement: AttributeEvidence[HTMLQuoteElement, cite.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLModElement: AttributeEvidence[HTMLModElement, cite.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLQuoteElement: AttributeSetter[HTMLQuoteElement, cite.type] = new AttributeSetter(_.setAttribute("cite", _))
+    @inline implicit def attributeSetter_HTMLModElement: AttributeSetter[HTMLModElement, cite.type] = new AttributeSetter(_.setAttribute("cite", _))
   }
-  object `class` extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("class", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, `class`.type] = new AttributeEvidence
-  }
+  object `class` extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, `class`.type] = new AttributeSetter(_.setAttribute("class", _)) }
   private[AttributeFactories] object classList_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("classList", value)
     implicit object mountPointBuilder_DOMTokenList_Element extends MountPointBuilder[Element, classList_property.type, DOMTokenList] {
       def mountProperty(element: Element, binding: Binding[DOMTokenList]) = {
         Binding.BindingInstances.map(binding)(element.classList = _)
@@ -478,7 +423,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def classList: classList_property.type = classList_property
   private[AttributeFactories] object className_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("className", value)
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, className_property.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.className = _)
@@ -487,7 +431,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def className: className_property.type = className_property
   private[AttributeFactories] object classid_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("classid", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, classid_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.classid = _)
@@ -501,7 +444,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def classid: classid_property.type = classid_property
   private[AttributeFactories] object clear_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("clear", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLBRElement extends MountPointBuilder[HTMLBRElement, clear_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBRElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.clear = _)
@@ -510,7 +452,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def clear: clear_property.type = clear_property
   private[AttributeFactories] object code_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("code", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, code_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.code = _)
@@ -524,7 +465,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def code: code_property.type = code_property
   private[AttributeFactories] object codeBase_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("codeBase", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeBase_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.codeBase = _)
@@ -538,7 +478,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def codeBase: codeBase_property.type = codeBase_property
   private[AttributeFactories] object codeType_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("codeType", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeType_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.codeType = _)
@@ -552,7 +491,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def codeType: codeType_property.type = codeType_property
   private[AttributeFactories] object colSpan_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("colSpan", value)
     implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, colSpan_property.type, Int] {
       def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.colSpan = _)
@@ -560,12 +498,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def colSpan: colSpan_property.type = colSpan_property
-  object color extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("color", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, color.type] = new AttributeEvidence
-  }
+  object color extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, color.type] = new AttributeSetter(_.setAttribute("color", _)) }
   object cols extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("cols", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, cols.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.cols = _)
@@ -576,23 +510,18 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.cols = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, cols.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, cols.type] = new AttributeSetter(_.setAttribute("cols", _))
   }
-  object colspan extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("colspan", value)
-    @inline implicit def attributeEvidence_HTMLTableCellElement: AttributeEvidence[HTMLTableCellElement, colspan.type] = new AttributeEvidence
-  }
+  object colspan extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, colspan.type] = new AttributeSetter(_.setAttribute("colspan", _)) }
   object content extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("content", value)
     implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, content.type, String] {
       def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.content = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLMetaElement: AttributeEvidence[HTMLMetaElement, content.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, content.type] = new AttributeSetter(_.setAttribute("content", _))
   }
   private[AttributeFactories] object contentDocument_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("contentDocument", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, contentDocument_property.type, Document] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Document]) = {
         Binding.BindingInstances.map(binding)(element.contentDocument = _)
@@ -606,7 +535,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def contentDocument: contentDocument_property.type = contentDocument_property
   private[AttributeFactories] object contentEditable_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("contentEditable", value)
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, contentEditable_property.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.contentEditable = _)
@@ -615,7 +543,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def contentEditable: contentEditable_property.type = contentEditable_property
   private[AttributeFactories] object contentWindow_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("contentWindow", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Window_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentWindow_property.type, Window] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Window]) = {
         Binding.BindingInstances.map(binding)(element.contentWindow = _)
@@ -623,22 +550,17 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def contentWindow: contentWindow_property.type = contentWindow_property
-  object contenteditable extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("contenteditable", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, contenteditable.type] = new AttributeEvidence
-  }
+  object contenteditable extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, contenteditable.type] = new AttributeSetter(_.setAttribute("contenteditable", _)) }
   object controls extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("controls", value)
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, controls.type, Boolean] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.controls = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, controls.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, controls.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, controls.type] = new AttributeSetter(_.setAttribute("controls", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, controls.type] = new AttributeSetter(_.setAttribute("controls", _))
   }
   object coords extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("coords", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, coords.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.coords = _)
@@ -649,18 +571,16 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.coords = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, coords.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, coords.type] = new AttributeSetter(_.setAttribute("coords", _))
   }
   object crossorigin extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("crossorigin", value)
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, crossorigin.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, crossorigin.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, crossorigin.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, crossorigin.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, crossorigin.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
   }
   private[AttributeFactories] object currentTime_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("currentTime", value)
     implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, currentTime_property.type, Double] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.currentTime = _)
@@ -669,7 +589,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def currentTime: currentTime_property.type = currentTime_property
   object data extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("data", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, data.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.data = _)
@@ -680,10 +599,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.data = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, data.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, data.type] = new AttributeSetter(_.setAttribute("data", _))
   }
   private[AttributeFactories] object dateTime_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("dateTime", value)
     implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, dateTime_property.type, String] {
       def mountProperty(element: HTMLQuoteElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dateTime = _)
@@ -702,12 +620,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def dateTime: dateTime_property.type = dateTime_property
   object datetime extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("datetime", value)
-    @inline implicit def attributeEvidence_HTMLModElement: AttributeEvidence[HTMLModElement, datetime.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTimeElement: AttributeEvidence[HTMLTimeElement, datetime.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLModElement: AttributeSetter[HTMLModElement, datetime.type] = new AttributeSetter(_.setAttribute("datetime", _))
+    @inline implicit def attributeSetter_HTMLTimeElement: AttributeSetter[HTMLTimeElement, datetime.type] = new AttributeSetter(_.setAttribute("datetime", _))
   }
   private[AttributeFactories] object declare_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("declare", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, declare_property.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.declare = _)
@@ -720,16 +636,9 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def declare: declare_property.type = declare_property
-  object decoding extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("decoding", value)
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, decoding.type] = new AttributeEvidence
-  }
-  object default extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("default", value)
-    @inline implicit def attributeEvidence_HTMLTrackElement: AttributeEvidence[HTMLTrackElement, default.type] = new AttributeEvidence
-  }
+  object decoding extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, decoding.type] = new AttributeSetter(_.setAttribute("decoding", _)) }
+  object default extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, default.type] = new AttributeSetter(_.setAttribute("default", _)) }
   private[AttributeFactories] object defaultChecked_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("defaultChecked", value)
     implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked_property.type, Boolean] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defaultChecked = _)
@@ -738,7 +647,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def defaultChecked: defaultChecked_property.type = defaultChecked_property
   private[AttributeFactories] object defaultPlaybackRate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("defaultPlaybackRate", value)
     implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, defaultPlaybackRate_property.type, Double] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.defaultPlaybackRate = _)
@@ -747,7 +655,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def defaultPlaybackRate: defaultPlaybackRate_property.type = defaultPlaybackRate_property
   private[AttributeFactories] object defaultSelected_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("defaultSelected", value)
     implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected_property.type, Boolean] {
       def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defaultSelected = _)
@@ -756,7 +663,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def defaultSelected: defaultSelected_property.type = defaultSelected_property
   private[AttributeFactories] object defaultValue_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("defaultValue", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue_property.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.defaultValue = _)
@@ -770,25 +676,22 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def defaultValue: defaultValue_property.type = defaultValue_property
   object defer extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("defer", value)
     implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, defer.type, Boolean] {
       def mountProperty(element: HTMLScriptElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.defer = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, defer.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, defer.type] = new AttributeSetter(_.setAttribute("defer", _))
   }
   object dir extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("dir", value)
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, dir.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.dir = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, dir.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, dir.type] = new AttributeSetter(_.setAttribute("dir", _))
   }
   private[AttributeFactories] object direction_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("direction", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, direction_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.direction = _)
@@ -797,12 +700,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def direction: direction_property.type = direction_property
   object dirname extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("dirname", value)
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, dirname.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, dirname.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, dirname.type] = new AttributeSetter(_.setAttribute("dirname", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, dirname.type] = new AttributeSetter(_.setAttribute("dirname", _))
   }
   object disabled extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("disabled", value)
     implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, disabled.type, Boolean] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.disabled = _)
@@ -838,30 +739,27 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.disabled = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOptGroupElement: AttributeEvidence[HTMLOptGroupElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOptionElement: AttributeEvidence[HTMLOptionElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, disabled.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLFieldSetElement: AttributeEvidence[HTMLFieldSetElement, disabled.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLOptGroupElement: AttributeSetter[HTMLOptGroupElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLFieldSetElement: AttributeSetter[HTMLFieldSetElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
   }
   object download extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("download", value)
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, download.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, download.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, download.type] = new AttributeSetter(_.setAttribute("download", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, download.type] = new AttributeSetter(_.setAttribute("download", _))
   }
   object draggable extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("draggable", value)
     implicit object mountPointBuilder_Boolean_HTMLElement extends MountPointBuilder[HTMLElement, draggable.type, Boolean] {
       def mountProperty(element: HTMLElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.draggable = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, draggable.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, draggable.type] = new AttributeSetter(_.setAttribute("draggable", _))
   }
   private[AttributeFactories] object encoding_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("encoding", value)
     implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, encoding_property.type, String] {
       def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.encoding = _)
@@ -870,20 +768,15 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def encoding: encoding_property.type = encoding_property
   object enctype extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("enctype", value)
     implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, enctype.type, String] {
       def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.enctype = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, enctype.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, enctype.type] = new AttributeSetter(_.setAttribute("enctype", _))
   }
-  object enterkeyhint extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("enterkeyhint", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, enterkeyhint.type] = new AttributeEvidence
-  }
+  object enterkeyhint extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, enterkeyhint.type] = new AttributeSetter(_.setAttribute("enterkeyhint", _)) }
   private[AttributeFactories] object event_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("event", value)
     implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, event_property.type, String] {
       def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.event = _)
@@ -892,7 +785,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def event: event_property.type = event_property
   private[AttributeFactories] object face_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("face", value)
     @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLFontElement extends MountPointBuilder[HTMLFontElement, face_property.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLFontElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.face = _)
@@ -906,7 +798,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def face: face_property.type = face_property
   private[AttributeFactories] object files_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("files", value)
     implicit object mountPointBuilder_FileList_HTMLInputElement extends MountPointBuilder[HTMLInputElement, files_property.type, FileList] {
       def mountProperty(element: HTMLInputElement, binding: Binding[FileList]) = {
         Binding.BindingInstances.map(binding)(element.files = _)
@@ -915,7 +806,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def files: files_property.type = files_property
   private[AttributeFactories] object filters_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("filters", value)
     implicit object mountPointBuilder_Object_HTMLElement extends MountPointBuilder[HTMLElement, filters_property.type, Object] {
       def mountProperty(element: HTMLElement, binding: Binding[Object]) = {
         Binding.BindingInstances.map(binding)(element.filters = _)
@@ -924,12 +814,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def filters: filters_property.type = filters_property
   object `for` extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("for", value)
-    @inline implicit def attributeEvidence_HTMLLabelElement: AttributeEvidence[HTMLLabelElement, `for`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOutputElement: AttributeEvidence[HTMLOutputElement, `for`.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLLabelElement: AttributeSetter[HTMLLabelElement, `for`.type] = new AttributeSetter(_.setAttribute("for", _))
+    @inline implicit def attributeSetter_HTMLOutputElement: AttributeSetter[HTMLOutputElement, `for`.type] = new AttributeSetter(_.setAttribute("for", _))
   }
   object form extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("form", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_HTMLFormElement_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, form.type, HTMLFormElement] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[HTMLFormElement]) = {
         Binding.BindingInstances.map(binding)(element.form = _)
@@ -945,16 +833,15 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.form = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLFieldSetElement: AttributeEvidence[HTMLFieldSetElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOutputElement: AttributeEvidence[HTMLOutputElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, form.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, form.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLFieldSetElement: AttributeSetter[HTMLFieldSetElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLOutputElement: AttributeSetter[HTMLOutputElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
   }
   private[AttributeFactories] object formAction_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formAction", value)
     implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction_property.type, String] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formAction = _)
@@ -968,7 +855,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def formAction: formAction_property.type = formAction_property
   private[AttributeFactories] object formEnctype_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formEnctype", value)
     implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype_property.type, String] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formEnctype = _)
@@ -982,7 +868,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def formEnctype: formEnctype_property.type = formEnctype_property
   private[AttributeFactories] object formMethod_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formMethod", value)
     implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod_property.type, String] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formMethod = _)
@@ -996,7 +881,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def formMethod: formMethod_property.type = formMethod_property
   private[AttributeFactories] object formNoValidate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formNoValidate", value)
     implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate_property.type, String] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formNoValidate = _)
@@ -1010,7 +894,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def formNoValidate: formNoValidate_property.type = formNoValidate_property
   private[AttributeFactories] object formTarget_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formTarget", value)
     implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget_property.type, String] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.formTarget = _)
@@ -1024,32 +907,26 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def formTarget: formTarget_property.type = formTarget_property
   object formaction extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formaction", value)
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, formaction.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, formaction.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
   }
   object formenctype extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formenctype", value)
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, formenctype.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, formenctype.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formenctype.type] = new AttributeSetter(_.setAttribute("formenctype", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formenctype.type] = new AttributeSetter(_.setAttribute("formenctype", _))
   }
   object formmethod extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formmethod", value)
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, formmethod.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, formmethod.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formmethod.type] = new AttributeSetter(_.setAttribute("formmethod", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formmethod.type] = new AttributeSetter(_.setAttribute("formmethod", _))
   }
   object formnovalidate extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formnovalidate", value)
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, formnovalidate.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, formnovalidate.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formnovalidate.type] = new AttributeSetter(_.setAttribute("formnovalidate", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formnovalidate.type] = new AttributeSetter(_.setAttribute("formnovalidate", _))
   }
   object formtarget extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("formtarget", value)
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, formtarget.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, formtarget.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formtarget.type] = new AttributeSetter(_.setAttribute("formtarget", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formtarget.type] = new AttributeSetter(_.setAttribute("formtarget", _))
   }
   private[AttributeFactories] object frame_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("frame", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, frame_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.frame = _)
@@ -1058,7 +935,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def frame: frame_property.type = frame_property
   private[AttributeFactories] object frameBorder_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("frameBorder", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameBorder_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.frameBorder = _)
@@ -1072,7 +948,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def frameBorder: frameBorder_property.type = frameBorder_property
   private[AttributeFactories] object frameSpacing_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("frameSpacing", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameSpacing_property.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.frameSpacing = _)
@@ -1086,7 +961,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def frameSpacing: frameSpacing_property.type = frameSpacing_property
   private[AttributeFactories] object gotpointercapture_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("gotpointercapture", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, gotpointercapture_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.gotpointercapture = _)
@@ -1095,7 +969,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def gotpointercapture: gotpointercapture_property.type = gotpointercapture_property
   private[AttributeFactories] object hash_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("hash", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hash_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hash = _)
@@ -1108,12 +981,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def hash: hash_property.type = hash_property
-  object headers extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("headers", value)
-    @inline implicit def attributeEvidence_HTMLTableCellElement: AttributeEvidence[HTMLTableCellElement, headers.type] = new AttributeEvidence
-  }
+  object headers extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, headers.type] = new AttributeSetter(_.setAttribute("headers", _)) }
   object height extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("height", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, height.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.height = _)
@@ -1174,24 +1043,17 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.height = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLCanvasElement: AttributeEvidence[HTMLCanvasElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLEmbedElement: AttributeEvidence[HTMLEmbedElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, height.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, height.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLCanvasElement: AttributeSetter[HTMLCanvasElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
   }
-  object hidden extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("hidden", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, hidden.type] = new AttributeEvidence
-  }
-  object high extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("high", value)
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, high.type] = new AttributeEvidence
-  }
+  object hidden extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, hidden.type] = new AttributeSetter(_.setAttribute("hidden", _)) }
+  object high extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, high.type] = new AttributeSetter(_.setAttribute("high", _)) }
   private[AttributeFactories] object host_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("host", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, host_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.host = _)
@@ -1205,7 +1067,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def host: host_property.type = host_property
   private[AttributeFactories] object hostname_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("hostname", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hostname_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hostname = _)
@@ -1219,7 +1080,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def hostname: hostname_property.type = hostname_property
   object href extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("href", value)
     implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, href.type, String] {
       def mountProperty(element: HTMLBaseElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.href = _)
@@ -1245,13 +1105,12 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.href = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, href.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, href.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, href.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLBaseElement: AttributeEvidence[HTMLBaseElement, href.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
+    @inline implicit def attributeSetter_HTMLBaseElement: AttributeSetter[HTMLBaseElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
   }
   object hreflang extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("hreflang", value)
     implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, hreflang.type, String] {
       def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.hreflang = _)
@@ -1262,11 +1121,10 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.hreflang = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, hreflang.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, hreflang.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
   }
   private[AttributeFactories] object hspace_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("hspace", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, hspace_property.type, Int] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.hspace = _)
@@ -1280,7 +1138,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def hspace: hspace_property.type = hspace_property
   private[AttributeFactories] object htmlFor_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("htmlFor", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, htmlFor_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.htmlFor = _)
@@ -1293,12 +1150,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def htmlFor: htmlFor_property.type = htmlFor_property
-  object http$minusequiv extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("http-equiv", value)
-    @inline implicit def attributeEvidence_HTMLMetaElement: AttributeEvidence[HTMLMetaElement, http$minusequiv.type] = new AttributeEvidence
-  }
+  object http$minusequiv extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, http$minusequiv.type] = new AttributeSetter(_.setAttribute("http-equiv", _)) }
   private[AttributeFactories] object httpEquiv_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("httpEquiv", value)
     implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, httpEquiv_property.type, String] {
       def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.httpEquiv = _)
@@ -1307,24 +1160,16 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def httpEquiv: httpEquiv_property.type = httpEquiv_property
   object id extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("id", value)
     implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, id.type, String] {
       def mountProperty(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.id = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, id.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, id.type] = new AttributeSetter(_.setAttribute("id", _))
   }
-  object imagesizes extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("imagesizes", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, imagesizes.type] = new AttributeEvidence
-  }
-  object imagesrcset extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("imagesrcset", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, imagesrcset.type] = new AttributeEvidence
-  }
+  object imagesizes extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, imagesizes.type] = new AttributeSetter(_.setAttribute("imagesizes", _)) }
+  object imagesrcset extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, imagesrcset.type] = new AttributeSetter(_.setAttribute("imagesrcset", _)) }
   private[AttributeFactories] object indeterminate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("indeterminate", value)
     implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate_property.type, Boolean] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.indeterminate = _)
@@ -1333,7 +1178,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def indeterminate: indeterminate_property.type = indeterminate_property
   private[AttributeFactories] object innerHTML_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("innerHTML", value)
     implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, innerHTML_property.type, String] {
       def mountProperty(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.innerHTML = _)
@@ -1341,21 +1185,13 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def innerHTML: innerHTML_property.type = innerHTML_property
-  object inputmode extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("inputmode", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, inputmode.type] = new AttributeEvidence
-  }
+  object inputmode extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, inputmode.type] = new AttributeSetter(_.setAttribute("inputmode", _)) }
   object integrity extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("integrity", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, integrity.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, integrity.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, integrity.type] = new AttributeSetter(_.setAttribute("integrity", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, integrity.type] = new AttributeSetter(_.setAttribute("integrity", _))
   }
-  object is extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("is", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, is.type] = new AttributeEvidence
-  }
+  object is extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, is.type] = new AttributeSetter(_.setAttribute("is", _)) }
   private[AttributeFactories] object isMap_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("isMap", value)
     implicit object mountPointBuilder_Boolean_HTMLImageElement extends MountPointBuilder[HTMLImageElement, isMap_property.type, Boolean] {
       def mountProperty(element: HTMLImageElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.isMap = _)
@@ -1363,41 +1199,21 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def isMap: isMap_property.type = isMap_property
-  object ismap extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ismap", value)
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, ismap.type] = new AttributeEvidence
-  }
-  object itemid extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("itemid", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, itemid.type] = new AttributeEvidence
-  }
-  object itemprop extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("itemprop", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, itemprop.type] = new AttributeEvidence
-  }
-  object itemref extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("itemref", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, itemref.type] = new AttributeEvidence
-  }
-  object itemscope extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("itemscope", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, itemscope.type] = new AttributeEvidence
-  }
-  object itemtype extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("itemtype", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, itemtype.type] = new AttributeEvidence
-  }
+  object ismap extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, ismap.type] = new AttributeSetter(_.setAttribute("ismap", _)) }
+  object itemid extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemid.type] = new AttributeSetter(_.setAttribute("itemid", _)) }
+  object itemprop extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemprop.type] = new AttributeSetter(_.setAttribute("itemprop", _)) }
+  object itemref extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemref.type] = new AttributeSetter(_.setAttribute("itemref", _)) }
+  object itemscope extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemscope.type] = new AttributeSetter(_.setAttribute("itemscope", _)) }
+  object itemtype extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemtype.type] = new AttributeSetter(_.setAttribute("itemtype", _)) }
   object kind extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("kind", value)
     implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, kind.type, String] {
       def mountProperty(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.kind = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTrackElement: AttributeEvidence[HTMLTrackElement, kind.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, kind.type] = new AttributeSetter(_.setAttribute("kind", _))
   }
   object label extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("label", value)
     implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, label.type, String] {
       def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.label = _)
@@ -1413,21 +1229,19 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.label = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLOptGroupElement: AttributeEvidence[HTMLOptGroupElement, label.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOptionElement: AttributeEvidence[HTMLOptionElement, label.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTrackElement: AttributeEvidence[HTMLTrackElement, label.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLOptGroupElement: AttributeSetter[HTMLOptGroupElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
+    @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
+    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
   }
   object lang extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("lang", value)
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, lang.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.lang = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, lang.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, lang.type] = new AttributeSetter(_.setAttribute("lang", _))
   }
   private[AttributeFactories] object leftMargin_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("leftMargin", value)
     @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, leftMargin_property.type, js.Any] {
       @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.leftMargin = _)
@@ -1436,7 +1250,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def leftMargin: leftMargin_property.type = leftMargin_property
   private[AttributeFactories] object length_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("length", value)
     implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length_property.type, Int] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.length = _)
@@ -1445,7 +1258,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def length: length_property.type = length_property
   private[AttributeFactories] object link_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("link", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, link_property.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.link = _)
@@ -1454,16 +1266,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def link: link_property.type = link_property
   object list extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("list", value)
     implicit object mountPointBuilder_HTMLElement_HTMLInputElement extends MountPointBuilder[HTMLInputElement, list.type, HTMLElement] {
       def mountProperty(element: HTMLInputElement, binding: Binding[HTMLElement]) = {
         Binding.BindingInstances.map(binding)(element.list = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, list.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, list.type] = new AttributeSetter(_.setAttribute("list", _))
   }
   private[AttributeFactories] object longDesc_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("longDesc", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, longDesc_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.longDesc = _)
@@ -1482,7 +1292,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def longDesc: longDesc_property.type = longDesc_property
   object loop extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("loop", value)
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, loop.type, Boolean] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.loop = _)
@@ -1498,11 +1307,10 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.loop = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, loop.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, loop.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, loop.type] = new AttributeSetter(_.setAttribute("loop", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, loop.type] = new AttributeSetter(_.setAttribute("loop", _))
   }
   private[AttributeFactories] object lostpointercapture_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("lostpointercapture", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, lostpointercapture_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.lostpointercapture = _)
@@ -1510,16 +1318,9 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def lostpointercapture: lostpointercapture_property.type = lostpointercapture_property
-  object low extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("low", value)
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, low.type] = new AttributeEvidence
-  }
-  object manifest extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("manifest", value)
-    @inline implicit def attributeEvidence_HTMLHtmlElement: AttributeEvidence[HTMLHtmlElement, manifest.type] = new AttributeEvidence
-  }
+  object low extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, low.type] = new AttributeSetter(_.setAttribute("low", _)) }
+  object manifest extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLHtmlElement: AttributeSetter[HTMLHtmlElement, manifest.type] = new AttributeSetter(_.setAttribute("manifest", _)) }
   private[AttributeFactories] object marginHeight_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("marginHeight", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginHeight_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.marginHeight = _)
@@ -1528,7 +1329,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def marginHeight: marginHeight_property.type = marginHeight_property
   private[AttributeFactories] object marginWidth_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("marginWidth", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginWidth_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.marginWidth = _)
@@ -1537,7 +1337,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def marginWidth: marginWidth_property.type = marginWidth_property
   object max extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("max", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, max.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.max = _)
@@ -1548,12 +1347,11 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.max = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, max.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, max.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLProgressElement: AttributeEvidence[HTMLProgressElement, max.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
+    @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
+    @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
   }
   private[AttributeFactories] object maxLength_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("maxLength", value)
     implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength_property.type, Int] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.maxLength = _)
@@ -1567,12 +1365,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def maxLength: maxLength_property.type = maxLength_property
   object maxlength extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("maxlength", value)
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, maxlength.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, maxlength.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
   }
   object media extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("media", value)
     implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, media.type, String] {
       def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.media = _)
@@ -1588,21 +1384,19 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.media = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, media.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSourceElement: AttributeEvidence[HTMLSourceElement, media.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLStyleElement: AttributeEvidence[HTMLStyleElement, media.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
+    @inline implicit def attributeSetter_HTMLStyleElement: AttributeSetter[HTMLStyleElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
   }
   object method extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("method", value)
     implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, method.type, String] {
       def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.method = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, method.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, method.type] = new AttributeSetter(_.setAttribute("method", _))
   }
   private[AttributeFactories] object mimeType_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("mimeType", value)
     implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, mimeType_property.type, String] {
       def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.mimeType = _)
@@ -1611,22 +1405,19 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def mimeType: mimeType_property.type = mimeType_property
   object min extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("min", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, min.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.min = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, min.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, min.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, min.type] = new AttributeSetter(_.setAttribute("min", _))
+    @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, min.type] = new AttributeSetter(_.setAttribute("min", _))
   }
   object minlength extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("minlength", value)
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, minlength.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, minlength.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, minlength.type] = new AttributeSetter(_.setAttribute("minlength", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, minlength.type] = new AttributeSetter(_.setAttribute("minlength", _))
   }
   object multiple extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("multiple", value)
     implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, multiple.type, Boolean] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.multiple = _)
@@ -1637,21 +1428,19 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.multiple = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, multiple.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, multiple.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, multiple.type] = new AttributeSetter(_.setAttribute("multiple", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, multiple.type] = new AttributeSetter(_.setAttribute("multiple", _))
   }
   object muted extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("muted", value)
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, muted.type, Boolean] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.muted = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, muted.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, muted.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, muted.type] = new AttributeSetter(_.setAttribute("muted", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, muted.type] = new AttributeSetter(_.setAttribute("muted", _))
   }
   object name extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("name", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, name.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.name = _)
@@ -1727,22 +1516,21 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.name = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLFieldSetElement: AttributeEvidence[HTMLFieldSetElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOutputElement: AttributeEvidence[HTMLOutputElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLMapElement: AttributeEvidence[HTMLMapElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLMetaElement: AttributeEvidence[HTMLMetaElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLParamElement: AttributeEvidence[HTMLParamElement, name.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSlotElement: AttributeEvidence[HTMLSlotElement, name.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLFieldSetElement: AttributeSetter[HTMLFieldSetElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLOutputElement: AttributeSetter[HTMLOutputElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLMapElement: AttributeSetter[HTMLMapElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
+    @inline implicit def attributeSetter_HTMLSlotElement: AttributeSetter[HTMLSlotElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
   }
   private[AttributeFactories] object naturalHeight_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("naturalHeight", value)
     implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalHeight_property.type, Int] {
       def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.naturalHeight = _)
@@ -1751,7 +1539,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def naturalHeight: naturalHeight_property.type = naturalHeight_property
   private[AttributeFactories] object naturalWidth_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("naturalWidth", value)
     implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalWidth_property.type, Int] {
       def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.naturalWidth = _)
@@ -1760,7 +1547,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def naturalWidth: naturalWidth_property.type = naturalWidth_property
   private[AttributeFactories] object noHref_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("noHref", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, noHref_property.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAreaElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noHref = _)
@@ -1769,7 +1555,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def noHref: noHref_property.type = noHref_property
   private[AttributeFactories] object noResize_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("noResize", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, noResize_property.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noResize = _)
@@ -1778,7 +1563,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def noResize: noResize_property.type = noResize_property
   private[AttributeFactories] object noValidate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("noValidate", value)
     implicit object mountPointBuilder_Boolean_HTMLFormElement extends MountPointBuilder[HTMLFormElement, noValidate_property.type, Boolean] {
       def mountProperty(element: HTMLFormElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noValidate = _)
@@ -1787,7 +1571,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def noValidate: noValidate_property.type = noValidate_property
   private[AttributeFactories] object noWrap_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("noWrap", value)
     implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap_property.type, Boolean] {
       def mountProperty(element: HTMLDDElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.noWrap = _)
@@ -1805,20 +1588,10 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def noWrap: noWrap_property.type = noWrap_property
-  object nomodule extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("nomodule", value)
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, nomodule.type] = new AttributeEvidence
-  }
-  object nonce extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("nonce", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, nonce.type] = new AttributeEvidence
-  }
-  object novalidate extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("novalidate", value)
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, novalidate.type] = new AttributeEvidence
-  }
+  object nomodule extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, nomodule.type] = new AttributeSetter(_.setAttribute("nomodule", _)) }
+  object nonce extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, nonce.type] = new AttributeSetter(_.setAttribute("nonce", _)) }
+  object novalidate extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, novalidate.type] = new AttributeSetter(_.setAttribute("novalidate", _)) }
   private[AttributeFactories] object object_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("object", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, object_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`object` = _)
@@ -1832,16 +1605,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def `object`: object_property.type = object_property
   object onabort extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onabort", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onabort = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onabort.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onabort.type] = new AttributeSetter(_.setAttribute("onabort", _))
   }
   private[AttributeFactories] object onactivate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onactivate", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onactivate_property.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onactivate = _)
@@ -1850,7 +1621,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onactivate: onactivate_property.type = onactivate_property
   object onafterprint extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onafterprint", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onafterprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onafterprint = _)
@@ -1861,14 +1631,10 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onafterprint = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onafterprint.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onafterprint.type] = new AttributeSetter(_.setAttribute("onafterprint", _))
   }
-  object onauxclick extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onauxclick", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onauxclick.type] = new AttributeEvidence
-  }
+  object onauxclick extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onauxclick.type] = new AttributeSetter(_.setAttribute("onauxclick", _)) }
   private[AttributeFactories] object onbeforeactivate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforeactivate", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforeactivate_property.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeactivate = _)
@@ -1877,7 +1643,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onbeforeactivate: onbeforeactivate_property.type = onbeforeactivate_property
   private[AttributeFactories] object onbeforecopy_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforecopy", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecopy_property.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforecopy = _)
@@ -1886,7 +1651,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onbeforecopy: onbeforecopy_property.type = onbeforecopy_property
   private[AttributeFactories] object onbeforecut_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforecut", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecut_property.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforecut = _)
@@ -1895,7 +1659,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onbeforecut: onbeforecut_property.type = onbeforecut_property
   private[AttributeFactories] object onbeforedeactivate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforedeactivate", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforedeactivate_property.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforedeactivate = _)
@@ -1904,7 +1667,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onbeforedeactivate: onbeforedeactivate_property.type = onbeforedeactivate_property
   private[AttributeFactories] object onbeforepaste_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforepaste", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforepaste_property.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforepaste = _)
@@ -1913,7 +1675,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onbeforepaste: onbeforepaste_property.type = onbeforepaste_property
   object onbeforeprint extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforeprint", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onbeforeprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeprint = _)
@@ -1924,10 +1685,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onbeforeprint = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onbeforeprint.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onbeforeprint.type] = new AttributeSetter(_.setAttribute("onbeforeprint", _))
   }
   object onbeforeunload extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbeforeunload", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[BeforeUnloadEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onbeforeunload.type, js.Function1[BeforeUnloadEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[BeforeUnloadEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbeforeunload = _)
@@ -1938,19 +1698,17 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onbeforeunload = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onbeforeunload.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onbeforeunload.type] = new AttributeSetter(_.setAttribute("onbeforeunload", _))
   }
   object onblur extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onblur", value)
     implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onblur.type, js.Function1[FocusEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onblur = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onblur.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onblur.type] = new AttributeSetter(_.setAttribute("onblur", _))
   }
   private[AttributeFactories] object onbounce_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onbounce", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onbounce_property.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onbounce = _)
@@ -1958,97 +1716,81 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def onbounce: onbounce_property.type = onbounce_property
-  object oncancel extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncancel", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncancel.type] = new AttributeEvidence
-  }
+  object oncancel extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncancel.type] = new AttributeSetter(_.setAttribute("oncancel", _)) }
   object oncanplay extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncanplay", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncanplay.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncanplay = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncanplay.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncanplay.type] = new AttributeSetter(_.setAttribute("oncanplay", _))
   }
   object oncanplaythrough extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncanplaythrough", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncanplaythrough.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncanplaythrough = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncanplaythrough.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncanplaythrough.type] = new AttributeSetter(_.setAttribute("oncanplaythrough", _))
   }
   object onchange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onchange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onchange.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onchange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onchange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onchange.type] = new AttributeSetter(_.setAttribute("onchange", _))
   }
   object onclick extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onclick", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onclick.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onclick = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onclick.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onclick.type] = new AttributeSetter(_.setAttribute("onclick", _))
   }
-  object onclose extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onclose", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onclose.type] = new AttributeEvidence
-  }
+  object onclose extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onclose.type] = new AttributeSetter(_.setAttribute("onclose", _)) }
   object oncontextmenu extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncontextmenu", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncontextmenu.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncontextmenu = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncontextmenu.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncontextmenu.type] = new AttributeSetter(_.setAttribute("oncontextmenu", _))
   }
   object oncopy extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncopy", value)
     implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, oncopy.type, js.Function1[ClipboardEvent, _]] {
       def mountProperty(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncopy = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncopy.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncopy.type] = new AttributeSetter(_.setAttribute("oncopy", _))
   }
   object oncuechange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncuechange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncuechange.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncuechange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncuechange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncuechange.type] = new AttributeSetter(_.setAttribute("oncuechange", _))
   }
   object oncut extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oncut", value)
     implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, oncut.type, js.Function1[ClipboardEvent, _]] {
       def mountProperty(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.oncut = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oncut.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncut.type] = new AttributeSetter(_.setAttribute("oncut", _))
   }
   object ondblclick extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondblclick", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondblclick.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondblclick = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondblclick.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondblclick.type] = new AttributeSetter(_.setAttribute("ondblclick", _))
   }
   private[AttributeFactories] object ondeactivate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondeactivate", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondeactivate_property.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondeactivate = _)
@@ -2057,101 +1799,87 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def ondeactivate: ondeactivate_property.type = ondeactivate_property
   object ondrag extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondrag", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondrag.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondrag = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondrag.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondrag.type] = new AttributeSetter(_.setAttribute("ondrag", _))
   }
   object ondragend extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragend", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragend.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragend = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragend.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragend.type] = new AttributeSetter(_.setAttribute("ondragend", _))
   }
   object ondragenter extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragenter", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragenter.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragenter = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragenter.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragenter.type] = new AttributeSetter(_.setAttribute("ondragenter", _))
   }
-  object ondragexit extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragexit", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragexit.type] = new AttributeEvidence
-  }
+  object ondragexit extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragexit.type] = new AttributeSetter(_.setAttribute("ondragexit", _)) }
   object ondragleave extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragleave", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragleave.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragleave = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragleave.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragleave.type] = new AttributeSetter(_.setAttribute("ondragleave", _))
   }
   object ondragover extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragover", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragover.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragover = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragover.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragover.type] = new AttributeSetter(_.setAttribute("ondragover", _))
   }
   object ondragstart extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondragstart", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragstart.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondragstart = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondragstart.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragstart.type] = new AttributeSetter(_.setAttribute("ondragstart", _))
   }
   object ondrop extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondrop", value)
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondrop.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondrop = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondrop.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondrop.type] = new AttributeSetter(_.setAttribute("ondrop", _))
   }
   object ondurationchange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ondurationchange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondurationchange.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ondurationchange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ondurationchange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondurationchange.type] = new AttributeSetter(_.setAttribute("ondurationchange", _))
   }
   object onemptied extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onemptied", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onemptied.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onemptied = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onemptied.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onemptied.type] = new AttributeSetter(_.setAttribute("onemptied", _))
   }
   object onended extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onended", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onended.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onended = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onended.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onended.type] = new AttributeSetter(_.setAttribute("onended", _))
   }
   object onerror extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onerror", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onerror.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onerror = _)
@@ -2162,10 +1890,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onerror = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onerror.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onerror.type] = new AttributeSetter(_.setAttribute("onerror", _))
   }
   private[AttributeFactories] object onfinish_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onfinish", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onfinish_property.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfinish = _)
@@ -2174,16 +1901,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onfinish: onfinish_property.type = onfinish_property
   object onfocus extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onfocus", value)
     implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocus.type, js.Function1[FocusEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocus = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onfocus.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onfocus.type] = new AttributeSetter(_.setAttribute("onfocus", _))
   }
   private[AttributeFactories] object onfocusin_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onfocusin", value)
     implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusin_property.type, js.Function1[FocusEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocusin = _)
@@ -2192,7 +1917,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onfocusin: onfocusin_property.type = onfocusin_property
   private[AttributeFactories] object onfocusout_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onfocusout", value)
     implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusout_property.type, js.Function1[FocusEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onfocusout = _)
@@ -2200,12 +1924,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def onfocusout: onfocusout_property.type = onfocusout_property
-  object onformdata extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onformdata", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onformdata.type] = new AttributeEvidence
-  }
+  object onformdata extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onformdata.type] = new AttributeSetter(_.setAttribute("onformdata", _)) }
   object onhashchange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onhashchange", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[HashChangeEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onhashchange.type, js.Function1[HashChangeEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[HashChangeEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onhashchange = _)
@@ -2216,10 +1936,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onhashchange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onhashchange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onhashchange.type] = new AttributeSetter(_.setAttribute("onhashchange", _))
   }
   private[AttributeFactories] object onhelp_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onhelp", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onhelp_property.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onhelp = _)
@@ -2228,51 +1947,40 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onhelp: onhelp_property.type = onhelp_property
   object oninput extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oninput", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oninput.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.oninput = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oninput.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oninput.type] = new AttributeSetter(_.setAttribute("oninput", _))
   }
-  object oninvalid extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("oninvalid", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, oninvalid.type] = new AttributeEvidence
-  }
+  object oninvalid extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oninvalid.type] = new AttributeSetter(_.setAttribute("oninvalid", _)) }
   object onkeydown extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onkeydown", value)
     implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeydown.type, js.Function1[KeyboardEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeydown = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onkeydown.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onkeydown.type] = new AttributeSetter(_.setAttribute("onkeydown", _))
   }
   object onkeypress extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onkeypress", value)
     implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeypress.type, js.Function1[KeyboardEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeypress = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onkeypress.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onkeypress.type] = new AttributeSetter(_.setAttribute("onkeypress", _))
   }
   object onkeyup extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onkeyup", value)
     implicit object `mountPointBuilder_js_Function1[KeyboardEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onkeyup.type, js.Function1[KeyboardEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[KeyboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onkeyup = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onkeyup.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onkeyup.type] = new AttributeSetter(_.setAttribute("onkeyup", _))
   }
-  object onlanguagechange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onlanguagechange", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onlanguagechange.type] = new AttributeEvidence
-  }
+  object onlanguagechange extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onlanguagechange.type] = new AttributeSetter(_.setAttribute("onlanguagechange", _)) }
   object onload extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onload", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLImageElement` extends MountPointBuilder[HTMLImageElement, onload.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLImageElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onload = _)
@@ -2303,41 +2011,34 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onload = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onload.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onload.type] = new AttributeSetter(_.setAttribute("onload", _))
   }
   object onloadeddata extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onloadeddata", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadeddata.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadeddata = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onloadeddata.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadeddata.type] = new AttributeSetter(_.setAttribute("onloadeddata", _))
   }
   object onloadedmetadata extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onloadedmetadata", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadedmetadata.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadedmetadata = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onloadedmetadata.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadedmetadata.type] = new AttributeSetter(_.setAttribute("onloadedmetadata", _))
   }
-  object onloadend extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onloadend", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onloadend.type] = new AttributeEvidence
-  }
+  object onloadend extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadend.type] = new AttributeSetter(_.setAttribute("onloadend", _)) }
   object onloadstart extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onloadstart", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadstart.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onloadstart = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onloadstart.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadstart.type] = new AttributeSetter(_.setAttribute("onloadstart", _))
   }
   object onmessage extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmessage", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[MessageEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onmessage.type, js.Function1[MessageEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[MessageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmessage = _)
@@ -2348,77 +2049,66 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onmessage = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onmessage.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onmessage.type] = new AttributeSetter(_.setAttribute("onmessage", _))
   }
-  object onmessageerror extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmessageerror", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onmessageerror.type] = new AttributeEvidence
-  }
+  object onmessageerror extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onmessageerror.type] = new AttributeSetter(_.setAttribute("onmessageerror", _)) }
   object onmousedown extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmousedown", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousedown.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousedown = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmousedown.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmousedown.type] = new AttributeSetter(_.setAttribute("onmousedown", _))
   }
   object onmouseenter extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmouseenter", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseenter.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseenter = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmouseenter.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseenter.type] = new AttributeSetter(_.setAttribute("onmouseenter", _))
   }
   object onmouseleave extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmouseleave", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseleave.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseleave = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmouseleave.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseleave.type] = new AttributeSetter(_.setAttribute("onmouseleave", _))
   }
   object onmousemove extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmousemove", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousemove.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousemove = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmousemove.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmousemove.type] = new AttributeSetter(_.setAttribute("onmousemove", _))
   }
   object onmouseout extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmouseout", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseout.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseout = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmouseout.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseout.type] = new AttributeSetter(_.setAttribute("onmouseout", _))
   }
   object onmouseover extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmouseover", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseover.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseover = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmouseover.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseover.type] = new AttributeSetter(_.setAttribute("onmouseover", _))
   }
   object onmouseup extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmouseup", value)
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmouseup.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmouseup = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onmouseup.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseup.type] = new AttributeSetter(_.setAttribute("onmouseup", _))
   }
   private[AttributeFactories] object onmousewheel_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onmousewheel", value)
     implicit object `mountPointBuilder_js_Function1[WheelEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousewheel_property.type, js.Function1[WheelEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[WheelEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onmousewheel = _)
@@ -2427,7 +2117,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onmousewheel: onmousewheel_property.type = onmousewheel_property
   object onoffline extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onoffline", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onoffline.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onoffline = _)
@@ -2438,10 +2127,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onoffline = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onoffline.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onoffline.type] = new AttributeSetter(_.setAttribute("onoffline", _))
   }
   object ononline extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ononline", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, ononline.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ononline = _)
@@ -2452,54 +2140,43 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.ononline = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, ononline.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, ononline.type] = new AttributeSetter(_.setAttribute("ononline", _))
   }
-  object onpagehide extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpagehide", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onpagehide.type] = new AttributeEvidence
-  }
-  object onpageshow extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpageshow", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onpageshow.type] = new AttributeEvidence
-  }
+  object onpagehide extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onpagehide.type] = new AttributeSetter(_.setAttribute("onpagehide", _)) }
+  object onpageshow extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onpageshow.type] = new AttributeSetter(_.setAttribute("onpageshow", _)) }
   object onpaste extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpaste", value)
     implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, onpaste.type, js.Function1[ClipboardEvent, _]] {
       def mountProperty(element: Element, binding: Binding[js.Function1[ClipboardEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpaste = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onpaste.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onpaste.type] = new AttributeSetter(_.setAttribute("onpaste", _))
   }
   object onpause extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpause", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpause.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpause = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onpause.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onpause.type] = new AttributeSetter(_.setAttribute("onpause", _))
   }
   object onplay extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onplay", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onplay.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onplay = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onplay.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onplay.type] = new AttributeSetter(_.setAttribute("onplay", _))
   }
   object onplaying extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onplaying", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onplaying.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onplaying = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onplaying.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onplaying.type] = new AttributeSetter(_.setAttribute("onplaying", _))
   }
   private[AttributeFactories] object onpointercancel_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointercancel", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointercancel_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointercancel = _)
@@ -2508,7 +2185,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointercancel: onpointercancel_property.type = onpointercancel_property
   private[AttributeFactories] object onpointerdown_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerdown", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerdown_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerdown = _)
@@ -2517,7 +2193,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerdown: onpointerdown_property.type = onpointerdown_property
   private[AttributeFactories] object onpointerenter_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerenter", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerenter_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerenter = _)
@@ -2526,7 +2201,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerenter: onpointerenter_property.type = onpointerenter_property
   private[AttributeFactories] object onpointerleave_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerleave", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerleave_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerleave = _)
@@ -2535,7 +2209,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerleave: onpointerleave_property.type = onpointerleave_property
   private[AttributeFactories] object onpointermove_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointermove", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointermove_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointermove = _)
@@ -2544,7 +2217,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointermove: onpointermove_property.type = onpointermove_property
   private[AttributeFactories] object onpointerout_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerout", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerout_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerout = _)
@@ -2553,7 +2225,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerout: onpointerout_property.type = onpointerout_property
   private[AttributeFactories] object onpointerover_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerover", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerover_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerover = _)
@@ -2562,7 +2233,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerover: onpointerover_property.type = onpointerover_property
   private[AttributeFactories] object onpointerup_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpointerup", value)
     implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerup_property.type, js.Function1[PointerEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpointerup = _)
@@ -2571,34 +2241,30 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onpointerup: onpointerup_property.type = onpointerup_property
   object onpopstate extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onpopstate", value)
     implicit object `mountPointBuilder_js_Function1[PopStateEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onpopstate.type, js.Function1[PopStateEvent, _]] {
       def mountProperty(element: HTMLBodyElement, binding: Binding[js.Function1[PopStateEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onpopstate = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onpopstate.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onpopstate.type] = new AttributeSetter(_.setAttribute("onpopstate", _))
   }
   object onprogress extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onprogress", value)
     implicit object `mountPointBuilder_js_Function1[js_Any, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onprogress.type, js.Function1[js.Any, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[js.Any, _]]) = {
         Binding.BindingInstances.map(binding)(element.onprogress = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onprogress.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onprogress.type] = new AttributeSetter(_.setAttribute("onprogress", _))
   }
   object onratechange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onratechange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onratechange.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onratechange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onratechange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onratechange.type] = new AttributeSetter(_.setAttribute("onratechange", _))
   }
   private[AttributeFactories] object onreadystatechange_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onreadystatechange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreadystatechange_property.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onreadystatechange = _)
@@ -2606,21 +2272,16 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def onreadystatechange: onreadystatechange_property.type = onreadystatechange_property
-  object onrejectionhandled extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onrejectionhandled", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onrejectionhandled.type] = new AttributeEvidence
-  }
+  object onrejectionhandled extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onrejectionhandled.type] = new AttributeSetter(_.setAttribute("onrejectionhandled", _)) }
   object onreset extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onreset", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreset.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onreset = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onreset.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onreset.type] = new AttributeSetter(_.setAttribute("onreset", _))
   }
   object onresize extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onresize", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onresize.type, js.Function1[UIEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onresize = _)
@@ -2631,50 +2292,42 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onresize = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onresize.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onresize.type] = new AttributeSetter(_.setAttribute("onresize", _))
   }
   object onscroll extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onscroll", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onscroll.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onscroll = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onscroll.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onscroll.type] = new AttributeSetter(_.setAttribute("onscroll", _))
   }
-  object onsecuritypolicyviolation extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onsecuritypolicyviolation", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onsecuritypolicyviolation.type] = new AttributeEvidence
-  }
+  object onsecuritypolicyviolation extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onsecuritypolicyviolation.type] = new AttributeSetter(_.setAttribute("onsecuritypolicyviolation", _)) }
   object onseeked extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onseeked", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onseeked.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onseeked = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onseeked.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onseeked.type] = new AttributeSetter(_.setAttribute("onseeked", _))
   }
   object onseeking extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onseeking", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onseeking.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onseeking = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onseeking.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onseeking.type] = new AttributeSetter(_.setAttribute("onseeking", _))
   }
   object onselect extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onselect", value)
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselect.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onselect = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onselect.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onselect.type] = new AttributeSetter(_.setAttribute("onselect", _))
   }
   private[AttributeFactories] object onselectstart_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onselectstart", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselectstart_property.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onselectstart = _)
@@ -2683,16 +2336,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onselectstart: onselectstart_property.type = onselectstart_property
   object onstalled extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onstalled", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstalled = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onstalled.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onstalled.type] = new AttributeSetter(_.setAttribute("onstalled", _))
   }
   private[AttributeFactories] object onstart_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onstart", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onstart_property.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstart = _)
@@ -2701,7 +2352,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def onstart: onstart_property.type = onstart_property
   object onstorage extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onstorage", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[StorageEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onstorage.type, js.Function1[StorageEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[StorageEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onstorage = _)
@@ -2712,45 +2362,35 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onstorage = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onstorage.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onstorage.type] = new AttributeSetter(_.setAttribute("onstorage", _))
   }
   object onsubmit extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onsubmit", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onsubmit.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onsubmit = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onsubmit.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onsubmit.type] = new AttributeSetter(_.setAttribute("onsubmit", _))
   }
   object onsuspend extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onsuspend", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onsuspend.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onsuspend = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onsuspend.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onsuspend.type] = new AttributeSetter(_.setAttribute("onsuspend", _))
   }
   object ontimeupdate extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ontimeupdate", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ontimeupdate.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.ontimeupdate = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ontimeupdate.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ontimeupdate.type] = new AttributeSetter(_.setAttribute("ontimeupdate", _))
   }
-  object ontoggle extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ontoggle", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, ontoggle.type] = new AttributeEvidence
-  }
-  object onunhandledrejection extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onunhandledrejection", value)
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onunhandledrejection.type] = new AttributeEvidence
-  }
+  object ontoggle extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ontoggle.type] = new AttributeSetter(_.setAttribute("ontoggle", _)) }
+  object onunhandledrejection extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onunhandledrejection.type] = new AttributeSetter(_.setAttribute("onunhandledrejection", _)) }
   object onunload extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onunload", value)
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onunload.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onunload = _)
@@ -2761,41 +2401,31 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.onunload = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLBodyElement: AttributeEvidence[HTMLBodyElement, onunload.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onunload.type] = new AttributeSetter(_.setAttribute("onunload", _))
   }
   object onvolumechange extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onvolumechange", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onvolumechange.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onvolumechange = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onvolumechange.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onvolumechange.type] = new AttributeSetter(_.setAttribute("onvolumechange", _))
   }
   object onwaiting extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onwaiting", value)
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onwaiting.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
         Binding.BindingInstances.map(binding)(element.onwaiting = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onwaiting.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onwaiting.type] = new AttributeSetter(_.setAttribute("onwaiting", _))
   }
-  object onwheel extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("onwheel", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, onwheel.type] = new AttributeEvidence
-  }
+  object onwheel extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onwheel.type] = new AttributeSetter(_.setAttribute("onwheel", _)) }
   object open extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("open", value)
-    @inline implicit def attributeEvidence_HTMLDetailsElement: AttributeEvidence[HTMLDetailsElement, open.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLDialogElement: AttributeEvidence[HTMLDialogElement, open.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLDetailsElement: AttributeSetter[HTMLDetailsElement, open.type] = new AttributeSetter(_.setAttribute("open", _))
+    @inline implicit def attributeSetter_HTMLDialogElement: AttributeSetter[HTMLDialogElement, open.type] = new AttributeSetter(_.setAttribute("open", _))
   }
-  object optimum extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("optimum", value)
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, optimum.type] = new AttributeEvidence
-  }
+  object optimum extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, optimum.type] = new AttributeSetter(_.setAttribute("optimum", _)) }
   private[AttributeFactories] object outerHTML_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("outerHTML", value)
     implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, outerHTML_property.type, String] {
       def mountProperty(element: Element, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.outerHTML = _)
@@ -2804,7 +2434,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def outerHTML: outerHTML_property.type = outerHTML_property
   private[AttributeFactories] object parentElement_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("parentElement", value)
     implicit object mountPointBuilder_HTMLElement_HTMLElement extends MountPointBuilder[HTMLElement, parentElement_property.type, HTMLElement] {
       def mountProperty(element: HTMLElement, binding: Binding[HTMLElement]) = {
         Binding.BindingInstances.map(binding)(element.parentElement = _)
@@ -2813,7 +2442,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def parentElement: parentElement_property.type = parentElement_property
   private[AttributeFactories] object pathname_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("pathname", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, pathname_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.pathname = _)
@@ -2827,21 +2455,18 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def pathname: pathname_property.type = pathname_property
   object pattern extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("pattern", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, pattern.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.pattern = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, pattern.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, pattern.type] = new AttributeSetter(_.setAttribute("pattern", _))
   }
   object ping extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("ping", value)
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, ping.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, ping.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, ping.type] = new AttributeSetter(_.setAttribute("ping", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, ping.type] = new AttributeSetter(_.setAttribute("ping", _))
   }
   object placeholder extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("placeholder", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, placeholder.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.placeholder = _)
@@ -2852,11 +2477,10 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.placeholder = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, placeholder.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, placeholder.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
   }
   private[AttributeFactories] object playbackRate_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("playbackRate", value)
     implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, playbackRate_property.type, Double] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.playbackRate = _)
@@ -2864,12 +2488,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def playbackRate: playbackRate_property.type = playbackRate_property
-  object playsinline extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("playsinline", value)
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, playsinline.type] = new AttributeEvidence
-  }
+  object playsinline extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, playsinline.type] = new AttributeSetter(_.setAttribute("playsinline", _)) }
   private[AttributeFactories] object port_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("port", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, port_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.port = _)
@@ -2883,26 +2503,23 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def port: port_property.type = port_property
   object poster extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("poster", value)
     implicit object mountPointBuilder_String_HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, poster.type, String] {
       def mountProperty(element: HTMLVideoElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.poster = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, poster.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, poster.type] = new AttributeSetter(_.setAttribute("poster", _))
   }
   object preload extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("preload", value)
     implicit object mountPointBuilder_String_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, preload.type, String] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.preload = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, preload.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, preload.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, preload.type] = new AttributeSetter(_.setAttribute("preload", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, preload.type] = new AttributeSetter(_.setAttribute("preload", _))
   }
   private[AttributeFactories] object profile_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("profile", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadElement extends MountPointBuilder[HTMLHeadElement, profile_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHeadElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.profile = _)
@@ -2911,7 +2528,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def profile: profile_property.type = profile_property
   private[AttributeFactories] object prompt_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("prompt", value)
     @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, prompt_property.type, String] {
       @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLIsIndexElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.prompt = _)
@@ -2920,7 +2536,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def prompt: prompt_property.type = prompt_property
   private[AttributeFactories] object protocol_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("protocol", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, protocol_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.protocol = _)
@@ -2934,7 +2549,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def protocol: protocol_property.type = protocol_property
   private[AttributeFactories] object readOnly_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("readOnly", value)
     implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly_property.type, Boolean] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.readOnly = _)
@@ -2948,12 +2562,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def readOnly: readOnly_property.type = readOnly_property
   object readonly extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("readonly", value)
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, readonly.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, readonly.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
   }
   private[AttributeFactories] object readyState_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("readyState", value)
     implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, readyState_property.type, js.Any] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.readyState = _)
@@ -2962,7 +2574,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def readyState: readyState_property.type = readyState_property
   private[AttributeFactories] object recordNumber_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("recordNumber", value)
     implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, recordNumber_property.type, js.Any] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.recordNumber = _)
@@ -2971,16 +2582,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def recordNumber: recordNumber_property.type = recordNumber_property
   object referrerpolicy extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("referrerpolicy", value)
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, referrerpolicy.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, referrerpolicy.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, referrerpolicy.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, referrerpolicy.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, referrerpolicy.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, referrerpolicy.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
   }
   object rel extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rel", value)
     implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rel.type, String] {
       def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rel = _)
@@ -2991,12 +2600,11 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.rel = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, rel.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, rel.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, rel.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
   }
   object required extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("required", value)
     implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, required.type, Boolean] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.required = _)
@@ -3012,12 +2620,11 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.required = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, required.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, required.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, required.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
   }
   private[AttributeFactories] object rev_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rev", value)
     implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev_property.type, String] {
       def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rev = _)
@@ -3030,12 +2637,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def rev: rev_property.type = rev_property
-  object reversed extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("reversed", value)
-    @inline implicit def attributeEvidence_HTMLOListElement: AttributeEvidence[HTMLOListElement, reversed.type] = new AttributeEvidence
-  }
+  object reversed extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, reversed.type] = new AttributeSetter(_.setAttribute("reversed", _)) }
   private[AttributeFactories] object rightMargin_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rightMargin", value)
     @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, rightMargin_property.type, js.Any] {
       @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.rightMargin = _)
@@ -3044,7 +2647,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def rightMargin: rightMargin_property.type = rightMargin_property
   private[AttributeFactories] object rowSpan_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rowSpan", value)
     implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, rowSpan_property.type, Int] {
       def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.rowSpan = _)
@@ -3053,7 +2655,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def rowSpan: rowSpan_property.type = rowSpan_property
   object rows extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rows", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, rows.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rows = _)
@@ -3064,14 +2665,10 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.rows = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, rows.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, rows.type] = new AttributeSetter(_.setAttribute("rows", _))
   }
-  object rowspan extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rowspan", value)
-    @inline implicit def attributeEvidence_HTMLTableCellElement: AttributeEvidence[HTMLTableCellElement, rowspan.type] = new AttributeEvidence
-  }
+  object rowspan extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, rowspan.type] = new AttributeSetter(_.setAttribute("rowspan", _)) }
   private[AttributeFactories] object rules_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("rules", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, rules_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.rules = _)
@@ -3080,16 +2677,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def rules: rules_property.type = rules_property
   object sandbox extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("sandbox", value)
     implicit object mountPointBuilder_DOMSettableTokenList_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, sandbox.type, DOMSettableTokenList] {
       def mountProperty(element: HTMLIFrameElement, binding: Binding[DOMSettableTokenList]) = {
         Binding.BindingInstances.map(binding)(element.sandbox = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, sandbox.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, sandbox.type] = new AttributeSetter(_.setAttribute("sandbox", _))
   }
   private[AttributeFactories] object scheme_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scheme", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, scheme_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.scheme = _)
@@ -3097,12 +2692,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def scheme: scheme_property.type = scheme_property
-  object scope extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scope", value)
-    @inline implicit def attributeEvidence_HTMLTableCellElement: AttributeEvidence[HTMLTableCellElement, scope.type] = new AttributeEvidence
-  }
+  object scope extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, scope.type] = new AttributeSetter(_.setAttribute("scope", _)) }
   private[AttributeFactories] object scroll_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scroll", value)
     implicit object mountPointBuilder_String_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, scroll_property.type, String] {
       def mountProperty(element: HTMLBodyElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.scroll = _)
@@ -3111,7 +2702,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scroll: scroll_property.type = scroll_property
   private[AttributeFactories] object scrollAmount_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scrollAmount", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollAmount_property.type, Double] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollAmount = _)
@@ -3120,7 +2710,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scrollAmount: scrollAmount_property.type = scrollAmount_property
   private[AttributeFactories] object scrollDelay_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scrollDelay", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollDelay_property.type, Double] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollDelay = _)
@@ -3129,7 +2718,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scrollDelay: scrollDelay_property.type = scrollDelay_property
   private[AttributeFactories] object scrollLeft_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scrollLeft", value)
     implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollLeft_property.type, Double] {
       def mountProperty(element: Element, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollLeft = _)
@@ -3138,7 +2726,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scrollLeft: scrollLeft_property.type = scrollLeft_property
   private[AttributeFactories] object scrollTop_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scrollTop", value)
     implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollTop_property.type, Double] {
       def mountProperty(element: Element, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.scrollTop = _)
@@ -3147,7 +2734,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scrollTop: scrollTop_property.type = scrollTop_property
   private[AttributeFactories] object scrolling_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("scrolling", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, scrolling_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.scrolling = _)
@@ -3156,7 +2742,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def scrolling: scrolling_property.type = scrolling_property
   private[AttributeFactories] object search_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("search", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, search_property.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.search = _)
@@ -3170,7 +2755,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def search: search_property.type = search_property
   private[AttributeFactories] object security_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("security", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, security_property.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.security = _)
@@ -3184,16 +2768,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def security: security_property.type = security_property
   object selected extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("selected", value)
     implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, selected.type, Boolean] {
       def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.selected = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLOptionElement: AttributeEvidence[HTMLOptionElement, selected.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, selected.type] = new AttributeSetter(_.setAttribute("selected", _))
   }
   private[AttributeFactories] object selectedIndex_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("selectedIndex", value)
     implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex_property.type, Int] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectedIndex = _)
@@ -3202,7 +2784,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def selectedIndex: selectedIndex_property.type = selectedIndex_property
   private[AttributeFactories] object selectionEnd_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("selectionEnd", value)
     implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd_property.type, Int] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionEnd = _)
@@ -3216,7 +2797,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def selectionEnd: selectionEnd_property.type = selectionEnd_property
   private[AttributeFactories] object selectionStart_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("selectionStart", value)
     implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart_property.type, Int] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.selectionStart = _)
@@ -3230,7 +2810,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def selectionStart: selectionStart_property.type = selectionStart_property
   object shape extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("shape", value)
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, shape.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.shape = _)
@@ -3241,10 +2820,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.shape = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, shape.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, shape.type] = new AttributeSetter(_.setAttribute("shape", _))
   }
   object size extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("size", value)
     implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, size.type, Int] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.size = _)
@@ -3260,39 +2838,32 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.size = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, size.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSelectElement: AttributeEvidence[HTMLSelectElement, size.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, size.type] = new AttributeSetter(_.setAttribute("size", _))
+    @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, size.type] = new AttributeSetter(_.setAttribute("size", _))
   }
   object sizes extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("sizes", value)
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, sizes.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, sizes.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSourceElement: AttributeEvidence[HTMLSourceElement, sizes.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, sizes.type] = new AttributeSetter(_.setAttribute("sizes", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, sizes.type] = new AttributeSetter(_.setAttribute("sizes", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, sizes.type] = new AttributeSetter(_.setAttribute("sizes", _))
   }
-  object slot extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("slot", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, slot.type] = new AttributeEvidence
-  }
+  object slot extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, slot.type] = new AttributeSetter(_.setAttribute("slot", _)) }
   object span extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("span", value)
     implicit object mountPointBuilder_Int_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, span.type, Int] {
       def mountProperty(element: HTMLTableColElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.span = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTableColElement: AttributeEvidence[HTMLTableColElement, span.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTableColElement: AttributeSetter[HTMLTableColElement, span.type] = new AttributeSetter(_.setAttribute("span", _))
   }
   object spellcheck extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("spellcheck", value)
     implicit object mountPointBuilder_Boolean_HTMLElement extends MountPointBuilder[HTMLElement, spellcheck.type, Boolean] {
       def mountProperty(element: HTMLElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.spellcheck = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, spellcheck.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, spellcheck.type] = new AttributeSetter(_.setAttribute("spellcheck", _))
   }
   object src extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("src", value)
     implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, src.type, String] {
       def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.src = _)
@@ -3343,36 +2914,30 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.src = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAudioElement: AttributeEvidence[HTMLAudioElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLEmbedElement: AttributeEvidence[HTMLEmbedElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSourceElement: AttributeEvidence[HTMLSourceElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLTrackElement: AttributeEvidence[HTMLTrackElement, src.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, src.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
   }
-  object srcdoc extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("srcdoc", value)
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, srcdoc.type] = new AttributeEvidence
-  }
+  object srcdoc extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, srcdoc.type] = new AttributeSetter(_.setAttribute("srcdoc", _)) }
   object srclang extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("srclang", value)
     implicit object mountPointBuilder_String_HTMLTrackElement extends MountPointBuilder[HTMLTrackElement, srclang.type, String] {
       def mountProperty(element: HTMLTrackElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.srclang = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTrackElement: AttributeEvidence[HTMLTrackElement, srclang.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, srclang.type] = new AttributeSetter(_.setAttribute("srclang", _))
   }
   object srcset extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("srcset", value)
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, srcset.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSourceElement: AttributeEvidence[HTMLSourceElement, srcset.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, srcset.type] = new AttributeSetter(_.setAttribute("srcset", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, srcset.type] = new AttributeSetter(_.setAttribute("srcset", _))
   }
   private[AttributeFactories] object standby_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("standby", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, standby_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.standby = _)
@@ -3386,16 +2951,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def standby: standby_property.type = standby_property
   object start extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("start", value)
     implicit object mountPointBuilder_Int_HTMLOListElement extends MountPointBuilder[HTMLOListElement, start.type, Int] {
       def mountProperty(element: HTMLOListElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.start = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLOListElement: AttributeEvidence[HTMLOListElement, start.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, start.type] = new AttributeSetter(_.setAttribute("start", _))
   }
   private[AttributeFactories] object status_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("status", value)
     implicit object mountPointBuilder_js_Any_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status_property.type, js.Any] {
       def mountProperty(element: HTMLButtonElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.status = _)
@@ -3414,21 +2977,14 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def status: status_property.type = status_property
   object step extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("step", value)
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, step.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.step = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, step.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, step.type] = new AttributeSetter(_.setAttribute("step", _))
   }
   object style extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element match {
-      case htmlElement: HTMLElement =>
-        htmlElement.style.cssText = value
-      case _ =>
-        element.setAttribute("style", value)
-    }
     implicit object mountPointBuilder_CSSStyleDeclaration_HTMLElement extends MountPointBuilder[HTMLElement, style.type, CSSStyleDeclaration] {
       def mountProperty(element: HTMLElement, binding: Binding[CSSStyleDeclaration]) = {
         Binding.BindingInstances.map(binding)(element.style = _)
@@ -3439,10 +2995,9 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.style.cssText = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, style.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, style.type] = new AttributeSetter(_.style.cssText = _)
   }
   private[AttributeFactories] object summary_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("summary", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, summary_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.summary = _)
@@ -3451,7 +3006,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def summary: summary_property.type = summary_property
   private[AttributeFactories] object tFoot_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("tFoot", value)
     implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tFoot_property.type, HTMLTableSectionElement] {
       def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
         Binding.BindingInstances.map(binding)(element.tFoot = _)
@@ -3460,7 +3014,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def tFoot: tFoot_property.type = tFoot_property
   private[AttributeFactories] object tHead_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("tHead", value)
     implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tHead_property.type, HTMLTableSectionElement] {
       def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
         Binding.BindingInstances.map(binding)(element.tHead = _)
@@ -3469,7 +3022,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def tHead: tHead_property.type = tHead_property
   private[AttributeFactories] object tabIndex_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("tabIndex", value)
     implicit object mountPointBuilder_Int_HTMLElement extends MountPointBuilder[HTMLElement, tabIndex_property.type, Int] {
       def mountProperty(element: HTMLElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.tabIndex = _)
@@ -3477,12 +3029,8 @@ private[concentricsky] object AttributeFactories {
     }
   }
   @inline def tabIndex: tabIndex_property.type = tabIndex_property
-  object tabindex extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("tabindex", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, tabindex.type] = new AttributeEvidence
-  }
+  object tabindex extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, tabindex.type] = new AttributeSetter(_.setAttribute("tabindex", _)) }
   object target extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("target", value)
     implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, target.type, String] {
       def mountProperty(element: HTMLBaseElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.target = _)
@@ -3508,13 +3056,12 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.target = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, target.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLAreaElement: AttributeEvidence[HTMLAreaElement, target.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLBaseElement: AttributeEvidence[HTMLBaseElement, target.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLFormElement: AttributeEvidence[HTMLFormElement, target.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
+    @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
+    @inline implicit def attributeSetter_HTMLBaseElement: AttributeSetter[HTMLBaseElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
+    @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
   }
   private[AttributeFactories] object text_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("text", value)
     implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text_property.type, String] {
       def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.text = _)
@@ -3543,23 +3090,18 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def text: text_property.type = text_property
   object title extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("title", value)
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, title.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.title = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, title.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, title.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, title.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLStyleElement: AttributeEvidence[HTMLStyleElement, title.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, title.type] = new AttributeSetter(_.setAttribute("title", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, title.type] = new AttributeSetter(_.setAttribute("title", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, title.type] = new AttributeSetter(_.setAttribute("title", _))
+    @inline implicit def attributeSetter_HTMLStyleElement: AttributeSetter[HTMLStyleElement, title.type] = new AttributeSetter(_.setAttribute("title", _))
   }
-  object translate extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("translate", value)
-    @inline implicit def attributeEvidence_HTMLElement: AttributeEvidence[HTMLElement, translate.type] = new AttributeEvidence
-  }
+  object translate extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, translate.type] = new AttributeSetter(_.setAttribute("translate", _)) }
   private[AttributeFactories] object trueSpeed_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("trueSpeed", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, trueSpeed_property.type, Boolean] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Boolean]) = {
         Binding.BindingInstances.map(binding)(element.trueSpeed = _)
@@ -3568,7 +3110,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def trueSpeed: trueSpeed_property.type = trueSpeed_property
   object `type` extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("type", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `type`.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.`type` = _)
@@ -3624,18 +3165,17 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.`type` = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLAnchorElement: AttributeEvidence[HTMLAnchorElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLinkElement: AttributeEvidence[HTMLLinkElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLEmbedElement: AttributeEvidence[HTMLEmbedElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLSourceElement: AttributeEvidence[HTMLSourceElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOListElement: AttributeEvidence[HTMLOListElement, `type`.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLScriptElement: AttributeEvidence[HTMLScriptElement, `type`.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
   }
   private[AttributeFactories] object url_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("url", value)
     implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, url_property.type, String] {
       def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.url = _)
@@ -3644,7 +3184,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def url: url_property.type = url_property
   private[AttributeFactories] object useMap_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("useMap", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, useMap_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.useMap = _)
@@ -3663,12 +3202,10 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def useMap: useMap_property.type = useMap_property
   object usemap extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("usemap", value)
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, usemap.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, usemap.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
   }
   private[AttributeFactories] object vAlign_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("vAlign", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, vAlign_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCaptionElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.vAlign = _)
@@ -3677,7 +3214,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def vAlign: vAlign_property.type = vAlign_property
   private[AttributeFactories] object vLink_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("vLink", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, vLink_property.type, js.Any] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
         Binding.BindingInstances.map(binding)(element.vLink = _)
@@ -3686,7 +3222,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def vLink: vLink_property.type = vLink_property
   object value extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("value", value)
     implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, value.type, String] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.value = _)
@@ -3727,17 +3262,16 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.value = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLButtonElement: AttributeEvidence[HTMLButtonElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLOptionElement: AttributeEvidence[HTMLOptionElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLDataElement: AttributeEvidence[HTMLDataElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLLIElement: AttributeEvidence[HTMLLIElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLMeterElement: AttributeEvidence[HTMLMeterElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLProgressElement: AttributeEvidence[HTMLProgressElement, value.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLParamElement: AttributeEvidence[HTMLParamElement, value.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLDataElement: AttributeSetter[HTMLDataElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLLIElement: AttributeSetter[HTMLLIElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
+    @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
   }
   private[AttributeFactories] object valueAsNumber_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("valueAsNumber", value)
     implicit object mountPointBuilder_Double_HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber_property.type, Double] {
       def mountProperty(element: HTMLInputElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.valueAsNumber = _)
@@ -3746,7 +3280,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def valueAsNumber: valueAsNumber_property.type = valueAsNumber_property
   private[AttributeFactories] object valueType_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("valueType", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, valueType_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLParamElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.valueType = _)
@@ -3755,7 +3288,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def valueType: valueType_property.type = valueType_property
   private[AttributeFactories] object version_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("version", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHtmlElement extends MountPointBuilder[HTMLHtmlElement, version_property.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHtmlElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.version = _)
@@ -3764,7 +3296,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def version: version_property.type = version_property
   private[AttributeFactories] object volume_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("volume", value)
     implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, volume_property.type, Double] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
         Binding.BindingInstances.map(binding)(element.volume = _)
@@ -3778,7 +3309,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def volume: volume_property.type = volume_property
   private[AttributeFactories] object vspace_property extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("vspace", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, vspace_property.type, Int] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
         Binding.BindingInstances.map(binding)(element.vspace = _)
@@ -3792,7 +3322,6 @@ private[concentricsky] object AttributeFactories {
   }
   @inline def vspace: vspace_property.type = vspace_property
   object width extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("width", value)
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, width.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.width = _)
@@ -3868,21 +3397,20 @@ private[concentricsky] object AttributeFactories {
         Binding.BindingInstances.map(binding)(element.width = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLCanvasElement: AttributeEvidence[HTMLCanvasElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLEmbedElement: AttributeEvidence[HTMLEmbedElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLIFrameElement: AttributeEvidence[HTMLIFrameElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLImageElement: AttributeEvidence[HTMLImageElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLInputElement: AttributeEvidence[HTMLInputElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLObjectElement: AttributeEvidence[HTMLObjectElement, width.type] = new AttributeEvidence
-    @inline implicit def attributeEvidence_HTMLVideoElement: AttributeEvidence[HTMLVideoElement, width.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLCanvasElement: AttributeSetter[HTMLCanvasElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
   }
   object wrap extends AttributeFactory.Typed {
-    @inline protected[concentricsky] def setAttribute(element: Element, value: String) = element.setAttribute("wrap", value)
     implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, wrap.type, String] {
       def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
         Binding.BindingInstances.map(binding)(element.wrap = _)
       }
     }
-    @inline implicit def attributeEvidence_HTMLTextAreaElement: AttributeEvidence[HTMLTextAreaElement, wrap.type] = new AttributeEvidence
+    @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, wrap.type] = new AttributeSetter(_.setAttribute("wrap", _))
   }
 }
