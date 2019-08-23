@@ -173,18 +173,11 @@ object Generators extends AutoPlugin {
       val perperties = propertyDefinition.value
       val sortedNames =
         (perperties.keySet ++ interfacesByAttribute.keySet).toArray.sorted
-      val defs = sortedNames.view.flatMap {
+      val (defs, propertyOnlyDefOptions) = sortedNames.view.map {
         attributeName =>
           val propertyOnly = !interfacesByAttribute.contains(attributeName)
           val attributeTermName = {
-            Term.Name(attributeName)
-          }
-          val attributeObjectName = {
-            if (propertyOnly) {
-              Term.Name(reflect.NameTransformer.encode(s"${attributeName}_property"))
-            } else {
-              Term.Name(reflect.NameTransformer.encode(attributeName))
-            }
+            Term.Name(reflect.NameTransformer.encode(attributeName))
           }
           val attributeSetters = for {
             interfaceNames <- interfacesByAttribute.get(attributeName).view
@@ -193,7 +186,7 @@ object Generators extends AutoPlugin {
             val evidenceName = s"attributeSetter_$interfaceName"
             q"""
               @inline implicit def ${Term.Name(evidenceName)}:
-                AttributeSetter[${Type.Name(interfaceName)}, $attributeObjectName.type] =
+                AttributeSetter[${Type.Name(interfaceName)}, $attributeTermName.type] =
                 new AttributeSetter(${
                   if (attributeName == "style") {
                     // Workaround for IE
@@ -211,7 +204,7 @@ object Generators extends AutoPlugin {
             val interfaceTypeName = Type.Name(interfaceName)
             val mountPointBuilderTermName = Term.Name(s"mountPointBuilder_${tpe.syntax.replace('.', '_')}_$interfaceName")
             q"""
-              ..$mods implicit object $mountPointBuilderTermName extends MountPointBuilder[$interfaceTypeName, $attributeObjectName.type, $tpe] {
+              ..$mods implicit object $mountPointBuilderTermName extends MountPointBuilder[$interfaceTypeName, $attributeTermName.type, $tpe] {
                 ..$mods def mountProperty(element: $interfaceTypeName, binding: Binding[$tpe]) = {
                   Binding.BindingInstances.map(binding)(${
                     tpe match {
@@ -227,19 +220,18 @@ object Generators extends AutoPlugin {
             """
           }
           val objectDefinition = q"""
-            ..${if (propertyOnly) List(mod"private[AttributeFactories]") else Nil} object $attributeObjectName extends AttributeFactory.Typed {
+            object $attributeTermName extends AttributeFactory.Typed {
               ..${propertyConstructors.toList}
               ..${attributeSetters.toList}
             }
           """
-          objectDefinition :: {
-            if (propertyOnly) {
-              q"@inline def $attributeTermName: $attributeObjectName.type = $attributeObjectName" :: Nil
-            } else {
-              Nil
-            }
+          if (propertyOnly) {
+            q"@inline def $attributeTermName: properties.$attributeTermName.type = properties.$attributeTermName" -> Some(objectDefinition)
+          } else {
+            objectDefinition -> None
           }
-      }
+      }.unzip
+      val propertyOnlyDefs = propertyOnlyDefOptions.flatten
       val geneatedAst = q"""
         package com.concentricsky {
           import scala.scalajs.js
@@ -251,6 +243,10 @@ object Generators extends AutoPlugin {
           import com.concentricsky.html.elementTypes._
           import com.thoughtworks.binding.Binding
           private[concentricsky] object AttributeFactories {
+            private[concentricsky] object properties {
+              ..${propertyOnlyDefs.toList}
+            }
+            import properties._
             ..${defs.toList}
           }
         }

@@ -9,27 +9,1357 @@ import com.concentricsky.html.NodeBinding.Constant.AttributeSetter
 import com.concentricsky.html.elementTypes._
 import com.thoughtworks.binding.Binding
 private[concentricsky] object AttributeFactories {
-  private[AttributeFactories] object BaseHref_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, BaseHref_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.BaseHref = _)
+  private[concentricsky] object properties {
+    object BaseHref extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, BaseHref.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.BaseHref = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, BaseHref.type, String] {
+        def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.BaseHref = _)
+        }
       }
     }
-    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, BaseHref_property.type, String] {
-      def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.BaseHref = _)
+    object aLink extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, aLink.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.aLink = _)
+        }
+      }
+    }
+    object acceptCharset extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, acceptCharset.type, String] {
+        def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.acceptCharset = _)
+        }
+      }
+    }
+    object accessKey extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, accessKey.type, String] {
+        def mountProperty(element: Element, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.accessKey = _)
+        }
+      }
+    }
+    object align extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParagraphElement extends MountPointBuilder[HTMLParagraphElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLParagraphElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCaptionElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableRowElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLLegendElement extends MountPointBuilder[HTMLLegendElement, align.type, String] {
+        def mountProperty(element: HTMLLegendElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableSectionElement extends MountPointBuilder[HTMLTableSectionElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableSectionElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableColElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLDivElement extends MountPointBuilder[HTMLDivElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLDivElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFieldSetElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHRElement extends MountPointBuilder[HTMLHRElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHRElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadingElement extends MountPointBuilder[HTMLHeadingElement, align.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHeadingElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.align = _)
+        }
+      }
+    }
+    object altHtml extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, altHtml.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.altHtml = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, altHtml.type, String] {
+        def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.altHtml = _)
+        }
+      }
+    }
+    object archive extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, archive.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.archive = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, archive.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.archive = _)
+        }
+      }
+    }
+    object axis extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, axis.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.axis = _)
+        }
+      }
+    }
+    object balance extends AttributeFactory.Typed {
+      @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, balance.type, js.Any] {
+        @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.balance = _)
+        }
+      }
+    }
+    object behavior extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, behavior.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.behavior = _)
+        }
+      }
+    }
+    object border extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, border.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.border = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, border.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.border = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, border.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.border = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, border.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.border = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, border.type, String] {
+        def mountProperty(element: HTMLIFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.border = _)
+        }
+      }
+    }
+    object borderColor extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColor.type, js.Any] {
+        def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.borderColor = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, borderColor.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.borderColor = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, borderColor.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.borderColor = _)
+        }
+      }
+    }
+    object borderColorDark extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorDark.type, js.Any] {
+        def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.borderColorDark = _)
+        }
+      }
+    }
+    object borderColorLight extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorLight.type, js.Any] {
+        def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.borderColorLight = _)
+        }
+      }
+    }
+    object caption extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_HTMLTableCaptionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, caption.type, HTMLTableCaptionElement] {
+        def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableCaptionElement]) = {
+          Binding.BindingInstances.map(binding)(element.caption = _)
+        }
+      }
+    }
+    object cellPadding extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellPadding.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.cellPadding = _)
+        }
+      }
+    }
+    object cellSpacing extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellSpacing.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.cellSpacing = _)
+        }
+      }
+    }
+    object classList extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_DOMTokenList_Element extends MountPointBuilder[Element, classList.type, DOMTokenList] {
+        def mountProperty(element: Element, binding: Binding[DOMTokenList]) = {
+          Binding.BindingInstances.map(binding)(element.classList = _)
+        }
+      }
+    }
+    object className extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, className.type, String] {
+        def mountProperty(element: HTMLElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.className = _)
+        }
+      }
+    }
+    object classid extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, classid.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.classid = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, classid.type, String] {
+        def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.classid = _)
+        }
+      }
+    }
+    object clear extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLBRElement extends MountPointBuilder[HTMLBRElement, clear.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBRElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.clear = _)
+        }
+      }
+    }
+    object code extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, code.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.code = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, code.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.code = _)
+        }
+      }
+    }
+    object codeBase extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeBase.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.codeBase = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeBase.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.codeBase = _)
+        }
+      }
+    }
+    object codeType extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeType.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.codeType = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeType.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.codeType = _)
+        }
+      }
+    }
+    object colSpan extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, colSpan.type, Int] {
+        def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.colSpan = _)
+        }
+      }
+    }
+    object contentDocument extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, contentDocument.type, Document] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Document]) = {
+          Binding.BindingInstances.map(binding)(element.contentDocument = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentDocument.type, Document] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Document]) = {
+          Binding.BindingInstances.map(binding)(element.contentDocument = _)
+        }
+      }
+    }
+    object contentEditable extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, contentEditable.type, String] {
+        def mountProperty(element: HTMLElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.contentEditable = _)
+        }
+      }
+    }
+    object contentWindow extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Window_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentWindow.type, Window] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Window]) = {
+          Binding.BindingInstances.map(binding)(element.contentWindow = _)
+        }
+      }
+    }
+    object currentTime extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, currentTime.type, Double] {
+        def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.currentTime = _)
+        }
+      }
+    }
+    object dateTime extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, dateTime.type, String] {
+        def mountProperty(element: HTMLQuoteElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.dateTime = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime.type, String] {
+        def mountProperty(element: HTMLPhraseElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.dateTime = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLModElement extends MountPointBuilder[HTMLModElement, dateTime.type, String] {
+        def mountProperty(element: HTMLModElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.dateTime = _)
+        }
+      }
+    }
+    object declare extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, declare.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.declare = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, declare.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.declare = _)
+        }
+      }
+    }
+    object defaultChecked extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.defaultChecked = _)
+        }
+      }
+    }
+    object defaultPlaybackRate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, defaultPlaybackRate.type, Double] {
+        def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.defaultPlaybackRate = _)
+        }
+      }
+    }
+    object defaultSelected extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected.type, Boolean] {
+        def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.defaultSelected = _)
+        }
+      }
+    }
+    object defaultValue extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.defaultValue = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, defaultValue.type, String] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.defaultValue = _)
+        }
+      }
+    }
+    object direction extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, direction.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.direction = _)
+        }
+      }
+    }
+    object encoding extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, encoding.type, String] {
+        def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.encoding = _)
+        }
+      }
+    }
+    object event extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, event.type, String] {
+        def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.event = _)
+        }
+      }
+    }
+    object face extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLFontElement extends MountPointBuilder[HTMLFontElement, face.type, String] {
+        @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLFontElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.face = _)
+        }
+      }
+      @deprecated("Obsolete.", "DOM Level 2") implicit object mountPointBuilder_String_HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, face.type, String] {
+        @deprecated("Obsolete.", "DOM Level 2") def mountProperty(element: HTMLBaseFontElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.face = _)
+        }
+      }
+    }
+    object files extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_FileList_HTMLInputElement extends MountPointBuilder[HTMLInputElement, files.type, FileList] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[FileList]) = {
+          Binding.BindingInstances.map(binding)(element.files = _)
+        }
+      }
+    }
+    object filters extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Object_HTMLElement extends MountPointBuilder[HTMLElement, filters.type, Object] {
+        def mountProperty(element: HTMLElement, binding: Binding[Object]) = {
+          Binding.BindingInstances.map(binding)(element.filters = _)
+        }
+      }
+    }
+    object formAction extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formAction = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formAction.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formAction = _)
+        }
+      }
+    }
+    object formEnctype extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formEnctype = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formEnctype.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formEnctype = _)
+        }
+      }
+    }
+    object formMethod extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formMethod = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formMethod.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formMethod = _)
+        }
+      }
+    }
+    object formNoValidate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formNoValidate = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formNoValidate.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formNoValidate = _)
+        }
+      }
+    }
+    object formTarget extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formTarget = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formTarget.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formTarget = _)
+        }
+      }
+    }
+    object frame extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, frame.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.frame = _)
+        }
+      }
+    }
+    object frameBorder extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameBorder.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.frameBorder = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameBorder.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.frameBorder = _)
+        }
+      }
+    }
+    object frameSpacing extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameSpacing.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.frameSpacing = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameSpacing.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.frameSpacing = _)
+        }
+      }
+    }
+    object gotpointercapture extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, gotpointercapture.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.gotpointercapture = _)
+        }
+      }
+    }
+    object hash extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hash.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.hash = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hash.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.hash = _)
+        }
+      }
+    }
+    object host extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, host.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.host = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, host.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.host = _)
+        }
+      }
+    }
+    object hostname extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hostname.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.hostname = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hostname.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.hostname = _)
+        }
+      }
+    }
+    object hspace extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, hspace.type, Int] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.hspace = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, hspace.type, Int] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.hspace = _)
+        }
+      }
+    }
+    object htmlFor extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, htmlFor.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.htmlFor = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLLabelElement extends MountPointBuilder[HTMLLabelElement, htmlFor.type, String] {
+        def mountProperty(element: HTMLLabelElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.htmlFor = _)
+        }
+      }
+    }
+    object httpEquiv extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, httpEquiv.type, String] {
+        def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.httpEquiv = _)
+        }
+      }
+    }
+    object indeterminate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.indeterminate = _)
+        }
+      }
+    }
+    object innerHTML extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, innerHTML.type, String] {
+        def mountProperty(element: Element, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.innerHTML = _)
+        }
+      }
+    }
+    object isMap extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLImageElement extends MountPointBuilder[HTMLImageElement, isMap.type, Boolean] {
+        def mountProperty(element: HTMLImageElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.isMap = _)
+        }
+      }
+    }
+    object leftMargin extends AttributeFactory.Typed {
+      @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, leftMargin.type, js.Any] {
+        @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.leftMargin = _)
+        }
+      }
+    }
+    object length extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length.type, Int] {
+        def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.length = _)
+        }
+      }
+    }
+    object link extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, link.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.link = _)
+        }
+      }
+    }
+    object longDesc extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, longDesc.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.longDesc = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, longDesc.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.longDesc = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, longDesc.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLIFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.longDesc = _)
+        }
+      }
+    }
+    object lostpointercapture extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, lostpointercapture.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.lostpointercapture = _)
+        }
+      }
+    }
+    object marginHeight extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginHeight.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.marginHeight = _)
+        }
+      }
+    }
+    object marginWidth extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginWidth.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.marginWidth = _)
+        }
+      }
+    }
+    object maxLength extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.maxLength = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, maxLength.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.maxLength = _)
+        }
+      }
+    }
+    object mimeType extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, mimeType.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.mimeType = _)
+        }
+      }
+    }
+    object naturalHeight extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalHeight.type, Int] {
+        def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.naturalHeight = _)
+        }
+      }
+    }
+    object naturalWidth extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalWidth.type, Int] {
+        def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.naturalWidth = _)
+        }
+      }
+    }
+    object noHref extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, noHref.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAreaElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noHref = _)
+        }
+      }
+    }
+    object noResize extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, noResize.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noResize = _)
+        }
+      }
+    }
+    object noValidate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLFormElement extends MountPointBuilder[HTMLFormElement, noValidate.type, Boolean] {
+        def mountProperty(element: HTMLFormElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noValidate = _)
+        }
+      }
+    }
+    object noWrap extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap.type, Boolean] {
+        def mountProperty(element: HTMLDDElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noWrap = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, noWrap.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noWrap = _)
+        }
+      }
+      implicit object mountPointBuilder_Boolean_HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap.type, Boolean] {
+        def mountProperty(element: HTMLDTElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.noWrap = _)
+        }
+      }
+    }
+    object `object` extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `object`.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.`object` = _)
+        }
+      }
+      implicit object mountPointBuilder_Object_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, `object`.type, Object] {
+        def mountProperty(element: HTMLObjectElement, binding: Binding[Object]) = {
+          Binding.BindingInstances.map(binding)(element.`object` = _)
+        }
+      }
+    }
+    object onactivate extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onactivate.type, js.Function1[UIEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onactivate = _)
+        }
+      }
+    }
+    object onbeforeactivate extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforeactivate.type, js.Function1[UIEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbeforeactivate = _)
+        }
+      }
+    }
+    object onbeforecopy extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecopy.type, js.Function1[DragEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbeforecopy = _)
+        }
+      }
+    }
+    object onbeforecut extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecut.type, js.Function1[DragEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbeforecut = _)
+        }
+      }
+    }
+    object onbeforedeactivate extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforedeactivate.type, js.Function1[UIEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbeforedeactivate = _)
+        }
+      }
+    }
+    object onbeforepaste extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforepaste.type, js.Function1[DragEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbeforepaste = _)
+        }
+      }
+    }
+    object onbounce extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onbounce.type, js.Function1[Event, _]] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onbounce = _)
+        }
+      }
+    }
+    object ondeactivate extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondeactivate.type, js.Function1[UIEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.ondeactivate = _)
+        }
+      }
+    }
+    object onfinish extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onfinish.type, js.Function1[Event, _]] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onfinish = _)
+        }
+      }
+    }
+    object onfocusin extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusin.type, js.Function1[FocusEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onfocusin = _)
+        }
+      }
+    }
+    object onfocusout extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusout.type, js.Function1[FocusEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onfocusout = _)
+        }
+      }
+    }
+    object onhelp extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onhelp.type, js.Function1[Event, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onhelp = _)
+        }
+      }
+    }
+    object onmousewheel extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[WheelEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousewheel.type, js.Function1[WheelEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[WheelEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onmousewheel = _)
+        }
+      }
+    }
+    object onpointercancel extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointercancel.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointercancel = _)
+        }
+      }
+    }
+    object onpointerdown extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerdown.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerdown = _)
+        }
+      }
+    }
+    object onpointerenter extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerenter.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerenter = _)
+        }
+      }
+    }
+    object onpointerleave extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerleave.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerleave = _)
+        }
+      }
+    }
+    object onpointermove extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointermove.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointermove = _)
+        }
+      }
+    }
+    object onpointerout extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerout.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerout = _)
+        }
+      }
+    }
+    object onpointerover extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerover.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerover = _)
+        }
+      }
+    }
+    object onpointerup extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerup.type, js.Function1[PointerEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onpointerup = _)
+        }
+      }
+    }
+    object onreadystatechange extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreadystatechange.type, js.Function1[Event, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onreadystatechange = _)
+        }
+      }
+    }
+    object onselectstart extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselectstart.type, js.Function1[Event, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onselectstart = _)
+        }
+      }
+    }
+    object onstart extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onstart.type, js.Function1[Event, _]] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onstart = _)
+        }
+      }
+    }
+    object outerHTML extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, outerHTML.type, String] {
+        def mountProperty(element: Element, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.outerHTML = _)
+        }
+      }
+    }
+    object parentElement extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_HTMLElement_HTMLElement extends MountPointBuilder[HTMLElement, parentElement.type, HTMLElement] {
+        def mountProperty(element: HTMLElement, binding: Binding[HTMLElement]) = {
+          Binding.BindingInstances.map(binding)(element.parentElement = _)
+        }
+      }
+    }
+    object pathname extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, pathname.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.pathname = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, pathname.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.pathname = _)
+        }
+      }
+    }
+    object playbackRate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, playbackRate.type, Double] {
+        def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.playbackRate = _)
+        }
+      }
+    }
+    object port extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, port.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.port = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, port.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.port = _)
+        }
+      }
+    }
+    object profile extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadElement extends MountPointBuilder[HTMLHeadElement, profile.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHeadElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.profile = _)
+        }
+      }
+    }
+    object prompt extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, prompt.type, String] {
+        @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLIsIndexElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.prompt = _)
+        }
+      }
+    }
+    object protocol extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, protocol.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.protocol = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, protocol.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.protocol = _)
+        }
+      }
+    }
+    object readOnly extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.readOnly = _)
+        }
+      }
+      implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, readOnly.type, Boolean] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.readOnly = _)
+        }
+      }
+    }
+    object readyState extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, readyState.type, js.Any] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.readyState = _)
+        }
+      }
+    }
+    object recordNumber extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, recordNumber.type, js.Any] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.recordNumber = _)
+        }
+      }
+    }
+    object rev extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev.type, String] {
+        def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.rev = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, rev.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.rev = _)
+        }
+      }
+    }
+    object rightMargin extends AttributeFactory.Typed {
+      @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, rightMargin.type, js.Any] {
+        @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.rightMargin = _)
+        }
+      }
+    }
+    object rowSpan extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, rowSpan.type, Int] {
+        def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.rowSpan = _)
+        }
+      }
+    }
+    object rules extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, rules.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.rules = _)
+        }
+      }
+    }
+    object scheme extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, scheme.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.scheme = _)
+        }
+      }
+    }
+    object scroll extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, scroll.type, String] {
+        def mountProperty(element: HTMLBodyElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.scroll = _)
+        }
+      }
+    }
+    object scrollAmount extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollAmount.type, Double] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.scrollAmount = _)
+        }
+      }
+    }
+    object scrollDelay extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollDelay.type, Double] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.scrollDelay = _)
+        }
+      }
+    }
+    object scrollLeft extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollLeft.type, Double] {
+        def mountProperty(element: Element, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.scrollLeft = _)
+        }
+      }
+    }
+    object scrollTop extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollTop.type, Double] {
+        def mountProperty(element: Element, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.scrollTop = _)
+        }
+      }
+    }
+    object scrolling extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, scrolling.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.scrolling = _)
+        }
+      }
+    }
+    object search extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, search.type, String] {
+        def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.search = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, search.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.search = _)
+        }
+      }
+    }
+    object security extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, security.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.security = _)
+        }
+      }
+      implicit object mountPointBuilder_js_Any_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, security.type, js.Any] {
+        def mountProperty(element: HTMLIFrameElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.security = _)
+        }
+      }
+    }
+    object selectedIndex extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex.type, Int] {
+        def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectedIndex = _)
+        }
+      }
+    }
+    object selectionEnd extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionEnd = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionEnd.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionEnd = _)
+        }
+      }
+    }
+    object selectionStart extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionStart = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionStart.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionStart = _)
+        }
+      }
+    }
+    object standby extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, standby.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.standby = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, standby.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.standby = _)
+        }
+      }
+    }
+    object status extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status.type, js.Any] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, status.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+      implicit object mountPointBuilder_js_Any_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, status.type, js.Any] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+    }
+    object summary extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, summary.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.summary = _)
+        }
+      }
+    }
+    object tFoot extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tFoot.type, HTMLTableSectionElement] {
+        def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
+          Binding.BindingInstances.map(binding)(element.tFoot = _)
+        }
+      }
+    }
+    object tHead extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tHead.type, HTMLTableSectionElement] {
+        def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
+          Binding.BindingInstances.map(binding)(element.tHead = _)
+        }
+      }
+    }
+    object tabIndex extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLElement extends MountPointBuilder[HTMLElement, tabIndex.type, Int] {
+        def mountProperty(element: HTMLElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.tabIndex = _)
+        }
+      }
+    }
+    object text extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text.type, String] {
+        def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, text.type, String] {
+        def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, text.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, text.type, String] {
+        def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLTitleElement extends MountPointBuilder[HTMLTitleElement, text.type, String] {
+        def mountProperty(element: HTMLTitleElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+    }
+    object trueSpeed extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, trueSpeed.type, Boolean] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.trueSpeed = _)
+        }
+      }
+    }
+    object url extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, url.type, String] {
+        def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.url = _)
+        }
+      }
+    }
+    object useMap extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, useMap.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.useMap = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, useMap.type, String] {
+        def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.useMap = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, useMap.type, String] {
+        def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.useMap = _)
+        }
+      }
+    }
+    object vAlign extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, vAlign.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCaptionElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.vAlign = _)
+        }
+      }
+    }
+    object vLink extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, vLink.type, js.Any] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.vLink = _)
+        }
+      }
+    }
+    object valueAsNumber extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber.type, Double] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.valueAsNumber = _)
+        }
+      }
+    }
+    object valueType extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, valueType.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLParamElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.valueType = _)
+        }
+      }
+    }
+    object version extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHtmlElement extends MountPointBuilder[HTMLHtmlElement, version.type, String] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHtmlElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.version = _)
+        }
+      }
+    }
+    object volume extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, volume.type, Double] {
+        def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.volume = _)
+        }
+      }
+      @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, volume.type, js.Any] {
+        @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.volume = _)
+        }
+      }
+    }
+    object vspace extends AttributeFactory.Typed {
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, vspace.type, Int] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.vspace = _)
+        }
+      }
+      @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, vspace.type, Int] {
+        @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.vspace = _)
+        }
       }
     }
   }
-  @inline def BaseHref: BaseHref_property.type = BaseHref_property
-  private[AttributeFactories] object aLink_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, aLink_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.aLink = _)
-      }
-    }
-  }
-  @inline def aLink: aLink_property.type = aLink_property
+  import properties._
+  @inline def BaseHref: properties.BaseHref.type = properties.BaseHref
+  @inline def aLink: properties.aLink.type = properties.aLink
   object abbr extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, abbr.type] = new AttributeSetter(_.setAttribute("abbr", _)) }
   object accept extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, accept.type, String] {
@@ -40,22 +1370,8 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, accept.type] = new AttributeSetter(_.setAttribute("accept", _))
   }
   object accept$minuscharset extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, accept$minuscharset.type] = new AttributeSetter(_.setAttribute("accept-charset", _)) }
-  private[AttributeFactories] object acceptCharset_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, acceptCharset_property.type, String] {
-      def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.acceptCharset = _)
-      }
-    }
-  }
-  @inline def acceptCharset: acceptCharset_property.type = acceptCharset_property
-  private[AttributeFactories] object accessKey_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, accessKey_property.type, String] {
-      def mountProperty(element: Element, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.accessKey = _)
-      }
-    }
-  }
-  @inline def accessKey: accessKey_property.type = accessKey_property
+  @inline def acceptCharset: properties.acceptCharset.type = properties.acceptCharset
+  @inline def accessKey: properties.accessKey.type = properties.accessKey
   object accesskey extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, accesskey.type] = new AttributeSetter(_.setAttribute("accesskey", _)) }
   object action extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, action.type, String] {
@@ -70,74 +1386,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, action.type] = new AttributeSetter(_.setAttribute("action", _))
   }
-  private[AttributeFactories] object align_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParagraphElement extends MountPointBuilder[HTMLParagraphElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLParagraphElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCaptionElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableRowElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLLegendElement extends MountPointBuilder[HTMLLegendElement, align_property.type, String] {
-      def mountProperty(element: HTMLLegendElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableSectionElement extends MountPointBuilder[HTMLTableSectionElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableSectionElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableColElement extends MountPointBuilder[HTMLTableColElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableColElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLDivElement extends MountPointBuilder[HTMLDivElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLDivElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFieldSetElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHRElement extends MountPointBuilder[HTMLHRElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHRElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadingElement extends MountPointBuilder[HTMLHeadingElement, align_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHeadingElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.align = _)
-      }
-    }
-  }
-  @inline def align: align_property.type = align_property
+  @inline def align: properties.align.type = properties.align
   object allow extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allow.type] = new AttributeSetter(_.setAttribute("allow", _)) }
   object allowfullscreen extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowfullscreen.type] = new AttributeSetter(_.setAttribute("allowfullscreen", _)) }
   object allowpaymentrequest extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowpaymentrequest.type] = new AttributeSetter(_.setAttribute("allowpaymentrequest", _)) }
@@ -171,32 +1420,8 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
   }
-  private[AttributeFactories] object altHtml_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, altHtml_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.altHtml = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, altHtml_property.type, String] {
-      def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.altHtml = _)
-      }
-    }
-  }
-  @inline def altHtml: altHtml_property.type = altHtml_property
-  private[AttributeFactories] object archive_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, archive_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.archive = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, archive_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.archive = _)
-      }
-    }
-  }
-  @inline def archive: archive_property.type = archive_property
+  @inline def altHtml: properties.altHtml.type = properties.altHtml
+  @inline def archive: properties.archive.type = properties.archive
   object as extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, as.type] = new AttributeSetter(_.setAttribute("as", _)) }
   object async extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, async.type, Boolean] {
@@ -258,116 +1483,16 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, autoplay.type] = new AttributeSetter(_.setAttribute("autoplay", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, autoplay.type] = new AttributeSetter(_.setAttribute("autoplay", _))
   }
-  private[AttributeFactories] object axis_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, axis_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.axis = _)
-      }
-    }
-  }
-  @inline def axis: axis_property.type = axis_property
-  private[AttributeFactories] object balance_property extends AttributeFactory.Typed {
-    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, balance_property.type, js.Any] {
-      @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.balance = _)
-      }
-    }
-  }
-  @inline def balance: balance_property.type = balance_property
-  private[AttributeFactories] object behavior_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, behavior_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.behavior = _)
-      }
-    }
-  }
-  @inline def behavior: behavior_property.type = behavior_property
-  private[AttributeFactories] object border_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, border_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.border = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, border_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.border = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, border_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.border = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, border_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.border = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, border_property.type, String] {
-      def mountProperty(element: HTMLIFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.border = _)
-      }
-    }
-  }
-  @inline def border: border_property.type = border_property
-  private[AttributeFactories] object borderColor_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColor_property.type, js.Any] {
-      def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.borderColor = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, borderColor_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.borderColor = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, borderColor_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.borderColor = _)
-      }
-    }
-  }
-  @inline def borderColor: borderColor_property.type = borderColor_property
-  private[AttributeFactories] object borderColorDark_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorDark_property.type, js.Any] {
-      def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.borderColorDark = _)
-      }
-    }
-  }
-  @inline def borderColorDark: borderColorDark_property.type = borderColorDark_property
-  private[AttributeFactories] object borderColorLight_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLTableRowElement extends MountPointBuilder[HTMLTableRowElement, borderColorLight_property.type, js.Any] {
-      def mountProperty(element: HTMLTableRowElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.borderColorLight = _)
-      }
-    }
-  }
-  @inline def borderColorLight: borderColorLight_property.type = borderColorLight_property
-  private[AttributeFactories] object caption_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_HTMLTableCaptionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, caption_property.type, HTMLTableCaptionElement] {
-      def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableCaptionElement]) = {
-        Binding.BindingInstances.map(binding)(element.caption = _)
-      }
-    }
-  }
-  @inline def caption: caption_property.type = caption_property
-  private[AttributeFactories] object cellPadding_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellPadding_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.cellPadding = _)
-      }
-    }
-  }
-  @inline def cellPadding: cellPadding_property.type = cellPadding_property
-  private[AttributeFactories] object cellSpacing_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, cellSpacing_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.cellSpacing = _)
-      }
-    }
-  }
-  @inline def cellSpacing: cellSpacing_property.type = cellSpacing_property
+  @inline def axis: properties.axis.type = properties.axis
+  @inline def balance: properties.balance.type = properties.balance
+  @inline def behavior: properties.behavior.type = properties.behavior
+  @inline def border: properties.border.type = properties.border
+  @inline def borderColor: properties.borderColor.type = properties.borderColor
+  @inline def borderColorDark: properties.borderColorDark.type = properties.borderColorDark
+  @inline def borderColorLight: properties.borderColorLight.type = properties.borderColorLight
+  @inline def caption: properties.caption.type = properties.caption
+  @inline def cellPadding: properties.cellPadding.type = properties.cellPadding
+  @inline def cellSpacing: properties.cellSpacing.type = properties.cellSpacing
   object charset extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, charset.type, String] {
       def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
@@ -414,90 +1539,14 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLModElement: AttributeSetter[HTMLModElement, cite.type] = new AttributeSetter(_.setAttribute("cite", _))
   }
   object `class` extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, `class`.type] = new AttributeSetter(_.setAttribute("class", _)) }
-  private[AttributeFactories] object classList_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_DOMTokenList_Element extends MountPointBuilder[Element, classList_property.type, DOMTokenList] {
-      def mountProperty(element: Element, binding: Binding[DOMTokenList]) = {
-        Binding.BindingInstances.map(binding)(element.classList = _)
-      }
-    }
-  }
-  @inline def classList: classList_property.type = classList_property
-  private[AttributeFactories] object className_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, className_property.type, String] {
-      def mountProperty(element: HTMLElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.className = _)
-      }
-    }
-  }
-  @inline def className: className_property.type = className_property
-  private[AttributeFactories] object classid_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, classid_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.classid = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, classid_property.type, String] {
-      def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.classid = _)
-      }
-    }
-  }
-  @inline def classid: classid_property.type = classid_property
-  private[AttributeFactories] object clear_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLBRElement extends MountPointBuilder[HTMLBRElement, clear_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBRElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.clear = _)
-      }
-    }
-  }
-  @inline def clear: clear_property.type = clear_property
-  private[AttributeFactories] object code_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, code_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.code = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, code_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.code = _)
-      }
-    }
-  }
-  @inline def code: code_property.type = code_property
-  private[AttributeFactories] object codeBase_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeBase_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.codeBase = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeBase_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.codeBase = _)
-      }
-    }
-  }
-  @inline def codeBase: codeBase_property.type = codeBase_property
-  private[AttributeFactories] object codeType_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, codeType_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.codeType = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, codeType_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.codeType = _)
-      }
-    }
-  }
-  @inline def codeType: codeType_property.type = codeType_property
-  private[AttributeFactories] object colSpan_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, colSpan_property.type, Int] {
-      def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.colSpan = _)
-      }
-    }
-  }
-  @inline def colSpan: colSpan_property.type = colSpan_property
+  @inline def classList: properties.classList.type = properties.classList
+  @inline def className: properties.className.type = properties.className
+  @inline def classid: properties.classid.type = properties.classid
+  @inline def clear: properties.clear.type = properties.clear
+  @inline def code: properties.code.type = properties.code
+  @inline def codeBase: properties.codeBase.type = properties.codeBase
+  @inline def codeType: properties.codeType.type = properties.codeType
+  @inline def colSpan: properties.colSpan.type = properties.colSpan
   object color extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, color.type] = new AttributeSetter(_.setAttribute("color", _)) }
   object cols extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, cols.type, String] {
@@ -521,35 +1570,9 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, content.type] = new AttributeSetter(_.setAttribute("content", _))
   }
-  private[AttributeFactories] object contentDocument_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, contentDocument_property.type, Document] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Document]) = {
-        Binding.BindingInstances.map(binding)(element.contentDocument = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Document_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentDocument_property.type, Document] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Document]) = {
-        Binding.BindingInstances.map(binding)(element.contentDocument = _)
-      }
-    }
-  }
-  @inline def contentDocument: contentDocument_property.type = contentDocument_property
-  private[AttributeFactories] object contentEditable_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, contentEditable_property.type, String] {
-      def mountProperty(element: HTMLElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.contentEditable = _)
-      }
-    }
-  }
-  @inline def contentEditable: contentEditable_property.type = contentEditable_property
-  private[AttributeFactories] object contentWindow_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Window_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, contentWindow_property.type, Window] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Window]) = {
-        Binding.BindingInstances.map(binding)(element.contentWindow = _)
-      }
-    }
-  }
-  @inline def contentWindow: contentWindow_property.type = contentWindow_property
+  @inline def contentDocument: properties.contentDocument.type = properties.contentDocument
+  @inline def contentEditable: properties.contentEditable.type = properties.contentEditable
+  @inline def contentWindow: properties.contentWindow.type = properties.contentWindow
   object contenteditable extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, contenteditable.type] = new AttributeSetter(_.setAttribute("contenteditable", _)) }
   object controls extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, controls.type, Boolean] {
@@ -580,14 +1603,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, crossorigin.type] = new AttributeSetter(_.setAttribute("crossorigin", _))
   }
-  private[AttributeFactories] object currentTime_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, currentTime_property.type, Double] {
-      def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.currentTime = _)
-      }
-    }
-  }
-  @inline def currentTime: currentTime_property.type = currentTime_property
+  @inline def currentTime: properties.currentTime.type = properties.currentTime
   object data extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, data.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
@@ -601,80 +1617,18 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, data.type] = new AttributeSetter(_.setAttribute("data", _))
   }
-  private[AttributeFactories] object dateTime_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLQuoteElement extends MountPointBuilder[HTMLQuoteElement, dateTime_property.type, String] {
-      def mountProperty(element: HTMLQuoteElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.dateTime = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime_property.type, String] {
-      def mountProperty(element: HTMLPhraseElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.dateTime = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLModElement extends MountPointBuilder[HTMLModElement, dateTime_property.type, String] {
-      def mountProperty(element: HTMLModElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.dateTime = _)
-      }
-    }
-  }
-  @inline def dateTime: dateTime_property.type = dateTime_property
+  @inline def dateTime: properties.dateTime.type = properties.dateTime
   object datetime extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLModElement: AttributeSetter[HTMLModElement, datetime.type] = new AttributeSetter(_.setAttribute("datetime", _))
     @inline implicit def attributeSetter_HTMLTimeElement: AttributeSetter[HTMLTimeElement, datetime.type] = new AttributeSetter(_.setAttribute("datetime", _))
   }
-  private[AttributeFactories] object declare_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, declare_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.declare = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, declare_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.declare = _)
-      }
-    }
-  }
-  @inline def declare: declare_property.type = declare_property
+  @inline def declare: properties.declare.type = properties.declare
   object decoding extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, decoding.type] = new AttributeSetter(_.setAttribute("decoding", _)) }
   object default extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, default.type] = new AttributeSetter(_.setAttribute("default", _)) }
-  private[AttributeFactories] object defaultChecked_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked_property.type, Boolean] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.defaultChecked = _)
-      }
-    }
-  }
-  @inline def defaultChecked: defaultChecked_property.type = defaultChecked_property
-  private[AttributeFactories] object defaultPlaybackRate_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, defaultPlaybackRate_property.type, Double] {
-      def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.defaultPlaybackRate = _)
-      }
-    }
-  }
-  @inline def defaultPlaybackRate: defaultPlaybackRate_property.type = defaultPlaybackRate_property
-  private[AttributeFactories] object defaultSelected_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected_property.type, Boolean] {
-      def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.defaultSelected = _)
-      }
-    }
-  }
-  @inline def defaultSelected: defaultSelected_property.type = defaultSelected_property
-  private[AttributeFactories] object defaultValue_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.defaultValue = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, defaultValue_property.type, String] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.defaultValue = _)
-      }
-    }
-  }
-  @inline def defaultValue: defaultValue_property.type = defaultValue_property
+  @inline def defaultChecked: properties.defaultChecked.type = properties.defaultChecked
+  @inline def defaultPlaybackRate: properties.defaultPlaybackRate.type = properties.defaultPlaybackRate
+  @inline def defaultSelected: properties.defaultSelected.type = properties.defaultSelected
+  @inline def defaultValue: properties.defaultValue.type = properties.defaultValue
   object defer extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, defer.type, Boolean] {
       def mountProperty(element: HTMLScriptElement, binding: Binding[Boolean]) = {
@@ -691,14 +1645,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, dir.type] = new AttributeSetter(_.setAttribute("dir", _))
   }
-  private[AttributeFactories] object direction_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, direction_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.direction = _)
-      }
-    }
-  }
-  @inline def direction: direction_property.type = direction_property
+  @inline def direction: properties.direction.type = properties.direction
   object dirname extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, dirname.type] = new AttributeSetter(_.setAttribute("dirname", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, dirname.type] = new AttributeSetter(_.setAttribute("dirname", _))
@@ -759,14 +1706,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, draggable.type] = new AttributeSetter(_.setAttribute("draggable", _))
   }
-  private[AttributeFactories] object encoding_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, encoding_property.type, String] {
-      def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.encoding = _)
-      }
-    }
-  }
-  @inline def encoding: encoding_property.type = encoding_property
+  @inline def encoding: properties.encoding.type = properties.encoding
   object enctype extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLFormElement extends MountPointBuilder[HTMLFormElement, enctype.type, String] {
       def mountProperty(element: HTMLFormElement, binding: Binding[String]) = {
@@ -776,43 +1716,10 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, enctype.type] = new AttributeSetter(_.setAttribute("enctype", _))
   }
   object enterkeyhint extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, enterkeyhint.type] = new AttributeSetter(_.setAttribute("enterkeyhint", _)) }
-  private[AttributeFactories] object event_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, event_property.type, String] {
-      def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.event = _)
-      }
-    }
-  }
-  @inline def event: event_property.type = event_property
-  private[AttributeFactories] object face_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLFontElement extends MountPointBuilder[HTMLFontElement, face_property.type, String] {
-      @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLFontElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.face = _)
-      }
-    }
-    @deprecated("Obsolete.", "DOM Level 2") implicit object mountPointBuilder_String_HTMLBaseFontElement extends MountPointBuilder[HTMLBaseFontElement, face_property.type, String] {
-      @deprecated("Obsolete.", "DOM Level 2") def mountProperty(element: HTMLBaseFontElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.face = _)
-      }
-    }
-  }
-  @inline def face: face_property.type = face_property
-  private[AttributeFactories] object files_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_FileList_HTMLInputElement extends MountPointBuilder[HTMLInputElement, files_property.type, FileList] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[FileList]) = {
-        Binding.BindingInstances.map(binding)(element.files = _)
-      }
-    }
-  }
-  @inline def files: files_property.type = files_property
-  private[AttributeFactories] object filters_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Object_HTMLElement extends MountPointBuilder[HTMLElement, filters_property.type, Object] {
-      def mountProperty(element: HTMLElement, binding: Binding[Object]) = {
-        Binding.BindingInstances.map(binding)(element.filters = _)
-      }
-    }
-  }
-  @inline def filters: filters_property.type = filters_property
+  @inline def event: properties.event.type = properties.event
+  @inline def face: properties.face.type = properties.face
+  @inline def files: properties.files.type = properties.files
+  @inline def filters: properties.filters.type = properties.filters
   object `for` extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLLabelElement: AttributeSetter[HTMLLabelElement, `for`.type] = new AttributeSetter(_.setAttribute("for", _))
     @inline implicit def attributeSetter_HTMLOutputElement: AttributeSetter[HTMLOutputElement, `for`.type] = new AttributeSetter(_.setAttribute("for", _))
@@ -841,71 +1748,11 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, form.type] = new AttributeSetter(_.setAttribute("form", _))
   }
-  private[AttributeFactories] object formAction_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction_property.type, String] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formAction = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formAction_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formAction = _)
-      }
-    }
-  }
-  @inline def formAction: formAction_property.type = formAction_property
-  private[AttributeFactories] object formEnctype_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype_property.type, String] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formEnctype = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formEnctype_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formEnctype = _)
-      }
-    }
-  }
-  @inline def formEnctype: formEnctype_property.type = formEnctype_property
-  private[AttributeFactories] object formMethod_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod_property.type, String] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formMethod = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formMethod_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formMethod = _)
-      }
-    }
-  }
-  @inline def formMethod: formMethod_property.type = formMethod_property
-  private[AttributeFactories] object formNoValidate_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate_property.type, String] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formNoValidate = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formNoValidate_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formNoValidate = _)
-      }
-    }
-  }
-  @inline def formNoValidate: formNoValidate_property.type = formNoValidate_property
-  private[AttributeFactories] object formTarget_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget_property.type, String] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formTarget = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formTarget_property.type, String] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.formTarget = _)
-      }
-    }
-  }
-  @inline def formTarget: formTarget_property.type = formTarget_property
+  @inline def formAction: properties.formAction.type = properties.formAction
+  @inline def formEnctype: properties.formEnctype.type = properties.formEnctype
+  @inline def formMethod: properties.formMethod.type = properties.formMethod
+  @inline def formNoValidate: properties.formNoValidate.type = properties.formNoValidate
+  @inline def formTarget: properties.formTarget.type = properties.formTarget
   object formaction extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
@@ -926,61 +1773,11 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formtarget.type] = new AttributeSetter(_.setAttribute("formtarget", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formtarget.type] = new AttributeSetter(_.setAttribute("formtarget", _))
   }
-  private[AttributeFactories] object frame_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, frame_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.frame = _)
-      }
-    }
-  }
-  @inline def frame: frame_property.type = frame_property
-  private[AttributeFactories] object frameBorder_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameBorder_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.frameBorder = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameBorder_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.frameBorder = _)
-      }
-    }
-  }
-  @inline def frameBorder: frameBorder_property.type = frameBorder_property
-  private[AttributeFactories] object frameSpacing_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, frameSpacing_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.frameSpacing = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, frameSpacing_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.frameSpacing = _)
-      }
-    }
-  }
-  @inline def frameSpacing: frameSpacing_property.type = frameSpacing_property
-  private[AttributeFactories] object gotpointercapture_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, gotpointercapture_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.gotpointercapture = _)
-      }
-    }
-  }
-  @inline def gotpointercapture: gotpointercapture_property.type = gotpointercapture_property
-  private[AttributeFactories] object hash_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hash_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.hash = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hash_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.hash = _)
-      }
-    }
-  }
-  @inline def hash: hash_property.type = hash_property
+  @inline def frame: properties.frame.type = properties.frame
+  @inline def frameBorder: properties.frameBorder.type = properties.frameBorder
+  @inline def frameSpacing: properties.frameSpacing.type = properties.frameSpacing
+  @inline def gotpointercapture: properties.gotpointercapture.type = properties.gotpointercapture
+  @inline def hash: properties.hash.type = properties.hash
   object headers extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, headers.type] = new AttributeSetter(_.setAttribute("headers", _)) }
   object height extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, height.type, String] {
@@ -1053,32 +1850,8 @@ private[concentricsky] object AttributeFactories {
   }
   object hidden extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, hidden.type] = new AttributeSetter(_.setAttribute("hidden", _)) }
   object high extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, high.type] = new AttributeSetter(_.setAttribute("high", _)) }
-  private[AttributeFactories] object host_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, host_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.host = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, host_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.host = _)
-      }
-    }
-  }
-  @inline def host: host_property.type = host_property
-  private[AttributeFactories] object hostname_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, hostname_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.hostname = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, hostname_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.hostname = _)
-      }
-    }
-  }
-  @inline def hostname: hostname_property.type = hostname_property
+  @inline def host: properties.host.type = properties.host
+  @inline def hostname: properties.hostname.type = properties.hostname
   object href extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, href.type, String] {
       def mountProperty(element: HTMLBaseElement, binding: Binding[String]) = {
@@ -1124,41 +1897,10 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
   }
-  private[AttributeFactories] object hspace_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, hspace_property.type, Int] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.hspace = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, hspace_property.type, Int] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.hspace = _)
-      }
-    }
-  }
-  @inline def hspace: hspace_property.type = hspace_property
-  private[AttributeFactories] object htmlFor_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, htmlFor_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.htmlFor = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLLabelElement extends MountPointBuilder[HTMLLabelElement, htmlFor_property.type, String] {
-      def mountProperty(element: HTMLLabelElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.htmlFor = _)
-      }
-    }
-  }
-  @inline def htmlFor: htmlFor_property.type = htmlFor_property
+  @inline def hspace: properties.hspace.type = properties.hspace
+  @inline def htmlFor: properties.htmlFor.type = properties.htmlFor
   object http$minusequiv extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, http$minusequiv.type] = new AttributeSetter(_.setAttribute("http-equiv", _)) }
-  private[AttributeFactories] object httpEquiv_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, httpEquiv_property.type, String] {
-      def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.httpEquiv = _)
-      }
-    }
-  }
-  @inline def httpEquiv: httpEquiv_property.type = httpEquiv_property
+  @inline def httpEquiv: properties.httpEquiv.type = properties.httpEquiv
   object id extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, id.type, String] {
       def mountProperty(element: Element, binding: Binding[String]) = {
@@ -1169,36 +1911,15 @@ private[concentricsky] object AttributeFactories {
   }
   object imagesizes extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, imagesizes.type] = new AttributeSetter(_.setAttribute("imagesizes", _)) }
   object imagesrcset extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, imagesrcset.type] = new AttributeSetter(_.setAttribute("imagesrcset", _)) }
-  private[AttributeFactories] object indeterminate_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate_property.type, Boolean] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.indeterminate = _)
-      }
-    }
-  }
-  @inline def indeterminate: indeterminate_property.type = indeterminate_property
-  private[AttributeFactories] object innerHTML_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, innerHTML_property.type, String] {
-      def mountProperty(element: Element, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.innerHTML = _)
-      }
-    }
-  }
-  @inline def innerHTML: innerHTML_property.type = innerHTML_property
+  @inline def indeterminate: properties.indeterminate.type = properties.indeterminate
+  @inline def innerHTML: properties.innerHTML.type = properties.innerHTML
   object inputmode extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, inputmode.type] = new AttributeSetter(_.setAttribute("inputmode", _)) }
   object integrity extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, integrity.type] = new AttributeSetter(_.setAttribute("integrity", _))
     @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, integrity.type] = new AttributeSetter(_.setAttribute("integrity", _))
   }
   object is extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, is.type] = new AttributeSetter(_.setAttribute("is", _)) }
-  private[AttributeFactories] object isMap_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLImageElement extends MountPointBuilder[HTMLImageElement, isMap_property.type, Boolean] {
-      def mountProperty(element: HTMLImageElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.isMap = _)
-      }
-    }
-  }
-  @inline def isMap: isMap_property.type = isMap_property
+  @inline def isMap: properties.isMap.type = properties.isMap
   object ismap extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, ismap.type] = new AttributeSetter(_.setAttribute("ismap", _)) }
   object itemid extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemid.type] = new AttributeSetter(_.setAttribute("itemid", _)) }
   object itemprop extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, itemprop.type] = new AttributeSetter(_.setAttribute("itemprop", _)) }
@@ -1241,30 +1962,9 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, lang.type] = new AttributeSetter(_.setAttribute("lang", _))
   }
-  private[AttributeFactories] object leftMargin_property extends AttributeFactory.Typed {
-    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, leftMargin_property.type, js.Any] {
-      @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.leftMargin = _)
-      }
-    }
-  }
-  @inline def leftMargin: leftMargin_property.type = leftMargin_property
-  private[AttributeFactories] object length_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length_property.type, Int] {
-      def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.length = _)
-      }
-    }
-  }
-  @inline def length: length_property.type = length_property
-  private[AttributeFactories] object link_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, link_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.link = _)
-      }
-    }
-  }
-  @inline def link: link_property.type = link_property
+  @inline def leftMargin: properties.leftMargin.type = properties.leftMargin
+  @inline def length: properties.length.type = properties.length
+  @inline def link: properties.link.type = properties.link
   object list extends AttributeFactory.Typed {
     implicit object mountPointBuilder_HTMLElement_HTMLInputElement extends MountPointBuilder[HTMLInputElement, list.type, HTMLElement] {
       def mountProperty(element: HTMLInputElement, binding: Binding[HTMLElement]) = {
@@ -1273,24 +1973,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, list.type] = new AttributeSetter(_.setAttribute("list", _))
   }
-  private[AttributeFactories] object longDesc_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, longDesc_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.longDesc = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, longDesc_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.longDesc = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, longDesc_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLIFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.longDesc = _)
-      }
-    }
-  }
-  @inline def longDesc: longDesc_property.type = longDesc_property
+  @inline def longDesc: properties.longDesc.type = properties.longDesc
   object loop extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, loop.type, Boolean] {
       def mountProperty(element: HTMLMediaElement, binding: Binding[Boolean]) = {
@@ -1310,32 +1993,11 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, loop.type] = new AttributeSetter(_.setAttribute("loop", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, loop.type] = new AttributeSetter(_.setAttribute("loop", _))
   }
-  private[AttributeFactories] object lostpointercapture_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, lostpointercapture_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.lostpointercapture = _)
-      }
-    }
-  }
-  @inline def lostpointercapture: lostpointercapture_property.type = lostpointercapture_property
+  @inline def lostpointercapture: properties.lostpointercapture.type = properties.lostpointercapture
   object low extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, low.type] = new AttributeSetter(_.setAttribute("low", _)) }
   object manifest extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLHtmlElement: AttributeSetter[HTMLHtmlElement, manifest.type] = new AttributeSetter(_.setAttribute("manifest", _)) }
-  private[AttributeFactories] object marginHeight_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginHeight_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.marginHeight = _)
-      }
-    }
-  }
-  @inline def marginHeight: marginHeight_property.type = marginHeight_property
-  private[AttributeFactories] object marginWidth_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, marginWidth_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.marginWidth = _)
-      }
-    }
-  }
-  @inline def marginWidth: marginWidth_property.type = marginWidth_property
+  @inline def marginHeight: properties.marginHeight.type = properties.marginHeight
+  @inline def marginWidth: properties.marginWidth.type = properties.marginWidth
   object max extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, max.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
@@ -1351,19 +2013,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
     @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
   }
-  private[AttributeFactories] object maxLength_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength_property.type, Int] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.maxLength = _)
-      }
-    }
-    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, maxLength_property.type, Int] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.maxLength = _)
-      }
-    }
-  }
-  @inline def maxLength: maxLength_property.type = maxLength_property
+  @inline def maxLength: properties.maxLength.type = properties.maxLength
   object maxlength extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
@@ -1396,14 +2046,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, method.type] = new AttributeSetter(_.setAttribute("method", _))
   }
-  private[AttributeFactories] object mimeType_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, mimeType_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.mimeType = _)
-      }
-    }
-  }
-  @inline def mimeType: mimeType_property.type = mimeType_property
+  @inline def mimeType: properties.mimeType.type = properties.mimeType
   object min extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, min.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
@@ -1530,80 +2173,16 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLSlotElement: AttributeSetter[HTMLSlotElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
   }
-  private[AttributeFactories] object naturalHeight_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalHeight_property.type, Int] {
-      def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.naturalHeight = _)
-      }
-    }
-  }
-  @inline def naturalHeight: naturalHeight_property.type = naturalHeight_property
-  private[AttributeFactories] object naturalWidth_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, naturalWidth_property.type, Int] {
-      def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.naturalWidth = _)
-      }
-    }
-  }
-  @inline def naturalWidth: naturalWidth_property.type = naturalWidth_property
-  private[AttributeFactories] object noHref_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, noHref_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAreaElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noHref = _)
-      }
-    }
-  }
-  @inline def noHref: noHref_property.type = noHref_property
-  private[AttributeFactories] object noResize_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, noResize_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noResize = _)
-      }
-    }
-  }
-  @inline def noResize: noResize_property.type = noResize_property
-  private[AttributeFactories] object noValidate_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLFormElement extends MountPointBuilder[HTMLFormElement, noValidate_property.type, Boolean] {
-      def mountProperty(element: HTMLFormElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noValidate = _)
-      }
-    }
-  }
-  @inline def noValidate: noValidate_property.type = noValidate_property
-  private[AttributeFactories] object noWrap_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap_property.type, Boolean] {
-      def mountProperty(element: HTMLDDElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noWrap = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, noWrap_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCellElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noWrap = _)
-      }
-    }
-    implicit object mountPointBuilder_Boolean_HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap_property.type, Boolean] {
-      def mountProperty(element: HTMLDTElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.noWrap = _)
-      }
-    }
-  }
-  @inline def noWrap: noWrap_property.type = noWrap_property
+  @inline def naturalHeight: properties.naturalHeight.type = properties.naturalHeight
+  @inline def naturalWidth: properties.naturalWidth.type = properties.naturalWidth
+  @inline def noHref: properties.noHref.type = properties.noHref
+  @inline def noResize: properties.noResize.type = properties.noResize
+  @inline def noValidate: properties.noValidate.type = properties.noValidate
+  @inline def noWrap: properties.noWrap.type = properties.noWrap
   object nomodule extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, nomodule.type] = new AttributeSetter(_.setAttribute("nomodule", _)) }
   object nonce extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, nonce.type] = new AttributeSetter(_.setAttribute("nonce", _)) }
   object novalidate extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, novalidate.type] = new AttributeSetter(_.setAttribute("novalidate", _)) }
-  private[AttributeFactories] object object_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, object_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.`object` = _)
-      }
-    }
-    implicit object mountPointBuilder_Object_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, object_property.type, Object] {
-      def mountProperty(element: HTMLObjectElement, binding: Binding[Object]) = {
-        Binding.BindingInstances.map(binding)(element.`object` = _)
-      }
-    }
-  }
-  @inline def `object`: object_property.type = object_property
+  @inline def `object`: properties.`object`.type = properties.`object`
   object onabort extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
@@ -1612,14 +2191,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onabort.type] = new AttributeSetter(_.setAttribute("onabort", _))
   }
-  private[AttributeFactories] object onactivate_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onactivate_property.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onactivate = _)
-      }
-    }
-  }
-  @inline def onactivate: onactivate_property.type = onactivate_property
+  @inline def onactivate: properties.onactivate.type = properties.onactivate
   object onafterprint extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onafterprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -1634,46 +2206,11 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onafterprint.type] = new AttributeSetter(_.setAttribute("onafterprint", _))
   }
   object onauxclick extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onauxclick.type] = new AttributeSetter(_.setAttribute("onauxclick", _)) }
-  private[AttributeFactories] object onbeforeactivate_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforeactivate_property.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbeforeactivate = _)
-      }
-    }
-  }
-  @inline def onbeforeactivate: onbeforeactivate_property.type = onbeforeactivate_property
-  private[AttributeFactories] object onbeforecopy_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecopy_property.type, js.Function1[DragEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbeforecopy = _)
-      }
-    }
-  }
-  @inline def onbeforecopy: onbeforecopy_property.type = onbeforecopy_property
-  private[AttributeFactories] object onbeforecut_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforecut_property.type, js.Function1[DragEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbeforecut = _)
-      }
-    }
-  }
-  @inline def onbeforecut: onbeforecut_property.type = onbeforecut_property
-  private[AttributeFactories] object onbeforedeactivate_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforedeactivate_property.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbeforedeactivate = _)
-      }
-    }
-  }
-  @inline def onbeforedeactivate: onbeforedeactivate_property.type = onbeforedeactivate_property
-  private[AttributeFactories] object onbeforepaste_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onbeforepaste_property.type, js.Function1[DragEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbeforepaste = _)
-      }
-    }
-  }
-  @inline def onbeforepaste: onbeforepaste_property.type = onbeforepaste_property
+  @inline def onbeforeactivate: properties.onbeforeactivate.type = properties.onbeforeactivate
+  @inline def onbeforecopy: properties.onbeforecopy.type = properties.onbeforecopy
+  @inline def onbeforecut: properties.onbeforecut.type = properties.onbeforecut
+  @inline def onbeforedeactivate: properties.onbeforedeactivate.type = properties.onbeforedeactivate
+  @inline def onbeforepaste: properties.onbeforepaste.type = properties.onbeforepaste
   object onbeforeprint extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onbeforeprint.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -1708,14 +2245,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onblur.type] = new AttributeSetter(_.setAttribute("onblur", _))
   }
-  private[AttributeFactories] object onbounce_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onbounce_property.type, js.Function1[Event, _]] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onbounce = _)
-      }
-    }
-  }
-  @inline def onbounce: onbounce_property.type = onbounce_property
+  @inline def onbounce: properties.onbounce.type = properties.onbounce
   object oncancel extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncancel.type] = new AttributeSetter(_.setAttribute("oncancel", _)) }
   object oncanplay extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncanplay.type, js.Function1[Event, _]] {
@@ -1790,14 +2320,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondblclick.type] = new AttributeSetter(_.setAttribute("ondblclick", _))
   }
-  private[AttributeFactories] object ondeactivate_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondeactivate_property.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.ondeactivate = _)
-      }
-    }
-  }
-  @inline def ondeactivate: ondeactivate_property.type = ondeactivate_property
+  @inline def ondeactivate: properties.ondeactivate.type = properties.ondeactivate
   object ondrag extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondrag.type, js.Function1[DragEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[DragEvent, _]]) = {
@@ -1892,14 +2415,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onerror.type] = new AttributeSetter(_.setAttribute("onerror", _))
   }
-  private[AttributeFactories] object onfinish_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onfinish_property.type, js.Function1[Event, _]] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onfinish = _)
-      }
-    }
-  }
-  @inline def onfinish: onfinish_property.type = onfinish_property
+  @inline def onfinish: properties.onfinish.type = properties.onfinish
   object onfocus extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocus.type, js.Function1[FocusEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
@@ -1908,22 +2424,8 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onfocus.type] = new AttributeSetter(_.setAttribute("onfocus", _))
   }
-  private[AttributeFactories] object onfocusin_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusin_property.type, js.Function1[FocusEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onfocusin = _)
-      }
-    }
-  }
-  @inline def onfocusin: onfocusin_property.type = onfocusin_property
-  private[AttributeFactories] object onfocusout_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[FocusEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onfocusout_property.type, js.Function1[FocusEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[FocusEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onfocusout = _)
-      }
-    }
-  }
-  @inline def onfocusout: onfocusout_property.type = onfocusout_property
+  @inline def onfocusin: properties.onfocusin.type = properties.onfocusin
+  @inline def onfocusout: properties.onfocusout.type = properties.onfocusout
   object onformdata extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onformdata.type] = new AttributeSetter(_.setAttribute("onformdata", _)) }
   object onhashchange extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[HashChangeEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onhashchange.type, js.Function1[HashChangeEvent, _]] {
@@ -1938,14 +2440,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onhashchange.type] = new AttributeSetter(_.setAttribute("onhashchange", _))
   }
-  private[AttributeFactories] object onhelp_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onhelp_property.type, js.Function1[Event, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onhelp = _)
-      }
-    }
-  }
-  @inline def onhelp: onhelp_property.type = onhelp_property
+  @inline def onhelp: properties.onhelp.type = properties.onhelp
   object oninput extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oninput.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -2029,7 +2524,6 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadedmetadata.type] = new AttributeSetter(_.setAttribute("onloadedmetadata", _))
   }
-  object onloadend extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onloadend.type] = new AttributeSetter(_.setAttribute("onloadend", _)) }
   object onloadstart extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onloadstart.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -2108,14 +2602,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onmouseup.type] = new AttributeSetter(_.setAttribute("onmouseup", _))
   }
-  private[AttributeFactories] object onmousewheel_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[WheelEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onmousewheel_property.type, js.Function1[WheelEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[WheelEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onmousewheel = _)
-      }
-    }
-  }
-  @inline def onmousewheel: onmousewheel_property.type = onmousewheel_property
+  @inline def onmousewheel: properties.onmousewheel.type = properties.onmousewheel
   object onoffline extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onoffline.type, js.Function1[Event, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -2176,70 +2663,14 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onplaying.type] = new AttributeSetter(_.setAttribute("onplaying", _))
   }
-  private[AttributeFactories] object onpointercancel_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointercancel_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointercancel = _)
-      }
-    }
-  }
-  @inline def onpointercancel: onpointercancel_property.type = onpointercancel_property
-  private[AttributeFactories] object onpointerdown_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerdown_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerdown = _)
-      }
-    }
-  }
-  @inline def onpointerdown: onpointerdown_property.type = onpointerdown_property
-  private[AttributeFactories] object onpointerenter_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerenter_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerenter = _)
-      }
-    }
-  }
-  @inline def onpointerenter: onpointerenter_property.type = onpointerenter_property
-  private[AttributeFactories] object onpointerleave_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerleave_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerleave = _)
-      }
-    }
-  }
-  @inline def onpointerleave: onpointerleave_property.type = onpointerleave_property
-  private[AttributeFactories] object onpointermove_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointermove_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointermove = _)
-      }
-    }
-  }
-  @inline def onpointermove: onpointermove_property.type = onpointermove_property
-  private[AttributeFactories] object onpointerout_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerout_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerout = _)
-      }
-    }
-  }
-  @inline def onpointerout: onpointerout_property.type = onpointerout_property
-  private[AttributeFactories] object onpointerover_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerover_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerover = _)
-      }
-    }
-  }
-  @inline def onpointerover: onpointerover_property.type = onpointerover_property
-  private[AttributeFactories] object onpointerup_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onpointerup_property.type, js.Function1[PointerEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onpointerup = _)
-      }
-    }
-  }
-  @inline def onpointerup: onpointerup_property.type = onpointerup_property
+  @inline def onpointercancel: properties.onpointercancel.type = properties.onpointercancel
+  @inline def onpointerdown: properties.onpointerdown.type = properties.onpointerdown
+  @inline def onpointerenter: properties.onpointerenter.type = properties.onpointerenter
+  @inline def onpointerleave: properties.onpointerleave.type = properties.onpointerleave
+  @inline def onpointermove: properties.onpointermove.type = properties.onpointermove
+  @inline def onpointerout: properties.onpointerout.type = properties.onpointerout
+  @inline def onpointerover: properties.onpointerover.type = properties.onpointerover
+  @inline def onpointerup: properties.onpointerup.type = properties.onpointerup
   object onpopstate extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[PopStateEvent, _]_HTMLBodyElement` extends MountPointBuilder[HTMLBodyElement, onpopstate.type, js.Function1[PopStateEvent, _]] {
       def mountProperty(element: HTMLBodyElement, binding: Binding[js.Function1[PopStateEvent, _]]) = {
@@ -2264,14 +2695,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onratechange.type] = new AttributeSetter(_.setAttribute("onratechange", _))
   }
-  private[AttributeFactories] object onreadystatechange_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreadystatechange_property.type, js.Function1[Event, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onreadystatechange = _)
-      }
-    }
-  }
-  @inline def onreadystatechange: onreadystatechange_property.type = onreadystatechange_property
+  @inline def onreadystatechange: properties.onreadystatechange.type = properties.onreadystatechange
   object onrejectionhandled extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onrejectionhandled.type] = new AttributeSetter(_.setAttribute("onrejectionhandled", _)) }
   object onreset extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onreset.type, js.Function1[Event, _]] {
@@ -2327,14 +2751,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onselect.type] = new AttributeSetter(_.setAttribute("onselect", _))
   }
-  private[AttributeFactories] object onselectstart_property extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onselectstart_property.type, js.Function1[Event, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onselectstart = _)
-      }
-    }
-  }
-  @inline def onselectstart: onselectstart_property.type = onselectstart_property
+  @inline def onselectstart: properties.onselectstart.type = properties.onselectstart
   object onstalled extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
@@ -2343,14 +2760,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onstalled.type] = new AttributeSetter(_.setAttribute("onstalled", _))
   }
-  private[AttributeFactories] object onstart_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLMarqueeElement` extends MountPointBuilder[HTMLMarqueeElement, onstart_property.type, js.Function1[Event, _]] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onstart = _)
-      }
-    }
-  }
-  @inline def onstart: onstart_property.type = onstart_property
+  @inline def onstart: properties.onstart.type = properties.onstart
   object onstorage extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[StorageEvent, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onstorage.type, js.Function1[StorageEvent, _]] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[js.Function1[StorageEvent, _]]) = {
@@ -2425,35 +2835,9 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLDialogElement: AttributeSetter[HTMLDialogElement, open.type] = new AttributeSetter(_.setAttribute("open", _))
   }
   object optimum extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, optimum.type] = new AttributeSetter(_.setAttribute("optimum", _)) }
-  private[AttributeFactories] object outerHTML_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, outerHTML_property.type, String] {
-      def mountProperty(element: Element, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.outerHTML = _)
-      }
-    }
-  }
-  @inline def outerHTML: outerHTML_property.type = outerHTML_property
-  private[AttributeFactories] object parentElement_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_HTMLElement_HTMLElement extends MountPointBuilder[HTMLElement, parentElement_property.type, HTMLElement] {
-      def mountProperty(element: HTMLElement, binding: Binding[HTMLElement]) = {
-        Binding.BindingInstances.map(binding)(element.parentElement = _)
-      }
-    }
-  }
-  @inline def parentElement: parentElement_property.type = parentElement_property
-  private[AttributeFactories] object pathname_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, pathname_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.pathname = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, pathname_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.pathname = _)
-      }
-    }
-  }
-  @inline def pathname: pathname_property.type = pathname_property
+  @inline def outerHTML: properties.outerHTML.type = properties.outerHTML
+  @inline def parentElement: properties.parentElement.type = properties.parentElement
+  @inline def pathname: properties.pathname.type = properties.pathname
   object pattern extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, pattern.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
@@ -2480,28 +2864,9 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
   }
-  private[AttributeFactories] object playbackRate_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, playbackRate_property.type, Double] {
-      def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.playbackRate = _)
-      }
-    }
-  }
-  @inline def playbackRate: playbackRate_property.type = playbackRate_property
+  @inline def playbackRate: properties.playbackRate.type = properties.playbackRate
   object playsinline extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, playsinline.type] = new AttributeSetter(_.setAttribute("playsinline", _)) }
-  private[AttributeFactories] object port_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, port_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.port = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, port_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.port = _)
-      }
-    }
-  }
-  @inline def port: port_property.type = port_property
+  @inline def port: properties.port.type = properties.port
   object poster extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLVideoElement extends MountPointBuilder[HTMLVideoElement, poster.type, String] {
       def mountProperty(element: HTMLVideoElement, binding: Binding[String]) = {
@@ -2519,68 +2884,16 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, preload.type] = new AttributeSetter(_.setAttribute("preload", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, preload.type] = new AttributeSetter(_.setAttribute("preload", _))
   }
-  private[AttributeFactories] object profile_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHeadElement extends MountPointBuilder[HTMLHeadElement, profile_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHeadElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.profile = _)
-      }
-    }
-  }
-  @inline def profile: profile_property.type = profile_property
-  private[AttributeFactories] object prompt_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 4.01") implicit object mountPointBuilder_String_HTMLIsIndexElement extends MountPointBuilder[HTMLIsIndexElement, prompt_property.type, String] {
-      @deprecated("Obsolete.", "HTML 4.01") def mountProperty(element: HTMLIsIndexElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.prompt = _)
-      }
-    }
-  }
-  @inline def prompt: prompt_property.type = prompt_property
-  private[AttributeFactories] object protocol_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, protocol_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.protocol = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, protocol_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.protocol = _)
-      }
-    }
-  }
-  @inline def protocol: protocol_property.type = protocol_property
-  private[AttributeFactories] object readOnly_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly_property.type, Boolean] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.readOnly = _)
-      }
-    }
-    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, readOnly_property.type, Boolean] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.readOnly = _)
-      }
-    }
-  }
-  @inline def readOnly: readOnly_property.type = readOnly_property
+  @inline def profile: properties.profile.type = properties.profile
+  @inline def prompt: properties.prompt.type = properties.prompt
+  @inline def protocol: properties.protocol.type = properties.protocol
+  @inline def readOnly: properties.readOnly.type = properties.readOnly
   object readonly extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
   }
-  private[AttributeFactories] object readyState_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, readyState_property.type, js.Any] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.readyState = _)
-      }
-    }
-  }
-  @inline def readyState: readyState_property.type = readyState_property
-  private[AttributeFactories] object recordNumber_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLElement extends MountPointBuilder[HTMLElement, recordNumber_property.type, js.Any] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.recordNumber = _)
-      }
-    }
-  }
-  @inline def recordNumber: recordNumber_property.type = recordNumber_property
+  @inline def readyState: properties.readyState.type = properties.readyState
+  @inline def recordNumber: properties.recordNumber.type = properties.recordNumber
   object referrerpolicy extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, referrerpolicy.type] = new AttributeSetter(_.setAttribute("referrerpolicy", _))
@@ -2624,36 +2937,10 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
   }
-  private[AttributeFactories] object rev_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev_property.type, String] {
-      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.rev = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, rev_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.rev = _)
-      }
-    }
-  }
-  @inline def rev: rev_property.type = rev_property
+  @inline def rev: properties.rev.type = properties.rev
   object reversed extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, reversed.type] = new AttributeSetter(_.setAttribute("reversed", _)) }
-  private[AttributeFactories] object rightMargin_property extends AttributeFactory.Typed {
-    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, rightMargin_property.type, js.Any] {
-      @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.rightMargin = _)
-      }
-    }
-  }
-  @inline def rightMargin: rightMargin_property.type = rightMargin_property
-  private[AttributeFactories] object rowSpan_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLTableCellElement extends MountPointBuilder[HTMLTableCellElement, rowSpan_property.type, Int] {
-      def mountProperty(element: HTMLTableCellElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.rowSpan = _)
-      }
-    }
-  }
-  @inline def rowSpan: rowSpan_property.type = rowSpan_property
+  @inline def rightMargin: properties.rightMargin.type = properties.rightMargin
+  @inline def rowSpan: properties.rowSpan.type = properties.rowSpan
   object rows extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameSetElement extends MountPointBuilder[HTMLFrameSetElement, rows.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameSetElement, binding: Binding[String]) = {
@@ -2668,14 +2955,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, rows.type] = new AttributeSetter(_.setAttribute("rows", _))
   }
   object rowspan extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, rowspan.type] = new AttributeSetter(_.setAttribute("rowspan", _)) }
-  private[AttributeFactories] object rules_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, rules_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.rules = _)
-      }
-    }
-  }
-  @inline def rules: rules_property.type = rules_property
+  @inline def rules: properties.rules.type = properties.rules
   object sandbox extends AttributeFactory.Typed {
     implicit object mountPointBuilder_DOMSettableTokenList_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, sandbox.type, DOMSettableTokenList] {
       def mountProperty(element: HTMLIFrameElement, binding: Binding[DOMSettableTokenList]) = {
@@ -2684,89 +2964,16 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, sandbox.type] = new AttributeSetter(_.setAttribute("sandbox", _))
   }
-  private[AttributeFactories] object scheme_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, scheme_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.scheme = _)
-      }
-    }
-  }
-  @inline def scheme: scheme_property.type = scheme_property
+  @inline def scheme: properties.scheme.type = properties.scheme
   object scope extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLTableCellElement: AttributeSetter[HTMLTableCellElement, scope.type] = new AttributeSetter(_.setAttribute("scope", _)) }
-  private[AttributeFactories] object scroll_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, scroll_property.type, String] {
-      def mountProperty(element: HTMLBodyElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.scroll = _)
-      }
-    }
-  }
-  @inline def scroll: scroll_property.type = scroll_property
-  private[AttributeFactories] object scrollAmount_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollAmount_property.type, Double] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.scrollAmount = _)
-      }
-    }
-  }
-  @inline def scrollAmount: scrollAmount_property.type = scrollAmount_property
-  private[AttributeFactories] object scrollDelay_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Double_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, scrollDelay_property.type, Double] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.scrollDelay = _)
-      }
-    }
-  }
-  @inline def scrollDelay: scrollDelay_property.type = scrollDelay_property
-  private[AttributeFactories] object scrollLeft_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollLeft_property.type, Double] {
-      def mountProperty(element: Element, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.scrollLeft = _)
-      }
-    }
-  }
-  @inline def scrollLeft: scrollLeft_property.type = scrollLeft_property
-  private[AttributeFactories] object scrollTop_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollTop_property.type, Double] {
-      def mountProperty(element: Element, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.scrollTop = _)
-      }
-    }
-  }
-  @inline def scrollTop: scrollTop_property.type = scrollTop_property
-  private[AttributeFactories] object scrolling_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, scrolling_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.scrolling = _)
-      }
-    }
-  }
-  @inline def scrolling: scrolling_property.type = scrolling_property
-  private[AttributeFactories] object search_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, search_property.type, String] {
-      def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.search = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, search_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.search = _)
-      }
-    }
-  }
-  @inline def search: search_property.type = search_property
-  private[AttributeFactories] object security_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLFrameElement extends MountPointBuilder[HTMLFrameElement, security_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLFrameElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.security = _)
-      }
-    }
-    implicit object mountPointBuilder_js_Any_HTMLIFrameElement extends MountPointBuilder[HTMLIFrameElement, security_property.type, js.Any] {
-      def mountProperty(element: HTMLIFrameElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.security = _)
-      }
-    }
-  }
-  @inline def security: security_property.type = security_property
+  @inline def scroll: properties.scroll.type = properties.scroll
+  @inline def scrollAmount: properties.scrollAmount.type = properties.scrollAmount
+  @inline def scrollDelay: properties.scrollDelay.type = properties.scrollDelay
+  @inline def scrollLeft: properties.scrollLeft.type = properties.scrollLeft
+  @inline def scrollTop: properties.scrollTop.type = properties.scrollTop
+  @inline def scrolling: properties.scrolling.type = properties.scrolling
+  @inline def search: properties.search.type = properties.search
+  @inline def security: properties.security.type = properties.security
   object selected extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, selected.type, Boolean] {
       def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
@@ -2775,40 +2982,9 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, selected.type] = new AttributeSetter(_.setAttribute("selected", _))
   }
-  private[AttributeFactories] object selectedIndex_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex_property.type, Int] {
-      def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.selectedIndex = _)
-      }
-    }
-  }
-  @inline def selectedIndex: selectedIndex_property.type = selectedIndex_property
-  private[AttributeFactories] object selectionEnd_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd_property.type, Int] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.selectionEnd = _)
-      }
-    }
-    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionEnd_property.type, Int] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.selectionEnd = _)
-      }
-    }
-  }
-  @inline def selectionEnd: selectionEnd_property.type = selectionEnd_property
-  private[AttributeFactories] object selectionStart_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart_property.type, Int] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.selectionStart = _)
-      }
-    }
-    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionStart_property.type, Int] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.selectionStart = _)
-      }
-    }
-  }
-  @inline def selectionStart: selectionStart_property.type = selectionStart_property
+  @inline def selectedIndex: properties.selectedIndex.type = properties.selectedIndex
+  @inline def selectionEnd: properties.selectionEnd.type = properties.selectionEnd
+  @inline def selectionStart: properties.selectionStart.type = properties.selectionStart
   object shape extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLAreaElement extends MountPointBuilder[HTMLAreaElement, shape.type, String] {
       def mountProperty(element: HTMLAreaElement, binding: Binding[String]) = {
@@ -2937,19 +3113,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, srcset.type] = new AttributeSetter(_.setAttribute("srcset", _))
     @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, srcset.type] = new AttributeSetter(_.setAttribute("srcset", _))
   }
-  private[AttributeFactories] object standby_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, standby_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.standby = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, standby_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.standby = _)
-      }
-    }
-  }
-  @inline def standby: standby_property.type = standby_property
+  @inline def standby: properties.standby.type = properties.standby
   object start extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Int_HTMLOListElement extends MountPointBuilder[HTMLOListElement, start.type, Int] {
       def mountProperty(element: HTMLOListElement, binding: Binding[Int]) = {
@@ -2958,24 +3122,7 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, start.type] = new AttributeSetter(_.setAttribute("start", _))
   }
-  private[AttributeFactories] object status_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_js_Any_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status_property.type, js.Any] {
-      def mountProperty(element: HTMLButtonElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.status = _)
-      }
-    }
-    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, status_property.type, Boolean] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.status = _)
-      }
-    }
-    implicit object mountPointBuilder_js_Any_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, status_property.type, js.Any] {
-      def mountProperty(element: HTMLTextAreaElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.status = _)
-      }
-    }
-  }
-  @inline def status: status_property.type = status_property
+  @inline def status: properties.status.type = properties.status
   object step extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, step.type, String] {
       def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
@@ -2997,38 +3144,10 @@ private[concentricsky] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, style.type] = new AttributeSetter(_.style.cssText = _)
   }
-  private[AttributeFactories] object summary_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, summary_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.summary = _)
-      }
-    }
-  }
-  @inline def summary: summary_property.type = summary_property
-  private[AttributeFactories] object tFoot_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tFoot_property.type, HTMLTableSectionElement] {
-      def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
-        Binding.BindingInstances.map(binding)(element.tFoot = _)
-      }
-    }
-  }
-  @inline def tFoot: tFoot_property.type = tFoot_property
-  private[AttributeFactories] object tHead_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_HTMLTableSectionElement_HTMLTableElement extends MountPointBuilder[HTMLTableElement, tHead_property.type, HTMLTableSectionElement] {
-      def mountProperty(element: HTMLTableElement, binding: Binding[HTMLTableSectionElement]) = {
-        Binding.BindingInstances.map(binding)(element.tHead = _)
-      }
-    }
-  }
-  @inline def tHead: tHead_property.type = tHead_property
-  private[AttributeFactories] object tabIndex_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Int_HTMLElement extends MountPointBuilder[HTMLElement, tabIndex_property.type, Int] {
-      def mountProperty(element: HTMLElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.tabIndex = _)
-      }
-    }
-  }
-  @inline def tabIndex: tabIndex_property.type = tabIndex_property
+  @inline def summary: properties.summary.type = properties.summary
+  @inline def tFoot: properties.tFoot.type = properties.tFoot
+  @inline def tHead: properties.tHead.type = properties.tHead
+  @inline def tabIndex: properties.tabIndex.type = properties.tabIndex
   object tabindex extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, tabindex.type] = new AttributeSetter(_.setAttribute("tabindex", _)) }
   object target extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLBaseElement extends MountPointBuilder[HTMLBaseElement, target.type, String] {
@@ -3061,34 +3180,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLBaseElement: AttributeSetter[HTMLBaseElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
     @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
   }
-  private[AttributeFactories] object text_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text_property.type, String] {
-      def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.text = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLScriptElement extends MountPointBuilder[HTMLScriptElement, text_property.type, String] {
-      def mountProperty(element: HTMLScriptElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.text = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, text_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.text = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLAnchorElement extends MountPointBuilder[HTMLAnchorElement, text_property.type, String] {
-      def mountProperty(element: HTMLAnchorElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.text = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLTitleElement extends MountPointBuilder[HTMLTitleElement, text_property.type, String] {
-      def mountProperty(element: HTMLTitleElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.text = _)
-      }
-    }
-  }
-  @inline def text: text_property.type = text_property
+  @inline def text: properties.text.type = properties.text
   object title extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, title.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
@@ -3101,14 +3193,7 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLStyleElement: AttributeSetter[HTMLStyleElement, title.type] = new AttributeSetter(_.setAttribute("title", _))
   }
   object translate extends AttributeFactory.Typed { @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, translate.type] = new AttributeSetter(_.setAttribute("translate", _)) }
-  private[AttributeFactories] object trueSpeed_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Boolean_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, trueSpeed_property.type, Boolean] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Boolean]) = {
-        Binding.BindingInstances.map(binding)(element.trueSpeed = _)
-      }
-    }
-  }
-  @inline def trueSpeed: trueSpeed_property.type = trueSpeed_property
+  @inline def trueSpeed: properties.trueSpeed.type = properties.trueSpeed
   object `type` extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, `type`.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
@@ -3175,52 +3260,14 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
     @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
   }
-  private[AttributeFactories] object url_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_String_HTMLMetaElement extends MountPointBuilder[HTMLMetaElement, url_property.type, String] {
-      def mountProperty(element: HTMLMetaElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.url = _)
-      }
-    }
-  }
-  @inline def url: url_property.type = url_property
-  private[AttributeFactories] object useMap_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, useMap_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.useMap = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLImageElement extends MountPointBuilder[HTMLImageElement, useMap_property.type, String] {
-      def mountProperty(element: HTMLImageElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.useMap = _)
-      }
-    }
-    implicit object mountPointBuilder_String_HTMLObjectElement extends MountPointBuilder[HTMLObjectElement, useMap_property.type, String] {
-      def mountProperty(element: HTMLObjectElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.useMap = _)
-      }
-    }
-  }
-  @inline def useMap: useMap_property.type = useMap_property
+  @inline def url: properties.url.type = properties.url
+  @inline def useMap: properties.useMap.type = properties.useMap
   object usemap extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
     @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
   }
-  private[AttributeFactories] object vAlign_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableCaptionElement extends MountPointBuilder[HTMLTableCaptionElement, vAlign_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableCaptionElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.vAlign = _)
-      }
-    }
-  }
-  @inline def vAlign: vAlign_property.type = vAlign_property
-  private[AttributeFactories] object vLink_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_js_Any_HTMLBodyElement extends MountPointBuilder[HTMLBodyElement, vLink_property.type, js.Any] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLBodyElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.vLink = _)
-      }
-    }
-  }
-  @inline def vLink: vLink_property.type = vLink_property
+  @inline def vAlign: properties.vAlign.type = properties.vAlign
+  @inline def vLink: properties.vLink.type = properties.vLink
   object value extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, value.type, String] {
       def mountProperty(element: HTMLSelectElement, binding: Binding[String]) = {
@@ -3271,56 +3318,11 @@ private[concentricsky] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
   }
-  private[AttributeFactories] object valueAsNumber_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber_property.type, Double] {
-      def mountProperty(element: HTMLInputElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.valueAsNumber = _)
-      }
-    }
-  }
-  @inline def valueAsNumber: valueAsNumber_property.type = valueAsNumber_property
-  private[AttributeFactories] object valueType_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLParamElement extends MountPointBuilder[HTMLParamElement, valueType_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLParamElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.valueType = _)
-      }
-    }
-  }
-  @inline def valueType: valueType_property.type = valueType_property
-  private[AttributeFactories] object version_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLHtmlElement extends MountPointBuilder[HTMLHtmlElement, version_property.type, String] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLHtmlElement, binding: Binding[String]) = {
-        Binding.BindingInstances.map(binding)(element.version = _)
-      }
-    }
-  }
-  @inline def version: version_property.type = version_property
-  private[AttributeFactories] object volume_property extends AttributeFactory.Typed {
-    implicit object mountPointBuilder_Double_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, volume_property.type, Double] {
-      def mountProperty(element: HTMLMediaElement, binding: Binding[Double]) = {
-        Binding.BindingInstances.map(binding)(element.volume = _)
-      }
-    }
-    @deprecated("Non standard.", "forever") implicit object mountPointBuilder_js_Any_HTMLBGSoundElement extends MountPointBuilder[HTMLBGSoundElement, volume_property.type, js.Any] {
-      @deprecated("Non standard.", "forever") def mountProperty(element: HTMLBGSoundElement, binding: Binding[js.Any]) = {
-        Binding.BindingInstances.map(binding)(element.volume = _)
-      }
-    }
-  }
-  @inline def volume: volume_property.type = volume_property
-  private[AttributeFactories] object vspace_property extends AttributeFactory.Typed {
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLImageElement extends MountPointBuilder[HTMLImageElement, vspace_property.type, Int] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLImageElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.vspace = _)
-      }
-    }
-    @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_Int_HTMLMarqueeElement extends MountPointBuilder[HTMLMarqueeElement, vspace_property.type, Int] {
-      @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLMarqueeElement, binding: Binding[Int]) = {
-        Binding.BindingInstances.map(binding)(element.vspace = _)
-      }
-    }
-  }
-  @inline def vspace: vspace_property.type = vspace_property
+  @inline def valueAsNumber: properties.valueAsNumber.type = properties.valueAsNumber
+  @inline def valueType: properties.valueType.type = properties.valueType
+  @inline def version: properties.version.type = properties.version
+  @inline def volume: properties.volume.type = properties.volume
+  @inline def vspace: properties.vspace.type = properties.vspace
   object width extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLTableElement extends MountPointBuilder[HTMLTableElement, width.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLTableElement, binding: Binding[String]) = {
