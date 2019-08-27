@@ -446,31 +446,31 @@ object html {
   private[concentricsky] object elementTypes {
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLTimeElement = HTMLElement
+    type HTMLTimeElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLDataElement = HTMLElement
+    type HTMLDataElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLPictureElement = HTMLElement
+    type HTMLPictureElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLOutputElement = HTMLElement
+    type HTMLOutputElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLMeterElement = HTMLElement
+    type HTMLMeterElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLDetailsElement = HTMLElement
+    type HTMLDetailsElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLDialogElement = HTMLElement
+    type HTMLDialogElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLTemplateElement = HTMLElement
+    type HTMLTemplateElement <: HTMLElement
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
-    type HTMLSlotElement = HTMLElement
+    type HTMLSlotElement <: HTMLElement
 
   }
 
@@ -603,6 +603,14 @@ object html {
   * val myMeta = <meta http-equiv="refresh" content="30"/>
   * myMeta.watch()
   * myMeta.value.outerHTML should be("""<meta http-equiv="refresh" content="30">""")
+  * }}}
+  *
+  * @example Opaque type aliases of HTMLInputElement
+  * {{{
+  * @html
+  * val myMeta = <input name="myInput" type="radio"/>
+  * myMeta.watch()
+  * myMeta.value.outerHTML should be("""<input name="myInput" type="radio">""")
   * }}}
   *
   * @example Element list of XHTML literals
