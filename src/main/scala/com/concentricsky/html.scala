@@ -473,9 +473,15 @@ object html {
     type HTMLSlotElement = HTMLElement
 
   }
+
   object autoImports extends LowPriorityAutoImports {
 
     object data {
+      @inline def entities = EntityBuilders
+      @inline def interpolation = Binding
+      object values extends Dynamic {
+        @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
+      }
       object attributes extends Dynamic {
         @inline def applyDynamic(attributeName: String) = new AttributeFactory.Untyped(attributeName)
       }
@@ -500,12 +506,25 @@ object html {
         }
       }
 
-    object `http://www.w3.org/1999/xhtml` {
+    object xml {
+      @inline def noPrefix[Uri](uri: Uri) = uri
+      object prefixes extends Dynamic {
+        @inline def applyDynamic[Uri](prefix: String)(uri: Uri) = uri
+      }
+      object uris {
+        @inline
+        def `http://www.w3.org/1999/xhtml` = xml
+      }
       @inline def elements = ElementFactories
       @inline def attributes = AttributeFactories
       @inline def entities = EntityBuilders
       @inline def cdata(data: String) = new NodeBinding.Constant.NodeBuilder(document.createCDATASection(data))
-      @inline def text(data: String) = new NodeBinding.Constant.TextBuilder(data)
+      object values extends Dynamic {
+        @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
+      }
+      object texts extends Dynamic {
+        @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
+      }
       @inline def comment(data: String) = new NodeBinding.Constant.NodeBuilder(document.createComment(data))
       object processInstructions extends Dynamic {
         @inline
@@ -552,7 +571,7 @@ object html {
         wait => _,
         _
       }
-      ${new NameBasedXmlTransformer(q"`http://www.w3.org/1999/xhtml`").transform(tree)}
+      ${new NameBasedXmlTransformer().transform(tree)}
     """
   }
 }
@@ -577,6 +596,15 @@ object html {
   * myDiv2.watch()
   * myDiv2.value.outerHTML should be("""<div style="color: red;" tabindex="99999" title="my title" class="my-class"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
   * }}}
+  *
+  * @example Special character in attribute names
+  * {{{
+  * @html
+  * val myMeta = <meta http-equiv="refresh" content="30"/>
+  * myMeta.watch()
+  * myMeta.value.outerHTML should be("""<meta http-equiv="refresh" content="30">""")
+  * }}}
+  *
   * @example Element list of XHTML literals
   *
   * {{{
@@ -721,10 +749,10 @@ object html {
   * @example Escape
   * {{{
   * import org.scalajs.dom.document
-  * @html def escaped = <div>&#32;</div>
+  * @html def escaped = <div>&#32;$minus</div>
   * val div = document.createElement("div")
   * html.render(div, escaped)
-  * assert(div.innerHTML == "<div> </div>")
+  * assert(div.innerHTML == "<div> $minus</div>")
   * }}}
   * @example Entity references
   * {{{
@@ -749,6 +777,61 @@ object html {
   *   myCData.watch()
   * }
   * }}}
+  * 
+  * @example XML namespaces
+  * {{{
+  * import scala.language.dynamics
+  * import org.scalajs.dom.document
+  * import org.scalajs.dom.raw._
+  * import com.thoughtworks.binding.Binding
+  * import com.thoughtworks.binding.Binding.BindingInstances.monadSyntax._
+  * object svg {
+  *   object texts extends Dynamic {
+  *     @inline def selectDynamic(data: String) = new html.NodeBinding.Constant.TextBuilder(data)
+  *   }
+  *   object elements {
+  *     object svg extends Curried {
+  *       @inline def applyBegin = new html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "svg").asInstanceOf[SVGSVGElement])
+  *     }
+  *     object text extends Curried {
+  *       @inline def applyBegin = new html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "text").asInstanceOf[SVGTextElement])
+  *     }
+  *   }
+  *   @inline def interpolation = Binding
+  *   object values {
+  *     sealed trait FontStyle
+  *     case object normal extends FontStyle
+  *     case object italic extends FontStyle
+  *     case object oblique extends FontStyle
+  *   }
+  *   object attributes {
+  *     def font$minusstyle(value: values.FontStyle) = {
+  *       new html.NodeBinding.Constant.AttributeBuilder.Untyped(_.setAttribute("font-style", value.toString))
+  *     }
+  *     def font$minusstyle(binding: Binding[values.FontStyle]) = {
+  *       new html.NodeBinding.Interpolated.AttributeBuilder( element =>
+  *         binding.map { value =>
+  *           element.setAttribute("font-style", value.toString)
+  *         }
+  *       )
+  *     }
+  *     }
+  * }
+  * implicit final class SvgUriOps(uriFactory: html.autoImports.xml.uris.type) {
+  *   @inline def http$colon$div$divwww$u002Ew3$u002Eorg$div2000$divsvg = svg
+  * }
+  * @html
+  * val mySvg1 = <svg xmlns="http://www.w3.org/2000/svg"><text font-style="normal">my text</text></svg>
+  * mySvg1.watch()
+  * mySvg1.value.outerHTML should be("""<svg><text font-style="normal">my text</text></svg>""")
+  * 
+  * import svg.values.normal
+  * @html
+  * val mySvg2 = <svg:svg xmlns:svg="http://www.w3.org/2000/svg"><svg:text font-style={normal}>my text</svg:text></svg:svg>
+  * mySvg2.watch()
+  * mySvg2.value.outerHTML should be("""<svg><text font-style="normal">my text</text></svg>""")
+  * }}}
+  * 
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
 class html extends StaticAnnotation {
