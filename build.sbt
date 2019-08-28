@@ -1,36 +1,14 @@
-name := "html"
+// shadow sbt-scalajs' crossProject(JSPlatform, JVMPlatform) and CrossType from Scala.js 0.6.x
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-ThisBuild / organization := "com.concentricsky"
+val dynamicanyref = crossProject(JSPlatform, JVMPlatform)
 
-enablePlugins(ScalaJSBundlerPlugin)
+val dynamicanyrefJVM = dynamicanyref.jvm
 
-enablePlugins(ScalaJSPlugin)
+val dynamicanyrefJS = dynamicanyref.js
 
-enablePlugins(Example)
+val html = project.dependsOn(dynamicanyrefJS)
 
-import scala.meta._
+ThisBuild / organization := "com.concentricsky.binding"
 
-exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
-
-libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "11.8.1"
-
-libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "1.1.0"
-
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
-
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
-
-dependsOn(RootProject(file("nameBasedXml.scala")))
-
-scalacOptions in Test += "-Xxml:-coalescing"
-
-requireJsDomEnv in Test := true
-
-installJsdom / version := "15.1.1"
-
-libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.0"
-
-
-
-enablePlugins(Generators)
-
+publish / skip := true
