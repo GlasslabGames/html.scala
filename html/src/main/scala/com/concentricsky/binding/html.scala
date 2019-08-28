@@ -482,10 +482,14 @@ object html {
       @inline def interpolation = Binding
       object values extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
       }
 
       object attributes extends AnyRefApplyDynamic {
-        @inline def applyDynamic(attributeName: String) = new AttributeFactory.Untyped(attributeName)
+        object applyDynamic {
+          @inline def apply(attributeName: String): AttributeFactory.Untyped = new AttributeFactory.Untyped(attributeName)
+          @inline implicit def asUntyped(a: => applyDynamic.type): AttributeFactory.Untyped = new AttributeFactory.Untyped("applyDynamic")
+        }
       }
     }
 
@@ -533,7 +537,12 @@ object html {
         @inline def toString[Uri](uri: Uri) = uri
         @inline def wait[Uri](uri: Uri) = uri
         @inline def →[Uri](uri: Uri) = uri
-        @inline def applyDynamic[Uri](prefix: String)(uri: Uri) = uri
+        object applyDynamic {
+          @inline def applyDynamic[Uri](uri: Uri) = uri
+        }
+        case class applyDynamic(prefix: String) extends AnyVal {
+          @inline def apply[Uri](uri: Uri) = uri
+        }
       }
       object uris {
         @inline
@@ -544,6 +553,7 @@ object html {
       @inline def entities = EntityBuilders
       @inline def cdata(data: String) = new NodeBinding.Constant.NodeBuilder(document.createCDATASection(data))
       object values extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
       }
 
@@ -552,6 +562,7 @@ object html {
         * {{{
         * import html.autoImports.xml.texts
         * import html.NodeBinding.Constant.TextBuilder
+        * texts.selectDynamic should be(a[TextBuilder])
         * texts.getClass should be(a[TextBuilder])
         * texts.!= should be(a[TextBuilder])
         * texts.## should be(a[TextBuilder])
@@ -575,6 +586,7 @@ object html {
         * }}}
         */
       object texts extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
       }
       @inline def comment(data: String) = new NodeBinding.Constant.NodeBuilder(document.createComment(data))
@@ -600,8 +612,7 @@ object html {
         @inline def toString(data: String) = applyDynamic("toString")(data)
         @inline def wait(data: String) = applyDynamic("wait")(data)
         @inline def →(data: String) = applyDynamic("→")(data)
-        @inline
-        def applyDynamic(target: String)(data: String) =
+        @inline def applyDynamic(target: String)(data: String) =
           new NodeBinding.Constant.NodeBuilder(document.createProcessingInstruction(target, data))
       }
       @inline def interpolation = Binding
@@ -783,16 +794,24 @@ object html {
   * filterPattern.value = "o"
   * assert(tableBinding.value.outerHTML == """<table class="my-table" title="My Tooltip"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead><tbody><tr><td>Steve</td><td>Jobs</td><td>10</td></tr><tr><td>Tim</td><td>Cook</td><td>12</td></tr></tbody></table>""")
   * }}}
+  * 
+  * @example Dynamc attributes
+  * {{{
+  * @html
+  * val myBr = <br data:toString="+&copy;" data:equals="+" data:applyDynamic="value"/>
+  * myBr.watch()
+  * myBr.value.outerHTML should be("""<br tostring="+©" equals="+" applydynamic="value">""")
+  * }}}
   *
   * @example Changing attribute values
   * {{{
   * import com.thoughtworks.binding.Binding.Var
   * val id = Var("oldId")
-  * @html val myInput = <input data:equals="+" data:custom={id.bind} name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
+  * @html val myInput = <input data:applyDynamic={id.bind} data:custom={id.bind} name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
   * myInput.watch()
-  * assert(myInput.value.outerHTML == """<input equals="+" custom="oldId" name="oldId" id="oldId">""")
+  * assert(myInput.value.outerHTML == """<input applydynamic="oldId" custom="oldId" name="oldId" id="oldId">""")
   * myInput.value.onclick(null)
-  * assert(myInput.value.outerHTML == """<input equals="+" custom="newId" name="newId" id="newId">""")
+  * assert(myInput.value.outerHTML == """<input applydynamic="newId" custom="newId" name="newId" id="newId">""")
   * }}}
   *
   * @example A child node must not be inserted more than once
