@@ -1,4 +1,5 @@
 package com.concentricsky
+package binding
 import scala.annotation._
 import scala.language.dynamics
 import scala.language.experimental.macros
@@ -16,7 +17,7 @@ import scala.language.experimental.macros
 import scala.language.implicitConversions
 import com.thoughtworks.binding.bindable.BindableSeq
 import com.thoughtworks.binding.bindable.Bindable
-import scalaz.Monad
+import dynamicanyref._
 object html {
 
   def mount(parent: Node, children: BindingSeq[Node]): Binding[Unit] = {
@@ -479,11 +480,16 @@ object html {
     object data {
       @inline def entities = EntityBuilders
       @inline def interpolation = Binding
-      object values extends Dynamic {
+      object values extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
       }
-      object attributes extends Dynamic {
-        @inline def applyDynamic(attributeName: String) = new AttributeFactory.Untyped(attributeName)
+
+      object attributes extends AnyRefApplyDynamic {
+        object applyDynamic {
+          @inline def apply(attributeName: String): AttributeFactory.Untyped = new AttributeFactory.Untyped(attributeName)
+          @inline implicit def asUntyped(a: => applyDynamic.type): AttributeFactory.Untyped = new AttributeFactory.Untyped("applyDynamic")
+        }
       }
     }
 
@@ -508,8 +514,35 @@ object html {
 
     object xml {
       @inline def noPrefix[Uri](uri: Uri) = uri
+
       object prefixes extends Dynamic {
-        @inline def applyDynamic[Uri](prefix: String)(uri: Uri) = uri
+        @inline def getClass[Uri](uri: Uri) = uri
+        @inline def !=[Uri](uri: Uri) = uri
+        @inline def ##[Uri](uri: Uri) = uri
+        @inline def +[Uri](uri: Uri) = uri
+        @inline def ->[Uri](uri: Uri) = uri
+        @inline def ==[Uri](uri: Uri) = uri
+        @inline def asInstanceOf[Uri](uri: Uri) = uri
+        @inline def ensuring[Uri](uri: Uri) = uri
+        @inline def eq[Uri](uri: Uri) = uri
+        @inline def equals[Uri](uri: Uri) = uri
+        @inline def formatted[Uri](uri: Uri) = uri
+        @inline def hashCode[Uri](uri: Uri) = uri
+        @inline def isInstanceOf[Uri](uri: Uri) = uri
+        @inline def ne[Uri](uri: Uri) = uri
+        @inline def notify[Uri](uri: Uri) = uri
+        @inline def notifyAll[Uri](uri: Uri) = uri
+        @inline def synchronized[Uri](uri: Uri)(implicit dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit) =
+          uri
+        @inline def toString[Uri](uri: Uri) = uri
+        @inline def wait[Uri](uri: Uri) = uri
+        @inline def →[Uri](uri: Uri) = uri
+        object applyDynamic {
+          @inline def applyDynamic[Uri](uri: Uri) = uri
+        }
+        case class applyDynamic(prefix: String) extends AnyVal {
+          @inline def apply[Uri](uri: Uri) = uri
+        }
       }
       object uris {
         @inline
@@ -519,16 +552,67 @@ object html {
       @inline def attributes = AttributeFactories
       @inline def entities = EntityBuilders
       @inline def cdata(data: String) = new NodeBinding.Constant.NodeBuilder(document.createCDATASection(data))
-      object values extends Dynamic {
+      object values extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
       }
-      object texts extends Dynamic {
+
+      /**
+        * @note All methods in [[AnyRef]] are overloaded, in case of name clash
+        * {{{
+        * import html.autoImports.xml.texts
+        * import html.NodeBinding.Constant.TextBuilder
+        * texts.selectDynamic should be(a[TextBuilder])
+        * texts.getClass should be(a[TextBuilder])
+        * texts.!= should be(a[TextBuilder])
+        * texts.## should be(a[TextBuilder])
+        * texts.+ should be(a[TextBuilder])
+        * texts.-> should be(a[TextBuilder])
+        * texts.== should be(a[TextBuilder])
+        * texts.asInstanceOf should be(a[TextBuilder])
+        * texts.ensuring should be(a[TextBuilder])
+        * texts.eq should be(a[TextBuilder])
+        * texts.equals should be(a[TextBuilder])
+        * texts.formatted should be(a[TextBuilder])
+        * texts.hashCode should be(a[TextBuilder])
+        * texts.isInstanceOf should be(a[TextBuilder])
+        * texts.ne should be(a[TextBuilder])
+        * texts.notify should be(a[TextBuilder])
+        * texts.notifyAll should be(a[TextBuilder])
+        * texts.synchronized should be(a[TextBuilder])
+        * texts.toString should be(a[TextBuilder])
+        * texts.wait should be(a[TextBuilder])
+        * texts.→ should be(a[TextBuilder])
+        * }}}
+        */
+      object texts extends AnyRefSelectDynamic[NodeBinding.Constant.TextBuilder] {
+        @inline def selectDynamic: NodeBinding.Constant.TextBuilder = selectDynamic("selectDynamic")
         @inline def selectDynamic(data: String) = new NodeBinding.Constant.TextBuilder(data)
       }
       @inline def comment(data: String) = new NodeBinding.Constant.NodeBuilder(document.createComment(data))
+
       object processInstructions extends Dynamic {
-        @inline
-        def applyDynamic(target: String)(data: String) =
+        @inline def getClass(data: String) = applyDynamic("getClass")(data)
+        @inline def !=(data: String) = applyDynamic("!=")(data)
+        @inline def ##(data: String) = applyDynamic("##")(data)
+        @inline def +(data: String) = applyDynamic("+")(data)
+        @inline def ->(data: String) = applyDynamic("->")(data)
+        @inline def ==(data: String) = applyDynamic("==")(data)
+        @inline def asInstanceOf(data: String) = applyDynamic("asInstanceOf")(data)
+        @inline def ensuring(data: String) = applyDynamic("ensuring")(data)
+        @inline def eq(data: String) = applyDynamic("eq")(data)
+        @inline def equals(data: String) = applyDynamic("equals")(data)
+        @inline def formatted(data: String) = applyDynamic("formatted")(data)
+        @inline def hashCode(data: String) = applyDynamic("hashCode")(data)
+        @inline def isInstanceOf(data: String) = applyDynamic("isInstanceOf")(data)
+        @inline def ne(data: String) = applyDynamic("ne")(data)
+        @inline def notify(data: String) = applyDynamic("notify")(data)
+        @inline def notifyAll(data: String) = applyDynamic("notifyAll")(data)
+        @inline def synchronized(data: String) = applyDynamic("synchronized")(data)
+        @inline def toString(data: String) = applyDynamic("toString")(data)
+        @inline def wait(data: String) = applyDynamic("wait")(data)
+        @inline def →(data: String) = applyDynamic("→")(data)
+        @inline def applyDynamic(target: String)(data: String) =
           new NodeBinding.Constant.NodeBuilder(document.createProcessingInstruction(target, data))
       }
       @inline def interpolation = Binding
@@ -555,7 +639,7 @@ object html {
   private[concentricsky] final class WhiteBoxMacros(context: whitebox.Context) extends nameBasedXml.Macros(context) {
     import c.universe._
     override protected def transformBody(tree: Tree): Tree = q"""
-      import _root_.com.concentricsky.html.autoImports.{
+      import _root_.com.concentricsky.binding.html.autoImports.{
         != => _,
         ## => _,
         == => _,
@@ -710,16 +794,24 @@ object html {
   * filterPattern.value = "o"
   * assert(tableBinding.value.outerHTML == """<table class="my-table" title="My Tooltip"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead><tbody><tr><td>Steve</td><td>Jobs</td><td>10</td></tr><tr><td>Tim</td><td>Cook</td><td>12</td></tr></tbody></table>""")
   * }}}
+  * 
+  * @example Dynamc attributes
+  * {{{
+  * @html
+  * val myBr = <br data:toString="+&copy;" data:equals="+" data:applyDynamic="value"/>
+  * myBr.watch()
+  * myBr.value.outerHTML should be("""<br tostring="+©" equals="+" applydynamic="value">""")
+  * }}}
   *
   * @example Changing attribute values
   * {{{
   * import com.thoughtworks.binding.Binding.Var
   * val id = Var("oldId")
-  * @html val myInput = <input data:custom={id.bind} name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
+  * @html val myInput = <input data:applyDynamic={id.bind} data:custom={id.bind} name={id.bind} id={id.bind} onclick={ _: Any => id.value = "newId" }/>
   * myInput.watch()
-  * assert(myInput.value.outerHTML == """<input custom="oldId" name="oldId" id="oldId">""")
+  * assert(myInput.value.outerHTML == """<input applydynamic="oldId" custom="oldId" name="oldId" id="oldId">""")
   * myInput.value.onclick(null)
-  * assert(myInput.value.outerHTML == """<input custom="newId" name="newId" id="newId">""")
+  * assert(myInput.value.outerHTML == """<input applydynamic="newId" custom="newId" name="newId" id="newId">""")
   * }}}
   *
   * @example A child node must not be inserted more than once
@@ -785,7 +877,7 @@ object html {
   *   myCData.watch()
   * }
   * }}}
-  * 
+  *
   * @example XML namespaces
   * {{{
   * import scala.language.dynamics
@@ -832,14 +924,14 @@ object html {
   * val mySvg1 = <svg xmlns="http://www.w3.org/2000/svg"><text font-style="normal">my text</text></svg>
   * mySvg1.watch()
   * mySvg1.value.outerHTML should be("""<svg><text font-style="normal">my text</text></svg>""")
-  * 
+  *
   * import svg.values.normal
   * @html
   * val mySvg2 = <svg:svg xmlns:svg="http://www.w3.org/2000/svg"><svg:text font-style={normal}>my text</svg:text></svg:svg>
   * mySvg2.watch()
   * mySvg2.value.outerHTML should be("""<svg><text font-style="normal">my text</text></svg>""")
   * }}}
-  * 
+  *
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
 class html extends StaticAnnotation {
