@@ -3,6 +3,8 @@ package com.concentricsky.binding
 import scala.language.dynamics
 import scala.language.experimental.macros
 import scala.reflect.macros.whitebox
+
+/** Contains helpers to enable [[scala.Dynamic]] for methods and fields defined in [[scala.AnyRef]] */
 object dynamicanyref {
 
   private[dynamicanyref] final class WhiteBoxMacros(val c: whitebox.Context) {
