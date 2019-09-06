@@ -1,4 +1,4 @@
-package com.concentricsky.binding
+package org.lrng.binding
 import com.thoughtworks.binding.Binding
 import org.scalatest._
 class Issue10 extends FreeSpec with Matchers {

@@ -8,7 +8,7 @@ The `@html` annotation enables XHTML literals, which return some subtypes of `No
 
 ``` scala
 import com.thoughtworks.binding.Binding, Binding._
-import com.concentricsky.html, html.NodeBinding
+import org.lrng.binding.html, html.NodeBinding
 import org.scalajs.dom.raw._
 
 @html def tagPicker(tags: Vars[String]): NodeBindingSeq[HTMLDivElement] = {
@@ -170,9 +170,9 @@ There are special treatments to `id` and `local-id` attribute in `@dom`. Those t
 
 ## Custom tags
 
-The `@html` annotation is a variety of [name based XML literals](https://github.com/Atry/nameBasedXml.scala), where the default prefix is ``com.concentricsky.html.autoImports.`http://www.w3.org/1999/xhtml` `` instead of `xml`. You can create custom tags by provide builders for other prefix according to [the guideline for XML library vendors](https://github.com/Atry/nameBasedXml.scala#xml-library-vendors).
+The `@html` annotation is a variety of [name based XML literals](https://github.com/GlasslabGames/nameBasedXml.scala), where the default prefix is ``org.lrng.binding.html.autoImports.`http://www.w3.org/1999/xhtml` `` instead of `xml`. You can create custom tags by provide builders for other prefix according to [the guideline for XML library vendors](https://github.com/GlasslabGames/nameBasedXml.scala#xml-library-vendors).
 
 ## Links
 
 * [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala/)
-* [Name based XML literals](https://github.com/Atry/nameBasedXml.scala)
+* [Name based XML literals](https://github.com/GlasslabGames/nameBasedXml.scala)

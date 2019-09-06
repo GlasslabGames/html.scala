@@ -1,4 +1,4 @@
-package com.concentricsky.binding
+package org.lrng.binding
 
 import scala.language.dynamics
 import scala.language.experimental.macros

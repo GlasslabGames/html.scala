@@ -9,6 +9,6 @@ val dynamicanyrefJS = dynamicanyref.js
 
 val html = project.dependsOn(dynamicanyrefJS)
 
-ThisBuild / organization := "com.concentricsky.binding"
+ThisBuild / organization := "org.lrng.binding"
 
 publish / skip := true

@@ -1,23 +1,18 @@
-package com.concentricsky
+package org.lrng
 package binding
-import scala.annotation._
-import scala.language.dynamics
-import scala.language.experimental.macros
-import scala.reflect.macros.whitebox
-import com.thoughtworks.binding._, Binding._
-import org.scalajs.dom.Node
-import org.scalajs.dom.Element
-import org.scalajs.dom.document
+
+import com.thoughtworks.binding.Binding._
+import com.thoughtworks.binding._
+import com.thoughtworks.binding.bindable.{Bindable, BindableSeq}
+import org.lrng.binding.dynamicanyref.{AnyRefApplyDynamic, AnyRefSelectDynamic}
 import org.scalajs.dom.raw.HTMLElement
-import org.scalajs.dom.html.Div
-import scala.scalajs.js
-import js.JSConverters._
-import scala.reflect.macros.blackbox
+import org.scalajs.dom.{Element, Node, document}
+
+import scala.annotation._
 import scala.language.experimental.macros
-import scala.language.implicitConversions
-import com.thoughtworks.binding.bindable.BindableSeq
-import com.thoughtworks.binding.bindable.Bindable
-import dynamicanyref._
+import scala.language.{dynamics, implicitConversions}
+import scala.reflect.macros.whitebox
+import scala.scalajs.js
 object html {
 
   def mount(parent: Node, children: BindingSeq[Node]): Binding[Unit] = {
@@ -105,7 +100,7 @@ object html {
         removeAll(parent)
       }
     }
-    private[concentricsky] final class NodeSeqMountPoint(parent: Node, childrenBinding: BindingSeq[Node])
+    private[lrng] final class NodeSeqMountPoint(parent: Node, childrenBinding: BindingSeq[Node])
         extends MultiMountPoint[Node](childrenBinding) {
 
       override protected def set(children: Seq[Node]): Unit = {
@@ -164,9 +159,8 @@ object html {
 
     type Constants[+A] = Binding.Constants[A]
 
-    final class Interpolated private[concentricsky] (private[concentricsky] val nodes: js.Array[Node] = new js.Array(0),
-                                                     private[concentricsky] val mountPoints: js.Array[Binding[Unit]] =
-                                                       new js.Array(0))
+    final class Interpolated private[lrng] (private[lrng] val nodes: js.Array[Node] = new js.Array(0),
+                                            private[lrng] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
         extends BindingSeq[Node] {
       def value: Seq[Node] = nodes
       private var referenceCount = 0
@@ -195,8 +189,7 @@ object html {
       @implicitNotFound("${AttributeObject} is not an attribute of ${E}")
       final class AttributeSetter[-E <: Element, AttributeObject](val setAttribute: (E, String) => Unit) extends AnyVal
 
-      final class ElementBuilder[+E <: Element] private[concentricsky] (private[concentricsky] val element: E)
-          extends AnyVal {
+      final class ElementBuilder[+E <: Element] private[lrng] (private[lrng] val element: E) extends AnyVal {
 
         @inline
         def applyNext[AttributeObject](child: AttributeBuilder.Untyped) = {
@@ -255,11 +248,11 @@ object html {
         private def toInterpolated = new NodeBinding.Interpolated.ElementBuilder[E](element)
 
       }
-      final class NodeBuilder[+Node] private[concentricsky] (private[concentricsky] val node: Node) extends AnyVal
-      final class TextBuilder private[concentricsky] (private[concentricsky] val data: String) extends AnyVal
+      final class NodeBuilder[+Node] private[lrng] (private[lrng] val node: Node) extends AnyVal
+      final class TextBuilder private[lrng] (private[lrng] val data: String) extends AnyVal
       object AttributeBuilder {
-        final class Untyped(private[concentricsky] val set: Element => Unit) extends AnyVal
-        final class Typed[A](private[concentricsky] val value: String) extends AnyVal
+        final class Untyped(private[lrng] val set: Element => Unit) extends AnyVal
+        final class Typed[A](private[lrng] val value: String) extends AnyVal
 
       }
       object MultipleAttributeBuilder {
@@ -290,9 +283,7 @@ object html {
 
     type Constant[+A] = Binding.Constant[A]
 
-    final class Interpolated[+A] private[concentricsky] (
-        val value: A,
-        private[concentricsky] val mountPoints: js.Array[Binding[Unit]])
+    final class Interpolated[+A] private[lrng] (val value: A, private[lrng] val mountPoints: js.Array[Binding[Unit]])
         extends Binding[A] {
       private var referenceCount = 0
       protected def addChangedListener(listener: ChangedListener[A]): Unit = {
@@ -336,13 +327,13 @@ object html {
                                                 val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
           extends ChildBuilder {
 
-        private[concentricsky] def mergeTrailingNodes(): Unit = {
+        private[lrng] def mergeTrailingNodes(): Unit = {
           if (childNodes.nonEmpty) {
             bindingSeqs += Binding.Constant(Binding.Constants(childNodes: _*))
             childNodes = new js.Array(0)
           }
         }
-        private[concentricsky] def flush(): Unit = {
+        private[lrng] def flush(): Unit = {
           mergeTrailingNodes()
           if (bindingSeqs.nonEmpty) {
             mountPoints += mount(element, Constants(bindingSeqs: _*).flatMapBinding(identity))
@@ -396,7 +387,7 @@ object html {
     }
   }
 
-  private[concentricsky] trait ChildBuilder {
+  private[lrng] trait ChildBuilder {
     def childNodes: js.Array[Node]
     def mountPoints: js.Array[Binding[Unit]]
     @inline
@@ -444,7 +435,7 @@ object html {
       }
   }
 
-  private[concentricsky] object elementTypes {
+  private[lrng] object elementTypes {
 
     /** @todo Remove this type alias once scala-js-dom added the definition for this type */
     type HTMLTimeElement <: HTMLElement
@@ -487,8 +478,10 @@ object html {
 
       object attributes extends AnyRefApplyDynamic {
         object applyDynamic {
-          @inline def apply(attributeName: String): AttributeFactory.Untyped = new AttributeFactory.Untyped(attributeName)
-          @inline implicit def asUntyped(a: => applyDynamic.type): AttributeFactory.Untyped = new AttributeFactory.Untyped("applyDynamic")
+          @inline def apply(attributeName: String): AttributeFactory.Untyped =
+            new AttributeFactory.Untyped(attributeName)
+          @inline implicit def asUntyped(a: => applyDynamic.type): AttributeFactory.Untyped =
+            new AttributeFactory.Untyped("applyDynamic")
         }
       }
     }
@@ -636,10 +629,10 @@ object html {
 
   }
 
-  private[concentricsky] final class WhiteBoxMacros(context: whitebox.Context) extends nameBasedXml.Macros(context) {
+  private[lrng] final class WhiteBoxMacros(context: whitebox.Context) extends nameBasedXml.Macros(context) {
     import c.universe._
     override protected def transformBody(tree: Tree): Tree = q"""
-      import _root_.com.concentricsky.binding.html.autoImports.{
+      import _root_.org.lrng.binding.html.autoImports.{
         != => _,
         ## => _,
         == => _,
@@ -794,7 +787,7 @@ object html {
   * filterPattern.value = "o"
   * assert(tableBinding.value.outerHTML == """<table class="my-table" title="My Tooltip"><thead><tr><td>First Name</td><td>Second Name</td><td>Age</td></tr></thead><tbody><tr><td>Steve</td><td>Jobs</td><td>10</td></tr><tr><td>Tim</td><td>Cook</td><td>12</td></tr></tbody></table>""")
   * }}}
-  * 
+  *
   * @example Dynamc attributes
   * {{{
   * @html
