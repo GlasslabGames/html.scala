@@ -39,6 +39,19 @@ object html {
           Binding.BindingInstances.map(binding)(attributeSetter.setAttribute(e, _))
         }
       }
+
+      final class OptionAttributeMountPointBuilder[E <: Element, A <: Typed](
+          implicit attributeSetter: NodeBinding.Constant.AttributeSetter[E, A],
+          attributeRemover: NodeBinding.Constant.AttributeRemover[E, A])
+          extends NodeBinding.Interpolated.MountPointBuilder[E, A, Option[String]] {
+        def mountProperty(e: E, binding: Binding[Option[String]]): Binding[Unit] = {
+          Binding.BindingInstances.map(binding)(optValue =>
+            optValue match {
+              case Some(value) => attributeSetter.setAttribute(e, value)
+              case _           => attributeRemover.removeAttribute(e)
+          })
+        }
+      }
     }
 
     trait Typed extends Curried {
@@ -48,6 +61,13 @@ object html {
           implicit attributeSetter: NodeBinding.Constant.AttributeSetter[E, this.type])
         : NodeBinding.Interpolated.MountPointBuilder[E, this.type, String] =
         new Typed.AttributeMountPointBuilder[E, this.type]
+
+      @inline
+      implicit def optionalAttributeMountPointBuilder[E <: Element](
+          implicit attributeSetter: NodeBinding.Constant.AttributeSetter[E, this.type],
+          attributeRemover: NodeBinding.Constant.AttributeRemover[E, this.type]
+      ): NodeBinding.Interpolated.MountPointBuilder[E, this.type, Option[String]] =
+        new Typed.OptionAttributeMountPointBuilder[E, this.type]
 
       @inline
       def applyBegin = new NodeBinding.Constant.MultipleAttributeBuilder.Typed[this.type](this)
@@ -82,6 +102,22 @@ object html {
         new NodeBinding.Interpolated.AttributeBuilder({ element =>
           Binding.BindingInstances.map(binding)(element.setAttribute(attributeName, _))
         })
+
+      def apply(optionalBinding: Binding[Option[String]])(implicit dummyImplicit: DummyImplicit =
+                                                            DummyImplicit.dummyImplicit) =
+        new NodeBinding.Interpolated.AttributeBuilder({ element =>
+          Binding.BindingInstances.map(optionalBinding) {
+            case Some(value) => element.setAttribute(attributeName, value)
+            case _           => element.removeAttribute(attributeName)
+          }
+        })
+
+//      def apply(optionalBinding: Binding[Option[String]])(implicit dummyImplicit: DummyImplicit =
+//                                                            DummyImplicit.dummyImplicit): Unit = new NodeBinding.Interpolated.AttributeBuilder({ element =>
+//        Binding.BindingInstances.map(optionalBinding)(optValue => optValue match {
+//          case Some(value) => attributeSetter.setAttribute(e, value)
+//          case _           => attributeRemover.removeAttribute(e)element.setAttribute(attributeName, _))
+//      })
     }
 
   }
@@ -188,6 +224,9 @@ object html {
 
       @implicitNotFound("${AttributeObject} is not an attribute of ${E}")
       final class AttributeSetter[-E <: Element, AttributeObject](val setAttribute: (E, String) => Unit) extends AnyVal
+
+      @implicitNotFound("${AttributeObject} is not an attribute of ${E}")
+      final class AttributeRemover[-E <: Element, AttributeObject](val removeAttribute: (E) => Unit) extends AnyVal
 
       final class ElementBuilder[+E <: Element] private[lrng] (private[lrng] val element: E) extends AnyVal {
 

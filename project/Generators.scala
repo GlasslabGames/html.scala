@@ -195,6 +195,17 @@ object Generators extends AutoPlugin {
             }})
             """
           }
+          val attributeRemovers = for {
+            interfaceNames <- interfacesByAttribute.get(attributeName).view
+            interfaceName <- interfaceNames.view
+          } yield {
+            val evidenceName = s"attributeRemover_$interfaceName"
+            q"""
+              @inline implicit def ${Term.Name(evidenceName)}:
+                AttributeRemover[${Type.Name(interfaceName)}, $attributeTermName.type] =
+                new AttributeRemover(_.removeAttribute($attributeName))
+            """
+          }
           val propertyConstructors = for {
             setters <- perperties.get(attributeName).view
             (interfaceName, tpe, mods) <- setters.view
@@ -220,6 +231,7 @@ object Generators extends AutoPlugin {
             object $attributeTermName extends AttributeFactory.Typed {
               ..${propertyConstructors.toList}
               ..${attributeSetters.toList}
+              ..${attributeRemovers.toList}
             }
           """
           if (propertyOnly) {
@@ -238,6 +250,7 @@ object Generators extends AutoPlugin {
           import org.lrng.binding.html.ElementFactory
           import org.lrng.binding.html.AttributeFactory
           import org.lrng.binding.html.NodeBinding.Constant.AttributeSetter
+          import org.lrng.binding.html.NodeBinding.Constant.AttributeRemover
           import org.lrng.binding.html.elementTypes._
           import com.thoughtworks.binding.Binding
           private[lrng] object AttributeFactories {
