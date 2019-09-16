@@ -15,8 +15,8 @@ publish / skip := true
 
 credentials in Global += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", sys.env.getOrElse("SONATYPE_USERNAME", ""), sys.env.getOrElse("SONATYPE_PASSWORD", ""))
 
-ThisBuild / pgpSecretRing := baseDirectory.value / "secring.asc"
+html / pgpSecretRing := baseDirectory.value / "secring.asc"
 
-ThisBuild / pgpPublicRing := baseDirectory.value / "pubring.asc"
+html / pgpPublicRing := baseDirectory.value / "pubring.asc"
 
 pgpPassphrase := Some(Array.empty)
