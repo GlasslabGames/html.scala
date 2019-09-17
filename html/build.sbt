@@ -16,8 +16,6 @@ libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
 
-dependsOn(RootProject(file("nameBasedXml.scala")))
-
 scalacOptions in Test += "-Xxml:-coalescing"
 
 requireJsDomEnv in Test := true
@@ -25,5 +23,7 @@ requireJsDomEnv in Test := true
 installJsdom / version := "15.1.1"
 
 libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.0"
+
+libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.0"
 
 enablePlugins(Generators)
