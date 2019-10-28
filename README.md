@@ -164,6 +164,13 @@ To setting abitrary attribute, with or without an interpolation expression, prep
 @html def myDiv = <td data:rowSpan={3.toString} data:class={"my-class"} data:custom-attribute-1="constant-value" data:custom-attribute-2={math.random.toString}></td>
 ```
 
+For conditional attributes of an `@html` annotated function, wrap the value as an Option
+``` scala
+// When sandbox is provided resulting element will include the sandbox attribute, i.e. <iframe src="..." sandbox="..."></iframe>, otherwise it is omitted, <iframe src="..."></iframe>
+@html def iframeWithOptionalSandbox(sandbox: Option[String], src: String) = 
+<iframe src={src} data:sandbox={sandbox}></iframe>
+```
+
 ### `id` and `local-id` attribute
 
 There are special treatments to `id` and `local-id` attribute in `@dom`. Those treatments are removed in `@html`, as they cause red marks in IntelliJ IDEA or other IDEs.
