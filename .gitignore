@@ -2,3 +2,5 @@ target/
 local.sbt
 secret/
 .idea/
+.metals/
+.bloop/
