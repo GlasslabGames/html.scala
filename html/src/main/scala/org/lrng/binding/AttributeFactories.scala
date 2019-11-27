@@ -235,6 +235,10 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object scala211WorkaroundClass extends AttributeFactory.Typed {
+      @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, scala211WorkaroundClass.type] = new AttributeSetter(_.setAttribute("class", _))
+      @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, scala211WorkaroundClass.type] = new AttributeRemover(_.removeAttribute("class"))
+    }
     object classList extends AttributeFactory.Typed {
       implicit object mountPointBuilder_DOMTokenList_Element extends MountPointBuilder[Element, classList.type, DOMTokenList] {
         def mountProperty(element: Element, binding: Binding[DOMTokenList]) = {
@@ -1358,7 +1362,6 @@ private[lrng] object AttributeFactories {
       }
     }
   }
-  import properties._
   @inline def BaseHref: properties.BaseHref.type = properties.BaseHref
   @inline def aLink: properties.aLink.type = properties.aLink
   object abbr extends AttributeFactory.Typed {
@@ -1577,10 +1580,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLQuoteElement: AttributeRemover[HTMLQuoteElement, cite.type] = new AttributeRemover(_.removeAttribute("cite"))
     @inline implicit def attributeRemover_HTMLModElement: AttributeRemover[HTMLModElement, cite.type] = new AttributeRemover(_.removeAttribute("cite"))
   }
-  object `class` extends AttributeFactory.Typed {
-    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, `class`.type] = new AttributeSetter(_.setAttribute("class", _))
-    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, `class`.type] = new AttributeRemover(_.removeAttribute("class"))
-  }
+  @inline def `class`: properties.scala211WorkaroundClass.type = properties.scala211WorkaroundClass
   @inline def classList: properties.classList.type = properties.classList
   @inline def className: properties.className.type = properties.className
   @inline def classid: properties.classid.type = properties.classid
@@ -3064,6 +3064,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onselect.type] = new AttributeRemover(_.removeAttribute("onselect"))
   }
   @inline def onselectstart: properties.onselectstart.type = properties.onselectstart
+  object onslotchange extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onslotchange.type] = new AttributeSetter(_.setAttribute("onslotchange", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onslotchange.type] = new AttributeRemover(_.removeAttribute("onslotchange"))
+  }
   object onstalled extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {

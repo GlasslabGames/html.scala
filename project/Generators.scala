@@ -177,7 +177,12 @@ object Generators extends AutoPlugin {
         attributeName =>
           val propertyOnly = !interfacesByAttribute.contains(attributeName)
           val attributeTermName = {
-            Term.Name(reflect.NameTransformer.encode(attributeName))
+            attributeName match {
+              case "class" =>
+                Term.Name("scala211WorkaroundClass")
+              case _ =>
+                Term.Name(reflect.NameTransformer.encode(attributeName))
+            }
           }
           val attributeSetters = for {
             interfaceNames <- interfacesByAttribute.get(attributeName).view
@@ -237,6 +242,9 @@ object Generators extends AutoPlugin {
           if (propertyOnly) {
             q"@inline def $attributeTermName: properties.$attributeTermName.type = properties.$attributeTermName" -> Some(
               objectDefinition)
+          } else if (attributeName == "class") {
+            q"@inline def `class`: properties.$attributeTermName.type = properties.$attributeTermName" -> Some(
+              objectDefinition)
           } else {
             objectDefinition -> None
           }
@@ -257,7 +265,6 @@ object Generators extends AutoPlugin {
             private[lrng] object properties {
               ..${propertyOnlyDefs.toList}
             }
-            import properties._
             ..${defs.toList}
           }
         }
