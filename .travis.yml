@@ -17,15 +17,13 @@ cache:
   - "$HOME/.sbt/boot/"
   - "$HOME/.coursier/"
 before_script: 
-before_deploy: 
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_69821ba7448c_key -iv $encrypted_69821ba7448c_iv
+  -in secring.asc.enc -out secring.asc -d
 deploy:
 - provider: script
-  script: sbt ++$TRAVIS_SCALA_VERSION "sonatypeOpen \"Travis Job $TRAVIS_JOB_NAME
-    $TRAVIS_JOB_NUMBER ($TRAVIS_JOB_WEB_URL)\"" publishSigned sonatypeRelease
+  script: sbt ++$TRAVIS_SCALA_VERSION "set every Seq(sonatypeSessionName := \"Travis Job $TRAVIS_JOB_NAME $TRAVIS_JOB_NUMBER ($TRAVIS_JOB_WEB_URL)\", publishTo := sonatypePublishToBundle.value)" publishSigned sonatypeBundleRelease
   skip_cleanup: true
   on:
     all_branches: true
     condition: "$SONATYPE_USERNAME"
-before_install:
-- openssl aes-256-cbc -K $encrypted_69821ba7448c_key -iv $encrypted_69821ba7448c_iv
-  -in secring.asc.enc -out secring.asc -d
