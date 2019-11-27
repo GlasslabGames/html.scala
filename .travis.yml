@@ -5,6 +5,7 @@ addons:
     - graphviz
 language: scala
 scala:
+- 2.11.12
 - 2.12.8
 jdk:
 - openjdk8
@@ -18,8 +19,7 @@ cache:
   - "$HOME/.coursier/"
 before_script: 
 before_deploy:
-- openssl aes-256-cbc -K $encrypted_69821ba7448c_key -iv $encrypted_69821ba7448c_iv
-  -in secring.asc.enc -out secring.asc -d
+- openssl aes-256-cbc -K $encrypted_69821ba7448c_key -iv $encrypted_69821ba7448c_iv -in secring.asc.enc -out secring.asc -d
 deploy:
 - provider: script
   script: sbt ++$TRAVIS_SCALA_VERSION "set every Seq(sonatypeSessionName := \"Travis Job $TRAVIS_JOB_NAME $TRAVIS_JOB_NUMBER ($TRAVIS_JOB_WEB_URL)\", publishTo := sonatypePublishToBundle.value)" publishSigned sonatypeBundleRelease
