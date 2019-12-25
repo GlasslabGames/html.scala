@@ -18,6 +18,4 @@ libraryDependencies += "io.circe" %% "circe-generic" % "0.11.1"
 
 libraryDependencies += "com.softwaremill.sttp" %% "circe" % "1.6.4"
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
-
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.1")
