@@ -123,7 +123,7 @@ object html {
   }
 
   type NodeBindingSeq[+A] = BindingSeq[A] {
-    def value: Seq[A]
+    def value: collection.Seq[A]
   }
   object NodeBindingSeq {
 
@@ -139,7 +139,11 @@ object html {
     private[lrng] final class NodeSeqMountPoint(parent: Node, childrenBinding: BindingSeq[Node])
         extends MultiMountPoint[Node](childrenBinding) {
 
-      override protected def set(children: Seq[Node]): Unit = {
+      protected def set(children: Seq[Node]): Unit = {
+        set(children: Iterable[Node])
+      }
+
+      protected def set(children: Iterable[Node]): Unit = {
         removeAll(parent)
         for (child <- children) {
           if (child.parentNode != null) {
@@ -149,7 +153,15 @@ object html {
         }
       }
 
-      override protected def splice(from: Int, that: collection.GenSeq[Node], replaced: Int): Unit = {
+      protected def splice(from: Int, that: Iterable[Node], replaced: Int): Unit = {
+        spliceGenIterable(from, that, replaced)
+      }
+
+      protected def splice(from: Int, that: collection.GenSeq[Node], replaced: Int): Unit = {
+        spliceGenIterable(from, that, replaced)
+      }
+
+      private def spliceGenIterable(from: Int, that: collection.GenIterable[Node], replaced: Int): Unit = {
         @inline
         @tailrec
         def removeChildren(child: Node, n: Int): Node = {
@@ -186,7 +198,7 @@ object html {
         extends ChildBuilder {
       def applyEnd: NodeBindingSeq[Node] = {
         if (childNodes.isEmpty) {
-          Constants(childNodes: _*)
+          Constants(scalajs.runtime.toScalaVarArgs(childNodes): _*)
         } else {
           new NodeBindingSeq.Interpolated(childNodes, mountPoints)
         }
@@ -198,7 +210,8 @@ object html {
     final class Interpolated private[lrng] (private[lrng] val nodes: js.Array[Node] = new js.Array(0),
                                             private[lrng] val mountPoints: js.Array[Binding[Unit]] = new js.Array(0))
         extends BindingSeq[Node] {
-      def value: Seq[Node] = nodes
+      type All[+A] = collection.Seq[A]
+      def value: collection.Seq[Node] = nodes
       private var referenceCount = 0
       protected def addPatchedListener(listener: PatchedListener[Node]): Unit = {
         if (referenceCount == 0) {
@@ -368,14 +381,14 @@ object html {
 
         private[lrng] def mergeTrailingNodes(): Unit = {
           if (childNodes.nonEmpty) {
-            bindingSeqs += Binding.Constant(Binding.Constants(childNodes: _*))
+            bindingSeqs += Binding.Constant(Binding.Constants(scalajs.runtime.toScalaVarArgs(childNodes): _*))
             childNodes = new js.Array(0)
           }
         }
         private[lrng] def flush(): Unit = {
           mergeTrailingNodes()
           if (bindingSeqs.nonEmpty) {
-            mountPoints += mount(element, Constants(bindingSeqs: _*).flatMapBinding(identity))
+            mountPoints += mount(element, Constants(scalajs.runtime.toScalaVarArgs(bindingSeqs): _*).flatMapBinding(identity))
           }
         }
         @inline
@@ -443,7 +456,7 @@ object html {
       } else {
         elementBuilder.flush()
         childNodes += elementBuilder.element
-        mountPoints.push(elementBuilder.mountPoints: _*)
+        mountPoints.push(scalajs.runtime.toScalaVarArgs(elementBuilder.mountPoints): _*)
       }
       this
     }
@@ -737,7 +750,7 @@ object html {
   * myDivs.watch()
   * import org.scalajs.dom.html.Div
   * inside(myDivs.value) {
-  *   case Seq(div1: Div, div2: Div, div3: Div) =>
+  *   case collection.Seq(div1: Div, div2: Div, div3: Div) =>
   *     div1.nodeName should be("DIV")
   *     div1.hasAttribute("class") should be(false)
   *     div1.className should be("")
@@ -830,9 +843,9 @@ object html {
   * @example Dynamc attributes
   * {{{
   * @html
-  * val myBr = <br data:toString="+&copy;" data:equals="+" data:applyDynamic="value"/>
+  * val myBr = <br data:toString="+&copy;" data:applyDynamic="value"/>
   * myBr.watch()
-  * myBr.value.outerHTML should be("""<br tostring="+©" equals="+" applydynamic="value">""")
+  * myBr.value.outerHTML should be("""<br tostring="+©" applydynamic="value">""")
   * }}}
   *
   * @example Changing attribute values

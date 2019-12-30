@@ -8,13 +8,45 @@ import scala.meta._
 
 exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
 
-libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "11.8.1"
+libraryDependencies += "com.thoughtworks.binding" %%% "binding" % {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    "12.0.0-M0+7-649658cf"
+  } else {
+    "11.9.0"
+  }
+}
 
-libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "1.1.0"
+libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    "2.0.0-M0"
+  } else {
+    "1.1.0"
+  }
+}
 
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
+// Enable macro annotations by setting scalac flags for Scala 2.13
+scalacOptions ++= {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    Seq("-Ymacro-annotations")
+  } else {
+    Nil
+  }
+}
+
+// Enable macro annotations by adding compiler plugins for Scala 2.11 and 2.12
+libraryDependencies ++= {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    Nil
+  } else {
+    Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full))
+  }
+}
 
 scalacOptions in Test += "-Xxml:-coalescing"
 
@@ -24,6 +56,6 @@ installJsdom / version := "15.1.1"
 
 libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.0"
 
-libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.0+35-548ecb4c"
+libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.1+3-8d7c374d"
 
 enablePlugins(Generators)
