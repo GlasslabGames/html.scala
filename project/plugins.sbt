@@ -16,7 +16,7 @@ libraryDependencies += "net.sourceforge.htmlunit" % "htmlunit" % "2.36.0"
 
 libraryDependencies += "io.circe" %% "circe-generic" % "0.11.2"
 
-libraryDependencies += "com.softwaremill.sttp" %% "circe" % "1.6.8"
+libraryDependencies += "com.softwaremill.sttp" %% "circe" % "1.7.2"
 
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.1")
 
