@@ -56,6 +56,6 @@ installJsdom / version := "15.1.1"
 
 libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.0"
 
-libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.1+5-c9f0013c"
+libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.1+17-edce42e2"
 
 enablePlugins(Generators)
