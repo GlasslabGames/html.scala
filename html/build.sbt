@@ -52,8 +52,6 @@ scalacOptions in Test += "-Xxml:-coalescing"
 
 requireJsDomEnv in Test := true
 
-installJsdom / version := "15.1.1"
-
 libraryDependencies += "com.yang-bo" %%% "curried" % "2.0.1"
 
 libraryDependencies += "org.lrng.binding" %% "namebasedxml" % "1.0.2"
