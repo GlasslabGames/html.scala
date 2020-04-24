@@ -350,8 +350,8 @@ private[lrng] object AttributeFactories {
           Binding.BindingInstances.map(binding)(element.dateTime = _)
         }
       }
-      implicit object mountPointBuilder_String_HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime.type, String] {
-        def mountProperty(element: HTMLPhraseElement, binding: Binding[String]) = {
+      @deprecated("Non-standard.", "0.9.8") implicit object mountPointBuilder_String_HTMLPhraseElement extends MountPointBuilder[HTMLPhraseElement, dateTime.type, String] {
+        @deprecated("Non-standard.", "0.9.8") def mountProperty(element: HTMLPhraseElement, binding: Binding[String]) = {
           Binding.BindingInstances.map(binding)(element.dateTime = _)
         }
       }
@@ -753,8 +753,8 @@ private[lrng] object AttributeFactories {
       }
     }
     object noWrap extends AttributeFactory.Typed {
-      implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap.type, Boolean] {
-        def mountProperty(element: HTMLDDElement, binding: Binding[Boolean]) = {
+      @deprecated("Non-standard.", "0.9.8") implicit object mountPointBuilder_Boolean_HTMLDDElement extends MountPointBuilder[HTMLDDElement, noWrap.type, Boolean] {
+        @deprecated("Non-standard.", "0.9.8") def mountProperty(element: HTMLDDElement, binding: Binding[Boolean]) = {
           Binding.BindingInstances.map(binding)(element.noWrap = _)
         }
       }
@@ -763,8 +763,8 @@ private[lrng] object AttributeFactories {
           Binding.BindingInstances.map(binding)(element.noWrap = _)
         }
       }
-      implicit object mountPointBuilder_Boolean_HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap.type, Boolean] {
-        def mountProperty(element: HTMLDTElement, binding: Binding[Boolean]) = {
+      @deprecated("Non-standard.", "0.9.8") implicit object mountPointBuilder_Boolean_HTMLDTElement extends MountPointBuilder[HTMLDTElement, noWrap.type, Boolean] {
+        @deprecated("Non-standard.", "0.9.8") def mountProperty(element: HTMLDTElement, binding: Binding[Boolean]) = {
           Binding.BindingInstances.map(binding)(element.noWrap = _)
         }
       }
@@ -2144,6 +2144,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, list.type] = new AttributeSetter(_.setAttribute("list", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, list.type] = new AttributeRemover(_.removeAttribute("list"))
   }
+  object loading extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
+    @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
+  }
   @inline def longDesc: properties.longDesc.type = properties.longDesc
   object loop extends AttributeFactory.Typed {
     implicit object mountPointBuilder_Boolean_HTMLMediaElement extends MountPointBuilder[HTMLMediaElement, loop.type, Boolean] {
@@ -3064,6 +3068,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onselect.type] = new AttributeRemover(_.removeAttribute("onselect"))
   }
   @inline def onselectstart: properties.onselectstart.type = properties.onselectstart
+  object onslotchange extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onslotchange.type] = new AttributeSetter(_.setAttribute("onslotchange", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onslotchange.type] = new AttributeRemover(_.removeAttribute("onslotchange"))
+  }
   object onstalled extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onstalled.type, js.Function1[Event, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[Event, _]]) = {
