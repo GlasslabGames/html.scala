@@ -1,13 +1,9 @@
 // shadow sbt-scalajs' crossProject(JSPlatform, JVMPlatform) and CrossType from Scala.js 0.6.x
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-val dynamicanyref = crossProject(JSPlatform, JVMPlatform)
+val dynamicanyref = crossProject(JSPlatform, JVMPlatform).build
 
-val dynamicanyrefJVM = dynamicanyref.jvm
-
-val dynamicanyrefJS = dynamicanyref.js
-
-val html = project.dependsOn(dynamicanyrefJS)
+val html = project.dependsOn(dynamicanyref.js)
 
 ThisBuild / organization := "org.lrng.binding"
 
