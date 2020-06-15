@@ -12,7 +12,7 @@ addSbtPlugin("com.thoughtworks.example" % "sbt-example" % "7.0.0")
 
 addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.17.0")
 
-libraryDependencies += "net.sourceforge.htmlunit" % "htmlunit" % "2.39.1"
+libraryDependencies += "net.sourceforge.htmlunit" % "htmlunit" % "2.41.0"
 
 libraryDependencies += "io.circe" %% "circe-generic" % "0.12.3"
 
