@@ -26,7 +26,7 @@ libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % {
   }
 }
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.1" % Test
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.4" % Test
 
 // Enable macro annotations by setting scalac flags for Scala 2.13
 scalacOptions ++= {
