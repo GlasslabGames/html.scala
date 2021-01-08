@@ -37,7 +37,7 @@ object Generators extends AutoPlugin {
 
   import autoImport._
   override def projectSettings = Seq(
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.8",
+    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "1.1.0",
     propertyDefinition := {
       object JsNativeSetter {
         private val SetterRegex = """(\w+)_=""".r
