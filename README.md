@@ -189,7 +189,7 @@ In addition, an attribute with an interpolation expression will be translated to
 @html def myDiv = <td rowSpan={3} className={"my-class"}></td>
 ```
 
-To setting abitrary attribute, with or without an interpolation expression, prepend a `data:` prefix to the attribute.
+To set an abitrary attribute, with or without an interpolation expression, prepend a `data:` prefix to the attribute.
 
 ``` scala
 // All the following attriubtes compile
