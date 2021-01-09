@@ -5,7 +5,7 @@
 [![Scaladoc](https://javadoc.io/badge/org.lrng.binding/html_sjs0.6_2.13.svg?label=Scaladoc)](https://javadoc.io/page/org.lrng.binding/html_sjs0.6_2.13/latest/org/lrng/binding/html.html)
 
 
-This **html.scala** library provides the `@html` for creating reactive HTML templates. It is a reimplementation of `@dom` annotation in [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala), delicately optimized for minimize the generated code size. The typing rules are also improved, preventing red marks in IDEs.
+This **html.scala** library provides the `@html` for creating reactive HTML templates. It is a reimplementation of `@dom` annotation in [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala), delicately minimizing the generated code size. The typing rules are also improved, preventing red marks in IDEs.
 
 ## Installation
 
