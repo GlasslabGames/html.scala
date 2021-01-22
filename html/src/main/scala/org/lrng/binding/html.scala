@@ -711,19 +711,19 @@ object html {
   * @example XHTML literals with text attributes
   * {{{
   * @html
-  * val myDiv = <div class="my-class" tabindex="42"></div>
-  * myDiv.value.nodeName should be("DIV")
-  * myDiv.value.className should be("my-class")
-  * myDiv.value.tabIndex should be(42)
+  * val mySpan = <span class="my-class" tabindex="42"></span>
+  * mySpan.value.nodeName should be("SPAN")
+  * mySpan.value.className should be("my-class")
+  * mySpan.value.tabIndex should be(42)
   * }}}
   *
   * Nested XHTML literals with interpolation:
   *
   * {{{
   * @html
-  * val myDiv2 = <div style="color: red;" tabIndex={99999} title="my title" class={"my-class"}><div>text</div><span style={"color: blue;"} tabIndex={99}></span><div innerHTML={"html"}></div><div></div>{myDiv.bind}</div>
-  * myDiv2.watch()
-  * myDiv2.value.outerHTML should be("""<div style="color: red;" tabindex="99999" title="my title" class="my-class"><div>text</div><span style="color: blue;" tabindex="99"></span><div>html</div><div></div><div class="my-class" tabindex="42"></div></div>""")
+  * val mySpan2 = <span style="color: red;" tabIndex={99999} title="my title" class={"my-class"}><span>text</span><i style={"color: blue;"} tabIndex={99}></i><span innerHTML={"html"}></span><span></span>{mySpan.bind}</span>
+  * mySpan2.watch()
+  * mySpan2.value.outerHTML should be("""<span style="color: red;" tabindex="99999" title="my title" class="my-class"><span>text</span><i style="color: blue;" tabindex="99"></i><span>html</span><span></span><span class="my-class" tabindex="42"></span></span>""")
   * }}}
   *
   * @example Special character in attribute names
@@ -746,53 +746,53 @@ object html {
   *
   * {{{
   * @html
-  * val myDivs = <div></div><div title={"my title"} class=""></div><div class="my-class"></div>
-  * myDivs.watch()
-  * import org.scalajs.dom.html.Div
-  * inside(myDivs.value) {
-  *   case collection.Seq(div1: Div, div2: Div, div3: Div) =>
-  *     div1.nodeName should be("DIV")
-  *     div1.hasAttribute("class") should be(false)
-  *     div1.className should be("")
-  *     div2.title should be("my title")
-  *     div2.hasAttribute("class") should be(true)
-  *     div2.className should be("")
-  *     div3.className should be("my-class")
+  * val mySpans = <span></span><span title={"my title"} class=""></span><span class="my-class"></span>
+  * mySpans.watch()
+  * import org.scalajs.dom.html.Span
+  * inside(mySpans.value) {
+  *   case collection.Seq(span1: Span, span2: Span, span3: Span) =>
+  *     span1.nodeName should be("SPAN")
+  *     span1.hasAttribute("class") should be(false)
+  *     span1.className should be("")
+  *     span2.title should be("my title")
+  *     span2.hasAttribute("class") should be(true)
+  *     span2.className should be("")
+  *     span3.className should be("my-class")
   * }
   * }}}
   *
   * @example Text interpolation in an element
   * {{{
-  * @html val monadicDiv = <div>{"text"}</div>
-  * monadicDiv.watch()
-  * assert(monadicDiv.value.outerHTML == "<div>text</div>")
+  * @html val monadicSpan = <span>{"text"}</span>
+  * monadicSpan.watch()
+  * assert(monadicSpan.value.outerHTML == "<span>text</span>")
   * }}}
   *
   * @example Changing text
   * {{{
   * import com.thoughtworks.binding.Binding.Var
   * val v0 = Var("original text")
-  * @html val monadicDiv = <div> <span> {v0.bind} </span> </div>
-  * monadicDiv.watch()
-  * assert(monadicDiv.value.outerHTML == "<div> <span> original text </span> </div>")
+  * @html val monadicSpan = <span> <i> {v0.bind} </i> </span>
+  * monadicSpan.watch()
+  * assert(monadicSpan.value.outerHTML == "<span> <i> original text </i> </span>")
   * v0.value = "changed"
-  * assert(monadicDiv.value.outerHTML == "<div> <span> changed </span> </div>")
+  * assert(monadicSpan.value.outerHTML == "<span> <i> changed </i> </span>")
   * }}}
   *
   * @example `for` / `yield` expressions in XHTML interpolation
   * {{{
   * import com.thoughtworks.binding.Binding.Vars
   * val v0 = Vars("original text 0","original text 1")
-  * @html val monadicDiv = <div> <span> { for (s <- v0) yield <b>{s}</b> } </span> </div>
-  * monadicDiv.watch()
-  * val div = monadicDiv.value
-  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>original text 0</b><b>original text 1</b> </span> </div>")
+  * @html val monadicSpan = <span> <i> { for (s <- v0) yield <b>{s}</b> } </i> </span>
+  * monadicSpan.watch()
+  * val span = monadicSpan.value
+  * assert(monadicSpan.value.outerHTML == "<span> <i> <b>original text 0</b><b>original text 1</b> </i> </span>")
   * v0.value.prepend("prepended")
-  * assert(div eq monadicDiv.value)
-  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>prepended</b><b>original text 0</b><b>original text 1</b> </span> </div>")
+  * assert(span eq monadicSpan.value)
+  * assert(monadicSpan.value.outerHTML == "<span> <i> <b>prepended</b><b>original text 0</b><b>original text 1</b> </i> </span>")
   * v0.value.remove(1)
-  * assert(div eq monadicDiv.value)
-  * assert(monadicDiv.value.outerHTML == "<div> <span> <b>prepended</b><b>original text 1</b> </span> </div>")
+  * assert(span eq monadicSpan.value)
+  * assert(monadicSpan.value.outerHTML == "<span> <i> <b>prepended</b><b>original text 1</b> </i> </span>")
   * }}}
   *
   * @example `for` / `yield` / `if` expressions in XHTML interpolation
@@ -865,7 +865,7 @@ object html {
   *   @html
   *   val child = <hr/>
   *   @html
-  *   val parent = <p><span>{child.bind}</span><span>{child.bind}</span></p>
+  *   val parent = <span><i>{child.bind}</i><i>{child.bind}</i></span>
   *   parent.watch()
   * }
   * }}}
@@ -874,38 +874,38 @@ object html {
   * @example Seq in DOM
   * {{{
   * import org.scalajs.dom.document
-  * @html def myUl = {
-  *   <ul>{Seq(<li>data1</li>, <li>data2</li>)}</ul>
+  * @html def mySelect = {
+  *   <select>{Seq(<option>data1</option>, <option>data2</option>)}</select>
   * }
-  * val div = document.createElement("div")
-  * html.render(div, myUl)
-  * div.firstChild.childNodes.length should be(2)
+  * val span = document.createElement("span")
+  * html.render(span, mySelect)
+  * span.firstChild.childNodes.length should be(2)
   * }}}
   *
   * @example XHTML comments
   * {{{
   * import org.scalajs.dom.document
-  * @html def comment = <div><!--my comment--></div>
-  * val div = document.createElement("div")
-  * html.render(div, comment)
-  * assert(div.innerHTML == "<div><!--my comment--></div>")
+  * @html def comment = <span><!--my comment--></span>
+  * val span = document.createElement("span")
+  * html.render(span, comment)
+  * assert(span.innerHTML == "<span><!--my comment--></span>")
   * }}}
   *
   * @example Escape
   * {{{
   * import org.scalajs.dom.document
-  * @html def escaped = <div>&#32;$minus</div>
-  * val div = document.createElement("div")
-  * html.render(div, escaped)
-  * assert(div.innerHTML == "<div> $minus</div>")
+  * @html def escaped = <span>&#32;$minus</span>
+  * val span = document.createElement("span")
+  * html.render(span, escaped)
+  * assert(span.innerHTML == "<span> $minus</span>")
   * }}}
   * @example Entity references
   * {{{
   * import org.scalajs.dom.document
-  * @html def entity = <div class="&lt; &gt; &copy; &lambda; my-class">my text &lt; &gt; &copy; &lambda;</div>
-  * val div = document.createElement("div")
-  * html.render(div, entity)
-  * assert(div.innerHTML == """<div class="< > © λ my-class">my text &lt; &gt; © λ</div>""")
+  * @html def entity = <span class="&lt; &gt; &copy; &lambda; my-class">my text &lt; &gt; &copy; &lambda;</span>
+  * val span = document.createElement("span")
+  * html.render(span, entity)
+  * assert(span.innerHTML == """<span class="< > © λ my-class">my text &lt; &gt; © λ</span>""")
   * }}}
   * @example Process instructions
   * {{{
@@ -960,7 +960,7 @@ object html {
   *         }
   *       )
   *     }
-  *     }
+  *   }
   * }
   * implicit final class SvgUriOps(uriFactory: html.autoImports.xml.uris.type) {
   *   @inline def http$colon$div$divwww$u002Ew3$u002Eorg$div2000$divsvg = svg
