@@ -14,7 +14,7 @@ addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.20.0")
 
 libraryDependencies += "net.sourceforge.htmlunit" % "htmlunit" % "2.46.0"
 
-libraryDependencies += "io.circe" %% "circe-generic" % "0.12.3"
+libraryDependencies += "io.circe" %% "circe-generic" % "0.14.1"
 
 libraryDependencies += "com.softwaremill.sttp" %% "circe" % "1.7.2"
 
