@@ -20,7 +20,7 @@ libraryDependencies += "com.thoughtworks.binding" %%% "binding" % {
 libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % {
   import Ordering.Implicits._
   if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
-    "2.0.0-M1"
+    "2.0.0"
   } else {
     "1.1.0"
   }
