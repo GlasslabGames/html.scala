@@ -11,7 +11,7 @@ exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % {
   import Ordering.Implicits._
   if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
-    "12.0.0-M1"
+    "12.0.1"
   } else {
     "11.9.0"
   }
