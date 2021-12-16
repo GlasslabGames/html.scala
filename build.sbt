@@ -5,7 +5,7 @@ val dynamicanyref = crossProject(JSPlatform, JVMPlatform).build
 
 val html = project.dependsOn(dynamicanyref.js)
 
-ThisBuild / organization := "org.lrng.binding"
+ThisBuild / organization := "com.yang-bo"
 
 publish / skip := true
 
