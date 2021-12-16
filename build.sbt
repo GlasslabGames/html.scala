@@ -1,5 +1,4 @@
 // shadow sbt-scalajs' crossProject(JSPlatform, JVMPlatform) and CrossType from Scala.js 0.6.x
-scalaVersion := "2.13.7"
 
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 

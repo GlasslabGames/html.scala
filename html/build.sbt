@@ -4,8 +4,6 @@ enablePlugins(ScalaJSPlugin)
 
 enablePlugins(Example)
 
-scalaVersion := "2.13.7"
-
 import scala.meta._
 
 exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
