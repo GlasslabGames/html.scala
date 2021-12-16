@@ -781,6 +781,13 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object onabort extends AttributeFactory.Typed {
+      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
+        def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
+          Binding.BindingInstances.map(binding)(element.onabort = _)
+        }
+      }
+    }
     object onactivate extends AttributeFactory.Typed {
       implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onactivate.type, js.Function1[UIEvent, _]] {
         def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
@@ -1407,10 +1414,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowfullscreen.type] = new AttributeSetter(_.setAttribute("allowfullscreen", _))
     @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, allowfullscreen.type] = new AttributeRemover(_.removeAttribute("allowfullscreen"))
   }
-  object allowpaymentrequest extends AttributeFactory.Typed {
-    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, allowpaymentrequest.type] = new AttributeSetter(_.setAttribute("allowpaymentrequest", _))
-    @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, allowpaymentrequest.type] = new AttributeRemover(_.removeAttribute("allowpaymentrequest"))
-  }
   object alt extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object mountPointBuilder_String_HTMLAppletElement extends MountPointBuilder[HTMLAppletElement, alt.type, String] {
       @deprecated("Obsolete.", "HTML 5") def mountProperty(element: HTMLAppletElement, binding: Binding[String]) = {
@@ -1767,6 +1770,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
     @inline implicit def attributeSetter_HTMLFieldSetElement: AttributeSetter[HTMLFieldSetElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
     @inline implicit def attributeRemover_HTMLButtonElement: AttributeRemover[HTMLButtonElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
     @inline implicit def attributeRemover_HTMLOptGroupElement: AttributeRemover[HTMLOptGroupElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
@@ -1774,6 +1778,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLSelectElement: AttributeRemover[HTMLSelectElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
     @inline implicit def attributeRemover_HTMLFieldSetElement: AttributeRemover[HTMLFieldSetElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
+    @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, disabled.type] = new AttributeRemover(_.removeAttribute("disabled"))
   }
   object download extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, download.type] = new AttributeSetter(_.setAttribute("download", _))
@@ -1956,6 +1961,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
+    @inline implicit def attributeSetter_HTMLPictureElement: AttributeSetter[HTMLPictureElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeRemover_HTMLCanvasElement: AttributeRemover[HTMLCanvasElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
     @inline implicit def attributeRemover_HTMLEmbedElement: AttributeRemover[HTMLEmbedElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
@@ -1963,6 +1970,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
     @inline implicit def attributeRemover_HTMLObjectElement: AttributeRemover[HTMLObjectElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
+    @inline implicit def attributeRemover_HTMLSourceElement: AttributeRemover[HTMLSourceElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
+    @inline implicit def attributeRemover_HTMLPictureElement: AttributeRemover[HTMLPictureElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, height.type] = new AttributeRemover(_.removeAttribute("height"))
   }
   object hidden extends AttributeFactory.Typed {
@@ -2146,7 +2155,9 @@ private[lrng] object AttributeFactories {
   }
   object loading extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
+    @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
     @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
+    @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
   }
   @inline def longDesc: properties.longDesc.type = properties.longDesc
   object loop extends AttributeFactory.Typed {
@@ -2174,10 +2185,6 @@ private[lrng] object AttributeFactories {
   object low extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, low.type] = new AttributeSetter(_.setAttribute("low", _))
     @inline implicit def attributeRemover_HTMLMeterElement: AttributeRemover[HTMLMeterElement, low.type] = new AttributeRemover(_.removeAttribute("low"))
-  }
-  object manifest extends AttributeFactory.Typed {
-    @inline implicit def attributeSetter_HTMLHtmlElement: AttributeSetter[HTMLHtmlElement, manifest.type] = new AttributeSetter(_.setAttribute("manifest", _))
-    @inline implicit def attributeRemover_HTMLHtmlElement: AttributeRemover[HTMLHtmlElement, manifest.type] = new AttributeRemover(_.removeAttribute("manifest"))
   }
   @inline def marginHeight: properties.marginHeight.type = properties.marginHeight
   @inline def marginWidth: properties.marginWidth.type = properties.marginWidth
@@ -2223,10 +2230,14 @@ private[lrng] object AttributeFactories {
       }
     }
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
+    @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
     @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
+    @inline implicit def attributeSetter_HTMLPictureElement: AttributeSetter[HTMLPictureElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
     @inline implicit def attributeSetter_HTMLStyleElement: AttributeSetter[HTMLStyleElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
     @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, media.type] = new AttributeRemover(_.removeAttribute("media"))
+    @inline implicit def attributeRemover_HTMLMetaElement: AttributeRemover[HTMLMetaElement, media.type] = new AttributeRemover(_.removeAttribute("media"))
     @inline implicit def attributeRemover_HTMLSourceElement: AttributeRemover[HTMLSourceElement, media.type] = new AttributeRemover(_.removeAttribute("media"))
+    @inline implicit def attributeRemover_HTMLPictureElement: AttributeRemover[HTMLPictureElement, media.type] = new AttributeRemover(_.removeAttribute("media"))
     @inline implicit def attributeRemover_HTMLStyleElement: AttributeRemover[HTMLStyleElement, media.type] = new AttributeRemover(_.removeAttribute("media"))
   }
   object method extends AttributeFactory.Typed {
@@ -2405,15 +2416,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLFormElement: AttributeRemover[HTMLFormElement, novalidate.type] = new AttributeRemover(_.removeAttribute("novalidate"))
   }
   @inline def `object`: properties.`object`.type = properties.`object`
-  object onabort extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onabort = _)
-      }
-    }
-    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onabort.type] = new AttributeSetter(_.setAttribute("onabort", _))
-    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onabort.type] = new AttributeRemover(_.removeAttribute("onabort"))
-  }
+  @inline def onabort: properties.onabort.type = properties.onabort
   @inline def onactivate: properties.onactivate.type = properties.onactivate
   object onafterprint extends AttributeFactory.Typed {
     @deprecated("Obsolete.", "HTML 5") implicit object `mountPointBuilder_js_Function1[Event, _]_HTMLFrameSetElement` extends MountPointBuilder[HTMLFrameSetElement, onafterprint.type, js.Function1[Event, _]] {
@@ -2520,6 +2523,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onclose.type] = new AttributeSetter(_.setAttribute("onclose", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onclose.type] = new AttributeRemover(_.removeAttribute("onclose"))
   }
+  object oncontextlost extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncontextlost.type] = new AttributeSetter(_.setAttribute("oncontextlost", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, oncontextlost.type] = new AttributeRemover(_.removeAttribute("oncontextlost"))
+  }
   object oncontextmenu extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[MouseEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, oncontextmenu.type, js.Function1[MouseEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[MouseEvent, _]]) = {
@@ -2528,6 +2535,10 @@ private[lrng] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncontextmenu.type] = new AttributeSetter(_.setAttribute("oncontextmenu", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, oncontextmenu.type] = new AttributeRemover(_.removeAttribute("oncontextmenu"))
+  }
+  object oncontextrestored extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, oncontextrestored.type] = new AttributeSetter(_.setAttribute("oncontextrestored", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, oncontextrestored.type] = new AttributeRemover(_.removeAttribute("oncontextrestored"))
   }
   object oncopy extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[ClipboardEvent, _]_Element` extends MountPointBuilder[Element, oncopy.type, js.Function1[ClipboardEvent, _]] {
@@ -2592,10 +2603,6 @@ private[lrng] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragenter.type] = new AttributeSetter(_.setAttribute("ondragenter", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, ondragenter.type] = new AttributeRemover(_.removeAttribute("ondragenter"))
-  }
-  object ondragexit extends AttributeFactory.Typed {
-    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, ondragexit.type] = new AttributeSetter(_.setAttribute("ondragexit", _))
-    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, ondragexit.type] = new AttributeRemover(_.removeAttribute("ondragexit"))
   }
   object ondragleave extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[DragEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, ondragleave.type, js.Function1[DragEvent, _]] {
@@ -3487,8 +3494,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
-    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
+    @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeRemover_HTMLAudioElement: AttributeRemover[HTMLAudioElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
     @inline implicit def attributeRemover_HTMLEmbedElement: AttributeRemover[HTMLEmbedElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
     @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
@@ -3496,8 +3503,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
     @inline implicit def attributeRemover_HTMLScriptElement: AttributeRemover[HTMLScriptElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
     @inline implicit def attributeRemover_HTMLSourceElement: AttributeRemover[HTMLSourceElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
-    @inline implicit def attributeRemover_HTMLTrackElement: AttributeRemover[HTMLTrackElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
+    @inline implicit def attributeRemover_HTMLTrackElement: AttributeRemover[HTMLTrackElement, src.type] = new AttributeRemover(_.removeAttribute("src"))
   }
   object srcdoc extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, srcdoc.type] = new AttributeSetter(_.setAttribute("srcdoc", _))
@@ -3695,9 +3702,7 @@ private[lrng] object AttributeFactories {
   @inline def useMap: properties.useMap.type = properties.useMap
   object usemap extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
-    @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, usemap.type] = new AttributeSetter(_.setAttribute("usemap", _))
     @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, usemap.type] = new AttributeRemover(_.removeAttribute("usemap"))
-    @inline implicit def attributeRemover_HTMLObjectElement: AttributeRemover[HTMLObjectElement, usemap.type] = new AttributeRemover(_.removeAttribute("usemap"))
   }
   @inline def vAlign: properties.vAlign.type = properties.vAlign
   @inline def vLink: properties.vLink.type = properties.vLink
@@ -3846,6 +3851,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
+    @inline implicit def attributeSetter_HTMLPictureElement: AttributeSetter[HTMLPictureElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeSetter_HTMLVideoElement: AttributeSetter[HTMLVideoElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeRemover_HTMLCanvasElement: AttributeRemover[HTMLCanvasElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
     @inline implicit def attributeRemover_HTMLEmbedElement: AttributeRemover[HTMLEmbedElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
@@ -3853,6 +3860,8 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
     @inline implicit def attributeRemover_HTMLObjectElement: AttributeRemover[HTMLObjectElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
+    @inline implicit def attributeRemover_HTMLSourceElement: AttributeRemover[HTMLSourceElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
+    @inline implicit def attributeRemover_HTMLPictureElement: AttributeRemover[HTMLPictureElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
   }
   object wrap extends AttributeFactory.Typed {
