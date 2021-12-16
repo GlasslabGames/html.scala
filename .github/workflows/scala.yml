@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         sbt-args:
         - ''
@@ -37,6 +38,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: | 
+          ~/.ivy2/local/
           ~/.ivy2/cache/
           ~/.sbt/
           ~/.coursier/
@@ -45,12 +47,9 @@ jobs:
           ${{runner.os}}-${{matrix.scala}}-${{hashFiles('**/*.sbt')}}
           ${{runner.os}}-${{matrix.scala}}-
     - name: Run tests
-      run: sbt ${{matrix.sbt-args}} ++${{matrix.scala}} test
+      run: sbt ++${{ matrix.scala }} test
     - name: Publish to Maven Central Repository
       env:
-        SONATYPE_USERNAME: ${{secrets.SONATYPE_USERNAME}}
-        SONATYPE_PASSWORD: ${{secrets.SONATYPE_PASSWORD}}
-      if: ${{env.SONATYPE_USERNAME != ''}}
-      run: |
-        openssl aes-256-cbc -K ${{secrets.encrypted_69821ba7448c_key}} -iv ${{secrets.encrypted_69821ba7448c_iv}} -in secring.asc.enc -out secring.asc -d
-        sbt ${{matrix.sbt-args}} ++${{matrix.scala}} "set every Seq(sonatypeSessionName := \"${{github.workflow}} ${{github.run_id}} ${{github.run_number}} ${{github.run_attempt}} ${{matrix.scala}}\", publishTo := sonatypePublishToBundle.value)" publishSigned sonatypeBundleRelease
+        SECRET_GIST: ${{secrets.SECRET_GIST}}
+      if: ${{ env.SECRET_GIST != '' }}
+      run: sbt ++${{ matrix.scala }} "set every Seq(sonatypeSessionName := \"${{github.workflow}} ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}-$$ ${{ matrix.scala }}\", publishTo := sonatypePublishToBundle.value)" publishSigned sonatypeBundleRelease
