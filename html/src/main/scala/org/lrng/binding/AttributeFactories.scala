@@ -39,17 +39,36 @@ private[lrng] object AttributeFactories {
         }
       }
     }
-    object contentScriptType extends AttributeFactory.Typed {
-      implicit object mountPointBuilder_String_SVGSVGElement extends MountPointBuilder[SVGSVGElement, contentScriptType.type, String] {
-        def mountProperty(element: SVGSVGElement, binding: Binding[String]) = {
-          Binding.BindingInstances.map(binding)(element.contentScriptType = _)
+    object defaultChecked extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultChecked.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.defaultChecked = _)
         }
       }
     }
-    object contentStyleType extends AttributeFactory.Typed {
-      implicit object mountPointBuilder_String_SVGSVGElement extends MountPointBuilder[SVGSVGElement, contentStyleType.type, String] {
-        def mountProperty(element: SVGSVGElement, binding: Binding[String]) = {
-          Binding.BindingInstances.map(binding)(element.contentStyleType = _)
+    object defaultSelected extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, defaultSelected.type, Boolean] {
+        def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.defaultSelected = _)
+        }
+      }
+    }
+    object defaultValue extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, defaultValue.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.defaultValue = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, defaultValue.type, String] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.defaultValue = _)
+        }
+      }
+    }
+    object files extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_FileList_HTMLInputElement extends MountPointBuilder[HTMLInputElement, files.type, FileList] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[FileList]) = {
+          Binding.BindingInstances.map(binding)(element.files = _)
         }
       }
     }
@@ -60,10 +79,77 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object formAction extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formAction.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formAction = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formAction.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formAction = _)
+        }
+      }
+    }
+    object formEnctype extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formEnctype.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formEnctype = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formEnctype.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formEnctype = _)
+        }
+      }
+    }
+    object formMethod extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formMethod.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formMethod = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formMethod.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formMethod = _)
+        }
+      }
+    }
+    object formNoValidate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formNoValidate.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formNoValidate = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formNoValidate.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formNoValidate = _)
+        }
+      }
+    }
+    object formTarget extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, formTarget.type, String] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formTarget = _)
+        }
+      }
+      implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, formTarget.type, String] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.formTarget = _)
+        }
+      }
+    }
     object gotpointercapture extends AttributeFactory.Typed {
       implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, gotpointercapture.type, js.Function1[PointerEvent, _]] {
         def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
           Binding.BindingInstances.map(binding)(element.gotpointercapture = _)
+        }
+      }
+    }
+    object indeterminate extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, indeterminate.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.indeterminate = _)
         }
       }
     }
@@ -74,6 +160,13 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object length extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, length.type, Int] {
+        def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.length = _)
+        }
+      }
+    }
     object lostpointercapture extends AttributeFactory.Typed {
       implicit object `mountPointBuilder_js_Function1[PointerEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, lostpointercapture.type, js.Function1[PointerEvent, _]] {
         def mountProperty(element: HTMLElement, binding: Binding[js.Function1[PointerEvent, _]]) = {
@@ -81,14 +174,21 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object maxLength extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, maxLength.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.maxLength = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, maxLength.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.maxLength = _)
+        }
+      }
+    }
     object onabort extends AttributeFactory.Typed {
       implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onabort.type, js.Function1[UIEvent, _]] {
         def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-          Binding.BindingInstances.map(binding)(element.onabort = _)
-        }
-      }
-      implicit object `mountPointBuilder_js_Function1[UIEvent, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onabort.type, js.Function1[UIEvent, _]] {
-        def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[UIEvent, _]]) = {
           Binding.BindingInstances.map(binding)(element.onabort = _)
         }
       }
@@ -254,13 +354,6 @@ private[lrng] object AttributeFactories {
         }
       }
     }
-    object onzoom extends AttributeFactory.Typed {
-      implicit object `mountPointBuilder_js_Function1[js_Any, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onzoom.type, js.Function1[js.Any, _]] {
-        def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[js.Any, _]]) = {
-          Binding.BindingInstances.map(binding)(element.onzoom = _)
-        }
-      }
-    }
     object outerHTML extends AttributeFactory.Typed {
       implicit object mountPointBuilder_String_Element extends MountPointBuilder[Element, outerHTML.type, String] {
         def mountProperty(element: Element, binding: Binding[String]) = {
@@ -272,6 +365,18 @@ private[lrng] object AttributeFactories {
       implicit object mountPointBuilder_HTMLElement_HTMLElement extends MountPointBuilder[HTMLElement, parentElement.type, HTMLElement] {
         def mountProperty(element: HTMLElement, binding: Binding[HTMLElement]) = {
           Binding.BindingInstances.map(binding)(element.parentElement = _)
+        }
+      }
+    }
+    object readOnly extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, readOnly.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.readOnly = _)
+        }
+      }
+      implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, readOnly.type, Boolean] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.readOnly = _)
         }
       }
     }
@@ -289,6 +394,13 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object rev extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rev.type, String] {
+        def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.rev = _)
+        }
+      }
+    }
     object scrollLeft extends AttributeFactory.Typed {
       implicit object mountPointBuilder_Double_Element extends MountPointBuilder[Element, scrollLeft.type, Double] {
         def mountProperty(element: Element, binding: Binding[Double]) = {
@@ -303,10 +415,72 @@ private[lrng] object AttributeFactories {
         }
       }
     }
+    object selectedIndex extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, selectedIndex.type, Int] {
+        def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectedIndex = _)
+        }
+      }
+    }
+    object selectionEnd extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionEnd.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionEnd = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionEnd.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionEnd = _)
+        }
+      }
+    }
+    object selectionStart extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, selectionStart.type, Int] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionStart = _)
+        }
+      }
+      implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, selectionStart.type, Int] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+          Binding.BindingInstances.map(binding)(element.selectionStart = _)
+        }
+      }
+    }
+    object status extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_js_Any_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, status.type, js.Any] {
+        def mountProperty(element: HTMLButtonElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+      implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, status.type, Boolean] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+      implicit object mountPointBuilder_js_Any_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, status.type, js.Any] {
+        def mountProperty(element: HTMLTextAreaElement, binding: Binding[js.Any]) = {
+          Binding.BindingInstances.map(binding)(element.status = _)
+        }
+      }
+    }
     object tabIndex extends AttributeFactory.Typed {
       implicit object mountPointBuilder_Int_HTMLElement extends MountPointBuilder[HTMLElement, tabIndex.type, Int] {
         def mountProperty(element: HTMLElement, binding: Binding[Int]) = {
           Binding.BindingInstances.map(binding)(element.tabIndex = _)
+        }
+      }
+    }
+    object text extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, text.type, String] {
+        def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
+          Binding.BindingInstances.map(binding)(element.text = _)
+        }
+      }
+    }
+    object valueAsNumber extends AttributeFactory.Typed {
+      implicit object mountPointBuilder_Double_HTMLInputElement extends MountPointBuilder[HTMLInputElement, valueAsNumber.type, Double] {
+        def mountProperty(element: HTMLInputElement, binding: Binding[Double]) = {
+          Binding.BindingInstances.map(binding)(element.valueAsNumber = _)
         }
       }
     }
@@ -317,6 +491,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTableCellElement: AttributeRemover[HTMLTableCellElement, abbr.type] = new AttributeRemover(_.removeAttribute("abbr"))
   }
   object accept extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, accept.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.accept = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, accept.type] = new AttributeSetter(_.setAttribute("accept", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, accept.type] = new AttributeRemover(_.removeAttribute("accept"))
   }
@@ -342,6 +521,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, allowfullscreen.type] = new AttributeRemover(_.removeAttribute("allowfullscreen"))
   }
   object alt extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, alt.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.alt = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
     @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, alt.type] = new AttributeSetter(_.setAttribute("alt", _))
@@ -362,6 +546,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, autocapitalize.type] = new AttributeRemover(_.removeAttribute("autocapitalize"))
   }
   object autocomplete extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, autocomplete.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.autocomplete = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLFormElement: AttributeSetter[HTMLFormElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, autocomplete.type] = new AttributeSetter(_.setAttribute("autocomplete", _))
@@ -372,6 +561,26 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, autocomplete.type] = new AttributeRemover(_.removeAttribute("autocomplete"))
   }
   object autofocus extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, autofocus.type, Boolean] {
+      def mountProperty(element: HTMLButtonElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.autofocus = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, autofocus.type, Boolean] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.autofocus = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, autofocus.type, Boolean] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.autofocus = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, autofocus.type, Boolean] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.autofocus = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, autofocus.type] = new AttributeSetter(_.setAttribute("autofocus", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, autofocus.type] = new AttributeRemover(_.removeAttribute("autofocus"))
   }
@@ -386,6 +595,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLMetaElement: AttributeRemover[HTMLMetaElement, charset.type] = new AttributeRemover(_.removeAttribute("charset"))
   }
   object checked extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, checked.type, Boolean] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.checked = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, checked.type] = new AttributeSetter(_.setAttribute("checked", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, checked.type] = new AttributeRemover(_.removeAttribute("checked"))
   }
@@ -406,6 +620,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, color.type] = new AttributeRemover(_.removeAttribute("color"))
   }
   object cols extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, cols.type, Int] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.cols = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, cols.type] = new AttributeSetter(_.setAttribute("cols", _))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, cols.type] = new AttributeRemover(_.removeAttribute("cols"))
   }
@@ -418,8 +637,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLMetaElement: AttributeRemover[HTMLMetaElement, content.type] = new AttributeRemover(_.removeAttribute("content"))
   }
   @inline def contentEditable: properties.contentEditable.type = properties.contentEditable
-  @inline def contentScriptType: properties.contentScriptType.type = properties.contentScriptType
-  @inline def contentStyleType: properties.contentStyleType.type = properties.contentStyleType
   object contenteditable extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, contenteditable.type] = new AttributeSetter(_.setAttribute("contenteditable", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, contenteditable.type] = new AttributeRemover(_.removeAttribute("contenteditable"))
@@ -464,6 +681,9 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, default.type] = new AttributeSetter(_.setAttribute("default", _))
     @inline implicit def attributeRemover_HTMLTrackElement: AttributeRemover[HTMLTrackElement, default.type] = new AttributeRemover(_.removeAttribute("default"))
   }
+  @inline def defaultChecked: properties.defaultChecked.type = properties.defaultChecked
+  @inline def defaultSelected: properties.defaultSelected.type = properties.defaultSelected
+  @inline def defaultValue: properties.defaultValue.type = properties.defaultValue
   object defer extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, defer.type] = new AttributeSetter(_.setAttribute("defer", _))
     @inline implicit def attributeRemover_HTMLScriptElement: AttributeRemover[HTMLScriptElement, defer.type] = new AttributeRemover(_.removeAttribute("defer"))
@@ -484,6 +704,41 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, dirname.type] = new AttributeRemover(_.removeAttribute("dirname"))
   }
   object disabled extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLButtonElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLOptGroupElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLFieldSetElement extends MountPointBuilder[HTMLFieldSetElement, disabled.type, Boolean] {
+      def mountProperty(element: HTMLFieldSetElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.disabled = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
     @inline implicit def attributeSetter_HTMLOptGroupElement: AttributeSetter[HTMLOptGroupElement, disabled.type] = new AttributeSetter(_.setAttribute("disabled", _))
@@ -524,6 +779,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, enterkeyhint.type] = new AttributeSetter(_.setAttribute("enterkeyhint", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, enterkeyhint.type] = new AttributeRemover(_.removeAttribute("enterkeyhint"))
   }
+  @inline def files: properties.files.type = properties.files
   @inline def filters: properties.filters.type = properties.filters
   object `for` extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLLabelElement: AttributeSetter[HTMLLabelElement, `for`.type] = new AttributeSetter(_.setAttribute("for", _))
@@ -547,6 +803,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLSelectElement: AttributeRemover[HTMLSelectElement, form.type] = new AttributeRemover(_.removeAttribute("form"))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, form.type] = new AttributeRemover(_.removeAttribute("form"))
   }
+  @inline def formAction: properties.formAction.type = properties.formAction
+  @inline def formEnctype: properties.formEnctype.type = properties.formEnctype
+  @inline def formMethod: properties.formMethod.type = properties.formMethod
+  @inline def formNoValidate: properties.formNoValidate.type = properties.formNoValidate
+  @inline def formTarget: properties.formTarget.type = properties.formTarget
   object formaction extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, formaction.type] = new AttributeSetter(_.setAttribute("formaction", _))
@@ -583,6 +844,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTableCellElement: AttributeRemover[HTMLTableCellElement, headers.type] = new AttributeRemover(_.removeAttribute("headers"))
   }
   object height extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, height.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.height = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLCanvasElement: AttributeSetter[HTMLCanvasElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, height.type] = new AttributeSetter(_.setAttribute("height", _))
@@ -611,6 +877,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLMeterElement: AttributeRemover[HTMLMeterElement, high.type] = new AttributeRemover(_.removeAttribute("high"))
   }
   object href extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, href.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.href = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, href.type] = new AttributeSetter(_.setAttribute("href", _))
@@ -621,6 +892,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLBaseElement: AttributeRemover[HTMLBaseElement, href.type] = new AttributeRemover(_.removeAttribute("href"))
   }
   object hreflang extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, hreflang.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.hreflang = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, hreflang.type] = new AttributeSetter(_.setAttribute("hreflang", _))
     @inline implicit def attributeRemover_HTMLAnchorElement: AttributeRemover[HTMLAnchorElement, hreflang.type] = new AttributeRemover(_.removeAttribute("hreflang"))
@@ -647,6 +923,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, imagesrcset.type] = new AttributeSetter(_.setAttribute("imagesrcset", _))
     @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, imagesrcset.type] = new AttributeRemover(_.removeAttribute("imagesrcset"))
   }
+  @inline def indeterminate: properties.indeterminate.type = properties.indeterminate
   @inline def innerHTML: properties.innerHTML.type = properties.innerHTML
   object inputmode extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, inputmode.type] = new AttributeSetter(_.setAttribute("inputmode", _))
@@ -691,6 +968,16 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTrackElement: AttributeRemover[HTMLTrackElement, kind.type] = new AttributeRemover(_.removeAttribute("kind"))
   }
   object label extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLOptGroupElement extends MountPointBuilder[HTMLOptGroupElement, label.type, String] {
+      def mountProperty(element: HTMLOptGroupElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.label = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, label.type, String] {
+      def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.label = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLOptGroupElement: AttributeSetter[HTMLOptGroupElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
     @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
     @inline implicit def attributeSetter_HTMLTrackElement: AttributeSetter[HTMLTrackElement, label.type] = new AttributeSetter(_.setAttribute("label", _))
@@ -707,7 +994,13 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, lang.type] = new AttributeSetter(_.setAttribute("lang", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, lang.type] = new AttributeRemover(_.removeAttribute("lang"))
   }
+  @inline def length: properties.length.type = properties.length
   object list extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_HTMLElement_HTMLInputElement extends MountPointBuilder[HTMLInputElement, list.type, HTMLElement] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[HTMLElement]) = {
+        Binding.BindingInstances.map(binding)(element.list = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, list.type] = new AttributeSetter(_.setAttribute("list", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, list.type] = new AttributeRemover(_.removeAttribute("list"))
   }
@@ -729,6 +1022,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLMeterElement: AttributeRemover[HTMLMeterElement, low.type] = new AttributeRemover(_.removeAttribute("low"))
   }
   object max extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, max.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.max = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
     @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
     @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, max.type] = new AttributeSetter(_.setAttribute("max", _))
@@ -736,6 +1034,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLMeterElement: AttributeRemover[HTMLMeterElement, max.type] = new AttributeRemover(_.removeAttribute("max"))
     @inline implicit def attributeRemover_HTMLProgressElement: AttributeRemover[HTMLProgressElement, max.type] = new AttributeRemover(_.removeAttribute("max"))
   }
+  @inline def maxLength: properties.maxLength.type = properties.maxLength
   object maxlength extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, maxlength.type] = new AttributeSetter(_.setAttribute("maxlength", _))
@@ -743,6 +1042,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, maxlength.type] = new AttributeRemover(_.removeAttribute("maxlength"))
   }
   object media extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, media.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.media = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
     @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
     @inline implicit def attributeSetter_HTMLSourceElement: AttributeSetter[HTMLSourceElement, media.type] = new AttributeSetter(_.setAttribute("media", _))
@@ -759,6 +1063,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLFormElement: AttributeRemover[HTMLFormElement, method.type] = new AttributeRemover(_.removeAttribute("method"))
   }
   object min extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, min.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.min = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, min.type] = new AttributeSetter(_.setAttribute("min", _))
     @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, min.type] = new AttributeSetter(_.setAttribute("min", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, min.type] = new AttributeRemover(_.removeAttribute("min"))
@@ -771,6 +1080,16 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, minlength.type] = new AttributeRemover(_.removeAttribute("minlength"))
   }
   object multiple extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, multiple.type, Boolean] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.multiple = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, multiple.type, Boolean] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.multiple = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, multiple.type] = new AttributeSetter(_.setAttribute("multiple", _))
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, multiple.type] = new AttributeSetter(_.setAttribute("multiple", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, multiple.type] = new AttributeRemover(_.removeAttribute("multiple"))
@@ -783,6 +1102,26 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, muted.type] = new AttributeRemover(_.removeAttribute("muted"))
   }
   object name extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, name.type, String] {
+      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, name.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, name.type, String] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, name.type, String] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.name = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLFieldSetElement: AttributeSetter[HTMLFieldSetElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
@@ -1043,11 +1382,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onended.type] = new AttributeRemover(_.removeAttribute("onended"))
   }
   object onerror extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[Event, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onerror.type, js.Function1[Event, _]] {
-      def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onerror = _)
-      }
-    }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onerror.type] = new AttributeSetter(_.setAttribute("onerror", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onerror.type] = new AttributeRemover(_.removeAttribute("onerror"))
   }
@@ -1317,22 +1651,12 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onreset.type] = new AttributeRemover(_.removeAttribute("onreset"))
   }
   object onresize extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onresize.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onresize = _)
-      }
-    }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onresize.type] = new AttributeSetter(_.setAttribute("onresize", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onresize.type] = new AttributeRemover(_.removeAttribute("onresize"))
   }
   object onscroll extends AttributeFactory.Typed {
     implicit object `mountPointBuilder_js_Function1[UIEvent, _]_HTMLElement` extends MountPointBuilder[HTMLElement, onscroll.type, js.Function1[UIEvent, _]] {
       def mountProperty(element: HTMLElement, binding: Binding[js.Function1[UIEvent, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onscroll = _)
-      }
-    }
-    implicit object `mountPointBuilder_js_Function1[UIEvent, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onscroll.type, js.Function1[UIEvent, _]] {
-      def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[UIEvent, _]]) = {
         Binding.BindingInstances.map(binding)(element.onscroll = _)
       }
     }
@@ -1424,11 +1748,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLBodyElement: AttributeRemover[HTMLBodyElement, onunhandledrejection.type] = new AttributeRemover(_.removeAttribute("onunhandledrejection"))
   }
   object onunload extends AttributeFactory.Typed {
-    implicit object `mountPointBuilder_js_Function1[Event, _]_SVGSVGElement` extends MountPointBuilder[SVGSVGElement, onunload.type, js.Function1[Event, _]] {
-      def mountProperty(element: SVGSVGElement, binding: Binding[js.Function1[Event, _]]) = {
-        Binding.BindingInstances.map(binding)(element.onunload = _)
-      }
-    }
     @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onunload.type] = new AttributeSetter(_.setAttribute("onunload", _))
     @inline implicit def attributeRemover_HTMLBodyElement: AttributeRemover[HTMLBodyElement, onunload.type] = new AttributeRemover(_.removeAttribute("onunload"))
   }
@@ -1459,7 +1778,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onwheel.type] = new AttributeSetter(_.setAttribute("onwheel", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onwheel.type] = new AttributeRemover(_.removeAttribute("onwheel"))
   }
-  @inline def onzoom: properties.onzoom.type = properties.onzoom
   object open extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLDetailsElement: AttributeSetter[HTMLDetailsElement, open.type] = new AttributeSetter(_.setAttribute("open", _))
     @inline implicit def attributeSetter_HTMLDialogElement: AttributeSetter[HTMLDialogElement, open.type] = new AttributeSetter(_.setAttribute("open", _))
@@ -1473,6 +1791,11 @@ private[lrng] object AttributeFactories {
   @inline def outerHTML: properties.outerHTML.type = properties.outerHTML
   @inline def parentElement: properties.parentElement.type = properties.parentElement
   object pattern extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, pattern.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.pattern = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, pattern.type] = new AttributeSetter(_.setAttribute("pattern", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, pattern.type] = new AttributeRemover(_.removeAttribute("pattern"))
   }
@@ -1483,6 +1806,16 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLAreaElement: AttributeRemover[HTMLAreaElement, ping.type] = new AttributeRemover(_.removeAttribute("ping"))
   }
   object placeholder extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, placeholder.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.placeholder = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, placeholder.type, String] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.placeholder = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, placeholder.type] = new AttributeSetter(_.setAttribute("placeholder", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, placeholder.type] = new AttributeRemover(_.removeAttribute("placeholder"))
@@ -1502,6 +1835,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLAudioElement: AttributeRemover[HTMLAudioElement, preload.type] = new AttributeRemover(_.removeAttribute("preload"))
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, preload.type] = new AttributeRemover(_.removeAttribute("preload"))
   }
+  @inline def readOnly: properties.readOnly.type = properties.readOnly
   object readonly extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, readonly.type] = new AttributeSetter(_.setAttribute("readonly", _))
@@ -1525,6 +1859,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLScriptElement: AttributeRemover[HTMLScriptElement, referrerpolicy.type] = new AttributeRemover(_.removeAttribute("referrerpolicy"))
   }
   object rel extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, rel.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.rel = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, rel.type] = new AttributeSetter(_.setAttribute("rel", _))
@@ -1533,6 +1872,21 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, rel.type] = new AttributeRemover(_.removeAttribute("rel"))
   }
   object required extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLInputElement extends MountPointBuilder[HTMLInputElement, required.type, Boolean] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.required = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, required.type, Boolean] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.required = _)
+      }
+    }
+    implicit object mountPointBuilder_Boolean_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, required.type, Boolean] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.required = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, required.type] = new AttributeSetter(_.setAttribute("required", _))
@@ -1540,11 +1894,17 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLSelectElement: AttributeRemover[HTMLSelectElement, required.type] = new AttributeRemover(_.removeAttribute("required"))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, required.type] = new AttributeRemover(_.removeAttribute("required"))
   }
+  @inline def rev: properties.rev.type = properties.rev
   object reversed extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, reversed.type] = new AttributeSetter(_.setAttribute("reversed", _))
     @inline implicit def attributeRemover_HTMLOListElement: AttributeRemover[HTMLOListElement, reversed.type] = new AttributeRemover(_.removeAttribute("reversed"))
   }
   object rows extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Int_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, rows.type, Int] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.rows = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, rows.type] = new AttributeSetter(_.setAttribute("rows", _))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, rows.type] = new AttributeRemover(_.removeAttribute("rows"))
   }
@@ -1563,14 +1923,32 @@ private[lrng] object AttributeFactories {
   @inline def scrollLeft: properties.scrollLeft.type = properties.scrollLeft
   @inline def scrollTop: properties.scrollTop.type = properties.scrollTop
   object selected extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Boolean_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, selected.type, Boolean] {
+      def mountProperty(element: HTMLOptionElement, binding: Binding[Boolean]) = {
+        Binding.BindingInstances.map(binding)(element.selected = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, selected.type] = new AttributeSetter(_.setAttribute("selected", _))
     @inline implicit def attributeRemover_HTMLOptionElement: AttributeRemover[HTMLOptionElement, selected.type] = new AttributeRemover(_.removeAttribute("selected"))
   }
+  @inline def selectedIndex: properties.selectedIndex.type = properties.selectedIndex
+  @inline def selectionEnd: properties.selectionEnd.type = properties.selectionEnd
+  @inline def selectionStart: properties.selectionStart.type = properties.selectionStart
   object shape extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, shape.type] = new AttributeSetter(_.setAttribute("shape", _))
     @inline implicit def attributeRemover_HTMLAreaElement: AttributeRemover[HTMLAreaElement, shape.type] = new AttributeRemover(_.removeAttribute("shape"))
   }
   object size extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_Int_HTMLInputElement extends MountPointBuilder[HTMLInputElement, size.type, Int] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.size = _)
+      }
+    }
+    implicit object mountPointBuilder_Int_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, size.type, Int] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[Int]) = {
+        Binding.BindingInstances.map(binding)(element.size = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, size.type] = new AttributeSetter(_.setAttribute("size", _))
     @inline implicit def attributeSetter_HTMLSelectElement: AttributeSetter[HTMLSelectElement, size.type] = new AttributeSetter(_.setAttribute("size", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, size.type] = new AttributeRemover(_.removeAttribute("size"))
@@ -1602,6 +1980,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, spellcheck.type] = new AttributeRemover(_.removeAttribute("spellcheck"))
   }
   object src extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, src.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.src = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, src.type] = new AttributeSetter(_.setAttribute("src", _))
@@ -1639,7 +2022,13 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLOListElement: AttributeSetter[HTMLOListElement, start.type] = new AttributeSetter(_.setAttribute("start", _))
     @inline implicit def attributeRemover_HTMLOListElement: AttributeRemover[HTMLOListElement, start.type] = new AttributeRemover(_.removeAttribute("start"))
   }
+  @inline def status: properties.status.type = properties.status
   object step extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, step.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.step = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLInputElement: AttributeSetter[HTMLInputElement, step.type] = new AttributeSetter(_.setAttribute("step", _))
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, step.type] = new AttributeRemover(_.removeAttribute("step"))
   }
@@ -1663,6 +2052,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, tabindex.type] = new AttributeRemover(_.removeAttribute("tabindex"))
   }
   object target extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, target.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.target = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
     @inline implicit def attributeSetter_HTMLAreaElement: AttributeSetter[HTMLAreaElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
     @inline implicit def attributeSetter_HTMLBaseElement: AttributeSetter[HTMLBaseElement, target.type] = new AttributeSetter(_.setAttribute("target", _))
@@ -1672,6 +2066,7 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLBaseElement: AttributeRemover[HTMLBaseElement, target.type] = new AttributeRemover(_.removeAttribute("target"))
     @inline implicit def attributeRemover_HTMLFormElement: AttributeRemover[HTMLFormElement, target.type] = new AttributeRemover(_.removeAttribute("target"))
   }
+  @inline def text: properties.text.type = properties.text
   object title extends AttributeFactory.Typed {
     implicit object mountPointBuilder_String_HTMLElement extends MountPointBuilder[HTMLElement, title.type, String] {
       def mountProperty(element: HTMLElement, binding: Binding[String]) = {
@@ -1692,6 +2087,21 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, translate.type] = new AttributeRemover(_.removeAttribute("translate"))
   }
   object `type` extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, `type`.type, String] {
+      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.`type` = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, `type`.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.`type` = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLLinkElement extends MountPointBuilder[HTMLLinkElement, `type`.type, String] {
+      def mountProperty(element: HTMLLinkElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.`type` = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLAnchorElement: AttributeSetter[HTMLAnchorElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
     @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, `type`.type] = new AttributeSetter(_.setAttribute("type", _))
@@ -1716,6 +2126,31 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, usemap.type] = new AttributeRemover(_.removeAttribute("usemap"))
   }
   object value extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLButtonElement extends MountPointBuilder[HTMLButtonElement, value.type, String] {
+      def mountProperty(element: HTMLButtonElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.value = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, value.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.value = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLOptionElement extends MountPointBuilder[HTMLOptionElement, value.type, String] {
+      def mountProperty(element: HTMLOptionElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.value = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLSelectElement extends MountPointBuilder[HTMLSelectElement, value.type, String] {
+      def mountProperty(element: HTMLSelectElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.value = _)
+      }
+    }
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, value.type, String] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.value = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLButtonElement: AttributeSetter[HTMLButtonElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeSetter_HTMLOptionElement: AttributeSetter[HTMLOptionElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeSetter_HTMLDataElement: AttributeSetter[HTMLDataElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
@@ -1733,7 +2168,13 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLProgressElement: AttributeRemover[HTMLProgressElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
     @inline implicit def attributeRemover_HTMLParamElement: AttributeRemover[HTMLParamElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
   }
+  @inline def valueAsNumber: properties.valueAsNumber.type = properties.valueAsNumber
   object width extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLInputElement extends MountPointBuilder[HTMLInputElement, width.type, String] {
+      def mountProperty(element: HTMLInputElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.width = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLCanvasElement: AttributeSetter[HTMLCanvasElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeSetter_HTMLEmbedElement: AttributeSetter[HTMLEmbedElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, width.type] = new AttributeSetter(_.setAttribute("width", _))
@@ -1754,6 +2195,11 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, width.type] = new AttributeRemover(_.removeAttribute("width"))
   }
   object wrap extends AttributeFactory.Typed {
+    implicit object mountPointBuilder_String_HTMLTextAreaElement extends MountPointBuilder[HTMLTextAreaElement, wrap.type, String] {
+      def mountProperty(element: HTMLTextAreaElement, binding: Binding[String]) = {
+        Binding.BindingInstances.map(binding)(element.wrap = _)
+      }
+    }
     @inline implicit def attributeSetter_HTMLTextAreaElement: AttributeSetter[HTMLTextAreaElement, wrap.type] = new AttributeSetter(_.setAttribute("wrap", _))
     @inline implicit def attributeRemover_HTMLTextAreaElement: AttributeRemover[HTMLTextAreaElement, wrap.type] = new AttributeRemover(_.removeAttribute("wrap"))
   }

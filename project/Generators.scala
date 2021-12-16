@@ -68,7 +68,16 @@ object Generators extends AutoPlugin {
           }
         }
         Seq(parseFromJar("org/scalajs/dom/Element.scala"), parseFromJar("org/scalajs/dom/HTMLElement.scala"),
-          parseFromJar("org/scalajs/dom/SVGTextElement.scala"), parseFromJar("org/scalajs/dom/SVGSVGElement.scala"))
+          parseFromJar("org/scalajs/dom/SVGTextElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLButtonElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLInputElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLOptGroupElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLOptionElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLSelectElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLTextAreaElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLFieldSetElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLLinkElement.scala"),
+          )
       } finally {
         jarFile.close()
       }
