@@ -4,3 +4,6 @@ secret/
 .idea/
 .metals/
 .bloop/
+metals.sbt
+.bsp/sbt.json
+.vscode/launch.json
