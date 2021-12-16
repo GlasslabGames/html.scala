@@ -8,8 +8,24 @@ import scala.meta._
 
 exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
 
-libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "12.1.0+35-b6fe2621"
-libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "2.1.3+3-f9b6eb7e"
+libraryDependencies += "com.thoughtworks.binding" %%% "binding" % {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    "12.0.0-M1"
+  } else {
+    "11.9.0"
+  }
+}
+
+libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
+    "2.0.0-M1"
+  } else {
+    "1.1.0"
+  }
+}
+
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.3" % Test
 
 // Enable macro annotations by setting scalac flags for Scala 2.13
