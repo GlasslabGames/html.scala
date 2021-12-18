@@ -1,8 +1,8 @@
 # html.scala
 
-[![Build Status](https://travis-ci.org/GlasslabGames/html.scala.svg?branch=master)](https://travis-ci.org/GlasslabGames/html.scala)
-<a href="https://search.maven.org/search?q=g:org.lrng.binding%20a:html_*"><img src="https://img.shields.io/maven-central/v/org.lrng.binding/html_sjs0.6_2.13.svg?label=libraryDependencies+%2B=+%22org.lrng.binding%22+%25%25%25+%22html%22+%25"/></a>
-[![Scaladoc](https://javadoc.io/badge/org.lrng.binding/html_sjs0.6_2.13.svg?label=Scaladoc)](https://javadoc.io/page/org.lrng.binding/html_sjs0.6_2.13/latest/org/lrng/binding/html.html)
+[![Scala CI](https://github.com/Atry/html.scala/actions/workflows/scala.yml/badge.svg)](https://github.com/Atry/html.scala/actions/workflows/scala.yml)
+<a href="https://search.maven.org/search?q=g:com.yang-bo%20a:html_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo/html_sjs0.6_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo%22+%25%25%25+%22html%22+%25"/></a>
+[![Scaladoc](https://javadoc.io/badge/com.yang-bo/html_sjs0.6_2.13.svg?label=Scaladoc)](https://javadoc.io/page/com.yang-bo/html_sjs0.6_2.13/latest/org/lrng/binding/html.html)
 
 
 This **html.scala** library provides the `@html` for creating reactive HTML templates. It is a reimplementation of `@dom` annotation in [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala), delicately minimizing the generated code size. The typing rules are also improved, preventing red marks in IDEs.
