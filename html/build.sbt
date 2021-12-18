@@ -6,7 +6,9 @@ enablePlugins(Example)
 
 import scala.meta._
 
-exampleSuperTypes += ctor"_root_.org.scalatest.Inside"
+examplePackageRef := q"org.lrng.binding"
+
+exampleSuperTypes += init"_root_.org.scalatest.Inside"
 
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % {
   import Ordering.Implicits._

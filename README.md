@@ -31,7 +31,7 @@ libraryDependencies ++= {
   }
 }
 
-libraryDependencies += "org.lrng.binding" %%% "html" % "latest.release"
+libraryDependencies += "com.yang-bo" %%% "html" % "latest.release"
 ```
 
 ## Getting started
