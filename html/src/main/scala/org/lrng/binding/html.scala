@@ -605,8 +605,8 @@ object html {
       /**
         * @note All methods in [[AnyRef]] are overloaded, in case of name clash
         * {{{
-        * import _root_.org.lrng.binding.html.autoImports.xml.texts
-        * import _root_.org.lrng.binding.html.NodeBinding.Constant.TextBuilder
+        * import html.autoImports.xml.texts
+        * import html.NodeBinding.Constant.TextBuilder
         * texts.selectDynamic should be(a[TextBuilder])
         * texts.getClass should be(a[TextBuilder])
         * texts.!= should be(a[TextBuilder])
@@ -878,7 +878,7 @@ object html {
   *   <select>{Seq(<option>data1</option>, <option>data2</option>)}</select>
   * }
   * val span = document.createElement("span")
-  * _root_.org.lrng.binding.html.render(span, mySelect)
+  * html.render(span, mySelect)
   * span.firstChild.childNodes.length should be(2)
   * }}}
   *
@@ -887,7 +887,7 @@ object html {
   * import org.scalajs.dom.document
   * @html def comment = <span><!--my comment--></span>
   * val span = document.createElement("span")
-  * _root_.org.lrng.binding.html.render(span, comment)
+  * html.render(span, comment)
   * assert(span.innerHTML == "<span><!--my comment--></span>")
   * }}}
   *
@@ -896,7 +896,7 @@ object html {
   * import org.scalajs.dom.document
   * @html def escaped = <span>&#32;$minus</span>
   * val span = document.createElement("span")
-  * _root_.org.lrng.binding.html.render(span, escaped)
+  * html.render(span, escaped)
   * assert(span.innerHTML == "<span> $minus</span>")
   * }}}
   * @example Entity references
@@ -904,7 +904,7 @@ object html {
   * import org.scalajs.dom.document
   * @html def entity = <span class="&lt; &gt; &copy; &lambda; my-class">my text &lt; &gt; &copy; &lambda;</span>
   * val span = document.createElement("span")
-  * _root_.org.lrng.binding.html.render(span, entity)
+  * html.render(span, entity)
   * assert(span.innerHTML == """<span class="< > © λ my-class">my text &lt; &gt; © λ</span>""")
   * }}}
   * @example Process instructions
