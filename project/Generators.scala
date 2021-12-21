@@ -42,7 +42,7 @@ object Generators extends AutoPlugin {
       object JsNativeSetter {
         private val SetterRegex = """(\w+)_=""".r
         private def pf: PartialFunction[Stat, (String, Seq[Mod], Type)] = {
-          case q"..$mods var ${Pat.Var.Term(varName)}: ${Some(tpe)} = js.native" =>
+          case q"..$mods var ${Pat.Var(varName)}: ${Some(tpe)} = js.native" =>
             (varName.value, mods, tpe)
           case q"..$mods def ${Term.Name(SetterRegex(defPrefix))}($value: ${Some(tpe: Type)}): $unit = js.native" =>
             (defPrefix, mods, tpe)
@@ -86,8 +86,7 @@ object Generators extends AutoPlugin {
         q"package $_ { ..$packageStats }" <- rootStats.view
         Defn.Class(mods, className, _, _, template) <- packageStats.view
         if className.value.endsWith("Element")
-        stats <- template.stats.view
-        JsNativeSetter(setterName, methodMods, tpe) <- stats.view
+        JsNativeSetter(setterName, methodMods, tpe) <- template.stats.view
       } yield
         setterName -> (className.value, tpe, (mods.view ++ methodMods).collect {
           case deprecatedAnnotation @ mod"@deprecated(..$_)" =>
