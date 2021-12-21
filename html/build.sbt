@@ -50,6 +50,15 @@ libraryDependencies ++= {
   }
 }
 
+libraryDependencies += {
+  import Ordering.Implicits._
+  if (VersionNumber(scalaJSVersion).numbers >= Seq(1L)) {
+    "org.scala-js" %%% "scalajs-dom" % "2.0.0"
+  } else {
+    "org.scala-js" %%% "scalajs-dom" % "1.2.0"
+  }
+}
+
 scalacOptions in Test += "-Xxml:-coalescing"
 
 requireJsDomEnv in Test := true
