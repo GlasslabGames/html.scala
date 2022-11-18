@@ -591,6 +591,14 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLAudioElement: AttributeRemover[HTMLAudioElement, autoplay.type] = new AttributeRemover(_.removeAttribute("autoplay"))
     @inline implicit def attributeRemover_HTMLVideoElement: AttributeRemover[HTMLVideoElement, autoplay.type] = new AttributeRemover(_.removeAttribute("autoplay"))
   }
+  object blocking extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLLinkElement: AttributeSetter[HTMLLinkElement, blocking.type] = new AttributeSetter(_.setAttribute("blocking", _))
+    @inline implicit def attributeSetter_HTMLScriptElement: AttributeSetter[HTMLScriptElement, blocking.type] = new AttributeSetter(_.setAttribute("blocking", _))
+    @inline implicit def attributeSetter_HTMLStyleElement: AttributeSetter[HTMLStyleElement, blocking.type] = new AttributeSetter(_.setAttribute("blocking", _))
+    @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, blocking.type] = new AttributeRemover(_.removeAttribute("blocking"))
+    @inline implicit def attributeRemover_HTMLScriptElement: AttributeRemover[HTMLScriptElement, blocking.type] = new AttributeRemover(_.removeAttribute("blocking"))
+    @inline implicit def attributeRemover_HTMLStyleElement: AttributeRemover[HTMLStyleElement, blocking.type] = new AttributeRemover(_.removeAttribute("blocking"))
+  }
   object charset extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, charset.type] = new AttributeSetter(_.setAttribute("charset", _))
     @inline implicit def attributeRemover_HTMLMetaElement: AttributeRemover[HTMLMetaElement, charset.type] = new AttributeRemover(_.removeAttribute("charset"))
@@ -925,6 +933,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLLinkElement: AttributeRemover[HTMLLinkElement, imagesrcset.type] = new AttributeRemover(_.removeAttribute("imagesrcset"))
   }
   @inline def indeterminate: properties.indeterminate.type = properties.indeterminate
+  object inert extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, inert.type] = new AttributeSetter(_.setAttribute("inert", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, inert.type] = new AttributeRemover(_.removeAttribute("inert"))
+  }
   @inline def innerHTML: properties.innerHTML.type = properties.innerHTML
   object inputmode extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, inputmode.type] = new AttributeSetter(_.setAttribute("inputmode", _))
@@ -1006,10 +1018,10 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLInputElement: AttributeRemover[HTMLInputElement, list.type] = new AttributeRemover(_.removeAttribute("list"))
   }
   object loading extends AttributeFactory.Typed {
-    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
     @inline implicit def attributeSetter_HTMLIFrameElement: AttributeSetter[HTMLIFrameElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
-    @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
+    @inline implicit def attributeSetter_HTMLImageElement: AttributeSetter[HTMLImageElement, loading.type] = new AttributeSetter(_.setAttribute("loading", _))
     @inline implicit def attributeRemover_HTMLIFrameElement: AttributeRemover[HTMLIFrameElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
+    @inline implicit def attributeRemover_HTMLImageElement: AttributeRemover[HTMLImageElement, loading.type] = new AttributeRemover(_.removeAttribute("loading"))
   }
   object loop extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLAudioElement: AttributeSetter[HTMLAudioElement, loop.type] = new AttributeSetter(_.setAttribute("loop", _))
@@ -1134,7 +1146,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLObjectElement: AttributeSetter[HTMLObjectElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLMapElement: AttributeSetter[HTMLMapElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLMetaElement: AttributeSetter[HTMLMetaElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
-    @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeSetter_HTMLSlotElement: AttributeSetter[HTMLSlotElement, name.type] = new AttributeSetter(_.setAttribute("name", _))
     @inline implicit def attributeRemover_HTMLButtonElement: AttributeRemover[HTMLButtonElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
     @inline implicit def attributeRemover_HTMLFieldSetElement: AttributeRemover[HTMLFieldSetElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
@@ -1147,7 +1158,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLObjectElement: AttributeRemover[HTMLObjectElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
     @inline implicit def attributeRemover_HTMLMapElement: AttributeRemover[HTMLMapElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
     @inline implicit def attributeRemover_HTMLMetaElement: AttributeRemover[HTMLMetaElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
-    @inline implicit def attributeRemover_HTMLParamElement: AttributeRemover[HTMLParamElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
     @inline implicit def attributeRemover_HTMLSlotElement: AttributeRemover[HTMLSlotElement, name.type] = new AttributeRemover(_.removeAttribute("name"))
   }
   object nomodule extends AttributeFactory.Typed {
@@ -1176,6 +1186,10 @@ private[lrng] object AttributeFactories {
   @inline def onbeforecopy: properties.onbeforecopy.type = properties.onbeforecopy
   @inline def onbeforecut: properties.onbeforecut.type = properties.onbeforecut
   @inline def onbeforedeactivate: properties.onbeforedeactivate.type = properties.onbeforedeactivate
+  object onbeforematch extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onbeforematch.type] = new AttributeSetter(_.setAttribute("onbeforematch", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onbeforematch.type] = new AttributeRemover(_.removeAttribute("onbeforematch"))
+  }
   @inline def onbeforepaste: properties.onbeforepaste.type = properties.onbeforepaste
   object onbeforeprint extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLBodyElement: AttributeSetter[HTMLBodyElement, onbeforeprint.type] = new AttributeSetter(_.setAttribute("onbeforeprint", _))
@@ -1663,6 +1677,10 @@ private[lrng] object AttributeFactories {
     }
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onscroll.type] = new AttributeSetter(_.setAttribute("onscroll", _))
     @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onscroll.type] = new AttributeRemover(_.removeAttribute("onscroll"))
+  }
+  object onscrollend extends AttributeFactory.Typed {
+    @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onscrollend.type] = new AttributeSetter(_.setAttribute("onscrollend", _))
+    @inline implicit def attributeRemover_HTMLElement: AttributeRemover[HTMLElement, onscrollend.type] = new AttributeRemover(_.removeAttribute("onscrollend"))
   }
   object onsecuritypolicyviolation extends AttributeFactory.Typed {
     @inline implicit def attributeSetter_HTMLElement: AttributeSetter[HTMLElement, onsecuritypolicyviolation.type] = new AttributeSetter(_.setAttribute("onsecuritypolicyviolation", _))
@@ -2159,7 +2177,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeSetter_HTMLLIElement: AttributeSetter[HTMLLIElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeSetter_HTMLMeterElement: AttributeSetter[HTMLMeterElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeSetter_HTMLProgressElement: AttributeSetter[HTMLProgressElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
-    @inline implicit def attributeSetter_HTMLParamElement: AttributeSetter[HTMLParamElement, value.type] = new AttributeSetter(_.setAttribute("value", _))
     @inline implicit def attributeRemover_HTMLButtonElement: AttributeRemover[HTMLButtonElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
     @inline implicit def attributeRemover_HTMLOptionElement: AttributeRemover[HTMLOptionElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
     @inline implicit def attributeRemover_HTMLDataElement: AttributeRemover[HTMLDataElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
@@ -2167,7 +2184,6 @@ private[lrng] object AttributeFactories {
     @inline implicit def attributeRemover_HTMLLIElement: AttributeRemover[HTMLLIElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
     @inline implicit def attributeRemover_HTMLMeterElement: AttributeRemover[HTMLMeterElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
     @inline implicit def attributeRemover_HTMLProgressElement: AttributeRemover[HTMLProgressElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
-    @inline implicit def attributeRemover_HTMLParamElement: AttributeRemover[HTMLParamElement, value.type] = new AttributeRemover(_.removeAttribute("value"))
   }
   @inline def valueAsNumber: properties.valueAsNumber.type = properties.valueAsNumber
   object width extends AttributeFactory.Typed {
