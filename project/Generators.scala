@@ -326,8 +326,8 @@ object Generators extends AutoPlugin {
         }
       val geneatedAst = q"""
         package org.lrng.binding {
-          import org.scalajs.dom.document
           import org.scalajs.dom._
+          import org.scalajs.dom.raw._
           import org.lrng.binding.html.ElementFactory
           import org.lrng.binding.html.elementTypes._
           private[lrng] object ElementFactories {

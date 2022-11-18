@@ -6,6 +6,7 @@ import com.thoughtworks.binding._
 import com.thoughtworks.binding.bindable.{Bindable, BindableSeq}
 import org.lrng.binding.dynamicanyref.{AnyRefApplyDynamic, AnyRefSelectDynamic}
 import org.scalajs.dom._
+import org.scalajs.dom.raw._
 
 import scala.annotation._
 import scala.language.experimental.macros
