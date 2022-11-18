@@ -926,8 +926,8 @@ object html {
   * @example XML namespaces
   * {{{
   * import scala.language.dynamics
-  * import org.scalajs.dom.document
   * import org.scalajs.dom._
+  * import org.scalajs.dom.raw._
   * import com.thoughtworks.binding.Binding
   * import com.thoughtworks.binding.Binding.BindingInstances.monadSyntax._
   * object svg {
