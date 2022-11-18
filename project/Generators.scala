@@ -254,6 +254,7 @@ object Generators extends AutoPlugin {
         package org.lrng.binding {
           import scala.scalajs.js
           import org.scalajs.dom._
+          import org.scalajs.dom.raw._
           import org.lrng.binding.html.NodeBinding.Interpolated.MountPointBuilder
           import org.lrng.binding.html.ElementFactory
           import org.lrng.binding.html.AttributeFactory
