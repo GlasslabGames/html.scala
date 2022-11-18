@@ -5,8 +5,8 @@ import com.thoughtworks.binding.Binding._
 import com.thoughtworks.binding._
 import com.thoughtworks.binding.bindable.{Bindable, BindableSeq}
 import org.lrng.binding.dynamicanyref.{AnyRefApplyDynamic, AnyRefSelectDynamic}
-import org.scalajs.dom.raw.HTMLElement
-import org.scalajs.dom.{Element, Node, document}
+import org.scalajs.dom._
+import org.scalajs.dom.raw._
 
 import scala.annotation._
 import scala.language.experimental.macros
@@ -926,20 +926,20 @@ object html {
   * @example XML namespaces
   * {{{
   * import scala.language.dynamics
-  * import org.scalajs.dom.document
+  * import org.scalajs.dom._
   * import org.scalajs.dom.raw._
   * import com.thoughtworks.binding.Binding
   * import com.thoughtworks.binding.Binding.BindingInstances.monadSyntax._
   * object svg {
   *   object texts extends Dynamic {
-  *     @inline def selectDynamic(data: String) = new html.NodeBinding.Constant.TextBuilder(data)
+  *     @inline def selectDynamic(data: String) = new _root_.org.lrng.binding.html.NodeBinding.Constant.TextBuilder(data)
   *   }
   *   object elements {
   *     object svg extends Curried {
-  *       @inline def applyBegin = new html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "svg").asInstanceOf[SVGSVGElement])
+  *       @inline def applyBegin = new _root_.org.lrng.binding.html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "svg").asInstanceOf[SVGSVGElement])
   *     }
   *     object text extends Curried {
-  *       @inline def applyBegin = new html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "text").asInstanceOf[SVGTextElement])
+  *       @inline def applyBegin = new _root_.org.lrng.binding.html.NodeBinding.Constant.ElementBuilder(document.createElementNS("http://www.w3.org/2000/svg", "text").asInstanceOf[SVGTextElement])
   *     }
   *   }
   *   @inline def interpolation = Binding
@@ -951,10 +951,10 @@ object html {
   *   }
   *   object attributes {
   *     def font$minusstyle(value: values.FontStyle) = {
-  *       new html.NodeBinding.Constant.AttributeBuilder.Untyped(_.setAttribute("font-style", value.toString))
+  *       new _root_.org.lrng.binding.html.NodeBinding.Constant.AttributeBuilder.Untyped(_.setAttribute("font-style", value.toString))
   *     }
   *     def font$minusstyle(binding: Binding[values.FontStyle]) = {
-  *       new html.NodeBinding.Interpolated.AttributeBuilder( element =>
+  *       new _root_.org.lrng.binding.html.NodeBinding.Interpolated.AttributeBuilder( element =>
   *         binding.map { value =>
   *           element.setAttribute("font-style", value.toString)
   *         }
@@ -962,7 +962,7 @@ object html {
   *     }
   *   }
   * }
-  * implicit final class SvgUriOps(uriFactory: html.autoImports.xml.uris.type) {
+  * implicit final class SvgUriOps(uriFactory: _root_.org.lrng.binding.html.autoImports.xml.uris.type) {
   *   @inline def http$colon$div$divwww$u002Ew3$u002Eorg$div2000$divsvg = svg
   * }
   * @html
@@ -980,5 +980,5 @@ object html {
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
 class html extends StaticAnnotation {
-  def macroTransform(annottees: Any*): Any = macro html.WhiteBoxMacros.macroTransform
+  def macroTransform(annottees: Any*): Any = macro _root_.org.lrng.binding.html.WhiteBoxMacros.macroTransform
 }

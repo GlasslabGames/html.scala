@@ -37,7 +37,6 @@ object Generators extends AutoPlugin {
 
   import autoImport._
   override def projectSettings = Seq(
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.8",
     propertyDefinition := {
       object JsNativeSetter {
         private val SetterRegex = """(\w+)_=""".r
@@ -67,7 +66,17 @@ object Generators extends AutoPlugin {
             stream.close()
           }
         }
-        Seq(parseFromJar("org/scalajs/dom/raw/Html.scala"), parseFromJar("org/scalajs/dom/raw/lib.scala"))
+        Seq(parseFromJar("org/scalajs/dom/Element.scala"), parseFromJar("org/scalajs/dom/HTMLElement.scala"),
+          parseFromJar("org/scalajs/dom/SVGTextElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLButtonElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLInputElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLOptGroupElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLOptionElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLSelectElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLTextAreaElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLFieldSetElement.scala"),
+          parseFromJar("org/scalajs/dom/HTMLLinkElement.scala"),
+          )
       } finally {
         jarFile.close()
       }
@@ -244,6 +253,7 @@ object Generators extends AutoPlugin {
       val geneatedAst = q"""
         package org.lrng.binding {
           import scala.scalajs.js
+          import org.scalajs.dom._
           import org.scalajs.dom.raw._
           import org.lrng.binding.html.NodeBinding.Interpolated.MountPointBuilder
           import org.lrng.binding.html.ElementFactory
@@ -316,7 +326,7 @@ object Generators extends AutoPlugin {
         }
       val geneatedAst = q"""
         package org.lrng.binding {
-          import org.scalajs.dom.document
+          import org.scalajs.dom._
           import org.scalajs.dom.raw._
           import org.lrng.binding.html.ElementFactory
           import org.lrng.binding.html.elementTypes._
