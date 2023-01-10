@@ -10,7 +10,7 @@ addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.1.2")
 
 addSbtPlugin("org.lyranthe.sbt" % "partial-unification" % "1.1.2")
 
-addSbtPlugin("com.thoughtworks.example" % "sbt-example" % "9.0.0+11-da2d8404")
+addSbtPlugin("com.thoughtworks.example" % "sbt-example" % "9.0.0+19-f3864198")
 
 addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.21.1")
 
