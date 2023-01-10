@@ -14,3 +14,4 @@ jobs:
         uses: scala-steward-org/scala-steward-action@v2
         with:
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          branches: ${{ github.ref_name }}
