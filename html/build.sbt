@@ -28,7 +28,7 @@ libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % {
   }
 }
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.3" % Test
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.15" % Test
 
 // Enable macro annotations by setting scalac flags for Scala 2.13
 scalacOptions ++= {
@@ -46,7 +46,11 @@ libraryDependencies ++= {
   if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
     Nil
   } else {
-    Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full))
+    Seq(
+      compilerPlugin(
+        "org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full
+      )
+    )
   }
 }
 
