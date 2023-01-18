@@ -1,19 +1,14 @@
-// shadow sbt-scalajs' crossProject(JSPlatform, JVMPlatform) and CrossType from Scala.js 0.6.x
-import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
+lazy val `html-Definitions` = project
 
-val dynamicanyref = crossProject(JSPlatform, JVMPlatform).build
+lazy val `html-InterpolationParser` = project
 
-val html = project.dependsOn(dynamicanyref.js)
+lazy val `html` =
+  project.dependsOn(`html-InterpolationParser`, `html-Definitions`)
 
 ThisBuild / organization := "com.yang-bo"
 
 publish / skip := true
 
-libraryDependencies ++= {
-  import Ordering.Implicits._
-  if (VersionNumber(scalaVersion.value).numbers >= Seq(2L, 13L)) {
-    Nil
-  } else {
-    Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full))
-  }
-}
+enablePlugins(ScalaUnidocPlugin)
+
+enablePlugins(MdocPlugin)
