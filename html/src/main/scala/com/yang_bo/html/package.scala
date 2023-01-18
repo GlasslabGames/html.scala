@@ -10,21 +10,21 @@ package com.yang_bo
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding
   *   import com.thoughtworks.binding.Binding.Var
-  *   import org.scalajs.dom.HTMLParagraphElement
+  *   import org.scalajs.dom.HTMLSpanElement
   *
   *   val color = Var("brown")
   *   def animal = "dog"
-  *   val p: Binding.Stable[HTMLParagraphElement] =
-  *     html"""<p>The quick ${color.bind} fox jumps&nbsp;over the lazy ${animal}</p>"""
+  *   val span: Binding.Stable[HTMLSpanElement] =
+  *     html"""<span>The quick ${color.bind} fox jumps&nbsp;over the lazy ${animal}</span>"""
   * }}}
   *
   * It can be then [[rendered]] into a parent node.
   *
   * {{{
   *   import org.scalajs.dom.document
-  *   render(document.body, p)
+  *   render(document.body, span)
   *   document.body.innerHTML should be(
-  *     """<p>The quick brown fox jumps&nbsp;over the lazy dog</p>"""
+  *     """<span>The quick brown fox jumps&nbsp;over the lazy dog</span>"""
   *   )
   * }}}
   *
@@ -35,7 +35,7 @@ package com.yang_bo
   * {{{
   *   color.value = "red"
   *   document.body.innerHTML should be(
-  *     """<p>The quick red fox jumps&nbsp;over the lazy dog</p>"""
+  *     """<span>The quick red fox jumps&nbsp;over the lazy dog</span>"""
   *   )
   * }}}
   * @example
@@ -49,10 +49,10 @@ package com.yang_bo
   *
   *   def myId = "my-id"
   *   val nodes: BindingSeq[Node] =
-  *     html"""<p>1&nbsp;${"foo"}2${"bar"}3</p><div id=$myId class="my-class">${"baz"}</div>"""
+  *     html"""<span>1&nbsp;${"foo"}2${"bar"}3</span><textarea id=$myId class="my-class">${"baz"}</textarea>"""
   *   render(document.body, nodes)
   *   document.body.innerHTML should be(
-  *     """<p>1&nbsp;foo2bar3</p><div class="my-class" id="my-id">baz</div>"""
+  *     """<span>1&nbsp;foo2bar3</span><textarea class="my-class" id="my-id">baz</textarea>"""
   *   )
   *   }}}
   */
