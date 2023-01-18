@@ -4,7 +4,9 @@ import org.scalajs.dom.*
 import scala.quoted.*
 import ScalaJsDomMissingTypes.*
 private[html] object Definitions {
-  def findTypeByTagName(tagName: String)(using quotes: Quotes): Type[? <: HTMLElement] = {
+  def findTypeByTagName(
+      tagName: String
+  )(using quotes: Quotes): Type[? <: HTMLElement] = {
     (tagName: @scala.annotation.switch) match {
       case "tbody" =>
         Type.of[HTMLTableSectionElement]
@@ -232,13 +234,18 @@ private[html] object Definitions {
         Type.of[HTMLUnknownElement]
     }
   }
-  def isValidAttribute[E](attributeName: String)(using elementType: Type[E], quotes: Quotes): Boolean = {
+  def isValidAttribute[E](
+      attributeName: String
+  )(using elementType: Type[E], quotes: Quotes): Boolean = {
     import quotes.reflect.TypeRepr
     (attributeName: @scala.annotation.switch) match {
       case "srcdoc" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLIFrameElement])
       case "crossorigin" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAudioElement | HTMLImageElement | HTMLLinkElement | HTMLScriptElement | HTMLVideoElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAudioElement | HTMLImageElement | HTMLLinkElement |
+            HTMLScriptElement | HTMLVideoElement
+        ])
       case "onmessage" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLBodyElement])
       case "ondurationchange" =>
@@ -268,7 +275,12 @@ private[html] object Definitions {
       case "onmousemove" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "name" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLFieldSetElement | HTMLInputElement | HTMLOutputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLFormElement | HTMLIFrameElement | HTMLObjectElement | HTMLMapElement | HTMLMetaElement | HTMLSlotElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLButtonElement | HTMLFieldSetElement | HTMLInputElement |
+            HTMLOutputElement | HTMLSelectElement | HTMLTextAreaElement |
+            HTMLFormElement | HTMLIFrameElement | HTMLObjectElement |
+            HTMLMapElement | HTMLMetaElement | HTMLSlotElement
+        ])
       case "formtarget" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLInputElement])
       case "onplaying" =>
@@ -354,13 +366,15 @@ private[html] object Definitions {
       case "datetime" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLModElement | HTMLTimeElement])
       case "label" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLOptGroupElement | HTMLOptionElement | HTMLTrackElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLOptGroupElement | HTMLOptionElement | HTMLTrackElement])
       case "hidden" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "onkeypress" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "rel" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLAreaElement | HTMLLinkElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLAnchorElement | HTMLAreaElement | HTMLLinkElement])
       case "srclang" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLTrackElement])
       case "onscrollend" =>
@@ -372,7 +386,11 @@ private[html] object Definitions {
       case "ondrag" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "height" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLCanvasElement | HTMLEmbedElement | HTMLIFrameElement | HTMLImageElement | HTMLInputElement | HTMLObjectElement | HTMLSourceElement | HTMLPictureElement | HTMLVideoElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLCanvasElement | HTMLEmbedElement | HTMLIFrameElement |
+            HTMLImageElement | HTMLInputElement | HTMLObjectElement |
+            HTMLSourceElement | HTMLPictureElement | HTMLVideoElement
+        ])
       case "onwaiting" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "nomodule" =>
@@ -466,7 +484,8 @@ private[html] object Definitions {
       case "formnovalidate" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLInputElement])
       case "max" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLInputElement | HTMLMeterElement | HTMLProgressElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLInputElement | HTMLMeterElement | HTMLProgressElement])
       case "onkeydown" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "itemid" =>
@@ -478,7 +497,8 @@ private[html] object Definitions {
       case "autofocus" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "alt" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAreaElement | HTMLImageElement | HTMLInputElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLAreaElement | HTMLImageElement | HTMLInputElement])
       case "onmouseout" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "allow" =>
@@ -500,7 +520,11 @@ private[html] object Definitions {
       case "sandbox" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLIFrameElement])
       case "src" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAudioElement | HTMLEmbedElement | HTMLIFrameElement | HTMLImageElement | HTMLInputElement | HTMLScriptElement | HTMLSourceElement | HTMLVideoElement | HTMLTrackElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAudioElement | HTMLEmbedElement | HTMLIFrameElement |
+            HTMLImageElement | HTMLInputElement | HTMLScriptElement |
+            HTMLSourceElement | HTMLVideoElement | HTMLTrackElement
+        ])
       case "onloadstart" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "translate" =>
@@ -518,7 +542,10 @@ private[html] object Definitions {
       case "content" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLMetaElement])
       case "media" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLLinkElement | HTMLMetaElement | HTMLSourceElement | HTMLPictureElement | HTMLStyleElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLLinkElement | HTMLMetaElement | HTMLSourceElement |
+            HTMLPictureElement | HTMLStyleElement
+        ])
       case "itemscope" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "onpagehide" =>
@@ -536,17 +563,26 @@ private[html] object Definitions {
       case "class" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "disabled" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLInputElement | HTMLOptGroupElement | HTMLOptionElement | HTMLSelectElement | HTMLTextAreaElement | HTMLFieldSetElement | HTMLLinkElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLButtonElement | HTMLInputElement | HTMLOptGroupElement |
+            HTMLOptionElement | HTMLSelectElement | HTMLTextAreaElement |
+            HTMLFieldSetElement | HTMLLinkElement
+        ])
       case "target" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLAreaElement | HTMLBaseElement | HTMLFormElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAnchorElement | HTMLAreaElement | HTMLBaseElement |
+            HTMLFormElement
+        ])
       case "shape" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLAreaElement])
       case "oncontextlost" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "blocking" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLLinkElement | HTMLScriptElement | HTMLStyleElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLLinkElement | HTMLScriptElement | HTMLStyleElement])
       case "sizes" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLLinkElement | HTMLImageElement | HTMLSourceElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLLinkElement | HTMLImageElement | HTMLSourceElement])
       case "enctype" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLFormElement])
       case "multiple" =>
@@ -554,7 +590,9 @@ private[html] object Definitions {
       case "kind" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLTrackElement])
       case "title" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement | HTMLInputElement | HTMLLinkElement | HTMLStyleElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLElement | HTMLInputElement | HTMLLinkElement | HTMLStyleElement
+        ])
       case "lang" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "formaction" =>
@@ -564,15 +602,27 @@ private[html] object Definitions {
       case "itemtype" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "type" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLLinkElement | HTMLButtonElement | HTMLEmbedElement | HTMLObjectElement | HTMLSourceElement | HTMLInputElement | HTMLOListElement | HTMLScriptElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAnchorElement | HTMLLinkElement | HTMLButtonElement |
+            HTMLEmbedElement | HTMLObjectElement | HTMLSourceElement |
+            HTMLInputElement | HTMLOListElement | HTMLScriptElement
+        ])
       case "form" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLFieldSetElement | HTMLInputElement | HTMLObjectElement | HTMLOutputElement | HTMLSelectElement | HTMLTextAreaElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLButtonElement | HTMLFieldSetElement | HTMLInputElement |
+            HTMLObjectElement | HTMLOutputElement | HTMLSelectElement |
+            HTMLTextAreaElement
+        ])
       case "formenctype" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLInputElement])
       case "required" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement])
+        TypeRepr.of[E] <:< (TypeRepr
+          .of[HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement])
       case "href" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLAreaElement | HTMLLinkElement | HTMLBaseElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAnchorElement | HTMLAreaElement | HTMLLinkElement |
+            HTMLBaseElement
+        ])
       case "imagesizes" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLLinkElement])
       case "onunhandledrejection" =>
@@ -600,9 +650,16 @@ private[html] object Definitions {
       case "inert" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "width" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLCanvasElement | HTMLEmbedElement | HTMLIFrameElement | HTMLImageElement | HTMLInputElement | HTMLObjectElement | HTMLSourceElement | HTMLPictureElement | HTMLVideoElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLCanvasElement | HTMLEmbedElement | HTMLIFrameElement |
+            HTMLImageElement | HTMLInputElement | HTMLObjectElement |
+            HTMLSourceElement | HTMLPictureElement | HTMLVideoElement
+        ])
       case "autocomplete" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLFormElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLFormElement | HTMLInputElement | HTMLSelectElement |
+            HTMLTextAreaElement
+        ])
       case "inputmode" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "onstorage" =>
@@ -616,7 +673,11 @@ private[html] object Definitions {
       case "download" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLAreaElement])
       case "value" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLButtonElement | HTMLOptionElement | HTMLDataElement | HTMLInputElement | HTMLLIElement | HTMLMeterElement | HTMLProgressElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLButtonElement | HTMLOptionElement | HTMLDataElement |
+            HTMLInputElement | HTMLLIElement | HTMLMeterElement |
+            HTMLProgressElement
+        ])
       case "decoding" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLImageElement])
       case "onerror" =>
@@ -632,7 +693,10 @@ private[html] object Definitions {
       case "ondragend" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLElement])
       case "referrerpolicy" =>
-        TypeRepr.of[E] <:< (TypeRepr.of[HTMLAnchorElement | HTMLAreaElement | HTMLIFrameElement | HTMLImageElement | HTMLLinkElement | HTMLScriptElement])
+        TypeRepr.of[E] <:< (TypeRepr.of[
+          HTMLAnchorElement | HTMLAreaElement | HTMLIFrameElement |
+            HTMLImageElement | HTMLLinkElement | HTMLScriptElement
+        ])
       case "integrity" =>
         TypeRepr.of[E] <:< (TypeRepr.of[HTMLLinkElement | HTMLScriptElement])
       case "oncuechange" =>

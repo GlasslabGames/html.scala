@@ -49,19 +49,19 @@ private[html] object InterpolationParser:
     * @example
     *   Given two HTML elements, and an argument as the content of the first
     *   element,
-    *   {{{
+    * {{{
     *   val parts = IndexedSeq("<section>", "</section><br><footer></footer>")
-    *   }}}
-    *   when parsing it,
-    *   {{{
+    * }}}
+    * when parsing it,
+    * {{{
     *   val htmlFragment = InterpolationParser.parseHtmlParts(
     *     parts,
     *     { (message, _) => fail(message) },
     *
     *   )
-    *   }}}
-    *   then the result should be an HTML fragment including the two elements,
-    *   {{{
+    * }}}
+    * then the result should be an HTML fragment including the two elements,
+    * {{{
     *   import javax.xml.transform.stream.StreamResult
     *   import javax.xml.transform.TransformerFactory
     *   import javax.xml.transform.OutputKeys
@@ -76,15 +76,15 @@ private[html] object InterpolationParser:
     *     .tap(_.setOutputProperty(OutputKeys.INDENT, "no"))
     *     .transform(new DOMSource(htmlFragment), new StreamResult(writer))
     *   writer.toString() should be("<SECTION><!----></SECTION><BR><FOOTER></FOOTER>")
-    *   }}}
-    *   and there should be a placeholder in the first element.
-    *   {{{
+    * }}}
+    * and there should be a placeholder in the first element.
+    * {{{
     *   val placeholder = htmlFragment.getFirstChild().getFirstChild()
     *   val argIndex = placeholder.getUserData(
     *     InterpolationParser.ElementArgumentUserDataKey
     *   )
     *   argIndex should be(0)
-    *   }}}
+    * }}}
     */
   def parseHtmlParts[Fragment <: DocumentFragment](
       parts: IndexedSeq[String],
@@ -199,8 +199,8 @@ private class InterpolationParser(
             partOffsets.search(endCharacterOffset)
           val beginIndex = beginSearchResult.insertionPoint
           val endIndex = endSearchResult.insertionPoint
-          if beginIndex == endIndex || (beginIndex % 2 == 0 && endIndex == beginIndex + 1)
-          then super.characters(text, augs)
+          if beginIndex == endIndex || (beginIndex % 2 == 0 && endIndex == beginIndex + 1) then
+            super.characters(text, augs)
           else
             def parseTextData(encodedText: String): Unit =
               if encodedText.nonEmpty then
@@ -228,7 +228,7 @@ private class InterpolationParser(
                     )
                   )
                 case Searching.Found(`endIndex`) if endIndex == index =>
-                  // break
+                // break
                 case _ =>
                   assert(index < endIndex)
                   parseTextData(parts(index / 2))
