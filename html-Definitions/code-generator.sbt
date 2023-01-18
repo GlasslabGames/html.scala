@@ -106,10 +106,10 @@ generateHtmlDefinitions := {
       p"""
         case $attributeName =>
           TypeRepr.of[E] <:< TypeRepr.of[${domInterfaces
-        .map { domInterface => Type.Name(domInterface): Type }
-        .reduce { (t1, t2) =>
-          t"$t1 | $t2"
-        }}]
+          .map { domInterface => Type.Name(domInterface): Type }
+          .reduce { (t1, t2) =>
+            t"$t1 | $t2"
+          }}]
       """
     }
   val generatedAst = q"""

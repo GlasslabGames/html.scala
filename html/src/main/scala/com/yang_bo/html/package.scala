@@ -41,7 +41,7 @@ package com.yang_bo
   * @example
   *   An html interpolation that includes multiple single root nodes should be a
   *   `BindingSeq[Node]`.
-  * {{{
+  *   {{{
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding.BindingSeq
   *   import org.scalajs.dom.Node
@@ -54,7 +54,7 @@ package com.yang_bo
   *   document.body.innerHTML should be(
   *     """<p>1&nbsp;foo2bar3</p><div class="my-class" id="my-id">baz</div>"""
   *   )
-  * }}}
+  *   }}}
   */
 package object html {
   // For document purpose only
@@ -207,8 +207,8 @@ package html {
             case failure: ImplicitSearchFailure =>
               report.error(
                 s"Cannot produce a bindable expression for the property ${propertySymbol.name}. Expect ${Type
-                  .show[propertyType]}, actual ${Type.show[V]}\nCannot find an instance of ${Type
-                  .show[InterpolationConverterType]}\n${failure.explanation} ",
+                    .show[propertyType]}, actual ${Type.show[V]}\nCannot find an instance of ${Type
+                    .show[InterpolationConverterType]}\n${failure.explanation} ",
                 attributeValueExpr.asTerm.pos
               )
               '{ ??? }
@@ -310,8 +310,7 @@ package html {
           case null =>
             Nil
           case attributeBindings =>
-            for
-              case (
+            for case (
                 qName: QName,
                 argExprs(anyAttributeValueExpr)
               ) <- attributeBindings
