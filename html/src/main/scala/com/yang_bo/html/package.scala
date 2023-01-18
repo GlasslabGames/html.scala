@@ -6,47 +6,47 @@ package com.yang_bo
   *   An html interpolation that includes a single root node should be a subtype
   *   of `Binding.Stable[Node]`.
   *
-  *   {{{
+  * {{{
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding
   *   import com.thoughtworks.binding.Binding.Var
   *   import org.scalajs.dom.HTMLParagraphElement
-  *  
+  *
   *   val color = Var("brown")
   *   def animal = "dog"
   *   val p: Binding.Stable[HTMLParagraphElement] =
   *     html"""<p>The quick ${color.bind} fox jumps&nbsp;over the lazy ${animal}</p>"""
-  *   }}}
-  * 
-  *   It can be then [[rendered]] into a parent node.
-  * 
-  *   {{{
+  * }}}
+  *
+  * It can be then [[rendered]] into a parent node.
+  *
+  * {{{
   *   import org.scalajs.dom.document
   *   render(document.body, p)
   *   document.body.innerHTML should be(
   *     """<p>The quick brown fox jumps&nbsp;over the lazy dog</p>"""
   *   )
-  *   }}}
-  * 
-  *   If the html reference a data binding expression via
-  *   [[com.thoughtworks.binding.Binding.bind]], it will automatically change
-  *   whenever the upstream data changes.
-  * 
-  *   {{{
+  * }}}
+  *
+  * If the html reference a data binding expression via
+  * [[com.thoughtworks.binding.Binding.bind]], it will automatically change
+  * whenever the upstream data changes.
+  *
+  * {{{
   *   color.value = "red"
   *   document.body.innerHTML should be(
   *     """<p>The quick red fox jumps&nbsp;over the lazy dog</p>"""
   *   )
-  *   }}}
+  * }}}
   * @example
   *   An html interpolation that includes multiple single root nodes should be a
   *   `BindingSeq[Node]`.
-  *   {{{
+  * {{{
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding.BindingSeq
   *   import org.scalajs.dom.Node
   *   import org.scalajs.dom.document
-  *  
+  *
   *   def myId = "my-id"
   *   val nodes: BindingSeq[Node] =
   *     html"""<p>1&nbsp;${"foo"}2${"bar"}3</p><div id=$myId class="my-class">${"baz"}</div>"""
@@ -54,7 +54,7 @@ package com.yang_bo
   *   document.body.innerHTML should be(
   *     """<p>1&nbsp;foo2bar3</p><div class="my-class" id="my-id">baz</div>"""
   *   )
-  *   }}}
+  * }}}
   */
 package object html {
   // For document purpose only
