@@ -20,7 +20,7 @@ libraryDependencies += "io.circe" %% "circe-generic" % "0.12.3"
 
 libraryDependencies += "com.softwaremill.sttp" %% "circe" % "1.7.2"
 
-addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
+addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.2.0")
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.12.0")
 
