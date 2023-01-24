@@ -10,5 +10,3 @@ ThisBuild / organization := "com.yang-bo"
 publish / skip := true
 
 enablePlugins(ScalaUnidocPlugin)
-
-enablePlugins(MdocPlugin)
