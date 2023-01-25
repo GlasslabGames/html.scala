@@ -663,7 +663,9 @@ package html {
       run(
         keywords.FlatMap(
           keywords.Typed[FunctionKeyword, A => R].flip(typed),
-          keywords.Pure[js.Function1[A, R]](_)
+          { (f: A => R) =>
+            keywords.Pure(f: js.Function1[A, R])
+          }
         )
       )
     }
