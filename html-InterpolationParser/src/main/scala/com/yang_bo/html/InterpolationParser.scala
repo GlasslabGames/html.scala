@@ -3,12 +3,12 @@ package com.yang_bo.html
 import net.sourceforge.htmlunit.cyberneko.HTMLConfiguration
 import net.sourceforge.htmlunit.cyberneko.HTMLEventInfo
 import net.sourceforge.htmlunit.cyberneko.parsers.DOMFragmentParser
-import org.apache.xerces.util.XMLAttributesImpl
-import org.apache.xerces.xni.Augmentations
-import org.apache.xerces.xni.QName
-import org.apache.xerces.xni.XMLAttributes
-import org.apache.xerces.xni.XMLString
-import org.apache.xerces.xni.parser.XMLInputSource
+import net.sourceforge.htmlunit.xerces.util.XMLAttributesImpl
+import net.sourceforge.htmlunit.xerces.xni.Augmentations
+import net.sourceforge.htmlunit.xerces.xni.QName
+import net.sourceforge.htmlunit.xerces.xni.XMLAttributes
+import net.sourceforge.htmlunit.xerces.xni.XMLString
+import net.sourceforge.htmlunit.xerces.xni.parser.XMLInputSource
 import org.w3c.dom.Document
 import org.w3c.dom.DocumentFragment
 import org.w3c.dom.Node
@@ -75,7 +75,7 @@ private[html] object InterpolationParser:
     *     .tap(_.setOutputProperty(OutputKeys.METHOD, "html"))
     *     .tap(_.setOutputProperty(OutputKeys.INDENT, "no"))
     *     .transform(new DOMSource(htmlFragment), new StreamResult(writer))
-    *   writer.toString() should be("<SECTION><!----></SECTION><BR><FOOTER></FOOTER>")
+    *   writer.toString() should be("<section><!----></section><br><footer></footer>")
     *   }}}
     *   and there should be a placeholder in the first element.
     *   {{{
@@ -90,7 +90,7 @@ private[html] object InterpolationParser:
       parts: IndexedSeq[String],
       argumentErrorHandler: (message: String, argumentIndex: Int) => Unit,
       document: Document { def createDocumentFragment(): Fragment } =
-        org.apache.html.dom.HTMLDocumentImpl()
+        net.sourceforge.htmlunit.xerces.dom.CoreDocumentImpl()
   ): Fragment =
     val parser = new InterpolationParser(parts, argumentErrorHandler)
     val fragment = document.createDocumentFragment()
@@ -138,7 +138,7 @@ private class InterpolationParser(
         .collect(Function.unlift { i =>
           val htmlEventInfo = attrs
             .getAugmentations(i)
-            .getItem(AUGMENTATIONS)
+            .get(AUGMENTATIONS)
             .asInstanceOf[HTMLEventInfo]
           val beginCharacterOffset = htmlEventInfo.getBeginCharacterOffset
           val endCharacterOffset = htmlEventInfo.getEndCharacterOffset
@@ -190,7 +190,7 @@ private class InterpolationParser(
         if augs == null then super.characters(text, augs)
         else
           val htmlEventInfo =
-            augs.getItem(AUGMENTATIONS).asInstanceOf[HTMLEventInfo]
+            augs.get(AUGMENTATIONS).asInstanceOf[HTMLEventInfo]
           val beginCharacterOffset = htmlEventInfo.getBeginCharacterOffset
           val endCharacterOffset = htmlEventInfo.getEndCharacterOffset
           val beginSearchResult =

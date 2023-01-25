@@ -14,7 +14,7 @@ libraryDependencies += "com.thoughtworks.binding" %%% "bindable" % "2.1.3+76-44e
 
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "12.1.0+109-0a838a95"
 
-libraryDependencies += "net.sourceforge.htmlunit" % "neko-htmlunit" % "2.58.0"
+libraryDependencies += "net.sourceforge.htmlunit" % "neko-htmlunit" % "2.70.0"
 
 libraryDependencies += "com.thoughtworks.dsl" %%% "macros-reset" % "2.0.0-M2+339-69c389a4"
 

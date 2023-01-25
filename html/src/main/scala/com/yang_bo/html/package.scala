@@ -104,25 +104,24 @@ package html {
     import net.sourceforge.htmlunit.cyberneko.HTMLConfiguration
     import net.sourceforge.htmlunit.cyberneko.HTMLScanner
     import net.sourceforge.htmlunit.cyberneko.parsers.DOMFragmentParser
-    import org.apache.xerces.xni.parser.XMLInputSource
+    import net.sourceforge.htmlunit.xerces.xni.parser.XMLInputSource
     import java.io.StringReader
     import org.w3c.dom.DocumentFragment
     import net.sourceforge.htmlunit.cyberneko.parsers.DOMParser
-    import org.apache.xerces.xni.XMLAttributes
-    import org.apache.xerces.xni.Augmentations
-    import org.apache.xerces.xni.QName
+    import net.sourceforge.htmlunit.xerces.xni.XMLAttributes
+    import net.sourceforge.htmlunit.xerces.xni.Augmentations
+    import net.sourceforge.htmlunit.xerces.xni.QName
     import net.sourceforge.htmlunit.cyberneko.HTMLEventInfo
     import net.sourceforge.htmlunit.cyberneko.HTMLScanner
-    import org.apache.xerces.util.XMLStringBuffer
-    import org.apache.xerces.xni.XMLString
+    import net.sourceforge.htmlunit.xerces.util.XMLStringBuffer
+    import net.sourceforge.htmlunit.xerces.xni.XMLString
     import java.io.CharArrayReader
     import java.io.PipedReader
     import java.io.PipedWriter
     import org.xml.sax.InputSource
     import scala.collection.Searching
-    import org.apache.xerces.util.XMLAttributesImpl
+    import net.sourceforge.htmlunit.xerces.util.XMLAttributesImpl
     import net.sourceforge.htmlunit.cyberneko.HTMLAugmentations
-    import org.apache.xml.serialize.XMLSerializer
     import org.w3c.dom.ls.LSSerializer
     import org.w3c.dom.ls.DOMImplementationLS
     import org.w3c.dom.Node
