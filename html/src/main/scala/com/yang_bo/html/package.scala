@@ -649,6 +649,25 @@ package html {
         )
       )
     }
+
+    given [FunctionKeyword, Value, A, R](using
+        run: Dsl.Run[keywords.FlatMap[FunctionKeyword, keywords.Pure[
+          js.Function1[A, R]
+        ]], Binding[
+          js.Function1[A, R]
+        ], Value],
+        dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit
+    ): InterpolationConverter[keywords.Typed[FunctionKeyword, A => R], Binding[
+      js.Function1[A, R]
+    ]] = { typed =>
+      run(
+        keywords.FlatMap(
+          keywords.Typed[FunctionKeyword, A => R].flip(typed),
+          keywords.Pure[js.Function1[A, R]](_)
+        )
+      )
+    }
+
     given [From, Value](using
         Bindable.Lt[From, Value]
     ): InterpolationConverter[From, Binding[Value]] = _.toBinding
@@ -657,6 +676,13 @@ package html {
         Bindable.Lt[FromText, String]
     ): InterpolationConverter[FromText, Binding[Text]] = { from =>
       from.toBinding.map(document.createTextNode)
+    }
+
+    given [FromFunction, A, R](using
+        Bindable.Lt[FromFunction, A => R]
+    ): InterpolationConverter[FromFunction, Binding[js.Function1[A, R]]] = {
+      from =>
+        from.toBinding.map(identity)
     }
 
     given [FromSeq](using
