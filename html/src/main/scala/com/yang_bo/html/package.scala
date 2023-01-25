@@ -1,5 +1,31 @@
 package com.yang_bo
 
+import com.thoughtworks.binding.*
+import com.thoughtworks.binding.bindable.Bindable
+import com.thoughtworks.binding.bindable.BindableSeq
+import com.thoughtworks.dsl.Dsl
+import com.thoughtworks.dsl.keywords
+import com.thoughtworks.dsl.macros.Reset
+import com.yang_bo.html.Definitions
+import org.scalajs.dom.DocumentFragment
+import org.scalajs.dom.Element
+import org.scalajs.dom.Node
+import org.scalajs.dom.ParentNode
+import org.scalajs.dom.Text
+import org.scalajs.dom.document
+
+import scala.annotation.tailrec
+import scala.collection.View
+import scala.quoted.Expr
+import scala.quoted.Quotes
+import scala.quoted.Type
+import scala.quoted.Varargs
+import scala.scalajs.js
+import scala.util.chaining.given
+
+import Binding.BindingSeq
+import bindable.*
+
 /** Includes the `@html` annotation to create reactive web applications
   *
   * @example
@@ -81,71 +107,17 @@ package object html {
 }
 package html {
 
-  import com.thoughtworks.binding.*, Binding.BindingSeq, bindable.*
-  import scala.collection.IndexedSeqView
-  import scala.scalajs.js
-  import scala.annotation.unchecked.uncheckedVariance
-  import scala.util.Success
-  import org.scalajs.dom.Text
-  import org.scalajs.dom.Node
-  import org.scalajs.dom.ParentNode
-  import org.scalajs.dom.document
-  import scala.annotation.tailrec
-  import org.scalajs.dom.Element
-  import com.thoughtworks.dsl.Dsl
-  import com.thoughtworks.dsl.keywords
-  import org.scalajs.dom.DocumentFragment
-
   private[html] object Macros:
-    import scala.quoted.Type
-    import scala.quoted.Expr
-    import scala.quoted.Quotes
-    import java.io.Reader
-    import net.sourceforge.htmlunit.cyberneko.HTMLConfiguration
-    import net.sourceforge.htmlunit.cyberneko.HTMLScanner
-    import net.sourceforge.htmlunit.cyberneko.parsers.DOMFragmentParser
-    import net.sourceforge.htmlunit.xerces.xni.parser.XMLInputSource
-    import java.io.StringReader
-    import org.w3c.dom.DocumentFragment
-    import net.sourceforge.htmlunit.cyberneko.parsers.DOMParser
-    import net.sourceforge.htmlunit.xerces.xni.XMLAttributes
-    import net.sourceforge.htmlunit.xerces.xni.Augmentations
-    import net.sourceforge.htmlunit.xerces.xni.QName
-    import net.sourceforge.htmlunit.cyberneko.HTMLEventInfo
-    import net.sourceforge.htmlunit.cyberneko.HTMLScanner
-    import net.sourceforge.htmlunit.xerces.util.XMLStringBuffer
-    import net.sourceforge.htmlunit.xerces.xni.XMLString
-    import java.io.CharArrayReader
-    import java.io.PipedReader
-    import java.io.PipedWriter
-    import org.xml.sax.InputSource
-    import scala.collection.Searching
-    import net.sourceforge.htmlunit.xerces.util.XMLAttributesImpl
-    import net.sourceforge.htmlunit.cyberneko.HTMLAugmentations
-    import org.w3c.dom.ls.LSSerializer
-    import org.w3c.dom.ls.DOMImplementationLS
+    import org.w3c.dom.Attr
     import org.w3c.dom.Node
-    import scala.collection.View
-    import scala.scalajs.js.`import`
-    import scala.concurrent.ExecutionContext
-    import scala.concurrent.Future
     import org.w3c.dom.Element
-    import org.w3c.dom.Text
     import org.w3c.dom.NodeList
     import org.w3c.dom.Comment
-    import scala.quoted.Varargs
-    import com.thoughtworks.dsl.macros.Reset
-    import org.w3c.dom.Attr
-    import scala.util.chaining.given
-    import com.yang_bo.html.Definitions
-    import com.thoughtworks.binding.bindable.BindableSeq
-    import com.thoughtworks.binding.bindable.Bindable
     import org.w3c.dom.NamedNodeMap
     import org.w3c.dom.Text
     import org.w3c.dom.CDATASection
     import org.w3c.dom.ProcessingInstruction
-    import scala.collection.IndexedSeqView
-    import scala.collection.immutable.BitSet
+    import net.sourceforge.htmlunit.xerces.xni.QName
     import InterpolationParser.AttributeArgumentsUserDataKey
     import InterpolationParser.ElementArgumentUserDataKey
 
