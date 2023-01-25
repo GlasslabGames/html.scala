@@ -23,3 +23,5 @@ libraryDependencies += "com.thoughtworks.dsl" %%% "domains-continuation" % "2.0.
 libraryDependencies += "com.thoughtworks.dsl" %%% "keywords-yield" % "2.0.0-M2+339-69c389a4"
 
 libraryDependencies += "com.thoughtworks.dsl" %%% "keywords-await" % "2.0.0-M2+339-69c389a4" % Test
+
+webpack / version := "5.75.0"

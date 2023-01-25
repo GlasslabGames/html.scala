@@ -18,7 +18,7 @@ package com.yang_bo
   *     html"""<span>The quick ${color.bind} fox jumps&nbsp;over the lazy ${animal}</span>"""
   * }}}
   *
-  * It can be then [[rendered]] into a parent node.
+  * It can be then [[render]]ed into a parent node.
   *
   * {{{
   *   import org.scalajs.dom.document
@@ -53,6 +53,26 @@ package com.yang_bo
   *   render(document.body, nodes)
   *   document.body.innerHTML should be(
   *     """<span>1&nbsp;foo2bar3</span><textarea class="my-class" id="my-id">baz</textarea>"""
+  *   )
+  *   }}}
+  * @example
+  *   The variable in an html interpolation could be a
+  *   [[com.thoughtworks.binding.Binding.BindingSeq]] of
+  *   [[org.scalajs.dom.Node]].
+  *   {{{
+  *   import com.yang_bo.html.*
+  *   import com.thoughtworks.binding.Binding.Constants
+  *   import org.scalajs.dom.Node
+  *   import org.scalajs.dom.document
+  *
+  *   val texts = Constants("foo", "bar")
+  *   val node =
+  *     html"""<ol>${
+  *       for (text <- texts) yield html"<li>$text</li>".bind
+  *     }</li>"""
+  *   render(document.body, node)
+  *   document.body.innerHTML should be(
+  *     "<ol><li>foo</li><li>bar</li></ol>"
   *   )
   *   }}}
   */
@@ -635,11 +655,14 @@ package html {
         run: Dsl.Run[Keyword, Binding[BindingValue], Value]
     ): InterpolationConverter[Keyword, Binding[BindingValue]] = run(_)
 
-    // given [Keyword, Value](using
-    //     run: Dsl.Run[Keyword, Binding[String], Value]
-    // ): InterpolationConverter[Keyword, Binding[Text]] = {keyword=>
-    //   run(keywords.FlatMap(keyword, keywords.Pure{ string => document.createTextNode(string)}))
-    // }
+    given [BindingKeyword, BindingValue, Value](using
+        run: Dsl.Run[BindingKeyword, Binding[BindingValue], Value],
+        bindableSeq: BindableSeq.Lt[Binding[BindingValue], Node]
+    ): InterpolationConverter[BindingKeyword, Binding.Stable[
+      DocumentFragment
+    ]] = { keyword =>
+      fragmentBinding(bindableSeq.toBindingSeq((run(keyword))))
+    }
 
     given [Keyword, Value](using
         run: Dsl.Run[keywords.FlatMap[Keyword, keywords.Pure[Text]], Binding[
