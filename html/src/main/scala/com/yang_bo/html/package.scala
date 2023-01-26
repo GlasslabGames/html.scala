@@ -174,12 +174,12 @@ package html {
       import scala.quoted.quotes.reflect.*
       TypeRepr.of[E].memberType(propertySymbol).asType match
         case '[propertyType] =>
-          type InterpolationConverterType =
-            InterpolationConverter[K, Binding[propertyType]]
-          Implicits.search(TypeRepr.of[InterpolationConverterType]) match
+          type AttributeAdaptorType =
+            AttributeAdaptor[K, Binding[propertyType]]
+          Implicits.search(TypeRepr.of[AttributeAdaptorType]) match
             case success: ImplicitSearchSuccess =>
               '{
-                ${ success.tree.asExprOf[InterpolationConverterType] }
+                ${ success.tree.asExprOf[AttributeAdaptorType] }
                   .apply($reifiedExpr)
                   .map { propertyValue =>
                     ${
@@ -197,7 +197,7 @@ package html {
               report.error(
                 s"Cannot produce a bindable expression for the property ${propertySymbol.name}. Expect ${Type
                   .show[propertyType]}, actual ${Type.show[V]}\nCannot find an instance of ${Type
-                  .show[InterpolationConverterType]}\n${failure.explanation} ",
+                  .show[AttributeAdaptorType]}\n${failure.explanation} ",
                 attributeValueExpr.asTerm.pos
               )
               '{ ??? }
@@ -215,14 +215,14 @@ package html {
         Quotes
     ): Expr[Binding[Unit]] =
       import scala.quoted.quotes.reflect.*
-      type InterpolationConverterType =
-        InterpolationConverter[keywords.Typed[K, V], Binding[
+      type AttributeAdaptorType =
+        AttributeAdaptor[keywords.Typed[K, V], Binding[
           String
         ]]
-      Implicits.search(TypeRepr.of[InterpolationConverterType]) match
+      Implicits.search(TypeRepr.of[AttributeAdaptorType]) match
         case success: ImplicitSearchSuccess =>
           '{
-            ${ success.tree.asExprOf[InterpolationConverterType] }
+            ${ success.tree.asExprOf[AttributeAdaptorType] }
               .apply(keywords.Typed($reifiedExpr))
               .map { stringAttributeValue =>
                 ${
@@ -625,29 +625,14 @@ package html {
     }
   end BindingSeqNodeAdaptor
 
-  private[html] opaque type InterpolationConverter[-From, +To] <: From => To =
+  private[html] opaque type AttributeAdaptor[-From, +To] <: From => To =
     From => To
 
-  private[html] object InterpolationConverter:
+  private[html] object AttributeAdaptor:
 
     given [Keyword, BindingValue, Value](using
         run: Dsl.Run[Keyword, Binding[BindingValue], Value]
-    ): InterpolationConverter[Keyword, Binding[BindingValue]] = run(_)
-
-    given [Keyword, Value](using
-        run: Dsl.Run[keywords.FlatMap[Keyword, keywords.Pure[Text]], Binding[
-          Text
-        ], Value]
-    ): InterpolationConverter[keywords.Typed[Keyword, String], Binding[
-      Text
-    ]] = { typed =>
-      run(
-        keywords.FlatMap(
-          keywords.Typed[Keyword, String].flip(typed),
-          keywords.Pure[Text].liftCo(document.createTextNode)
-        )
-      )
-    }
+    ): AttributeAdaptor[Keyword, Binding[BindingValue]] = run(_)
 
     given [FunctionKeyword, Value, A, R](using
         run: Dsl.Run[keywords.FlatMap[FunctionKeyword, keywords.Pure[
@@ -656,7 +641,7 @@ package html {
           js.Function1[A, R]
         ], Value],
         dummyImplicit: DummyImplicit = DummyImplicit.dummyImplicit
-    ): InterpolationConverter[keywords.Typed[FunctionKeyword, A => R], Binding[
+    ): AttributeAdaptor[keywords.Typed[FunctionKeyword, A => R], Binding[
       js.Function1[A, R]
     ]] = { typed =>
       run(
@@ -671,22 +656,16 @@ package html {
 
     given [From, Value](using
         bindable: Bindable.Lt[From, Value]
-    ): InterpolationConverter[From, Binding[Value]] = bindable.toBinding
-
-    given [FromText](using
-        bindable: Bindable.Lt[FromText, String]
-    ): InterpolationConverter[FromText, Binding[Text]] = { from =>
-      bindable.toBinding(from).map(document.createTextNode)
-    }
+    ): AttributeAdaptor[From, Binding[Value]] = bindable.toBinding
 
     given [FromFunction, A, R](using
         bindable: Bindable.Lt[FromFunction, A => R]
-    ): InterpolationConverter[FromFunction, Binding[js.Function1[A, R]]] = {
+    ): AttributeAdaptor[FromFunction, Binding[js.Function1[A, R]]] = {
       from =>
         bindable.toBinding(from).map(identity)
     }
 
-  end InterpolationConverter
+  end AttributeAdaptor
 
   private[html] def nodeBinding[A](
       value0: A,
