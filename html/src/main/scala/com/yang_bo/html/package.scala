@@ -1,6 +1,7 @@
 package com.yang_bo
 
 import com.thoughtworks.binding.*
+import com.thoughtworks.binding.Binding.{Constant, Constants, BindingSeq}
 import com.thoughtworks.binding.bindable.Bindable
 import com.thoughtworks.binding.bindable.BindableSeq
 import com.thoughtworks.dsl.Dsl
@@ -22,9 +23,6 @@ import scala.quoted.Type
 import scala.quoted.Varargs
 import scala.scalajs.js
 import scala.util.chaining.given
-
-import Binding.BindingSeq
-import bindable.*
 
 /** Includes the `@html` annotation to create reactive web applications
   *
@@ -67,7 +65,7 @@ import bindable.*
   * @example
   *   An html interpolation that includes multiple single root nodes should be a
   *   `BindingSeq[Node]`.
-  *   {{{
+  * {{{
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding.BindingSeq
   *   import org.scalajs.dom.Node
@@ -80,12 +78,12 @@ import bindable.*
   *   document.body.innerHTML should be(
   *     """<span>1&nbsp;foo2bar3</span><textarea class="my-class" id="my-id">baz</textarea>"""
   *   )
-  *   }}}
+  * }}}
   * @example
   *   The variable in an html interpolation could be a
   *   [[com.thoughtworks.binding.Binding.BindingSeq]] of
   *   [[org.scalajs.dom.Node]].
-  *   {{{
+  * {{{
   *   import com.yang_bo.html.*
   *   import com.thoughtworks.binding.Binding.Constants
   *   import org.scalajs.dom.Node
@@ -100,7 +98,7 @@ import bindable.*
   *   document.body.innerHTML should be(
   *     "<ol><li>foo</li><li>bar</li></ol>"
   *   )
-  *   }}}
+  * }}}
   */
 package object html {
   // For document purpose only
@@ -198,8 +196,8 @@ package html {
             case failure: ImplicitSearchFailure =>
               report.error(
                 s"Cannot produce a bindable expression for the property ${propertySymbol.name}. Expect ${Type
-                    .show[propertyType]}, actual ${Type.show[V]}\nCannot find an instance of ${Type
-                    .show[InterpolationConverterType]}\n${failure.explanation} ",
+                  .show[propertyType]}, actual ${Type.show[V]}\nCannot find an instance of ${Type
+                  .show[InterpolationConverterType]}\n${failure.explanation} ",
                 attributeValueExpr.asTerm.pos
               )
               '{ ??? }
@@ -301,7 +299,8 @@ package html {
           case null =>
             Nil
           case attributeBindings =>
-            for case (
+            for
+              case (
                 qName: QName,
                 argExprs(anyAttributeValueExpr)
               ) <- attributeBindings
@@ -438,7 +437,7 @@ package html {
       import scala.quoted.quotes.reflect.ImplicitSearchSuccess
       '{
         Binding
-          .Constants(${
+          .Constants[js.Function0[Binding[BindingSeq[org.scalajs.dom.Node]]]](${
             Expr.ofSeq(
               (
                 for i <- 0 until nodeList.getLength
@@ -447,30 +446,25 @@ package html {
                   val transformedTerm = transformNode(child).asTerm
                   transformedTerm.tpe.asType match
                     case '[from] =>
+                      
                       // TODO: Use summonInline instead?
                       Implicits.search(
                         TypeRepr
                           .of[
-                            InterpolationConverter[from, Binding[
-                              org.scalajs.dom.Node
-                            ]]
+                            BindingSeqNodeAdaptor[from]
                           ]
                       ) match
                         case success: ImplicitSearchSuccess =>
-                          '{
-                            ${
-                              success.tree
-                                .asExprOf[
-                                  InterpolationConverter[
-                                    from,
-                                    Binding[
-                                      org.scalajs.dom.Node
-                                    ]
+                          '{ 
+                            { () =>
+                              ${
+                                success.tree
+                                  .asExprOf[BindingSeqNodeAdaptor[from]
                                   ]
-                                ]
-                            }.apply(${
-                              transformedTerm.asExprOf[from]
-                            })
+                              }(${
+                                transformedTerm.asExprOf[from]
+                              })
+                            }: js.Function0[Binding[BindingSeq[org.scalajs.dom.Node]]]
                           }
                         case failure: ImplicitSearchFailure =>
                           report.error(
@@ -481,7 +475,7 @@ package html {
               ).toSeq
             )
           }: _*)
-          .mapBinding(identity)
+          .flatMapBinding(_())
       }
 
     def html(
@@ -604,19 +598,33 @@ package html {
       childrenBinding: Binding.BindingSeq[Node]
   ): Binding[Unit] = new NodeSeqMountPoint(parent, childrenBinding)
 
-  // type Binding.Stable[+A] = Binding.Stable[A]
+  private[html] opaque type BindingSeqNodeAdaptor[
+      From,
+  ] <: From => Binding[BindingSeq[Node]] =
+    From => Binding[BindingSeq[Node]]
+  private[html] object BindingSeqNodeAdaptor:
+    given [StringKeyword, Value <: String](using
+        run: Dsl.Run[StringKeyword, Binding[Value], Value]
+    ): BindingSeqNodeAdaptor[StringKeyword] = { keyword =>
+      run(keyword).map { string =>
+        Constants(document.createTextNode(string))
+      }
+    }
 
-  // object Binding.Stable:
+    given [Keyword, Value](using
+        run: Dsl.Run[Keyword, Binding[Value], Value],
+        bindableSeq: BindableSeq.Lt[Value, Node]
+    ): BindingSeqNodeAdaptor[Keyword] = { keyword =>
+      run(keyword).map(bindableSeq.toBindingSeq)
+    }
 
-  private def fragmentBinding(
-      bindingSeq: BindingSeq[Node]
-  ): Binding.Stable[DocumentFragment] =
-    val fragment = document.createDocumentFragment()
-    nodeBinding(
-      fragment,
-      js.Array(mountChildNodes(fragment, bindingSeq))
-    )
-  end fragmentBinding
+    given [From](using
+        bindableSeq: BindableSeq.Lt[From, Node]
+    ): BindingSeqNodeAdaptor[From] = { from =>
+      Constant(bindableSeq.toBindingSeq(from))
+    }
+  end BindingSeqNodeAdaptor
+
   private[html] opaque type InterpolationConverter[-From, +To] <: From => To =
     From => To
 
@@ -625,15 +633,6 @@ package html {
     given [Keyword, BindingValue, Value](using
         run: Dsl.Run[Keyword, Binding[BindingValue], Value]
     ): InterpolationConverter[Keyword, Binding[BindingValue]] = run(_)
-
-    given [BindingKeyword, BindingValue, Value](using
-        run: Dsl.Run[BindingKeyword, Binding[BindingValue], Value],
-        bindableSeq: BindableSeq.Lt[Binding[BindingValue], Node]
-    ): InterpolationConverter[BindingKeyword, Binding.Stable[
-      DocumentFragment
-    ]] = { keyword =>
-      fragmentBinding(bindableSeq.toBindingSeq((run(keyword))))
-    }
 
     given [Keyword, Value](using
         run: Dsl.Run[keywords.FlatMap[Keyword, keywords.Pure[Text]], Binding[
@@ -671,28 +670,22 @@ package html {
     }
 
     given [From, Value](using
-        Bindable.Lt[From, Value]
-    ): InterpolationConverter[From, Binding[Value]] = _.toBinding
+        bindable: Bindable.Lt[From, Value]
+    ): InterpolationConverter[From, Binding[Value]] = bindable.toBinding
 
     given [FromText](using
-        Bindable.Lt[FromText, String]
+        bindable: Bindable.Lt[FromText, String]
     ): InterpolationConverter[FromText, Binding[Text]] = { from =>
-      from.toBinding.map(document.createTextNode)
+      bindable.toBinding(from).map(document.createTextNode)
     }
 
     given [FromFunction, A, R](using
-        Bindable.Lt[FromFunction, A => R]
+        bindable: Bindable.Lt[FromFunction, A => R]
     ): InterpolationConverter[FromFunction, Binding[js.Function1[A, R]]] = {
       from =>
-        from.toBinding.map(identity)
+        bindable.toBinding(from).map(identity)
     }
 
-    given [FromSeq](using
-        bindableSeq: BindableSeq.Lt[FromSeq, Node]
-    ): InterpolationConverter[FromSeq, Binding.Stable[DocumentFragment]] = {
-      from =>
-        fragmentBinding(bindableSeq.toBindingSeq(from))
-    }
   end InterpolationConverter
 
   private[html] def nodeBinding[A](
